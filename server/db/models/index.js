@@ -1,4 +1,6 @@
 const User = require('./user')
+const Order = require('./order')
+const OrderItem = require('./orderItem')
 const Product = require('./products')
 
 /**
@@ -16,5 +18,7 @@ const Product = require('./products')
  */
 module.exports = {
   User,
+  Order,
+  OrderItem,
   Product
 }
