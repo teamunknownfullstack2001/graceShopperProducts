@@ -8,10 +8,9 @@ class SingleProduct extends React.Component {
   }
 
   render() {
-    console.log('These are the props: ', this.props)
     const {product} = this.props
     const {id, imageUrl, name, description, price, tags, category} = product
-    console.log('This is singleProduct', product)
+    console.log('These are the props: ', this.props)
     return (
       <div key={id}>
         <div className="singleProductContainer">
@@ -30,7 +29,6 @@ class SingleProduct extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log('This is the state: ', state)
   return {
     product: state.product
   }

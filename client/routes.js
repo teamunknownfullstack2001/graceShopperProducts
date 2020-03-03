@@ -7,6 +7,7 @@ import {me, fetchProducts, getUserCart} from './store'
 import InjectedCheckoutForm from './components/checkout-form'
 import SingleProduct from './components/SingleProduct'
 import Cart from './components/cart'
+import UserProfile from './components/UserProfile'
 
 /**
  * COMPONENT
@@ -30,6 +31,7 @@ class Routes extends Component {
         <Route path="/Payment" component={InjectedCheckoutForm} />
         <Route path="/products/:id" component={SingleProduct} />
         <Route path="/Cart" component={Cart} />
+        <Route path="/users/:id" component={UserProfile} />
 
         {isLoggedIn && (
           <Switch>
