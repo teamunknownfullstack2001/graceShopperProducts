@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import ProductDummy from './ProductDummy'
+import {deleteProduct} from '../store/products'
 
 /**
  * COMPONENT
@@ -9,6 +10,9 @@ import ProductDummy from './ProductDummy'
 export const UserHome = props => {
   const {email} = props
   const {products} = props
+  const {removeProduct} = props
+
+  const handleRemove = productId => removeProduct(productId)
 
   return (
     <div>
@@ -17,7 +21,7 @@ export const UserHome = props => {
         {products
           ? products.map(product => (
               <div key={product.id} className="singleProduct">
-                <ProductDummy product={product} />
+                <ProductDummy product={product} x="x" action={handleRemove} />
               </div>
             ))
           : 'No Products'}
@@ -36,7 +40,11 @@ const mapState = state => {
   }
 }
 
-export default connect(mapState)(UserHome)
+const mapDispatch = dispatch => ({
+  removeProduct: productId => dispatch(deleteProduct(productId))
+})
+
+export default connect(mapState, mapDispatch)(UserHome)
 
 /**
  * PROP TYPES

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome} from './components'
+import {Login, Signup, UserHome, CreateProduct} from './components'
 import {me, fetchProducts} from './store'
 import InjectedCheckoutForm from './components/checkout-form'
 /**
@@ -23,6 +23,7 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route exact path="/products" component={UserHome} />
+        <Route exact path="/createproduct" component={CreateProduct} />
         <Route path="/Payment" component={InjectedCheckoutForm} />
         {isLoggedIn && (
           <Switch>
