@@ -10,6 +10,11 @@ const Product = db.define('product', {
       notEmpty: true
     }
   },
+  imageUrl: {
+    type: Sequelize.STRING,
+    defaultValue:
+      'https://images.rugimg.com/3140387/3140387_image_1010.jpg?canvas=740%2C700&fit=bounds&bg-color=white&height=700&width=740&quality=85'
+  },
   category: {
     type: Sequelize.STRING,
     allowNull: false,
