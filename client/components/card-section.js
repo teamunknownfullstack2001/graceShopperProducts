@@ -5,8 +5,8 @@ const CARD_ELEMENT_OPTIONS = {
   style: {
     base: {
       color: '#32325d',
+      width: '30px',
       border: '10px solid red',
-      backgroundColor: 'red',
       fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
       fontSmoothing: 'antialiased',
       fontSize: '16px',
@@ -24,7 +24,7 @@ const CARD_ELEMENT_OPTIONS = {
 function CardSection() {
   return (
     <label>
-      {/* Card details */}
+      please add card details
       <CardElement options={CARD_ELEMENT_OPTIONS} />
     </label>
   )
