@@ -6,14 +6,6 @@ import axios from 'axios'
 const GET_SINGLE_PRODUCT = 'GET_SINGLE_Product'
 
 /**
- * INITIAL STATE
- */
-
-const defaultState = {
-  product: {}
-}
-
-/**
  * ACTION CREATORS
  */
 const getProduct = product => ({type: GET_SINGLE_PRODUCT, product})
@@ -34,14 +26,21 @@ export const getSingleProduct = id => {
 }
 
 /**
- * REDUCER
+ * INITIAL STATE
  */
 
-export default function(state = defaultState, action) {
+const initialState = {}
+
+/**
+ * REDUCER
+ */
+const singleProductReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_SINGLE_PRODUCT:
-      return {...state, product: action.product}
+      return action.product
     default:
       return state
   }
 }
+
+export default singleProductReducer
