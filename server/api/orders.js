@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Order} = require('../db/models/order')
+const {Order} = require('../db/models')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -13,7 +13,7 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   try {
-    const singleOrder = await Order.findById(req.params.id)
+    const singleOrder = await Order.findByPk(req.params.id)
     res.json(singleOrder)
   } catch (error) {
     next(error)
