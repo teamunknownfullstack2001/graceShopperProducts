@@ -6,20 +6,16 @@ import axios from 'axios'
 
 class CheckoutForm extends React.Component {
   handleSubmit = async event => {
-    // We don't want to let default form submission happen here,
-    // which would refresh the page.
     event.preventDefault()
 
     const {stripe, elements} = this.props
 
     if (!stripe || !elements) {
-      // Stripe.js has not yet loaded.
-      // Make  sure to disable form submission until Stripe.js has loaded.
       return
     }
-    console.dir(event)
+    // console.dir(event)
     const {data} = await axios.get(`/api/payment`)
-    console.dir(data.client_secret)
+    // console.dir(data.client_secret)
     const result = await stripe.confirmCardPayment(data.client_secret, {
       payment_method: {
         card: elements.getElement(CardElement),
@@ -30,20 +26,13 @@ class CheckoutForm extends React.Component {
     })
 
     if (result.error) {
-      // Show error to your customer (e.g., insufficient funds)
       console.log(result.error.message)
-    } else {
-      // The payment has been processed!
-      if (result.paymentIntent.status === 'succeeded') {
-        // Show a success message to your customer
-        // There's a risk of the customer closing the window before callback
-        // execution. Set up a webhook or plugin to listen for the
-        // payment_intent.succeeded event that handles any business critical
-        // post-payment actions.
-      }
+    } else if (result.paymentIntent.status === 'succeeded') {
+      console.log('Payment Success!!')
     }
   }
 
+  ////https://stripe.com/docs/testing find test card numbers here
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -65,5 +54,3 @@ export default function InjectedCheckoutForm() {
     </ElementsConsumer>
   )
 }
-
-//https://stripe.com/docs/testing

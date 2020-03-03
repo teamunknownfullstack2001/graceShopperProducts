@@ -2,8 +2,7 @@ const router = require('express').Router()
 module.exports = router
 
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY
-const stripePublicKey = process.env.STRIPE_PUBLIC_KEY
-// const stripe = require('stripe')(stripeSecretKey)
+
 const stripe = require('stripe')(stripeSecretKey)
 router.post('/', async (req, res) => {
   try {
