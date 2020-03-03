@@ -13,9 +13,9 @@ class CheckoutForm extends React.Component {
     if (!stripe || !elements) {
       return
     }
-    // console.dir(event)
-    const {data} = await axios.get(`/api/payment`)
-    // console.dir(data.client_secret)
+
+    const {data} = await axios.post(`/api/payment`)
+    //console.log(data)
     const result = await stripe.confirmCardPayment(data.client_secret, {
       payment_method: {
         card: elements.getElement(CardElement),
