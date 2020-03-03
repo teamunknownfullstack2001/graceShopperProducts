@@ -65,3 +65,5 @@ export default function InjectedCheckoutForm() {
     </ElementsConsumer>
   )
 }
+
+//https://stripe.com/docs/testing
