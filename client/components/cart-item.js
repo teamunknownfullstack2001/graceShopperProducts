@@ -29,7 +29,7 @@ const styles = {
     color: 'black',
     borderRadius: 3,
     boxShadow: '0 3px 5px 2px',
-    height: '10vh',
+    height: '100px',
     margin: '10px'
   },
   content: {
@@ -65,7 +65,7 @@ class CartItem extends React.Component {
               component="h2"
               // align="center"
             >
-              {`Name: ${this.props.cartItem.product.name}`}
+              {`Name: ${this.props.cartItem.name}`}
             </Typography>
             <Typography
               className={classes.quantity}
@@ -81,35 +81,39 @@ class CartItem extends React.Component {
               component="h2"
               // align="center"
             >
-              {`Price: ${this.props.cartItem.product.price}`}
+              {`Price: ${this.props.cartItem.price}`}
             </Typography>
             {/* <Typography variant="h5" component="h2" align="center">
-              {`Image: ${this.props.cartItem.product.imageUrl}`}
+              {`Image: ${this.props.cartItem.imageUrl}`}
             </Typography> */}
             {/* <Typography paragraph variant="h5" component="h2" align="center">
-              {`Description: ${this.props.cartItem.product.description}`}
+              {`Description: ${this.props.cartItem.description}`}
             </Typography> */}
           </CardContent>
           <CardMedia
             className={classes.media}
-            image={this.props.cartItem.product.imageUrl}
+            image={this.props.cartItem.imageUrl}
             title="Paella dish"
           />
           <CardActions className={classes.buttonBar}>
             <Button
-              size="big"
+              size="large"
               startIcon={<RemoveIcon />}
               // id={1}
               // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
-             />
+            >
+              Add
+            </Button>
             <Button
-              size="big"
+              size="large"
               startIcon={<AddIcon />}
               // id={1}
               // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
-             />
+            >
+              Remove
+            </Button>
             <Button
-              size="big"
+              size="large"
               startIcon={<DeleteOutlinedIcon />}
               // id={1}
               // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
