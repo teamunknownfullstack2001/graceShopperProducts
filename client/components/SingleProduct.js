@@ -14,12 +14,16 @@ class SingleProduct extends React.Component {
     console.log('This is singleProduct', product)
     return (
       <div key={id}>
-        <h1>{name}</h1>
-        <img src={imageUrl} />
-        <p>{description}</p>
-        <p>{price}</p>
-        <p>{tags}</p>
-        <p>{category}</p>
+        <div className="singleProductContainer">
+          <img src={imageUrl} className="singleProduct" />
+        </div>
+        <div className="singleProduct">
+          <h1>{name}</h1>
+          <p>{description}</p>
+          <p>{price}</p>
+          <p>{tags}</p>
+          <p>{category}</p>
+        </div>
       </div>
     )
   }
