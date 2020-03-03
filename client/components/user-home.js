@@ -12,7 +12,7 @@ export const UserHome = props => {
 
   return (
     <div>
-      <h3>Welcome, {email}</h3>
+      {email ? <h3>Welcome, {email}</h3> : <h3>Welcome, shopper</h3>}
       <ul className="productList">
         {products
           ? products.map(product => (
