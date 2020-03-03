@@ -53,10 +53,14 @@ form div {
 }
 
 .productCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: black dashed 2px;
+  border-bottom: black dashed 2px;
+  height: 400px;
   margin: 10px;
-  border: 2px black solid;
-  height: 200px;
 }
 .productImg {
-  height: 200px;
+  height: 300px;
 }

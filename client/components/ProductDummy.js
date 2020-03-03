@@ -5,14 +5,17 @@ const ProductDummy = props => {
   const {product} = props
 
   return (
-    <div className="productCard">
+    <div>
       <Link
         to={`/products/${product.id}`}
         style={{textDecoration: 'none', color: 'black'}}
       >
-        <div key={product.id}>
+        <div key={product.id} className="productCard">
           <img src={product.imageUrl} className="productImg" />
-          <h3>{product.name}</h3>
+          <h3>
+            <i>{product.name}</i>
+          </h3>
+          <h3>${product.price}</h3>
         </div>
       </Link>
     </div>
