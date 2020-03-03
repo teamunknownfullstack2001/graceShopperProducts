@@ -27,11 +27,11 @@ const CreateProductForm = props => {
             <label htmlFor="category">Category:</label>
             <select name="category" value={props.category}>
               <option value="Area">Area</option>
-              <option value="Octagon">Octagon</option>
-              <option value="Oval">Oval</option>
-              <option value="Round">Round</option>
-              <option value="Runner">Runner</option>
-              <option value="Square">Square</option>
+              <option value="Modern">Modern</option>
+              <option value="Moroccan">Moroccan</option>
+              <option value="Natural">Natural</option>
+              <option value="Oriental">Oriental</option>
+              <option value="Persian">Persian</option>
             </select>
           </li>
           <li>
@@ -65,7 +65,23 @@ const CreateProductForm = props => {
               onSubmit={props.onSubmit}
             />
           </li>
-
+          <li>
+            <label htmlFor="tags">Tags:</label>
+            <select multiple={true} name="tags" value={props.tags}>
+              <option value="Bathroom">Bathroom</option>
+              <option value="Modern">Modern</option>
+              <option value="Moroccan">Moroccan</option>
+              <option value="Natural">Natural</option>
+              <option value="Oriental">Oriental</option>
+              <option value="Outdoor">Outdoor</option>
+              <option value="Persian">Persian</option>
+              <option value="Shag">Shag</option>
+              <option value="Synthetic">Synthetic</option>
+              <option value="Tribal">Tribal</option>
+              <option value="Vintage">Vintage</option>
+              <option value="Woven">Woven</option>
+            </select>
+          </li>
           <li>
             <button type="submit">Submit</button>
           </li>
