@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
-
+require('../../secrets')
 /**
  * COMPONENT
  */
@@ -30,6 +30,26 @@ const AuthForm = props => {
         {error && error.response && <div> {error.response.data} </div>}
       </form>
       <a href="/auth/google">{displayName} with Google</a>
+      <div>
+        <button
+          type="button"
+          onClick={async () => {
+            console.log('payment!!')
+            // // Require the Stripe library with a test secret key.
+            // const stripe = require('stripe')(process.env.Stripe_SECRET_Key)
+
+            // // Create a payment from a test card token.
+            // const charge = await stripe.charges.create({
+            //   amount: ,
+            //   currency: 'usd',
+            //   source: 'tok_visa',
+            //   description: 'My first payment'
+            // })
+          }}
+        >
+          submit payment
+        </button>
+      </div>
     </div>
   )
 }
