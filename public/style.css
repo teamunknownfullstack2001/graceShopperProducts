@@ -61,6 +61,19 @@ form div {
   height: 400px;
   margin: 10px;
 }
+
+.singleProductContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.singleProduct {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
 .productImg {
   height: 300px;
 }

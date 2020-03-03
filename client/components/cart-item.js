@@ -101,13 +101,13 @@ class CartItem extends React.Component {
               startIcon={<RemoveIcon />}
               // id={1}
               // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
-             />
+            />
             <Button
               size="big"
               startIcon={<AddIcon />}
               // id={1}
               // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
-             />
+            />
             <Button
               size="big"
               startIcon={<DeleteOutlinedIcon />}
