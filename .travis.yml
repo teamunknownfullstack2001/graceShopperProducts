@@ -15,14 +15,16 @@ install:
 before_script:
   - psql -c 'create database "unknown-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
 script:
-  - npm test             # test the code
+  - npm test # test the code
   - npm run build-client # make the bundle
-
-# before_deploy:
-#   - rm -rf node_modules # omit from the tarball, since we skip cleanup
-# deploy:
-#   skip_cleanup: true # prevents travis from deleting the build
-#   provider: heroku
-#   app: YOUR-HEROKU-APP-NAME-HERE # see README
-#   api_key:
-#     secure: YOUR-***ENCRYPTED***-API-KEY-HERE # see README
+before_deploy: # omit node_modules, since we set skip_cleanup below
+  - rm -rf node_modules
+deploy: # see README for details on these keys
+  # prevents travis from deleting the build
+  skip_cleanup: true
+  provider: heroku
+  # app should be your heroku app name; see README
+  app: unkowngraceshopper
+  # the secure key indicates an encrypted value; see README
+  api_key:
+    secure: JrkwP6AckkBXLV1+Bct7FYyos7DJoBJrlUZFXc+09w77bAzX39SD/Qwg4JHMf/V//9FAwOM8KC6XNNUZyHClSxBtLDmzhuoN4eE2ihPCeA2FtM3i3FwWNbD5Lre4plUK04Wqvjh4dq7YZryrHKtObgpTJt9G2MocTeQzFNuQqJbmCSzO9+UxhYaTrortLQgIfjccAevpLl6xnE4RD0KcQmDLlztz9FQevvr2BT+37HlQ8DXnayD1+8Tbed6vUYAKCURPdWz2TdvyMnU3aPi6BZU+jn7tG/OrQSpL+K/gOqe90BOgKiywBNmCQrX1FnL40aYjbqITyOY++ws4yjhgNuQCahkY6Aj6bzTAzwdPoUj5VZFHiA5MDWSG73HkBdxTCyyaKwfOGA46iEQTxXjB3n1A0CXyuM1NBJ9fwHz95hUZ1Z+uYMCmsXSnH7XnRbbZYMbtcuDch4cAJjKRHhVTLZ38vtnLH5060KngKkSr2bBG87gLA2CT3O9n7xKXzDZjMVh4ipd25gZnz90nj/W8EX6e+qcYCMcH4/0oSEumKHRguPz8x+Id4fJI3Y/AWApb7bSvJjsboTfPi1D9M2khmDqRtdDHZ8hf8UAo4vYtvA+tfumA7KNqooNJ0TwJB2cLXjCEQzscaiEWLWpKEupqrdaI/SslRwlQ9CtZ/MdX+cg=
