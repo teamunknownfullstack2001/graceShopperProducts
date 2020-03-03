@@ -598,77 +598,62 @@ const products = [
 const orders = [
   {
     status: 'placed',
-    total: null,
     userId: 1
   },
   {
     status: 'placed',
-    total: null,
     userId: 2
   },
   {
     status: 'placed',
-    total: null,
     userId: 3
   },
   {
     status: 'placed',
-    total: null,
     userId: 4
   },
   {
     status: 'inCart',
-    total: null,
     userId: 5
   },
   {
     status: 'inCart',
-    total: null,
     userId: 6
   },
   {
     status: 'inCart',
-    total: null,
     userId: 7
   },
   {
     status: 'placed',
-    total: null,
     userId: 8
   },
   {
     status: 'inCart',
-    total: null,
     userId: 9
   },
   {
     status: 'inCart',
-    total: null,
     userId: 10
   },
   {
     status: 'inCart',
-    total: null,
     userId: 1
   },
   {
     status: 'inCart',
-    total: null,
     userId: 2
   },
   {
     status: 'placed',
-    total: null,
     userId: 3
   },
   {
     status: 'inCart',
-    total: null,
     userId: 4
   },
   {
     status: 'inCart',
-    total: null,
     userId: 5
   }
 ]
