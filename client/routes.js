@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
-import {me} from './store'
+import {me, fetchProducts} from './store'
 import InjectedCheckoutForm from './components/checkout-form'
 /**
  * COMPONENT
@@ -11,6 +11,7 @@ import InjectedCheckoutForm from './components/checkout-form'
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData()
+    this.props.fetchProducts()
   }
 
   render() {
@@ -21,12 +22,11 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/Products" />
+        <Route exact path="/products" component={UserHome} />
         <Route path="/Payment" component={InjectedCheckoutForm} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
-            <Route path="/home" component={UserHome} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
@@ -51,7 +51,8 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me())
-    }
+    },
+    fetchProducts: () => dispatch(fetchProducts())
   }
 }
 
