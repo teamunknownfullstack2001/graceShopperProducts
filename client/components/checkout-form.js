@@ -1,8 +1,10 @@
 import CardSection from './card-section'
 import React from 'react'
 import {ElementsConsumer, CardElement} from '@stripe/react-stripe-js'
+import {connect} from 'react-redux'
+import {submitPayment} from '../store'
 
-class CheckoutForm extends React.Component {
+class DisconnectedCheckoutForm extends React.Component {
   handleSubmit = async event => {
     // We don't want to let default form submission happen here,
     // which would refresh the page.
@@ -16,14 +18,19 @@ class CheckoutForm extends React.Component {
       return
     }
     console.dir(event)
-    const result = await stripe.confirmCardPayment('{CLIENT_SECRET}', {
-      payment_method: {
-        card: elements.getElement(CardElement),
-        billing_details: {
-          name: 'Jenny Rosen'
+    this.props.submitPayment()
+    console.dir(this.props.client_secret)
+    const result = await stripe.confirmCardPayment(
+      'pi_1GISa5CxxfbFMZyMqk9K6l0i_secret_81GG3YuUPQl0X06NlVMoHLMzp',
+      {
+        payment_method: {
+          card: elements.getElement(CardElement),
+          billing_details: {
+            name: 'Jenny Rosen'
+          }
         }
       }
-    })
+    )
 
     if (result.error) {
       // Show error to your customer (e.g., insufficient funds)
@@ -51,6 +58,19 @@ class CheckoutForm extends React.Component {
     )
   }
 }
+
+const mapState = state => {
+  return {
+    client_secret: state.payment.client_secret
+  }
+}
+
+const mapDispatch = dispatch => ({
+  submitPayment: () => {
+    dispatch(submitPayment({}))
+  }
+})
+const CheckoutForm = connect(mapState, mapDispatch)(DisconnectedCheckoutForm)
 
 export default function InjectedCheckoutForm() {
   return (
