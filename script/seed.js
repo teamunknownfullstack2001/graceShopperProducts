@@ -12,6 +12,7 @@ const users = [
     salt: null,
     googleId: null,
     stripeId: null,
+    type: 'admin',
     address: '1352 Gulseth Parkway, New York, NY',
     zip: '10001',
     phone: '703-457-2792'
@@ -236,7 +237,7 @@ const products = [
     ]
   },
   {
-    name: 'nulla sed accumsan',
+    name: 'nulla et accumsan',
     category: 'Area',
     description:
       'magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum',
@@ -594,12 +595,242 @@ const products = [
   }
 ]
 
+const orders = [
+  {
+    status: 'placed',
+    userId: 1
+  },
+  {
+    status: 'placed',
+    userId: 2
+  },
+  {
+    status: 'placed',
+    userId: 3
+  },
+  {
+    status: 'placed',
+    userId: 4
+  },
+  {
+    status: 'inCart',
+    userId: 5
+  },
+  {
+    status: 'inCart',
+    userId: 6
+  },
+  {
+    status: 'inCart',
+    userId: 7
+  },
+  {
+    status: 'placed',
+    userId: 8
+  },
+  {
+    status: 'inCart',
+    userId: 9
+  },
+  {
+    status: 'inCart',
+    userId: 10
+  },
+  {
+    status: 'inCart',
+    userId: 1
+  },
+  {
+    status: 'inCart',
+    userId: 2
+  },
+  {
+    status: 'placed',
+    userId: 3
+  },
+  {
+    status: 'inCart',
+    userId: 4
+  },
+  {
+    status: 'inCart',
+    userId: 5
+  }
+]
+
+const orderItems = [
+  {
+    quantity: 2,
+    orderId: 5,
+    productId: 14
+  },
+  {
+    quantity: 2,
+    orderId: 5,
+    productId: 30
+  },
+  {
+    quantity: 2,
+    orderId: 2,
+    productId: 7
+  },
+  {
+    quantity: 2,
+    orderId: 2,
+    productId: 32
+  },
+  {
+    quantity: 3,
+    orderId: 12,
+    productId: 45
+  },
+  {
+    quantity: 3,
+    orderId: 3,
+    productId: 43
+  },
+  {
+    quantity: 2,
+    orderId: 1,
+    productId: 13
+  },
+  {
+    quantity: 2,
+    orderId: 4,
+    productId: 10
+  },
+  {
+    quantity: 3,
+    orderId: 10,
+    productId: 39
+  },
+  {
+    quantity: 1,
+    orderId: 4,
+    productId: 21
+  },
+  {
+    quantity: 2,
+    orderId: 3,
+    productId: 25
+  },
+  {
+    quantity: 3,
+    orderId: 15,
+    productId: 40
+  },
+  {
+    quantity: 1,
+    orderId: 9,
+    productId: 14
+  },
+  {
+    quantity: 3,
+    orderId: 7,
+    productId: 30
+  },
+  {
+    quantity: 2,
+    orderId: 2,
+    productId: 2
+  },
+  {
+    quantity: 2,
+    orderId: 14,
+    productId: 38
+  },
+  {
+    quantity: 1,
+    orderId: 1,
+    productId: 30
+  },
+  {
+    quantity: 3,
+    orderId: 3,
+    productId: 10
+  },
+  {
+    quantity: 1,
+    orderId: 15,
+    productId: 35
+  },
+  {
+    quantity: 2,
+    orderId: 1,
+    productId: 36
+  },
+  {
+    quantity: 1,
+    orderId: 6,
+    productId: 22
+  },
+  {
+    quantity: 3,
+    orderId: 9,
+    productId: 1
+  },
+  {
+    quantity: 1,
+    orderId: 11,
+    productId: 20
+  },
+  {
+    quantity: 3,
+    orderId: 9,
+    productId: 25
+  },
+  {
+    quantity: 3,
+    orderId: 3,
+    productId: 50
+  },
+  {
+    quantity: 2,
+    orderId: 6,
+    productId: 46
+  },
+  {
+    quantity: 3,
+    orderId: 14,
+    productId: 11
+  },
+  {
+    quantity: 2,
+    orderId: 1,
+    productId: 47
+  },
+  {
+    quantity: 2,
+    orderId: 7,
+    productId: 23
+  },
+  {
+    quantity: 2,
+    orderId: 8,
+    productId: 19
+  }
+]
+
 const seed = async () => {
   try {
     await db.sync({force: true})
     console.log('db synced!')
     await Promise.all(users.map(user => User.create(user)))
+
     await Promise.all(products.map(product => Product.create(product)))
+
+    await Promise.all(orders.map(order => Order.create(order)))
+
+    await Promise.all(orderItems.map(orderItem => OrderItem.create(orderItem)))
+
+    // const allOrders = Order.findAll()
+    // const allUsers = User.findAll()
+    // allOrders[0].addUser(allUsers[0].id)
+    // orders[1].addUser(allUsers[0])
+    // orders[2].addUser(allUsers[0])
+    // orders[3].addUser(allUsers[0])
+    // orders[4].addUser(allUsers[0])
+    // orders[5].addUser(allUsers[0])
   } catch (error) {
     console.log(red(error))
   }
@@ -611,8 +842,8 @@ const seed = async () => {
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${products.length} productss`)
-  // console.log(`seeded ${orders.length} orders`)
-  // console.log(`seeded ${orderItems.length} orderItems`)
+  console.log(`seeded ${orders.length} orders`)
+  console.log(`seeded ${orderItems.length} orderItems`)
   console.log(`seeded successfully`)
 }
 
