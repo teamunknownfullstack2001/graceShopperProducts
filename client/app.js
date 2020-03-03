@@ -1,13 +1,17 @@
 import React from 'react'
 
 import {Navbar} from './components'
-import Routes from './routes'
+// import CardSection from './components/card-section'
+import InjectedCheckoutForm from './components/checkout-form'
 
+import Routes from './routes'
 const App = () => {
   return (
     <div>
       <Navbar />
       <Routes />
+      {/* <CardSection /> */}
+      <InjectedCheckoutForm />
     </div>
   )
 }
