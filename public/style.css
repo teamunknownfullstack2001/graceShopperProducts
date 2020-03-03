@@ -45,3 +45,18 @@ form div {
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
 }
+
+.productList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.productCard {
+  margin: 10px;
+  border: 2px black solid;
+  height: 200px;
+}
+.productImg {
+  height: 200px;
+}
