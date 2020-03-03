@@ -2,7 +2,7 @@
 
 const {green, red} = require('chalk')
 const db = require('../server/db')
-const {User, Product, Order, OrderItem} = require('../server/db/models')
+const {User, Product, Order, orderProduct} = require('../server/db/models')
 
 const users = [
   {
@@ -658,7 +658,7 @@ const orders = [
   }
 ]
 
-const orderItems = [
+const orderProducts = [
   {
     quantity: 2,
     orderId: 5,
@@ -820,8 +820,19 @@ const seed = async () => {
     await Promise.all(products.map(product => Product.create(product)))
 
     await Promise.all(orders.map(order => Order.create(order)))
+    for (let i = 1; i < 15; i++) {
+      for (let gen = 0; gen < 10; gen++) {
+        // let i = Math.floor(Math.random() * 4)
+        let orderI = await Order.findByPk(i)
+        let j = Math.floor(Math.random() * 45) + 1
+        let productI = await Product.findByPk(j)
+        await productI.addOrders([orderI])
+      }
+    }
 
-    await Promise.all(orderItems.map(orderItem => OrderItem.create(orderItem)))
+    // await Promise.all(
+    //   orderProducts.map(orderProduct => orderProduct.create(orderProduct))
+    // )
 
     // const allOrders = Order.findAll()
     // const allUsers = User.findAll()
@@ -843,7 +854,7 @@ const seed = async () => {
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${products.length} productss`)
   console.log(`seeded ${orders.length} orders`)
-  console.log(`seeded ${orderItems.length} orderItems`)
+  console.log(`seeded ${orderProducts.length} orderProducts`)
   console.log(`seeded successfully`)
 }
 
