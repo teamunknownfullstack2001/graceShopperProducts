@@ -10,7 +10,7 @@ class SingleProduct extends React.Component {
   render() {
     const {product} = this.props
     const {id, imageUrl, name, description, price, tags, category} = product
-    console.log('These are the props: ', this.props)
+    // console.log('These are the props: ', this.props)
     return (
       <div key={id}>
         <div className="singleProductContainer">

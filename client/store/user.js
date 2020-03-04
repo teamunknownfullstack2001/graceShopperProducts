@@ -57,16 +57,17 @@ export const logout = () => async dispatch => {
   }
 }
 
-// export const getSingleUser = id => {
-//   return async dispatch => {
-//     try {
-//       const {data} = await axios.get(`/api/users/${id}`)
-//       dispatch(getUser(data))
-//     } catch (error) {
-//       console.log(error)
-//     }
-//   }
-// }
+export const getSingleUser = id => {
+  return async dispatch => {
+    try {
+      const {data} = await axios.get(`/api/users/${id}`)
+      console.log('This is the data: ', data)
+      dispatch(getUser(data))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
 
 /**
  * REDUCER
