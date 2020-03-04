@@ -15,29 +15,30 @@ class Cart extends React.Component {
     this.props.getUserCart(this.props.match.params.id)
   }
   render() {
+    // console.log('render', this.props.products, this.props.cartId)
     return (
       <div>
         <h3>Cart</h3>
-        {/* <h3>user</h3> */}
-        {/* <p>
-          {this.props.user ? `${JSON.stringify(this.props.user)}` : 'notuser'}
-        </p>
-        <h3>cart</h3>
-        <p>
-          {this.props.user
-            ? `${JSON.stringify(this.props.userCart)}`
-            : 'notuser'}
-        </p> */}
-        {this.props.products.map(cartItem => (
-          <CartItem key={cartItem.id} cartItem={cartItem} />
-        ))}
-        {/* <CartItem /> */}
+
+        {this.props.products
+          ? this.props.products.map(cartItem => (
+              <CartItem
+                key={cartItem.id}
+                cartItem={cartItem}
+                cartId={this.props.cartId}
+              />
+            ))
+          : ''}
       </div>
     )
   }
 }
 
-const mapState = state => ({user: state.user, products: state.userCart})
+const mapState = state => ({
+  user: state.user,
+  products: state.userCart.products,
+  cartId: state.userCart.cartId
+})
 const mapDispatch = dispatch => ({
   getUserCart: id => {
     dispatch(getUserCart(id))

@@ -30,5 +30,6 @@ Product.belongsToMany(Order, {through: orderProduct})
 module.exports = {
   User,
   Order,
-  Product
+  Product,
+  orderProduct
 }

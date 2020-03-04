@@ -9,7 +9,7 @@ const defaultUSERCART = []
 
 const gotUserCart = userCart => ({type: GET_USERCART, userCart})
 const removeedUserCart = () => ({type: REMOVE_USERCART})
-const addedToCart = productId => ({type: ADD_TO_CART, productId})
+const addedToOrIncrementCart = productId => ({type: ADD_TO_CART, productId})
 
 // /**
 //  * THUNK CREATORS
@@ -26,41 +26,27 @@ export const getUserCart = userId => async dispatch => {
   }
 }
 
-export const addToCart = (userId, product) => async dispatch => {
+export const addToOrIncrementCart = (userId, product) => async dispatch => {
   try {
+    console.log('this will be the post request body', product)
     const {data} = await axios.post(`/api/carts/${userId}`, product)
     console.log(data)
-    dispatch(addedToCart(data))
+    dispatch(addedToOrIncrementCart(data))
   } catch (err) {
     console.error(err)
   }
 }
 
-//   try {
-//     dispatch(getUSERCART(res.data))
-//     history.push('/home')
-//   } catch (dispatchOrHistoryErr) {
-//     console.error(dispatchOrHistoryErr)
-//   }
-// }
-
-// export const logout = () => async dispatch => {
-//   try {
-//     await axios.post('/auth/logout')
-//     dispatch(removeUSERCART())
-//     history.push('/login')
-//   } catch (err) {
-//     console.error(err)
-//   }
-// }
-
 /**
  * REDUCER
  */
-export default function(state = defaultUSERCART, action) {
+export default function(state = {}, action) {
   switch (action.type) {
     case GET_USERCART:
-      return [...action.userCart.products]
+      return {
+        cartId: action.userCart.id,
+        products: [...action.userCart.products]
+      }
     case ADD_TO_CART:
       return state
     default:
