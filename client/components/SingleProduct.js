@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import Tag from './Tag'
 // import projectReducer from '../../../junior-phase-final-project-2001/app/redux/project'
-import {getSingleProduct, addToCart} from '../store'
+import {getSingleProduct, addToCart, deleteProduct} from '../store'
 
 import {withStyles} from '@material-ui/core/styles'
 import {
@@ -20,6 +20,7 @@ class SingleProduct extends React.Component {
   componentDidMount() {
     this.props.getSingleProduct(this.props.match.params.id)
   }
+  handleRemove = productId => props.removeProduct(productId)
 
   render() {
     const {classes} = this.props
