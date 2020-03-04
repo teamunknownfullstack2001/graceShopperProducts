@@ -21,7 +21,6 @@ class SingleProduct extends React.Component {
 
   render() {
     const {classes} = this.props
-    console.log('These are the props: ', this.props)
     const {product} = this.props
     const {id, imageUrl, name, description, price, tags, category} = product
 
@@ -61,7 +60,6 @@ class SingleProduct extends React.Component {
 }
 
 const mapState = state => {
-  // console.log('This is the state: ', state)
   return {
     user: state.user,
     product: state.product

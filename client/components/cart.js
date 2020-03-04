@@ -12,9 +12,6 @@ class Cart extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.getUserCart(props.params)
-    // console.log('componenet did mount')
-    // console.log(this.props.match.params.id)
     this.props.getUserCart(this.props.match.params.id)
   }
   render() {

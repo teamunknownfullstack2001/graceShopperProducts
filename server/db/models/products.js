@@ -17,6 +17,7 @@ const Product = db.define('product', {
   },
   category: {
     type: Sequelize.STRING,
+    // type: Sequelize.ENUM([''])
     allowNull: false,
     validate: {
       notEmpty: true
@@ -30,14 +31,16 @@ const Product = db.define('product', {
     }
   },
   price: {
-    type: Sequelize.DECIMAL(12, 2),
+    type: Sequelize.DECIMAL(12, 2), //Integers more efficient  store price in cent.
+    // validate price >= 0
     allowNull: false
   },
   stock: {
     type: Sequelize.INTEGER,
     allowNull: false
+    // validate stock >= 0
   },
-  tags: Sequelize.ARRAY(Sequelize.STRING)
+  tags: Sequelize.ARRAY(Sequelize.STRING) // make a tag table
 })
 
 module.exports = Product
