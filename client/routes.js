@@ -11,12 +11,29 @@ import Cart from './components/cart'
  * COMPONENT
  */
 class Routes extends Component {
-  componentDidMount() {
-    this.props.loadInitialData()
-    this.props.getUserCart(1)
-    this.props.fetchProducts()
+  constructor() {
+    super()
+    this.state = {}
   }
 
+  componentDidMount() {
+    this.props.loadInitialData()
+    console.log(this.state)
+    // debugger
+
+    // this.props.getUserCart(1)
+    this.props.fetchProducts()
+  }
+  // static getDerivedStateFromProps(props, state) {
+  //   if (state.user !== null) {
+  //     // console.log('did modify state from props')
+  //     // props.getUserCart(state.user.id)
+  //     return state
+  //   } else {
+  //     // console.log('did not modify state from props')
+  //     return state
+  //   }
+  // }
   render() {
     const {isLoggedIn} = this.props
 
@@ -28,8 +45,12 @@ class Routes extends Component {
         <Route exact path="/products" component={UserHome} />
         <Route exact path="/newproduct" component={CreateProduct} />
         <Route path="/Payment" component={InjectedCheckoutForm} />
+
+        <Route path="/Cart/:id" component={Cart} />
+
         <Route path="/products/:id" component={SingleProduct} />
-        <Route path="/Cart" component={Cart} />
+        
+
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
@@ -49,7 +70,8 @@ const mapState = state => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    user: state.user
   }
 }
 
