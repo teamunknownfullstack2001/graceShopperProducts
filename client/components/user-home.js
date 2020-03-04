@@ -33,7 +33,7 @@ export class UserHome extends React.Component {
   render() {
     const {email} = this.props
     const {currentProducts, currentPage, totalPages} = this.state
-    const totalProducts = this.props.products.length
+    const totalProducts = this.props.products ? this.props.products.length : 0
 
     if (totalProducts === 0) return null
     const headerClass = [

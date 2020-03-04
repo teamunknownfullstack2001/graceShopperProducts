@@ -85,24 +85,7 @@ form div {
   vertical-align: middle;
 }
 
-.country-card-container {
-  height: 60px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-
-.country-name {
-  font-size: 0.9rem;
-}
-
-.country-region {
-  font-size: 0.7rem;
-}
-
-.current-page,
-.country-name,
-.country-region {
+.current-page {
   line-height: 1;
 }
 
