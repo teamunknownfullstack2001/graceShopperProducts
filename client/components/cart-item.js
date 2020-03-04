@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {withStyles} from '@material-ui/core/styles'
+import {addToOrIncrementCart} from '../store'
 import {
   Card,
   CardContent,
@@ -53,8 +54,8 @@ const styles = {
 class CartItem extends React.Component {
   componentDidMount() {}
   render() {
+    console.log('render', this.props.cartItem)
     const {classes} = this.props
-    const showEng = this.props.user.language === 'EN'
     return (
       <div>
         <Card className={classes.root} variant="outlined">
@@ -98,7 +99,20 @@ class CartItem extends React.Component {
           <CardActions className={classes.buttonBar}>
             <Button
               size="large"
-              startIcon={<RemoveIcon />}
+              startIcon={<AddIcon />}
+              onClick={() => {
+                console.log(
+                  'clicked',
+                  this.props.user.id,
+
+                  this.props.cartItem
+                )
+                this.props.incrementCart(
+                  this.props.user.id,
+
+                  this.props.cartItem
+                )
+              }}
               // id={1}
               // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
             >
@@ -107,7 +121,7 @@ class CartItem extends React.Component {
 
             <Button
               size="large"
-              startIcon={<AddIcon />}
+              startIcon={<RemoveIcon />}
               // id={1}
               // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
             >
@@ -130,6 +144,9 @@ class CartItem extends React.Component {
 }
 
 const mapState = state => ({user: state.user})
-const mapDispatch = dispatch => ({})
+const mapDispatch = dispatch => ({
+  incrementCart: (userId, product) =>
+    dispatch(addToOrIncrementCart(userId, product))
+})
 
 export default connect(mapState, mapDispatch)(withStyles(styles)(CartItem))

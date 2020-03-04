@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getSingleProduct, addToCart} from '../store'
+import {getSingleProduct, addToOrIncrementCart, deleteProduct} from '../store'
+import Tag from './Tag'
+// import projectReducer from '../../../junior-phase-final-project-2001/app/redux/project'
 
 import {withStyles} from '@material-ui/core/styles'
 import {
@@ -15,15 +17,23 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
 const styles = {}
 
 class SingleProduct extends React.Component {
+  constructor() {
+    super()
+    this.handleRemove = this.handleRemove.bind(this)
+  }
   componentDidMount() {
     this.props.getSingleProduct(this.props.match.params.id)
+  }
+  handleRemove = async productId => {
+    await this.props.removeProduct(productId)
+
+    this.props.history.push('/products')
   }
 
   render() {
     const {classes} = this.props
-    console.log('These are the props: ', this.props)
     const {product} = this.props
-    const {id, imageUrl, name, description, price, tags, category} = product
+    const {id, imageUrl, name, description, price, category} = product
 
     console.log('This is singleProduct', product)
 
@@ -40,19 +50,42 @@ class SingleProduct extends React.Component {
             <p>${price}</p>
             <p>{description}</p>
             <p>Category: {category}</p>
-            <p>Tags: {tags}</p>
-            <Button
-              size="large"
-              startIcon={<AddShoppingCartIcon />}
-              onClick={() => {
-                console.log('clicked')
-                this.props.addToCart(this.props.user.id, product)
-              }}
-              // id={1}
-              // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
-            >
-              Add to Cart
-            </Button>
+          </div>
+          <Button
+            size="large"
+            onClick={() => {
+              this.handleRemove(product.id)
+            }}
+            // id={1}
+            // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
+          >
+            Delete
+          </Button>
+          <Button
+            size="large"
+            startIcon={<AddShoppingCartIcon />}
+            onClick={() => {
+              console.log('clicked')
+              this.props.addToCart(this.props.user.id, product)
+            }}
+            // id={1}
+            // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
+          >
+            Add to Cart
+          </Button>
+        </div>
+        <div className="tagContainer">
+          <h2>Tags: </h2>
+          <div className="tagList">
+            {product.tags && product.tags.length ? (
+              product.tags.map(tag => (
+                <div key={tag.id} className="tag">
+                  <Tag tag={tag} />
+                </div>
+              ))
+            ) : (
+              <h2>NONE</h2>
+            )}
           </div>
         </div>
       </div>
@@ -61,7 +94,6 @@ class SingleProduct extends React.Component {
 }
 
 const mapState = state => {
-  // console.log('This is the state: ', state)
   return {
     user: state.user,
     product: state.product
@@ -70,7 +102,9 @@ const mapState = state => {
 
 const mapDispatch = dispatch => ({
   getSingleProduct: id => dispatch(getSingleProduct(id)),
-  addToCart: (userId, product) => dispatch(addToCart(userId, product))
+  addToCart: (userId, product) =>
+    dispatch(addToOrIncrementCart(userId, product)),
+  removeProduct: productId => dispatch(deleteProduct(productId))
 })
 
 export default connect(mapState, mapDispatch)(withStyles(styles)(SingleProduct))
