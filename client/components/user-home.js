@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import ProductDummy from './ProductDummy'
-import {fetchProducts} from '../store'
 import Pagination from './Pagination'
 /**
  * COMPONENT
@@ -18,9 +17,9 @@ export class UserHome extends React.Component {
     }
     this.onPageChanged = this.onPageChanged.bind(this)
   }
-  componentDidMount() {
-    this.props.fetchProducts()
-  }
+  // componentDidMount() {
+  //   this.props.fetchProducts()
+  // }
   onPageChanged = data => {
     const {products} = this.props
     const {currentPage, totalPages, pageLimit} = data
@@ -94,12 +93,8 @@ const mapState = state => {
     products: state.products
   }
 }
-const mapDispatch = dispatch => {
-  return {
-    fetchProducts: () => dispatch(fetchProducts())
-  }
-}
-export default connect(mapState, mapDispatch)(UserHome)
+
+export default connect(mapState)(UserHome)
 
 /**
  * PROP TYPES
