@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
-import {me, fetchProducts, getUserCart} from './store'
+import {me, getUserCart, fetchProducts} from './store'
 import InjectedCheckoutForm from './components/checkout-form'
 import SingleProduct from './components/SingleProduct'
 import Cart from './components/cart'
@@ -18,11 +18,7 @@ class Routes extends Component {
 
   componentDidMount() {
     this.props.loadInitialData()
-    console.log(this.state)
-    // debugger
-
-    // this.props.getUserCart(1)
-    this.props.fetchProducts()
+    this.props.getUserCart(1)
   }
   // static getDerivedStateFromProps(props, state) {
   //   if (state.user !== null) {
@@ -48,7 +44,6 @@ class Routes extends Component {
         <Route path="/Cart/:id" component={Cart} />
 
         <Route path="/products/:id" component={SingleProduct} />
-        
 
         {isLoggedIn && (
           <Switch>
@@ -78,11 +73,11 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me())
+      dispatch(fetchProducts())
     },
     getUserCart: id => {
       dispatch(getUserCart(id))
-    },
-    fetchProducts: () => dispatch(fetchProducts())
+    }
   }
 }
 

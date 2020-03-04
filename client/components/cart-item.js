@@ -101,7 +101,6 @@ class CartItem extends React.Component {
               startIcon={<RemoveIcon />}
               // id={1}
               // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
-
             >
               Add
             </Button>
@@ -111,7 +110,6 @@ class CartItem extends React.Component {
               startIcon={<AddIcon />}
               // id={1}
               // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
-
             >
               Remove
             </Button>
