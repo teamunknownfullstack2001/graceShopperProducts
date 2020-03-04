@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import ProductDummy from './ProductDummy'
 import Pagination from './Pagination'
+import {deleteProduct} from '../store/products'
+
 /**
  * COMPONENT
  */
@@ -16,10 +18,14 @@ export class UserHome extends React.Component {
       totalPages: null
     }
     this.onPageChanged = this.onPageChanged.bind(this)
+
+    this.handleRemove = this.handleRemove.bind(this)
   }
   // componentDidMount() {
   //   this.props.fetchProducts()
   // }
+  handleRemove = productId => this.props.removeProduct(productId)
+
   onPageChanged = data => {
     const {products} = this.props
     const {currentPage, totalPages, pageLimit} = data
@@ -50,7 +56,11 @@ export class UserHome extends React.Component {
             ? currentProducts.map(product => (
                 <div key={product.id} className="singleProduct">
                   <div>{product.id}</div>
-                  <ProductDummy product={product} />
+                  <ProductDummy
+                    product={product}
+                    x="x"
+                    action={this.handleRemove}
+                  />
                 </div>
               ))
             : 'No Products'}
@@ -94,7 +104,11 @@ const mapState = state => {
   }
 }
 
-export default connect(mapState)(UserHome)
+const mapDispatch = dispatch => ({
+  removeProduct: productId => dispatch(deleteProduct(productId))
+})
+
+export default connect(mapState, mapDispatch)(UserHome)
 
 /**
  * PROP TYPES
