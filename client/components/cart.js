@@ -2,7 +2,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import CartItem from './cart-item'
-// import {getUserCart} from '../store'
+import {getUserCart} from '../store'
 // import {getQuestion} from '../store'
 
 class Cart extends React.Component {
@@ -12,7 +12,10 @@ class Cart extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.getUserCart(this.props.user.id)
+    // this.props.getUserCart(props.params)
+    // console.log('componenet did mount')
+    // console.log(this.props.match.params.id)
+    this.props.getUserCart(this.props.match.params.id)
   }
   render() {
     return (
@@ -28,7 +31,7 @@ class Cart extends React.Component {
             ? `${JSON.stringify(this.props.userCart)}`
             : 'notuser'}
         </p> */}
-        {this.props.userCart.map(cartItem => (
+        {this.props.products.map(cartItem => (
           <CartItem key={cartItem.id} cartItem={cartItem} />
         ))}
         {/* <CartItem /> */}
@@ -37,11 +40,11 @@ class Cart extends React.Component {
   }
 }
 
-const mapState = state => ({user: state.user, userCart: state.userCart})
+const mapState = state => ({user: state.user, products: state.userCart})
 const mapDispatch = dispatch => ({
-  // getUserCart: id => {
-  //   dispatch(getUserCart(id))
-  // }
+  getUserCart: id => {
+    dispatch(getUserCart(id))
+  }
 })
 
 export default connect(mapState, mapDispatch)(Cart)
