@@ -18,7 +18,7 @@ class Routes extends Component {
 
   componentDidMount() {
     this.props.loadInitialData()
-    this.props.getUserCart(1)
+    // this.props.getUserCart(1)
   }
   // static getDerivedStateFromProps(props, state) {
   //   if (state.user !== null) {

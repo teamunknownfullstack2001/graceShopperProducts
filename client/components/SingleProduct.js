@@ -1,8 +1,20 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getSingleProduct} from '../store'
 import Tag from './Tag'
 // import projectReducer from '../../../junior-phase-final-project-2001/app/redux/project'
+import {getSingleProduct, addToCart} from '../store'
+
+import {withStyles} from '@material-ui/core/styles'
+import {
+  Card,
+  CardContent,
+  CardActions,
+  Typography,
+  CardMedia,
+  Button
+} from '@material-ui/core'
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
+const styles = {}
 
 class SingleProduct extends React.Component {
   componentDidMount() {
@@ -10,6 +22,7 @@ class SingleProduct extends React.Component {
   }
 
   render() {
+    const {classes} = this.props
     console.log('These are the props: ', this.props)
     const {product} = this.props
     const {id, imageUrl, name, description, price, category} = product
@@ -30,6 +43,18 @@ class SingleProduct extends React.Component {
             <p>{description}</p>
             <p>Category: {category}</p>
           </div>
+          <Button
+            size="large"
+            startIcon={<AddShoppingCartIcon />}
+            onClick={() => {
+              console.log('clicked')
+              this.props.addToCart(this.props.user.id, product)
+            }}
+            // id={1}
+            // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
+          >
+            Add to Cart
+          </Button>
         </div>
         <div className="tagContainer">
           <h2>Tags: </h2>
@@ -50,15 +75,17 @@ class SingleProduct extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  console.log('This is the state: ', state)
+const mapState = state => {
+  // console.log('This is the state: ', state)
   return {
+    user: state.user,
     product: state.product
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  getSingleProduct: id => dispatch(getSingleProduct(id))
+const mapDispatch = dispatch => ({
+  getSingleProduct: id => dispatch(getSingleProduct(id)),
+  addToCart: (userId, product) => dispatch(addToCart(userId, product))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct)
+export default connect(mapState, mapDispatch)(withStyles(styles)(SingleProduct))

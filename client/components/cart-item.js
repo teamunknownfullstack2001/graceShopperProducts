@@ -9,17 +9,16 @@ import {
   CardMedia,
   Button
 } from '@material-ui/core'
-import SaveIcon from '@material-ui/icons/Save'
+
 //https://material-ui.com/components/material-icons/
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined'
 import RemoveIcon from '@material-ui/icons/Remove'
 import AddIcon from '@material-ui/icons/Add'
+
 const styles = {
   media: {
-    // height: 0,
     maxWidth: '200px',
-    maxheight: '200px',
-    paddingTop: '56.25%' // 16:9
+    maxheight: '200px'
   },
   root: {
     marginTop: '10vh',
@@ -28,14 +27,15 @@ const styles = {
     flexDirection: 'row',
     color: 'black',
     borderRadius: 3,
-    boxShadow: '0 3px 5px 2px',
-    height: '100px',
-    margin: '10px'
+    borderTop: '0px',
+    margin: '0',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start'
   },
   content: {
     display: 'flex',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
+    // justifyContent: 'flex-start',
+    // alignItems: 'flex-start',
     flexGrow: 1,
     flexDirection: 'row'
   },
@@ -73,7 +73,7 @@ class CartItem extends React.Component {
               component="h2"
               // align="center"
             >
-              {`Qty: ${this.props.cartItem.quantity}`}
+              {`Qty: ${this.props.cartItem.orderproduct.quantity}`}
             </Typography>
             <Typography
               variant="h5"
