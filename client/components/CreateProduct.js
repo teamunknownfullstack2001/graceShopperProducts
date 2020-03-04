@@ -17,7 +17,7 @@ const CreateProduct = props => {
       description: event.target.description.value,
       price: event.target.price.value,
       stock: event.target.stock.value,
-      tags: event.target.stock.tags
+      tags: [event.target.tags.value]
     }
     addProduct(newProduct)
   }

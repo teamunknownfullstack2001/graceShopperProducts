@@ -65,13 +65,31 @@ form div {
 .singleProductContainer {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin: 20px;
+}
+
+.singleProductImg {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-start;
+
+  margin-left: 30px;
+  flex: 1 0 0;
 }
 
 .singleProduct {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  align-items: flex-end;
+  justify-content: flex-end;
+  align-items: flex-start;
+
+  margin-left: 30px;
+  flex: 5 0 0;
 }
 
 .productImg {
