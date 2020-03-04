@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {getSingleProduct} from '../store'
+import Tag from './Tag'
+// import projectReducer from '../../../junior-phase-final-project-2001/app/redux/project'
 
 class SingleProduct extends React.Component {
   componentDidMount() {
@@ -10,7 +12,7 @@ class SingleProduct extends React.Component {
   render() {
     console.log('These are the props: ', this.props)
     const {product} = this.props
-    const {id, imageUrl, name, description, price, tags, category} = product
+    const {id, imageUrl, name, description, price, category} = product
 
     console.log('This is singleProduct', product)
 
@@ -27,7 +29,20 @@ class SingleProduct extends React.Component {
             <p>${price}</p>
             <p>{description}</p>
             <p>Category: {category}</p>
-            <p>Tags: {tags}</p>
+          </div>
+        </div>
+        <div className="tagContainer">
+          <h2>Tags: </h2>
+          <div className="tagList">
+            {product.tags && product.tags.length ? (
+              product.tags.map(tag => (
+                <div key={tag.id} className="tag">
+                  <Tag tag={tag} />
+                </div>
+              ))
+            ) : (
+              <h2>NONE</h2>
+            )}
           </div>
         </div>
       </div>

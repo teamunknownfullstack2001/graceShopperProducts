@@ -2,7 +2,7 @@
 
 const {green, red} = require('chalk')
 const db = require('../server/db')
-const {User, Product, Order, orderProduct} = require('../server/db/models')
+const {User, Product, Order, orderProduct, Tag} = require('../server/db/models')
 
 const users = [
   {
@@ -125,8 +125,7 @@ const products = [
     description:
       'rutrum nulla nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio porttitor',
     price: 306.12,
-    stock: 75,
-    tags: ['Oriental', 'Shag']
+    stock: 75
   },
   {
     name: 'donec',
@@ -134,8 +133,7 @@ const products = [
     description:
       'luctus et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat dui nec nisi volutpat eleifend donec',
     price: 133.69,
-    stock: 37,
-    tags: ['Natural', 'Oriental', 'Tribal', 'Modern', 'Moroccan', 'Shag']
+    stock: 37
   },
   {
     name: 'nulla sed accumsan',
@@ -143,8 +141,7 @@ const products = [
     description:
       'rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis',
     price: 264.66,
-    stock: 45,
-    tags: ['Natural', 'Tribal', 'Modern', 'Moroccan', 'Shag']
+    stock: 45
   },
   {
     name: 'ut',
@@ -152,8 +149,7 @@ const products = [
     description:
       'pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras',
     price: 968.45,
-    stock: 37,
-    tags: ['Natural', 'Shag']
+    stock: 37
   },
   {
     name: 'erat',
@@ -161,8 +157,7 @@ const products = [
     description:
       'morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis',
     price: 382.8,
-    stock: 76,
-    tags: ['Oriental', 'Tribal', 'Modern', 'Moroccan']
+    stock: 76
   },
   {
     name: 'phasellus sit amet',
@@ -170,8 +165,7 @@ const products = [
     description:
       'etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis',
     price: 514.43,
-    stock: 100,
-    tags: ['Natural', 'Modern', 'Moroccan', 'Shag']
+    stock: 100
   },
   {
     name: 'ut mauris eget',
@@ -179,8 +173,7 @@ const products = [
     description:
       'ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est',
     price: 678.94,
-    stock: 94,
-    tags: ['Tribal', 'Modern', 'Moroccan', 'Shag']
+    stock: 94
   },
   {
     name: 'cum sociis',
@@ -188,8 +181,7 @@ const products = [
     description:
       'augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea',
     price: 142.58,
-    stock: 14,
-    tags: ['Oriental', 'Tribal', 'Modern', 'Moroccan', 'Shag']
+    stock: 14
   },
   {
     name: 'nulla suscipit',
@@ -197,8 +189,7 @@ const products = [
     description:
       'tortor duis mattis egestas metus aenean fermentum donec ut mauris',
     price: 890.37,
-    stock: 29,
-    tags: ['Outdoor', 'Synthetic', 'Bathroom', 'Woven', 'Persian']
+    stock: 29
   },
   {
     name: 'vehicula condimentum',
@@ -206,8 +197,7 @@ const products = [
     description:
       'turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus',
     price: 78.21,
-    stock: 68,
-    tags: ['Natural', 'Vintage']
+    stock: 68
   },
   {
     name: 'erat quisque erat',
@@ -215,8 +205,7 @@ const products = [
     description:
       'nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu',
     price: 957.23,
-    stock: 53,
-    tags: ['Tribal', 'Modern', 'Moroccan', 'Shag']
+    stock: 53
   },
   {
     name: 'et',
@@ -224,17 +213,7 @@ const products = [
     description:
       'integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices',
     price: 735.5,
-    stock: 87,
-    tags: [
-      'Bathroom',
-      'Woven',
-      'Persian',
-      'Oriental',
-      'Tribal',
-      'Modern',
-      'Moroccan',
-      'Shag'
-    ]
+    stock: 87
   },
   {
     name: 'nulla et accumsan',
@@ -242,16 +221,14 @@ const products = [
     description:
       'magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum',
     price: 619.34,
-    stock: 43,
-    tags: ['Tribal', 'Modern', 'Moroccan', 'Shag']
+    stock: 43
   },
   {
     name: 'mus vivamus',
     category: 'Oval',
     description: 'non mi integer ac neque duis bibendum morbi non quam nec dui',
     price: 535.42,
-    stock: 78,
-    tags: ['Oriental', 'Tribal', 'Modern', 'Moroccan', 'Shag']
+    stock: 78
   },
   {
     name: 'sed tristique',
@@ -259,8 +236,7 @@ const products = [
     description:
       'nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue',
     price: 955.03,
-    stock: 14,
-    tags: ['Natural', 'Vintage', 'Outdoor', 'Synthetic', 'Moroccan', 'Shag']
+    stock: 14
   },
   {
     name: 'arcu adipiscing molestie',
@@ -268,8 +244,7 @@ const products = [
     description:
       'donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla',
     price: 606.52,
-    stock: 36,
-    tags: ['Persian', 'Oriental', 'Tribal', 'Modern', 'Moroccan', 'Shag']
+    stock: 36
   },
   {
     name: 'auctor',
@@ -277,8 +252,7 @@ const products = [
     description:
       'et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin',
     price: 709.47,
-    stock: 21,
-    tags: ['Natural', 'Vintage', 'Outdoor', 'Synthetic', 'Bathroom']
+    stock: 21
   },
   {
     name: 'massa volutpat',
@@ -286,16 +260,7 @@ const products = [
     description:
       'scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor',
     price: 824.64,
-    stock: 24,
-    tags: [
-      'Woven',
-      'Persian',
-      'Oriental',
-      'Tribal',
-      'Modern',
-      'Moroccan',
-      'Shag'
-    ]
+    stock: 24
   },
   {
     name: 'cubilia curae nulla',
@@ -303,8 +268,7 @@ const products = [
     description:
       'luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi',
     price: 776.1,
-    stock: 63,
-    tags: ['Natural', 'Vintage', 'Outdoor', 'Synthetic', 'Bathroom']
+    stock: 63
   },
   {
     name: 'sed magna at',
@@ -312,8 +276,7 @@ const products = [
     description:
       'tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia',
     price: 433.08,
-    stock: 41,
-    tags: ['Moroccan', 'Shag']
+    stock: 41
   },
   {
     name: 'consectetuer adipiscing',
@@ -321,8 +284,7 @@ const products = [
     description:
       'morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus',
     price: 621.11,
-    stock: 59,
-    tags: ['Bathroom', 'Woven']
+    stock: 59
   },
   {
     name: 'sapien iaculis congue',
@@ -330,8 +292,7 @@ const products = [
     description:
       'enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis',
     price: 205.72,
-    stock: 42,
-    tags: ['Natural', 'Vintage', 'Outdoor', 'Synthetic']
+    stock: 42
   },
   {
     name: 'tincidunt',
@@ -339,8 +300,7 @@ const products = [
     description:
       'vel enim sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum',
     price: 67.75,
-    stock: 24,
-    tags: ['Tribal', 'Modern', 'Moroccan', 'Shag']
+    stock: 24
   },
   {
     name: 'augue a',
@@ -348,8 +308,7 @@ const products = [
     description:
       'quisque porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum',
     price: 862.48,
-    stock: 66,
-    tags: ['Natural', 'Vintage', 'Woven', 'Persian']
+    stock: 66
   },
   {
     name: 'suscipit a',
@@ -357,8 +316,7 @@ const products = [
     description:
       'morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla',
     price: 481.72,
-    stock: 96,
-    tags: ['Natural', 'Vintage', 'Outdoor', 'Synthetic', 'Shag']
+    stock: 96
   },
   {
     name: 'enim blandit',
@@ -366,8 +324,7 @@ const products = [
     description:
       'quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis',
     price: 787.62,
-    stock: 72,
-    tags: ['Oriental', 'Tribal', 'Modern', 'Moroccan', 'Shag']
+    stock: 72
   },
   {
     name: 'luctus',
@@ -375,8 +332,7 @@ const products = [
     description:
       'non pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea dictumst maecenas ut massa',
     price: 516.79,
-    stock: 68,
-    tags: ['Natural', 'Modern', 'Shag']
+    stock: 68
   },
   {
     name: 'vitae',
@@ -384,8 +340,7 @@ const products = [
     description:
       'tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc',
     price: 644.19,
-    stock: 1,
-    tags: ['Persian']
+    stock: 1
   },
   {
     name: 'at diam',
@@ -393,8 +348,7 @@ const products = [
     description:
       'nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo',
     price: 725.08,
-    stock: 63,
-    tags: ['Synthetic', 'Bathroom', 'Woven']
+    stock: 63
   },
   {
     name: 'lobortis ligula sit',
@@ -402,16 +356,14 @@ const products = [
     description:
       'pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat metus sapien',
     price: 480.56,
-    stock: 54,
-    tags: ['Modern', 'Shag']
+    stock: 54
   },
   {
     name: 'ultrices',
     category: 'Area',
     description: 'a odio in hac habitasse platea dictumst maecenas ut massa',
     price: 317.7,
-    stock: 25,
-    tags: ['Natural', 'Bathroom', 'Shag']
+    stock: 25
   },
   {
     name: 'vel augue vestibulum',
@@ -419,17 +371,7 @@ const products = [
     description:
       'turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam',
     price: 391.47,
-    stock: 1,
-    tags: [
-      'Natural',
-      'Vintage',
-      'Outdoor',
-      'Synthetic',
-      'Tribal',
-      'Modern',
-      'Moroccan',
-      'Shag'
-    ]
+    stock: 1
   },
   {
     name: 'id massa id',
@@ -437,8 +379,7 @@ const products = [
     description:
       'congue elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo',
     price: 835.03,
-    stock: 7,
-    tags: ['Natural', 'Vintage', 'Outdoor', 'Synthetic', 'Bathroom']
+    stock: 7
   },
   {
     name: 'ipsum ac tellus',
@@ -446,8 +387,7 @@ const products = [
     description:
       'nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel',
     price: 904.61,
-    stock: 79,
-    tags: ['Oriental', 'Tribal', 'Modern', 'Moroccan', 'Shag']
+    stock: 79
   },
   {
     name: 'sit',
@@ -455,8 +395,7 @@ const products = [
     description:
       'nec nisi volutpat eleifend donec ut dolor morbi vel lectus in',
     price: 499.82,
-    stock: 75,
-    tags: ['Woven', 'Persian', 'Oriental', 'Tribal', 'Moroccan', 'Shag']
+    stock: 75
   },
   {
     name: 'pellentesque',
@@ -464,8 +403,7 @@ const products = [
     description:
       'eu felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus',
     price: 65.11,
-    stock: 7,
-    tags: ['Tribal']
+    stock: 7
   },
   {
     name: 'sociis natoque',
@@ -473,8 +411,7 @@ const products = [
     description:
       'amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis',
     price: 804.18,
-    stock: 37,
-    tags: ['Moroccan', 'Shag']
+    stock: 37
   },
   {
     name: 'in sagittis dui',
@@ -482,8 +419,7 @@ const products = [
     description:
       'non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing',
     price: 142.11,
-    stock: 52,
-    tags: ['Natural', 'Vintage', 'Outdoor', 'Synthetic', 'Woven']
+    stock: 52
   },
   {
     name: 'convallis nulla',
@@ -491,8 +427,7 @@ const products = [
     description:
       'nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh',
     price: 972.9,
-    stock: 93,
-    tags: ['Synthetic', 'Bathroom']
+    stock: 93
   },
   {
     name: 'volutpat',
@@ -500,8 +435,7 @@ const products = [
     description:
       'proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at dolor quis odio',
     price: 344.23,
-    stock: 5,
-    tags: ['Natural', 'Shag']
+    stock: 5
   },
   {
     name: 'ipsum primis',
@@ -509,8 +443,7 @@ const products = [
     description:
       'posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis',
     price: 388.87,
-    stock: 19,
-    tags: ['Woven', 'Tribal']
+    stock: 19
   },
   {
     name: 'nulla justo aliquam',
@@ -518,8 +451,7 @@ const products = [
     description:
       'porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in felis donec',
     price: 792.68,
-    stock: 7,
-    tags: ['Natural', 'Vintage', 'Oriental']
+    stock: 7
   },
   {
     name: 'cras non velit',
@@ -527,8 +459,7 @@ const products = [
     description:
       'sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet',
     price: 529.05,
-    stock: 18,
-    tags: ['Natural', 'Vintage', 'Moroccan']
+    stock: 18
   },
   {
     name: 'vestibulum ac',
@@ -536,8 +467,7 @@ const products = [
     description:
       'donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a',
     price: 106.32,
-    stock: 62,
-    tags: ['Persian', 'Oriental']
+    stock: 62
   },
   {
     name: 'elit sodales',
@@ -545,8 +475,7 @@ const products = [
     description:
       'hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque',
     price: 874.42,
-    stock: 87,
-    tags: ['Synthetic', 'Bathroom']
+    stock: 87
   },
   {
     name: 'ornare',
@@ -554,8 +483,7 @@ const products = [
     description:
       'quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh',
     price: 509.59,
-    stock: 18,
-    tags: ['Bathroom', 'Woven']
+    stock: 18
   },
   {
     name: 'fusce posuere',
@@ -563,8 +491,7 @@ const products = [
     description:
       'turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin',
     price: 172.07,
-    stock: 90,
-    tags: ['Natural', 'Vintage']
+    stock: 90
   },
   {
     name: 'pretium iaculis justo',
@@ -572,8 +499,7 @@ const products = [
     description:
       'vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus',
     price: 490.74,
-    stock: 64,
-    tags: ['Outdoor', 'Synthetic']
+    stock: 64
   },
   {
     name: 'in',
@@ -581,8 +507,7 @@ const products = [
     description:
       'adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in ante vestibulum ante ipsum primis',
     price: 260.83,
-    stock: 22,
-    tags: ['Bathroom']
+    stock: 22
   },
   {
     name: 'tellus nisi',
@@ -590,8 +515,7 @@ const products = [
     description:
       'erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget',
     price: 244.95,
-    stock: 67,
-    tags: ['Vintage', 'Shag']
+    stock: 67
   }
 ]
 
@@ -811,13 +735,62 @@ const orderProducts = [
   }
 ]
 
+const tags = [
+  {
+    name: 'Bathroom'
+  },
+  {
+    name: 'Modern'
+  },
+  {
+    name: 'Moroccan'
+  },
+  {
+    name: 'Natural'
+  },
+  {
+    name: 'Oriental'
+  },
+  {
+    name: 'Outdoor'
+  },
+  {
+    name: 'Persian'
+  },
+  {
+    name: 'Shag'
+  },
+  {
+    name: 'Synthetic'
+  },
+  {
+    name: 'Tribal'
+  },
+  {
+    name: 'Vintage'
+  },
+  {
+    name: 'Woven'
+  }
+]
+
 const seed = async () => {
   try {
     await db.sync({force: true})
     console.log('db synced!')
     await Promise.all(users.map(user => User.create(user)))
 
+    await Promise.all(tags.map(tag => Tag.create(tag)))
+
     await Promise.all(products.map(product => Product.create(product)))
+    for (let i = 1; i <= 50; i++) {
+      let j = Math.floor(Math.random() * 4) + 1
+      for (let t = 0; t < j; t++) {
+        let k = Math.floor(Math.random() * 12) + 1
+        let productI = await Product.findByPk(i)
+        await productI.addTags(k)
+      }
+    }
 
     await Promise.all(orders.map(order => Order.create(order)))
     for (let i = 1; i < 15; i++) {
@@ -830,18 +803,12 @@ const seed = async () => {
       }
     }
 
+    // const allTags = await Tag.findAll()
+    // const allProducts = await
+
     // await Promise.all(
     //   orderProducts.map(orderProduct => orderProduct.create(orderProduct))
     // )
-
-    // const allOrders = Order.findAll()
-    // const allUsers = User.findAll()
-    // allOrders[0].addUser(allUsers[0].id)
-    // orders[1].addUser(allUsers[0])
-    // orders[2].addUser(allUsers[0])
-    // orders[3].addUser(allUsers[0])
-    // orders[4].addUser(allUsers[0])
-    // orders[5].addUser(allUsers[0])
   } catch (error) {
     console.log(red(error))
   }
@@ -855,6 +822,7 @@ const seed = async () => {
   console.log(`seeded ${products.length} productss`)
   console.log(`seeded ${orders.length} orders`)
   console.log(`seeded ${orderProducts.length} orderProducts`)
+  console.log(`seeded ${tags.length} tags`)
   console.log(`seeded successfully`)
 }
 
