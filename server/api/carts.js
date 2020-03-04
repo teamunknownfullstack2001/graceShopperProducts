@@ -26,10 +26,9 @@ Order.prototype.addrOrIncrementProduct = async function(ProductId) {
   if (!(await this.hasProduct(product))) {
     this.addProduct(product, {through: {quantity: 1}})
   } else {
-    const quantity = await this.getProduct(product)
-    console.log('assocation already exists!!!!!!!!!how do i increment quatity')
-
-    this.addProduct(product, {through: {quantity: 10}})
+    // const quantity = await this.getProduct(product)
+    // console.log('assocation already exists!!!!!!!!!how do i increment quatity')
+    // this.addProduct(product, {through: {quantity: 10}})
   }
 }
 
