@@ -17,6 +17,7 @@ const Product = db.define('product', {
   },
   category: {
     type: Sequelize.STRING,
+    // type: Sequelize.ENUM([''])
     allowNull: false,
     validate: {
       notEmpty: true

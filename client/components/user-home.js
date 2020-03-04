@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import ProductDummy from './ProductDummy'
 import Pagination from './Pagination'
-// import {deleteProduct} from '../store/products'
+import {deleteProduct} from '../store/products'
 
 /**
  * COMPONENT
@@ -24,7 +24,10 @@ export class UserHome extends React.Component {
   // componentDidMount() {
   //   this.props.fetchProducts()
   // }
-  // handleRemove = productId => this.props.removeProduct(productId)
+  // handleRemove = async productId => {
+  //   await this.props.removeProduct(productId)
+  //   this.props.history.push("/products")
+  // }
 
   onPageChanged = data => {
     const {products} = this.props
@@ -56,11 +59,7 @@ export class UserHome extends React.Component {
             ? currentProducts.map(product => (
                 <div key={product.id} className="singleProduct">
                   <div>{product.id}</div>
-                  <ProductDummy
-                    product={product}
-                    x="x"
-                    action={this.handleRemove}
-                  />
+                  <ProductDummy product={product} />
                 </div>
               ))
             : 'No Products'}
