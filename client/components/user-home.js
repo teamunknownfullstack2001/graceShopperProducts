@@ -43,7 +43,7 @@ export class UserHome extends React.Component {
       .trim()
     return (
       <div>
-        {email ? <h3>Welcome, {email}</h3> : <h3>Welcome, shopper</h3>}
+        {/* {email ? <h3>Welcome, {email}</h3> : <h3>Welcome, shopper</h3>} */}
 
         <ul className="productList">
           {currentProducts
