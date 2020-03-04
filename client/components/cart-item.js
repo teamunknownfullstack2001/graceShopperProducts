@@ -99,7 +99,7 @@ class CartItem extends React.Component {
           <CardActions className={classes.buttonBar}>
             <Button
               size="large"
-              startIcon={<RemoveIcon />}
+              startIcon={<AddIcon />}
               onClick={() => {
                 console.log(
                   'clicked',
@@ -121,7 +121,7 @@ class CartItem extends React.Component {
 
             <Button
               size="large"
-              startIcon={<AddIcon />}
+              startIcon={<RemoveIcon />}
               // id={1}
               // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
             >

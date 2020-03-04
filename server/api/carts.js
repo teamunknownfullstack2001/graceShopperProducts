@@ -54,7 +54,6 @@ router.post('/:id', async (req, res, next) => {
       where: {status: 'inCart', userId: +req.params.id}
     })
     await cart.addrOrIncrementProduct(+req.body.id)
-
     res.json(cart)
   } catch (error) {
     next(error)

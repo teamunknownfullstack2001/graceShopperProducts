@@ -9,7 +9,7 @@ const defaultUSERCART = []
 
 const gotUserCart = userCart => ({type: GET_USERCART, userCart})
 const removeedUserCart = () => ({type: REMOVE_USERCART})
-const addedToOrIncrementCart = productId => ({type: ADD_TO_CART, productId})
+const addedToOrIncrementCart = products => ({type: ADD_TO_CART, products})
 
 // /**
 //  * THUNK CREATORS
@@ -31,7 +31,7 @@ export const addToOrIncrementCart = (userId, product) => async dispatch => {
     console.log('this will be the post request body', product)
     const {data} = await axios.post(`/api/carts/${userId}`, product)
     console.log(data)
-    dispatch(addedToOrIncrementCart(data))
+    dispatch(addedToOrIncrementCart(data.products))
   } catch (err) {
     console.error(err)
   }
@@ -48,7 +48,7 @@ export default function(state = {}, action) {
         products: [...action.userCart.products]
       }
     case ADD_TO_CART:
-      return state
+      return {...state, products: action.products}
     default:
       return state
   }
