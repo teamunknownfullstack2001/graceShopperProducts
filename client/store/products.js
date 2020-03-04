@@ -1,5 +1,6 @@
 import axios from 'axios'
 import history from '../history'
+import {act} from 'react-test-renderer'
 
 // action types
 export const SET_PRODUCTS = 'SET_PRODUCTS'
