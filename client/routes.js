@@ -8,7 +8,7 @@ import InjectedCheckoutForm from './components/checkout-form'
 import SingleProduct from './components/SingleProduct'
 import Cart from './components/cart'
 import UserProfile from './components/UserProfile'
-import OrderHistory from './components/OrderHistory'
+
 /**
  * COMPONENT
  */
@@ -39,7 +39,6 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/UserProfile/:id" component={UserProfile} />
-            {/* <Route path="/OrderHistory/:id" component={OrderHistory} /> */}
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
