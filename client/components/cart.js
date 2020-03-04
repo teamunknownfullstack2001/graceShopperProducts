@@ -15,7 +15,6 @@ class Cart extends React.Component {
     this.props.getUserCart(this.props.match.params.id)
   }
   render() {
-    // console.log('render', this.props.products, this.props.cartId)
     return (
       <div>
         <h3>Cart</h3>

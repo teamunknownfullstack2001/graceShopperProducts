@@ -15,23 +15,10 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-// Order.prototype.decrementProduct = async function(ProductId) {
-//   const product = await Product.findByPk(ProductId)
-//   const entry = await orderProduct.findOne({
-//     where: {
-//       orderId: this.id,
-//       productId: ProductId
-//     }
-//   })
-//   const quantity = entry.dataValues.quantity
-//   this.addProduct(product, {
-//     through: {quantity: quantity - 1}
-//   })
-// }
-
-Order.prototype.addrOrIncrementProduct = async function(ProductId) {
+Order.prototype.decrementProduct = async function(ProductId) {
   const product = await Product.findByPk(ProductId)
-  if (!(await this.hasProduct(product))) {
+  const hasAlready = await this.hasProduct(product)
+  if (!hasAlready) {
     this.addProduct(product, {through: {quantity: 1}})
   } else {
     const entry = await orderProduct.findOne({
@@ -40,33 +27,51 @@ Order.prototype.addrOrIncrementProduct = async function(ProductId) {
         productId: ProductId
       }
     })
-    const quantity = entry.dataValues.quantity
-    this.addProduct(product, {
-      through: {quantity: quantity + 1}
-    })
+    entry.quantity = entry.dataValues.quantity - 1
+    await entry.save()
   }
+  return this
 }
 
-router.post('/:id', async (req, res, next) => {
-  try {
-    const [cart, created] = await Order.findOrCreate({
-      include: [{model: Product}], //,
-      where: {status: 'inCart', userId: +req.params.id}
-    })
-    await cart.addrOrIncrementProduct(+req.body.id)
-    res.json(cart)
-  } catch (error) {
-    next(error)
-  }
-})
+Order.prototype.removeProduct = async function(ProductId) {
+  const product = await Product.findByPk(ProductId)
+  await this.removeProducts(product)
 
-router.delete('/:id', async (req, res, next) => {
+  return this
+}
+
+Order.prototype.addrOrIncrementProduct = async function(ProductId) {
+  const product = await Product.findByPk(ProductId)
+  const hasAlready = await this.hasProduct(product)
+  if (!hasAlready) {
+    this.addProduct(product, {through: {quantity: 1}})
+  } else {
+    const entry = await orderProduct.findOne({
+      where: {
+        orderId: this.id,
+        productId: ProductId
+      }
+    })
+    entry.quantity = entry.dataValues.quantity + 1
+    await entry.save()
+  }
+  return this
+}
+
+router.put('/:id', async (req, res, next) => {
   try {
-    const [cart, created] = await Order.findOne({
+    let [cart, created] = await Order.findOrCreate({
       include: [{model: Product}], //,
       where: {status: 'inCart', userId: +req.params.id}
     })
-    await cart.decrementProduct(+req.body.id)
+    if (req.query.type === 'createorincrement') {
+      await cart.addrOrIncrementProduct(+req.body.id)
+    } else if (req.query.type === 'decrement') {
+      await cart.decrementProduct(+req.body.id)
+    } else if (req.query.type === 'remove') {
+      await cart.removeProduct(+req.body.id)
+    }
+    await cart.reload()
     res.json(cart)
   } catch (error) {
     next(error)
