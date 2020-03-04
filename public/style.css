@@ -68,6 +68,7 @@ form div {
   flex-wrap: wrap;
   align-items: flex-end;
   margin: 20px;
+  border-bottom: black dashed 2px;
 }
 
 .singleProductImg {
@@ -76,8 +77,7 @@ form div {
   flex-wrap: wrap;
   justify-content: flex-end;
   align-items: flex-start;
-
-  margin-left: 30px;
+  margin: 20px;
   flex: 1 0 0;
 }
 
@@ -87,13 +87,29 @@ form div {
   flex-wrap: wrap;
   justify-content: flex-end;
   align-items: flex-start;
-
   margin-left: 30px;
   flex: 5 0 0;
 }
 
 .productImg {
   height: 300px;
+}
+
+.tagContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.tag {
+  margin: 20px;
 }
 /* pagination*/
 /* Declare some variables */
