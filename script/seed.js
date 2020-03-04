@@ -821,7 +821,15 @@ const seed = async () => {
 
     await Promise.all(orders.map(order => Order.create(order)))
 
-    await Promise.all(orderItems.map(orderItem => OrderItem.create(orderItem)))
+    // for (let i = 1; i < 5; i++) {
+    //   for (let gen = 0; gen < 10; gen++) {
+    //     // let i = Math.floor(Math.random() * 4)
+    //     let orderI = await Order.findByPk(i)
+    //     let j = Math.floor(Math.random() * 45) + 1
+    //     let productI = await Product.findByPk(j)
+    //     await productI.addOrders([orderI])
+    //   }
+    // }
 
     // const allOrders = Order.findAll()
     // const allUsers = User.findAll()

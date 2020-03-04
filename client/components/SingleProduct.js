@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getSingleProduct} from '../store'
+import {getSingleProduct, addToCart} from '../store'
 
 import {withStyles} from '@material-ui/core/styles'
 import {
@@ -44,6 +44,10 @@ class SingleProduct extends React.Component {
             <Button
               size="large"
               startIcon={<AddShoppingCartIcon />}
+              onClick={() => {
+                console.log('clicked')
+                this.props.addToCart(this.props.user.id, product)
+              }}
               // id={1}
               // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
             >
@@ -57,14 +61,16 @@ class SingleProduct extends React.Component {
 }
 
 const mapState = state => {
-  console.log('This is the state: ', state)
+  // console.log('This is the state: ', state)
   return {
+    user: state.user,
     product: state.product
   }
 }
 
 const mapDispatch = dispatch => ({
-  getSingleProduct: id => dispatch(getSingleProduct(id))
+  getSingleProduct: id => dispatch(getSingleProduct(id)),
+  addToCart: (userId, product) => dispatch(addToCart(userId, product))
 })
 
 export default connect(mapState, mapDispatch)(withStyles(styles)(SingleProduct))

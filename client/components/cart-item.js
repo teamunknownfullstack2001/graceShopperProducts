@@ -73,7 +73,7 @@ class CartItem extends React.Component {
               component="h2"
               // align="center"
             >
-              {`Qty: ${this.props.cartItem.quantity}`}
+              {`Qty: ${this.props.cartItem.orderproduct.quantity}`}
             </Typography>
             <Typography
               variant="h5"
