@@ -14,6 +14,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     const singleOrder = await Order.findByPk(req.params.id, {
+
       include: [{include: [{model: Product}]}] // quantity needs here
     })
     res.json(singleOrder)

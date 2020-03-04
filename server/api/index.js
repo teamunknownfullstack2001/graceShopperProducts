@@ -5,7 +5,7 @@ router.use('/users', require('./users'))
 router.use('/products', require('./products'))
 router.use('/orders', require('./orders'))
 router.use('/carts', require('./carts'))
-
+router.use('/orderHistory', require('./orderHistory'))
 router.use('/payment', require('./payment'))
 
 router.use((req, res, next) => {
