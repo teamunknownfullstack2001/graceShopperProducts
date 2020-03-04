@@ -3,8 +3,6 @@ import {Link} from 'react-router-dom'
 
 const ProductDummy = props => {
   const {product} = props
-  const {action} = props
-  const {x} = props
 
   return (
     <div>
@@ -20,11 +18,6 @@ const ProductDummy = props => {
           <h3>${product.price}</h3>
         </div>
       </Link>
-      <h3>
-        <button type="button" onClick={() => action(product.id)}>
-          {x}
-        </button>
-      </h3>
     </div>
   )
 }
