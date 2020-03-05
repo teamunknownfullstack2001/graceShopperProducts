@@ -3,7 +3,7 @@ const {Product, Tag} = require('../db/models')
 const {adminOnly, userOnly} = require('./utlis')
 module.exports = router
 
-router.get('/', userOnly, async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const allProducts = await Product.findAll({
       include: [
@@ -18,7 +18,7 @@ router.get('/', userOnly, async (req, res, next) => {
   }
 })
 
-router.post('/', userOnly, async (req, res, next) => {
+router.post('/', adminOnly, async (req, res, next) => {
   try {
     const newProduct = await Product.create(req.body, {
       include: [
@@ -35,7 +35,7 @@ router.post('/', userOnly, async (req, res, next) => {
   }
 })
 
-router.get('/:id', userOnly, async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
     const singleProduct = await Product.findByPk(req.params.id, {
       include: [
