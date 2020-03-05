@@ -27,7 +27,7 @@ class Cart extends React.Component {
               <CartItem
                 key={cartItem.id}
                 cartItem={cartItem}
-                cartId={this.props.cartId}
+                // cartId={this.props.cartId}
               />
             ))
           : ''}
@@ -45,8 +45,8 @@ class Cart extends React.Component {
 
 const mapState = state => ({
   user: state.user,
-  products: state.userCart.products,
-  cartId: state.userCart.cartId
+  products: state.userCart.products
+  // cartId: state.userCart.cartId
 })
 const mapDispatch = dispatch => ({
   getUserCart: id => {

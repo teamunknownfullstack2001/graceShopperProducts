@@ -22,7 +22,7 @@ export const getOrder = id => {
   }
 }
 
-const orderReducer = (state = {}, action) => {
+const placeOrderReducer = (state = {}, action) => {
   switch (action.type) {
     case GET_ORDER:
       console.log('action,', action.order)
@@ -32,4 +32,4 @@ const orderReducer = (state = {}, action) => {
   }
 }
 
-export default orderReducer
+export default placeOrderReducer

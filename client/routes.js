@@ -8,6 +8,8 @@ import InjectedCheckoutForm from './components/checkout-form'
 import SingleProduct from './components/SingleProduct'
 import Cart from './components/cart'
 import placeOrder from './components/placeOrder'
+import UserProfile from './components/UserProfile'
+import OrderHistory from './components/OrderHistory'
 /**
  * COMPONENT
  */
@@ -31,7 +33,6 @@ class Routes extends Component {
         <Route exact path="/products" component={UserHome} />
         <Route exact path="/newproduct" component={CreateProduct} />
         <Route path="/Payment" component={InjectedCheckoutForm} />
-
         <Route path="/Cart/:id" component={Cart} />
         <Route path="/Order/:id" component={placeOrder} />
         <Route path="/products/:id" component={SingleProduct} />
@@ -39,6 +40,8 @@ class Routes extends Component {
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
+            <Route path="/UserProfile/:id" component={UserProfile} />
+            {/* <Route path="/OrderHistory/:id" component={OrderHistory} /> */}
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

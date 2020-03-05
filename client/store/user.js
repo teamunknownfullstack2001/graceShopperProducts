@@ -11,7 +11,16 @@ const REMOVE_USER = 'REMOVE_USER'
  * INITIAL STATE
  */
 
-const defaultUser = {}
+const defaultUser = {
+  id: 0,
+  userName: 'Guest',
+  email: 'Shopper',
+  googleId: null,
+  type: 'user',
+  address: '',
+  zip: '00000',
+  phone: '000-000-0000'
+}
 
 /**
  * ACTION CREATORS
@@ -54,6 +63,18 @@ export const logout = () => async dispatch => {
     history.push('/login')
   } catch (err) {
     console.error(err)
+  }
+}
+
+export const getSingleUser = id => {
+  return async dispatch => {
+    try {
+      const {data} = await axios.get(`/api/users/${id}`)
+      console.log('This is the data: ', data)
+      dispatch(getUser(data))
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
 

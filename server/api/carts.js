@@ -1,37 +1,29 @@
+/* eslint-disable complexity */
 const router = require('express').Router()
 const {User, Order, orderProduct, Product} = require('../db/models')
 
 module.exports = router
 
 router.get('/:id', async (req, res, next) => {
-  try {
-    const [cart, created] = await Order.findOrCreate({
-      include: [{model: Product, through: {attributes: ['quantity']}}], //,
-      where: {status: 'inCart', userId: +req.params.id}
-    })
-    res.json(cart)
-  } catch (error) {
-    next(error)
+  if (req.session.passport) {
+    try {
+      const [cart, created] = await Order.findOrCreate({
+        include: [{model: Product, through: {attributes: ['quantity']}}], //,
+        where: {status: 'inCart', userId: +req.params.id}
+      })
+      res.json(cart)
+    } catch (error) {
+      next(error)
+    }
+  } else {
+    res.json(req.session.cart)
   }
 })
 
-// Order.prototype.decrementProduct = async function(ProductId) {
-//   const product = await Product.findByPk(ProductId)
-//   const entry = await orderProduct.findOne({
-//     where: {
-//       orderId: this.id,
-//       productId: ProductId
-//     }
-//   })
-//   const quantity = entry.dataValues.quantity
-//   this.addProduct(product, {
-//     through: {quantity: quantity - 1}
-//   })
-// }
-
-Order.prototype.addrOrIncrementProduct = async function(ProductId) {
+Order.prototype.decrementProduct = async function(ProductId) {
   const product = await Product.findByPk(ProductId)
-  if (!(await this.hasProduct(product))) {
+  const hasAlready = await this.hasProduct(product)
+  if (!hasAlready) {
     this.addProduct(product, {through: {quantity: 1}})
   } else {
     const entry = await orderProduct.findOne({
@@ -40,35 +32,91 @@ Order.prototype.addrOrIncrementProduct = async function(ProductId) {
         productId: ProductId
       }
     })
-    const quantity = entry.dataValues.quantity
-    this.addProduct(product, {
-      through: {quantity: quantity + 1}
-    })
+    entry.quantity = entry.dataValues.quantity - 1
+    await entry.save()
   }
+  return this
 }
 
-router.post('/:id', async (req, res, next) => {
-  try {
-    const [cart, created] = await Order.findOrCreate({
-      include: [{model: Product}], //,
-      where: {status: 'inCart', userId: +req.params.id}
-    })
-    await cart.addrOrIncrementProduct(+req.body.id)
-    res.json(cart)
-  } catch (error) {
-    next(error)
-  }
-})
+Order.prototype.removeProduct = async function(ProductId) {
+  const product = await Product.findByPk(ProductId)
+  await this.removeProducts(product)
 
-router.delete('/:id', async (req, res, next) => {
-  try {
-    const [cart, created] = await Order.findOne({
-      include: [{model: Product}], //,
-      where: {status: 'inCart', userId: +req.params.id}
+  return this
+}
+
+Order.prototype.addrOrIncrementProduct = async function(ProductId) {
+  const product = await Product.findByPk(ProductId)
+  const hasAlready = await this.hasProduct(product)
+  if (!hasAlready) {
+    this.addProduct(product, {through: {quantity: 1}})
+  } else {
+    const entry = await orderProduct.findOne({
+      where: {
+        orderId: this.id,
+        productId: ProductId
+      }
     })
-    await cart.decrementProduct(+req.body.id)
-    res.json(cart)
-  } catch (error) {
-    next(error)
+    entry.quantity = entry.dataValues.quantity + 1
+    await entry.save()
+  }
+  return this
+}
+
+router.put('/:id', async (req, res, next) => {
+  if (req.session.passport) {
+    try {
+      let [cart, created] = await Order.findOrCreate({
+        include: [{model: Product}],
+        where: {status: 'inCart', userId: +req.params.id}
+      })
+      if (req.query.type === 'createorincrement') {
+        await cart.addrOrIncrementProduct(+req.body.id)
+      } else if (req.query.type === 'decrement') {
+        await cart.decrementProduct(+req.body.id)
+      } else if (req.query.type === 'remove') {
+        await cart.removeProduct(+req.body.id)
+      }
+      await cart.reload()
+      res.json(cart)
+    } catch (error) {
+      next(error)
+    }
+  } else {
+    const product = await Product.findByPk(+req.body.id)
+    if (req.session.cart === undefined) {
+      req.session.cart = {
+        id: 0,
+        status: 'inCart',
+        createdAt: '',
+        updatedAt: '',
+        userId: 0,
+        products: []
+      }
+    }
+    const alreadyInCart = req.session.cart.products.findIndex(
+      productI => productI.id === +req.body.id
+    )
+    if (alreadyInCart === -1) {
+      req.session.cart.products.push({
+        ...product.dataValues,
+        orderproduct: {quantity: 1}
+      })
+    } else {
+      switch (req.query.type) {
+        case 'createorincrement':
+          req.session.cart.products[alreadyInCart].orderproduct.quantity++
+          break
+        case 'decrement':
+          req.session.cart.products[alreadyInCart].orderproduct.quantity--
+          break
+        case 'remove':
+          req.session.cart.products.splice(alreadyInCart, 1)
+          break
+        default:
+          break
+      }
+    }
+    res.json(req.session.cart)
   }
 })
