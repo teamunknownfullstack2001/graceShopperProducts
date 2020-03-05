@@ -2,6 +2,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 import CartItem from './cart-item'
 import {getOrder, createOrder} from '../store'
+
+import {Link} from 'react-router-dom'
+
 class disPlaceOrder extends React.Component {
   constructor() {
     super()
@@ -35,7 +38,9 @@ class disPlaceOrder extends React.Component {
           <p>No order</p>
         )}
         <p>{total}</p>
-        <button type="button">Confirm Order</button>
+        <button type="button">
+          <Link to="/orderSuccess">Confirm Order</Link>
+        </button>
       </div>
     )
   }

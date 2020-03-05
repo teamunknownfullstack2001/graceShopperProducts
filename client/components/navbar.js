@@ -15,7 +15,6 @@ const Navbar = ({handleClick, isLoggedIn, user}) => (
           <Link to="/payment">Payment</Link>
           <Link to={`/Cart/${user.id}`}>Cart</Link>
           <Link to={`/UserProfile/${user.id}`}>My Profile</Link>
-          <Link to="/newproduct">Add Product</Link>
           {/* <Link to={`/OrderHistory/${user.id}`}>My Order History</Link> */}
           <a href="#" onClick={handleClick}>
             Logout
@@ -29,6 +28,7 @@ const Navbar = ({handleClick, isLoggedIn, user}) => (
           <Link to="/Products">Products</Link>
           <Link to="/payment">Payment</Link>
           <Link to={`/Cart/${user.id}`}>Cart</Link>
+          {/* <Link to='/orderSuccess'>Order Successful</Link> */}
         </div>
       )}
     </nav>
