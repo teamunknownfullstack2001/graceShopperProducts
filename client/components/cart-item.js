@@ -130,6 +130,7 @@ class CartItem extends React.Component {
 
             <Button
               size="large"
+              color="secondary"
               startIcon={<DeleteOutlinedIcon />}
               // id={1}
               // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
