@@ -4,7 +4,8 @@ import {connect} from 'react-redux'
 import CartItem from './cart-item'
 import {getUserCart} from '../store'
 // import {getQuestion} from '../store'
-
+import PlaceOrder from './placeOrder'
+import {Link} from 'react-router-dom'
 class Cart extends React.Component {
   constructor() {
     super()
@@ -15,7 +16,8 @@ class Cart extends React.Component {
     this.props.getUserCart(this.props.match.params.id)
   }
   render() {
-    // console.log('this.props.cartId', this.props.cartId)
+    console.log('this cart', this.props.cartId)
+    const orderid = this.props.cartId ? this.props.cartId : null
     return (
       <div>
         <h3>Cart</h3>
@@ -29,6 +31,13 @@ class Cart extends React.Component {
               />
             ))
           : ''}
+        {
+          // <PlaceOrder
+          //   orderId={this.props.orderid}
+          //   products={this.props.products}
+          // />
+          <Link to={`/Order/${this.props.cartId}`}>Order</Link>
+        }
       </div>
     )
   }

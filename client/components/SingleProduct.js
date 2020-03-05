@@ -14,6 +14,7 @@ import {
   Button
 } from '@material-ui/core'
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
 const styles = {}
 
 class SingleProduct extends React.Component {
@@ -47,32 +48,44 @@ class SingleProduct extends React.Component {
             </h1>
             <p>${price}</p>
             <p>{description}</p>
-            <p>Category: {category}</p>
+            <p>
+              Category:
+              <Button> {category}</Button>
+            </p>
           </div>
-          <Button
-            size="large"
-            onClick={() => {
-              this.handleRemove(product.id)
-            }}
-            // id={1}
-            // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
-          >
-            Delete
-          </Button>
-          <Button
-            size="large"
-            startIcon={<AddShoppingCartIcon />}
-            onClick={() => {
-              this.props.addToCart(this.props.user.id, product)
-            }}
-            // id={1}
-            // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
-          >
-            Add to Cart
-          </Button>
+          <div className="singleProductButtons">
+            {this.props.user.type === 'admin' && (
+              <Button
+                size="large"
+                color="secondary"
+                startIcon={<DeleteForeverIcon />}
+                onClick={() => {
+                  this.handleRemove(product.id)
+                }}
+                // id={1}
+                // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
+              >
+                Delete
+              </Button>
+            )}
+            <Button
+              size="large"
+              startIcon={<AddShoppingCartIcon />}
+              onClick={() => {
+                console.log('clicked')
+                this.props.addToCart(this.props.user.id, product)
+              }}
+              // id={1}
+              // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
+            >
+              Add to Cart
+            </Button>
+          </div>
         </div>
         <div className="tagContainer">
-          <h2>Tags: </h2>
+          <div className="tag">
+            <p>Tags: </p>
+          </div>
           <div className="tagList">
             {product.tags && product.tags.length ? (
               product.tags.map(tag => (
@@ -81,7 +94,9 @@ class SingleProduct extends React.Component {
                 </div>
               ))
             ) : (
-              <h2>NONE</h2>
+              <div className="tag">
+                <p>NONE</p>
+              </div>
             )}
           </div>
         </div>
