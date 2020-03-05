@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import CartItem from './cart-item'
 import {getOrder} from '../store'
 import InjectedCheckoutForm from './checkout-form'
+import {Link} from 'react-router-dom'
+
 class disPlaceOrder extends React.Component {
   constructor() {
     super()
@@ -16,6 +18,7 @@ class disPlaceOrder extends React.Component {
   }
   render() {
     // console.log('in the orderC', this.props.order.orders[0].total)
+    console.log('These are the props: ', this.props)
     const total = this.props.order.total ? this.props.order.total : 0
     console.log('in the orderC', this.props.order.total)
     console.log('in the orderC', this.props.order)
@@ -44,6 +47,9 @@ class disPlaceOrder extends React.Component {
         )}
 
         {/* <button type="button">Confirm Order</button> */}
+        {/* <button type="button">
+          <Link to="/orderSuccess">Confirm Order</Link>
+        </button> */}
       </div>
     )
   }

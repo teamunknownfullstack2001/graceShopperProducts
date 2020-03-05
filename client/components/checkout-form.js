@@ -1,7 +1,7 @@
 import CardSection from './card-section'
 import React from 'react'
 import {ElementsConsumer, CardElement} from '@stripe/react-stripe-js'
-
+import {connect} from 'react-redux'
 import axios from 'axios'
 
 class CheckoutForm extends React.Component {
@@ -9,7 +9,12 @@ class CheckoutForm extends React.Component {
     event.preventDefault()
 
     const {stripe, elements, order, user} = this.props
-
+    /// wil remove later
+    // await axios.post('/api/orders/place', {
+    //   id: order.id,
+    //   stripeId: 'result.id'
+    // })
+    // return
     if (!stripe || !elements) {
       return
     }
@@ -34,7 +39,15 @@ class CheckoutForm extends React.Component {
       console.log(result.error.message)
       // ask them to try again!!
     } else if (result.paymentIntent.status === 'succeeded') {
-      console.log('Payment Success!!Should Redirect to Order Success Page')
+      console.log(
+        'Payment Success!!Should Redirect to Order Success Page'
+        // result.paymentIntent.id
+      )
+      await axios.post('/api/orders/place', {
+        id: order.id,
+        stripeId: result.paymentIntent.id
+      })
+      window.location.replace('/orderSuccess')
       // change
     }
   }
@@ -52,7 +65,7 @@ class CheckoutForm extends React.Component {
   }
 }
 
-export default function InjectedCheckoutForm(props) {
+function DisInjectedCheckoutForm(props) {
   return (
     <ElementsConsumer>
       {({stripe, elements}) => (
@@ -66,3 +79,12 @@ export default function InjectedCheckoutForm(props) {
     </ElementsConsumer>
   )
 }
+const mapState = state => ({})
+const mapDispatch = dispatch => ({})
+
+const InjectedCheckoutForm = connect(
+  mapState,
+  mapDispatch
+)(DisInjectedCheckoutForm)
+
+export default InjectedCheckoutForm

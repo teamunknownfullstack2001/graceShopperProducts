@@ -37,3 +37,18 @@ router.post('/checkout', async (req, res, next) => {
     next(error)
   }
 })
+
+router.post('/place', async (req, res, next) => {
+  try {
+    console.log(req.body)
+    // just change the status....  stripe has to also fullfilled
+    const currentOrder = await Order.findByPk(req.body.id)
+    await currentOrder.update({
+      status: 'placed',
+      stripeId: req.body.stripeId
+    })
+    res.status(204).end()
+  } catch (error) {
+    next(error)
+  }
+})
