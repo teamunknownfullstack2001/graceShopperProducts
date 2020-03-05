@@ -17,7 +17,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:id', userOnly, async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
     const singleUser = await User.findByPk(req.params.id, {
       include: [{model: Order, include: {model: Product}}]
