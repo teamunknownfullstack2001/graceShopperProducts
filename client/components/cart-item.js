@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {withStyles} from '@material-ui/core/styles'
-import {addToOrIncrementCart} from '../store'
+import {addToOrIncrementCart, decrementCart, removeFromCart} from '../store'
 import {
   Card,
   CardContent,
@@ -54,42 +54,24 @@ const styles = {
 class CartItem extends React.Component {
   componentDidMount() {}
   render() {
-    console.log('render', this.props.cartItem)
     const {classes} = this.props
     return (
       <div>
         <Card className={classes.root} variant="outlined">
           <CardContent className={classes.content}>
-            <Typography
-              className={classes.name}
-              variant="h5"
-              component="h2"
-              // align="center"
-            >
+            <Typography className={classes.name} variant="h5" component="h2">
               {`Name: ${this.props.cartItem.name}`}
             </Typography>
             <Typography
               className={classes.quantity}
               variant="h5"
               component="h2"
-              // align="center"
             >
               {`Qty: ${this.props.cartItem.orderproduct.quantity}`}
             </Typography>
-            <Typography
-              variant="h5"
-              className={classes.price}
-              component="h2"
-              // align="center"
-            >
+            <Typography variant="h5" className={classes.price} component="h2">
               {`Price: ${this.props.cartItem.price}`}
             </Typography>
-            {/* <Typography variant="h5" component="h2" align="center">
-              {`Image: ${this.props.cartItem.imageUrl}`}
-            </Typography> */}
-            {/* <Typography paragraph variant="h5" component="h2" align="center">
-              {`Description: ${this.props.cartItem.description}`}
-            </Typography> */}
           </CardContent>
           <CardMedia
             className={classes.media}
@@ -101,20 +83,12 @@ class CartItem extends React.Component {
               size="large"
               startIcon={<AddIcon />}
               onClick={() => {
-                console.log(
-                  'clicked',
-                  this.props.user.id,
-
-                  this.props.cartItem
-                )
                 this.props.incrementCart(
                   this.props.user.id,
 
                   this.props.cartItem
                 )
               }}
-              // id={1}
-              // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
             >
               Add
             </Button>
@@ -122,8 +96,13 @@ class CartItem extends React.Component {
             <Button
               size="large"
               startIcon={<RemoveIcon />}
-              // id={1}
-              // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
+              onClick={() => {
+                this.props.decrementCart(
+                  this.props.user.id,
+
+                  this.props.cartItem
+                )
+              }}
             >
               Remove
             </Button>
@@ -132,8 +111,12 @@ class CartItem extends React.Component {
               size="large"
               color="secondary"
               startIcon={<DeleteOutlinedIcon />}
-              // id={1}
-              // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
+              onClick={() => {
+                this.props.removeFromCart(
+                  this.props.user.id,
+                  this.props.cartItem
+                )
+              }}
             >
               Delete from cart
             </Button>
@@ -147,7 +130,9 @@ class CartItem extends React.Component {
 const mapState = state => ({user: state.user})
 const mapDispatch = dispatch => ({
   incrementCart: (userId, product) =>
-    dispatch(addToOrIncrementCart(userId, product))
+    dispatch(addToOrIncrementCart(userId, product)),
+  decrementCart: (userId, product) => dispatch(decrementCart(userId, product)),
+  removeFromCart: (userId, product) => dispatch(removeFromCart(userId, product))
 })
 
 export default connect(mapState, mapDispatch)(withStyles(styles)(CartItem))
