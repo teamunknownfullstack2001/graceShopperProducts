@@ -34,7 +34,7 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/products" component={UserHome} />
+        <Route exact path="/products" component={UserHome} />
         <Route path="/Payment" component={InjectedCheckoutForm} />
         <Route path="/Cart/:id" component={Cart} />
         <Route path="/Order/:id" component={placeOrder} />
@@ -42,6 +42,7 @@ class Routes extends Component {
 
         <Route path="/orderSuccess" component={OrderSuccessPage} />
         <Route exact path="/" component={UserHome} />
+
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}

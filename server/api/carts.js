@@ -4,7 +4,7 @@ const {User, Order, orderProduct, Product} = require('../db/models')
 const {adminOnly, userOnly} = require('./utlis')
 module.exports = router
 
-router.get('/:id', userOnly, async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   if (req.session.passport) {
     try {
       const [cart, created] = await Order.findOrCreate({
@@ -63,7 +63,7 @@ Order.prototype.addrOrIncrementProduct = async function(ProductId) {
   return this
 }
 
-router.put('/:id', userOnly, async (req, res, next) => {
+router.put('/:id', async (req, res, next) => {
   if (req.session.passport) {
     try {
       let [cart, created] = await Order.findOrCreate({
