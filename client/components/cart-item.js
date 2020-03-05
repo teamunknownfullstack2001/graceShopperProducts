@@ -109,6 +109,7 @@ class CartItem extends React.Component {
 
             <Button
               size="large"
+              color="secondary"
               startIcon={<DeleteOutlinedIcon />}
               onClick={() => {
                 this.props.removeFromCart(

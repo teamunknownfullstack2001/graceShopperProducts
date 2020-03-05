@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter, Route, Switch} from 'react-router-dom'
+import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome, CreateProduct} from './components'
 import {me, fetchProducts, getUserCart} from './store'
@@ -9,6 +9,7 @@ import SingleProduct from './components/SingleProduct'
 import Cart from './components/cart'
 import placeOrder from './components/placeOrder'
 import UserProfile from './components/UserProfile'
+import Error from './components/Error'
 import OrderHistory from './components/OrderHistory'
 /**
  * COMPONENT
@@ -24,6 +25,7 @@ class Routes extends Component {
   }
   render() {
     const {isLoggedIn} = this.props
+    const {user} = this.props
 
     return (
       <Switch>
@@ -31,16 +33,19 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route exact path="/products" component={UserHome} />
-        <Route exact path="/newproduct" component={CreateProduct} />
         <Route path="/Payment" component={InjectedCheckoutForm} />
         <Route path="/Cart/:id" component={Cart} />
         <Route path="/Order/:id" component={placeOrder} />
         <Route path="/products/:id" component={SingleProduct} />
-
+        <Route path="/404" component={Error} />
+        <Redirect to="/404" />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/UserProfile/:id" component={UserProfile} />
+            {user.type === 'admin' && (
+              <Route exact path="/newproduct" component={CreateProduct} />
+            )}
             {/* <Route path="/OrderHistory/:id" component={OrderHistory} /> */}
           </Switch>
         )}
