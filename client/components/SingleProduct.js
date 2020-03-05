@@ -2,7 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {getSingleProduct, addToOrIncrementCart, deleteProduct} from '../store'
 import Tag from './Tag'
-// import projectReducer from '../../../junior-phase-final-project-2001/app/redux/project'
 
 import {withStyles} from '@material-ui/core/styles'
 import {

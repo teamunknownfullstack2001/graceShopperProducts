@@ -35,8 +35,6 @@ const styles = {
   },
   content: {
     display: 'flex',
-    // justifyContent: 'flex-start',
-    // alignItems: 'flex-start',
     flexGrow: 1,
     flexDirection: 'row'
   },

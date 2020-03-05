@@ -47,11 +47,6 @@ class disPlaceOrder extends React.Component {
         ) : (
           ''
         )}
-
-        {/* <button type="button">Confirm Order</button> */}
-        {/* <button type="button">
-          <Link to="/orderSuccess">Confirm Order</Link>
-        </button> */}
       </div>
     )
   }
