@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import CartItem from './cart-item'
 import {getOrder} from '../store'
+import InjectedCheckoutForm from './checkout-form'
 class disPlaceOrder extends React.Component {
   constructor() {
     super()
@@ -17,6 +18,7 @@ class disPlaceOrder extends React.Component {
     // console.log('in the orderC', this.props.order.orders[0].total)
     const total = this.props.order.total ? this.props.order.total : 0
     console.log('in the orderC', this.props.order.total)
+    console.log('in the orderC', this.props.order)
     return (
       <div>
         {this.props.order.products ? (
@@ -31,14 +33,25 @@ class disPlaceOrder extends React.Component {
           <p>No order</p>
         )}
         <p>{total}</p>
-        <button type="button">Confirm Order</button>
+
+        {this.props.order !== undefined ? (
+          <InjectedCheckoutForm
+            order={this.props.order}
+            user={this.props.user}
+          />
+        ) : (
+          ''
+        )}
+
+        {/* <button type="button">Confirm Order</button> */}
       </div>
     )
   }
 }
 
 const mapState = state => ({
-  order: state.order
+  order: state.order,
+  user: state.user
 })
 const mapDispatch = dispatch => {
   return {

@@ -24,18 +24,11 @@ class Cart extends React.Component {
 
         {this.props.products
           ? this.props.products.map(cartItem => (
-              <CartItem
-                key={cartItem.id}
-                cartItem={cartItem}
-                // cartId={this.props.cartId}
-              />
+              <CartItem key={cartItem.id} cartItem={cartItem} />
             ))
           : ''}
         {
-          // <PlaceOrder
-          //   orderId={this.props.orderid}
-          //   products={this.props.products}
-          // />
+          // this is the ordertotal coomponent
           <Link to={`/Order/${this.props.cartId}`}>Order</Link>
         }
       </div>
@@ -45,8 +38,8 @@ class Cart extends React.Component {
 
 const mapState = state => ({
   user: state.user,
-  products: state.userCart.products
-  // cartId: state.userCart.cartId
+  products: state.userCart.products,
+  cartId: state.userCart.cartId
 })
 const mapDispatch = dispatch => ({
   getUserCart: id => {

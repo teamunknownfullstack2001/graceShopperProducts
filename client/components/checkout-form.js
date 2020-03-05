@@ -8,18 +8,24 @@ class CheckoutForm extends React.Component {
   handleSubmit = async event => {
     event.preventDefault()
 
-    const {stripe, elements} = this.props
+    const {stripe, elements, order, user} = this.props
 
     if (!stripe || !elements) {
       return
     }
-
-    const {data} = await axios.post(`/api/payment`)
+    console.log('=====order', order, user)
+    const paymentBody = {
+      // name: user.userName,
+      amount: Math.floor(order.total * 100),
+      currency: 'usd',
+      metadata: {integration_check: 'accept_a_payment'}
+    }
+    const {data} = await axios.post(`/api/payment`, paymentBody)
     const result = await stripe.confirmCardPayment(data.client_secret, {
       payment_method: {
         card: elements.getElement(CardElement),
         billing_details: {
-          name: 'Jenny Rosen'
+          name: user.userName
         }
       }
     })
@@ -27,7 +33,7 @@ class CheckoutForm extends React.Component {
     if (result.error) {
       console.log(result.error.message)
     } else if (result.paymentIntent.status === 'succeeded') {
-      console.log('Payment Success!!')
+      console.log('Payment Success!!Should Redirect to Order Success Page')
     }
   }
 
@@ -44,11 +50,16 @@ class CheckoutForm extends React.Component {
   }
 }
 
-export default function InjectedCheckoutForm() {
+export default function InjectedCheckoutForm(props) {
   return (
     <ElementsConsumer>
       {({stripe, elements}) => (
-        <CheckoutForm stripe={stripe} elements={elements} />
+        <CheckoutForm
+          stripe={stripe}
+          elements={elements}
+          order={props.order}
+          user={props.user}
+        />
       )}
     </ElementsConsumer>
   )
