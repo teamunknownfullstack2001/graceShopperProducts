@@ -16,8 +16,8 @@ class Cart extends React.Component {
     this.props.getUserCart(this.props.match.params.id)
   }
   render() {
+    const orderid = this.props.cartId ? this.props.cartId : 0
     console.log('this cart', this.props.cartId)
-    const orderid = this.props.cartId ? this.props.cartId : null
     return (
       <div>
         <h3>Cart</h3>
@@ -28,8 +28,10 @@ class Cart extends React.Component {
             ))
           : ''}
         {
-          // this is the ordertotal coomponent
-          <Link to={`/Order/${this.props.cartId}`}>Order</Link>
+          <button type="button">
+            {' '}
+            <Link to={`/Order/${orderid}`}>Order</Link>
+          </button>
         }
       </div>
     )

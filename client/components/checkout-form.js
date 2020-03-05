@@ -40,14 +40,16 @@ class CheckoutForm extends React.Component {
       // ask them to try again!!
     } else if (result.paymentIntent.status === 'succeeded') {
       console.log(
-        'Payment Success!!Should Redirect to Order Success Page'
+        'Payment Success!!Should Redirect to Order Success Page',
+        order.id,
+        result.paymentIntent.id
         // result.paymentIntent.id
       )
       await axios.post('/api/orders/place', {
         id: order.id,
         stripeId: result.paymentIntent.id
       })
-      window.location.replace('/orderSuccess')
+      // window.location.replace('/orderSuccess')
       // change
     }
   }

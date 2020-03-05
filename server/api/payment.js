@@ -6,7 +6,7 @@ const stripeSecretKey = process.env.STRIPE_SECRET_KEY
 const stripe = require('stripe')(stripeSecretKey)
 router.post('/', async (req, res, next) => {
   // console.log(paymentBody)
-  console.log(req.body)
+  // console.log(req.body)
   try {
     // const paymentIntent = await stripe.paymentIntents.create(paymentBody)
     const paymentIntent = await stripe.paymentIntents.create(req.body)
