@@ -1,8 +1,9 @@
 const router = require('express').Router()
 const {Order, orderProduct, User, Product} = require('../db/models')
+const {adminOnly, userOnly} = require('./utlis')
 module.exports = router
 
-router.get('/', async (req, res, next) => {
+router.get('/', userOnly, async (req, res, next) => {
   try {
     const allOrders = await Order.findAll()
     res.json(allOrders)
@@ -11,7 +12,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', userOnly, async (req, res, next) => {
   try {
     const singleOrder = await Order.findByPk(req.params.id, {
       include: [{model: Product}]
@@ -24,11 +25,10 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-router.post('/place', async (req, res, next) => {
+router.post('/place/:id', userOnly, async (req, res, next) => {
   try {
     console.log(req.body)
-    // just change the status....  stripe has to also fullfilled
-    const currentOrder = await Order.findByPk(req.body.id)
+    const currentOrder = await Order.findByPk(req.params.id)
     await currentOrder.update({
       status: 'placed',
       stripeId: req.body.stripeId
@@ -39,9 +39,8 @@ router.post('/place', async (req, res, next) => {
   }
 })
 
-router.post('/:id', async (req, res, next) => {
+router.post('/:id', userOnly, async (req, res, next) => {
   try {
-    //find the products in the seesion
     const products = req.session.cart.products
 
     //creat new order
@@ -65,19 +64,6 @@ router.post('/:id', async (req, res, next) => {
     //calulate the total
     await returnOrder.calculate()
     res.json(returnOrder)
-  } catch (error) {
-    next(error)
-  }
-})
-router.post('/checkout', async (req, res, next) => {
-  try {
-    // just change the status....  stripe has to also fullfilled
-    const currentOrder = await Order.findByPk(req.body.id)
-    const product = await Product.findAll({where: {name: req.body.productname}})
-    await currentOrder.addProduct(product, {
-      through: {quantity: req.body.quantity}
-    })
-    res.status(204).end()
   } catch (error) {
     next(error)
   }

@@ -9,7 +9,6 @@ import productsReducer from './products'
 import singleProductReducer from './singleProduct'
 import placeOrderReducer from './placeOrder'
 import orderReducer from './order'
-// import payment from './payment'
 
 const reducer = combineReducers({
   user: user,
@@ -33,5 +32,3 @@ export * from './products'
 export * from './singleProduct'
 export * from './placeOrder'
 export * from './order'
-
-// export * from './payment'

@@ -9,18 +9,11 @@ class CheckoutForm extends React.Component {
     event.preventDefault()
 
     const {stripe, elements, order, user} = this.props
-    /// wil remove later
-    // await axios.post('/api/orders/place', {
-    //   id: order.id,
-    //   stripeId: 'result.id'
-    // })
-    // return
     if (!stripe || !elements) {
       return
     }
     console.log('=====order', order, user)
     const paymentBody = {
-      // name: user.userName,
       amount: Math.floor(order.total * 100),
       currency: 'usd',
       metadata: {integration_check: 'accept_a_payment'}
@@ -37,19 +30,15 @@ class CheckoutForm extends React.Component {
 
     if (result.error) {
       console.log(result.error.message)
-      // ask them to try again!!
     } else if (result.paymentIntent.status === 'succeeded') {
       console.log(
         'Payment Success!!Should Redirect to Order Success Page',
-        order.id,
         result.paymentIntent.id
-        // result.paymentIntent.id
       )
-      await axios.post('/api/orders/place', {
-        id: order.id,
+      await axios.post(`/api/orders/place/${order.id}`, {
         stripeId: result.paymentIntent.id
       })
-      // window.location.replace('/orderSuccess')
+      window.location.replace('/orderSuccess')
       // change
     }
   }
