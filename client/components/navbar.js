@@ -202,6 +202,16 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
                   Log Out
                 </MenuItem>
               </Menu>
+
+              {/*<Link to={`/Cart/${user.id}`}>Cart</Link>
+
+        <Link to="/payment">Payment</Link>*/}
+              {/* <Link to={`/OrderHistory/${user.id}`}>My Order History</Link> */}
+
+              {/*<Link to={`/UserProfile/${user.id}`}>My Profile</Link>*/}
+              {/*<a href="#" onClick={handleClick}>
+            Logout
+        </a>*/}
             </div>
           ) : (
             <div className={classes.navContainer}>
@@ -287,6 +297,12 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
                   <Link to="/signup">Sign Up</Link>{' '}
                 </MenuItem>
               </Menu>
+
+              {/*<Link to="/Products">Products</Link>
+          <Link to={`/Cart/${user.id}`}>Cart</Link>
+          <Link to="/payment">Payment</Link>
+          <Link to="/login">Login</Link>
+        <Link to="/signup">Sign Up</Link>*/}
             </div>
           )}
         </Toolbar>
@@ -296,6 +312,36 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
   )
 }
 
+// const Navbar = ({handleClick, isLoggedIn, user}) => (
+//   <div>
+//     <h1>All The Cozies Zzzzz..</h1>
+//     <nav>
+//       {isLoggedIn ? (
+//         <div>
+//           {/* The navbar will show these links after you log in */}
+//           <Link to="/Products">Products</Link>
+//           <Link to="/payment">Payment</Link>
+//           <Link to={`/Cart/${user.id}`}>Cart</Link>
+//           <Link to={`/UserProfile/${user.id}`}>My Profile</Link>
+//           {/* <Link to={`/OrderHistory/${user.id}`}>My Order History</Link> */}
+//           <a href="#" onClick={handleClick}>
+//             Logout
+//           </a>
+//         </div>
+//       ) : (
+//         <div>
+//           {/* The navbar will show these links before you log in */}
+//           <Link to="/login">Login</Link>
+//           <Link to="/signup">Sign Up</Link>
+//           <Link to="/Products">Products</Link>
+//           <Link to="/payment">Payment</Link>
+//           <Link to={`/Cart/${user.id}`}>Cart</Link>
+//         </div>
+//       )}
+//     </nav>
+//     <hr />
+//   </div>
+// )
 /**
  * CONTAINER
  */

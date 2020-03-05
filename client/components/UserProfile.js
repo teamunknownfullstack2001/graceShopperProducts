@@ -27,6 +27,29 @@ class UserProfile extends React.Component {
           <Link to={`/orderHistory/${id}`}>Order History</Link>
         </button>
         {/* <OrderHistory prop= {orders}/> */}
+        <div>
+          {orders
+            ? orders.map(order => (
+                <div key={order.id}>
+                  <h3> Order Id: {order.id}</h3>
+                  <h3> Status: {order.status}</h3>
+                  <h3>
+                    Order Details:{' '}
+                    {order.products.map(product => (
+                      <div key={product.id}>
+                        <img src={product.imageUrl} />
+                        <h4> Item: {product.name}</h4>
+
+                        <h4>{`Price ${(product.price / 100).toFixed(2)}`}</h4>
+
+                        <p> Date Ordered: {product.updatedAt}</p>
+                      </div>
+                    ))}
+                  </h3>
+                </div>
+              ))
+            : 'No orders'}
+        </div>
         <button type="submit" onClick={updateInfo}>
           Update Info
         </button>
