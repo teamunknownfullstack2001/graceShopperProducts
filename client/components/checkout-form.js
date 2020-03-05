@@ -32,8 +32,10 @@ class CheckoutForm extends React.Component {
 
     if (result.error) {
       console.log(result.error.message)
+      // ask them to try again!!
     } else if (result.paymentIntent.status === 'succeeded') {
       console.log('Payment Success!!Should Redirect to Order Success Page')
+      // change
     }
   }
 
