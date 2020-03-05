@@ -18,6 +18,7 @@ Order.prototype.calculate = async function() {
   }, 0)
 
   this.total = sum
+
   return sum
 }
 
