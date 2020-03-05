@@ -1,8 +1,9 @@
 const router = require('express').Router()
 const {Product, Tag} = require('../db/models')
+const {adminOnly, userOnly} = require('./utlis')
 module.exports = router
 
-router.get('/', async (req, res, next) => {
+router.get('/', userOnly, async (req, res, next) => {
   try {
     const allProducts = await Product.findAll({
       include: [
@@ -17,7 +18,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.post('/', async (req, res, next) => {
+router.post('/', userOnly, async (req, res, next) => {
   try {
     const newProduct = await Product.create(req.body, {
       include: [
@@ -34,7 +35,7 @@ router.post('/', async (req, res, next) => {
   }
 })
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', userOnly, async (req, res, next) => {
   try {
     const singleProduct = await Product.findByPk(req.params.id, {
       include: [
@@ -49,7 +50,7 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', adminOnly, async (req, res, next) => {
   try {
     const product = await Product.findByPk(req.params.id)
     if (product) {
