@@ -22,6 +22,7 @@ router.get('/:id', async (req, res, next) => {
     const singleUser = await User.findByPk(req.params.id, {
       include: [{model: Order, include: {model: Product}}]
     })
+    console.log('in the back end ........', singleUser)
     res.json(singleUser)
   } catch (error) {
     next(error)
