@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {getSingleUser} from '../store'
+import {Link} from 'react-router-dom'
+import OrderHistory from './OrderHistory'
 
 class UserProfile extends React.Component {
   componentDidMount() {
@@ -21,31 +23,10 @@ class UserProfile extends React.Component {
         <h2>Email: {email}</h2>
         <h2>Address: {address}</h2>
         <h2>Zip: {zip}</h2>
-        <div>
-          {orders
-            ? orders.map(order => (
-                <div key={order.id}>
-                  <h3> Order Id: {order.id}</h3>
-                  {/* <h3> Status: {order.status}</h3> */}
-                  <h3>
-                    Order Details:{' '}
-                    {order.products.map(product => (
-                      <div key={product.id}>
-                        <h4> Order Status: {order.status}</h4>
-                        <img src={product.imageUrl} />
-                        <h4> Item: {product.name}</h4>
-                        <h4> Item Details: {product.description}</h4>
-                        <h4> Price: {product.price}</h4>
-                        <p> Date Ordered: {product.updatedAt}</p>
-                        <h3>Total Charged: {order.total}</h3>
-                      </div>
-                    ))}
-                  </h3>
-                </div>
-              ))
-            : 'No orders'}
-        </div>
-
+        <button type="button">
+          <Link to={`/orderHistory/${id}`}>Order History</Link>
+        </button>
+        {/* <OrderHistory prop= {orders}/> */}
         <button type="submit" onClick={updateInfo}>
           Update Info
         </button>

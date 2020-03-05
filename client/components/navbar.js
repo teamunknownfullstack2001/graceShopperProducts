@@ -15,7 +15,7 @@ const Navbar = ({handleClick, isLoggedIn, user}) => (
           <Link to="/payment">Payment</Link>
           <Link to={`/Cart/${user.id}`}>Cart</Link>
           <Link to={`/UserProfile/${user.id}`}>My Profile</Link>
-          {/* <Link to={`/OrderHistory/${user.id}`}>My Order History</Link> */}
+          {/* <Link to={`/orderHistory/${user.id}`}>Order History</Link> */}
           <a href="#" onClick={handleClick}>
             Logout
           </a>
