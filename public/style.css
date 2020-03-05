@@ -101,6 +101,33 @@ form div {
   flex: 1 0 0;
 }
 
+.welcomeContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.welcomeMsg {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin: 20px;
+  flex: 4 0 0;
+}
+
+.welcomeAddButton {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin: 20px;
+  flex: 1 0 0;
+}
+
 .productImg {
   height: 300px;
 }
