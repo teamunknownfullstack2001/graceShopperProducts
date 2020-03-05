@@ -7,6 +7,7 @@ import {me, fetchProducts, getUserCart} from './store'
 import InjectedCheckoutForm from './components/checkout-form'
 import SingleProduct from './components/SingleProduct'
 import Cart from './components/cart'
+import placeOrder from './components/placeOrder'
 import UserProfile from './components/UserProfile'
 import OrderHistory from './components/OrderHistory'
 /**
@@ -33,6 +34,7 @@ class Routes extends Component {
         <Route exact path="/newproduct" component={CreateProduct} />
         <Route path="/Payment" component={InjectedCheckoutForm} />
         <Route path="/Cart/:id" component={Cart} />
+        <Route path="/Order/:id" component={placeOrder} />
         <Route path="/products/:id" component={SingleProduct} />
 
         {isLoggedIn && (
