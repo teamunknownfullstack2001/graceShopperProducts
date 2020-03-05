@@ -45,7 +45,7 @@ class SingleProduct extends React.Component {
             <h1>
               <i>{name}</i>
             </h1>
-            <p>${price}</p>
+            <p>{`$ ${(price / 100).toFixed(2)}`}</p>
             <p>{description}</p>
             <p>
               Category:

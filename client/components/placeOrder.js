@@ -21,9 +21,11 @@ class disPlaceOrder extends React.Component {
     } else {
       this.props.createOrder(this.props.match.params.id) //create guest order
     }
-  }
+  } //{`$ ${(price / 100).toFixed(2)}`}
   render() {
-    const total = this.props.order.total ? this.props.order.total : 0
+    const total = this.props.order.total
+      ? `$ ${(this.props.order.total / 100).toFixed(2)}`
+      : 0
     return (
       <div>
         {this.props.order.products ? (

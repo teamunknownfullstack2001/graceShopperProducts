@@ -16,7 +16,7 @@ describe('Order model', () => {
         category: 'Oval',
         description:
           'vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus',
-        price: 490.74,
+        price: 49074,
         stock: 64
       }
       const exOrder = {
