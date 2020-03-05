@@ -12,7 +12,7 @@ router.get('/', userOnly, async (req, res, next) => {
   }
 })
 
-router.get('/:id', userOnly, async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
     const singleOrder = await Order.findByPk(req.params.id, {
       include: [{model: Product}]
@@ -39,7 +39,7 @@ router.post('/place/:id', async (req, res, next) => {
   }
 })
 
-router.post('/:id', userOnly, async (req, res, next) => {
+router.post('/:id', async (req, res, next) => {
   try {
     const products = req.session.cart.products
 
