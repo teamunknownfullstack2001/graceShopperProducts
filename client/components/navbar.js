@@ -28,6 +28,7 @@ const Navbar = ({handleClick, isLoggedIn, user}) => (
           <Link to="/Products">Products</Link>
           <Link to="/payment">Payment</Link>
           <Link to={`/Cart/${user.id}`}>Cart</Link>
+          {/* <Link to='/orderSuccess'>Order Successful</Link> */}
         </div>
       )}
     </nav>

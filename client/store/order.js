@@ -14,10 +14,10 @@ const getOrder = order => ({type: GET_ORDER, order})
  * THUNK CREATORS
  */
 
-export const getOrderHistory = id => {
+export const getOrderDetails = id => {
   return async dispatch => {
     try {
-      const {data} = await axios.get(`/api/orderHistory/${id}`)
+      const {data} = await axios.get(`/api/orders/${id}`)
       dispatch(getOrder(data))
     } catch (error) {
       console.log(error)

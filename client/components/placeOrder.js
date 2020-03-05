@@ -2,6 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import CartItem from './cart-item'
 import {getOrder} from '../store'
+import {Link} from 'react-router-dom'
+
 class disPlaceOrder extends React.Component {
   constructor() {
     super()
@@ -15,6 +17,7 @@ class disPlaceOrder extends React.Component {
   }
   render() {
     // console.log('in the orderC', this.props.order.orders[0].total)
+    console.log('These are the props: ', this.props)
     const total = this.props.order.total ? this.props.order.total : 0
     console.log('in the orderC', this.props.order.total)
     return (
@@ -31,7 +34,9 @@ class disPlaceOrder extends React.Component {
           <p>No order</p>
         )}
         <p>{total}</p>
-        <button type="button">Confirm Order</button>
+        <button type="button">
+          <Link to="/orderSuccess">Confirm Order</Link>
+        </button>
       </div>
     )
   }
