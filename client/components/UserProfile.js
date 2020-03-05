@@ -11,7 +11,7 @@ class UserProfile extends React.Component {
     // console.log('These are the props: ', this.props)
     const {user} = this.props
     const {id, phone, userName, email, address, zip, updateInfo, orders} = user
-    console.log('User info: ', user)
+    // console.log('User info: ', user)
     console.log('These are the orders: ', orders)
 
     return (
@@ -26,17 +26,18 @@ class UserProfile extends React.Component {
             ? orders.map(order => (
                 <div key={order.id}>
                   <h3> Order Id: {order.id}</h3>
-                  <h3> Status: {order.status}</h3>
+                  {/* <h3> Status: {order.status}</h3> */}
                   <h3>
                     Order Details:{' '}
                     {order.products.map(product => (
                       <div key={product.id}>
+                        <h4> Order Status: {order.status}</h4>
                         <img src={product.imageUrl} />
                         <h4> Item: {product.name}</h4>
-
+                        <h4> Item Details: {product.description}</h4>
                         <h4> Price: {product.price}</h4>
-
                         <p> Date Ordered: {product.updatedAt}</p>
+                        <h3>Total Charged: {order.total}</h3>
                       </div>
                     ))}
                   </h3>
@@ -44,6 +45,7 @@ class UserProfile extends React.Component {
               ))
             : 'No orders'}
         </div>
+
         <button type="submit" onClick={updateInfo}>
           Update Info
         </button>
