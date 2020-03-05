@@ -1,8 +1,9 @@
 const router = require('express').Router()
 const {Order, orderProduct, User, Product} = require('../db/models')
+const {adminOnly, userOnly} = require('./utlis')
 module.exports = router
 
-router.get('/', async (req, res, next) => {
+router.get('/', userOnly, async (req, res, next) => {
   try {
     const allOrders = await Order.findAll()
     res.json(allOrders)
@@ -11,7 +12,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', userOnly, async (req, res, next) => {
   try {
     const singleOrder = await Order.findByPk(req.params.id, {
       include: [{model: Product}]
@@ -24,7 +25,7 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-router.post('/place/:id', async (req, res, next) => {
+router.post('/place/:id', userOnly, async (req, res, next) => {
   try {
     console.log(req.body)
     const currentOrder = await Order.findByPk(req.params.id)
@@ -38,7 +39,7 @@ router.post('/place/:id', async (req, res, next) => {
   }
 })
 
-router.post('/:id', async (req, res, next) => {
+router.post('/:id', userOnly, async (req, res, next) => {
   try {
     const products = req.session.cart.products
 

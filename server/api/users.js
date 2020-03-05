@@ -1,6 +1,6 @@
 const router = require('express').Router()
-const {User, Order, OrderItem, Product} = require('../db/models')
-
+const {User, Order, Product} = require('../db/models')
+const {adminOnly, userOnly} = require('./utlis')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -17,12 +17,12 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', userOnly, async (req, res, next) => {
   try {
     const singleUser = await User.findByPk(req.params.id, {
       include: [{model: Order, include: {model: Product}}]
     })
-    console.log('in the back end ........', singleUser)
+
     res.json(singleUser)
   } catch (error) {
     next(error)

@@ -1,10 +1,11 @@
 const router = require('express').Router()
+const {adminOnly, userOnly} = require('./utlis')
 module.exports = router
 
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY
 
 const stripe = require('stripe')(stripeSecretKey)
-router.post('/', async (req, res, next) => {
+router.post('/', userOnly, async (req, res, next) => {
   // console.log(paymentBody)
   // console.log(req.body)
   try {
