@@ -3,7 +3,7 @@ const {User, Order, Product} = require('../db/models')
 const {adminOnly, userOnly} = require('./utlis')
 module.exports = router
 
-router.get('/', userOnly, async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
       // explicitly select only the id and email fields - even though
