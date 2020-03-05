@@ -25,9 +25,22 @@ router.get('/:id', userOnly, async (req, res, next) => {
   }
 })
 
-router.post('/:id', userOnly, async (req, res, next) => {
+router.post('/place/:id', async (req, res, next) => {
   try {
-    //find the products in the seesion
+    console.log(req.body)
+    const currentOrder = await Order.findByPk(req.params.id)
+    await currentOrder.update({
+      status: 'placed',
+      stripeId: req.body.stripeId
+    })
+    res.status(204).end()
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.post('/:id', async (req, res, next) => {
+  try {
     const products = req.session.cart.products
 
     //creat new order
@@ -51,19 +64,6 @@ router.post('/:id', userOnly, async (req, res, next) => {
     //calulate the total
     await returnOrder.calculate()
     res.json(returnOrder)
-  } catch (error) {
-    next(error)
-  }
-})
-router.post('/checkout', async (req, res, next) => {
-  try {
-    // just change the status....  stripe has to also fullfilled
-    const currentOrder = await Order.findByPk(req.body.id)
-    const product = await Product.findAll({where: {name: req.body.productname}})
-    await currentOrder.addProduct(product, {
-      through: {quantity: req.body.quantity}
-    })
-    res.status(204).end()
   } catch (error) {
     next(error)
   }

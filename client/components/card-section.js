@@ -24,7 +24,6 @@ const CARD_ELEMENT_OPTIONS = {
 function CardSection() {
   return (
     <label>
-      please add card details
       <CardElement options={CARD_ELEMENT_OPTIONS} />
     </label>
   )

@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import CartItem from './cart-item'
+import InjectedCheckoutForm from './checkout-form'
 import {getOrder, createOrder} from '../store'
 
 import {Link} from 'react-router-dom'
@@ -23,7 +24,6 @@ class disPlaceOrder extends React.Component {
   }
   render() {
     const total = this.props.order.total ? this.props.order.total : 0
-    console.log('in the orderC', this.props)
     return (
       <div>
         {this.props.order.products ? (
@@ -38,16 +38,23 @@ class disPlaceOrder extends React.Component {
           <p>No order</p>
         )}
         <p>{total}</p>
-        <button type="button">
-          <Link to="/orderSuccess">Confirm Order</Link>
-        </button>
+
+        {this.props.order !== undefined ? (
+          <InjectedCheckoutForm
+            order={this.props.order}
+            user={this.props.user}
+          />
+        ) : (
+          ''
+        )}
       </div>
     )
   }
 }
 
 const mapState = state => ({
-  order: state.order
+  order: state.order,
+  user: state.user
 })
 const mapDispatch = dispatch => {
   return {
