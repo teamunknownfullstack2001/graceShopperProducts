@@ -15,7 +15,7 @@ const CreateProduct = props => {
       imageUrl: event.target.imageUrl.value,
       category: event.target.category.value,
       description: event.target.description.value,
-      price: event.target.price.value,
+      price: Math.floor(parseFloat(event.target.price.value) * 100),
       stock: event.target.stock.value
       // tags: [event.target.tags.value]
     }

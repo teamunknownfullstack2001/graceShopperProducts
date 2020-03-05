@@ -45,11 +45,11 @@ const CreateProductForm = props => {
           <li>
             <label htmlFor="price">Price:</label>
             <input
-              type="number"
+              type="text"
               step=".01"
               min="0"
               name="price"
-              value={`$ ${(props.price / 100).toFixed(2)}`}
+              // value={`$ ${(props.price / 100).toFixed(2)}`}
               onSubmit={props.onSubmit}
             />
           </li>

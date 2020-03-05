@@ -34,7 +34,7 @@ class UserProfile extends React.Component {
                         <img src={product.imageUrl} />
                         <h4> Item: {product.name}</h4>
 
-                        <h4> Price: {product.price}</h4>
+                        <h4>{`Price ${(product.price / 100).toFixed(2)}`}</h4>
 
                         <p> Date Ordered: {product.updatedAt}</p>
                       </div>
