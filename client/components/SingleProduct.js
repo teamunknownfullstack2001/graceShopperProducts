@@ -54,18 +54,20 @@ class SingleProduct extends React.Component {
             </p>
           </div>
           <div className="singleProductButtons">
-            <Button
-              size="large"
-              color="secondary"
-              startIcon={<DeleteForeverIcon />}
-              onClick={() => {
-                this.handleRemove(product.id)
-              }}
-              // id={1}
-              // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
-            >
-              Delete
-            </Button>
+            {this.props.user.type === 'admin' && (
+              <Button
+                size="large"
+                color="secondary"
+                startIcon={<DeleteForeverIcon />}
+                onClick={() => {
+                  this.handleRemove(product.id)
+                }}
+                // id={1}
+                // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
+              >
+                Delete
+              </Button>
+            )}
             <Button
               size="large"
               startIcon={<AddShoppingCartIcon />}
