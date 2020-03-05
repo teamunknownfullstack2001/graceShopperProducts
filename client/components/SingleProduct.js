@@ -1,8 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {getSingleProduct, addToOrIncrementCart} from '../store'
 import Tag from './Tag'
 // import projectReducer from '../../../junior-phase-final-project-2001/app/redux/project'
-import {getSingleProduct, addToCart} from '../store'
+// import {getSingleProduct, addToCart} from '../store'
 
 import {withStyles} from '@material-ui/core/styles'
 import {
@@ -23,7 +24,6 @@ class SingleProduct extends React.Component {
 
   render() {
     const {classes} = this.props
-    console.log('These are the props: ', this.props)
     const {product} = this.props
     const {id, imageUrl, name, description, price, category} = product
 
@@ -76,7 +76,6 @@ class SingleProduct extends React.Component {
 }
 
 const mapState = state => {
-  // console.log('This is the state: ', state)
   return {
     user: state.user,
     product: state.product
@@ -85,7 +84,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => ({
   getSingleProduct: id => dispatch(getSingleProduct(id)),
-  addToCart: (userId, product) => dispatch(addToCart(userId, product))
+  addToCart: (userId, product) =>
+    dispatch(addToOrIncrementCart(userId, product))
 })
 
 export default connect(mapState, mapDispatch)(withStyles(styles)(SingleProduct))

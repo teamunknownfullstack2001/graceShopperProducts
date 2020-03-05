@@ -4,7 +4,8 @@ import {connect} from 'react-redux'
 import CartItem from './cart-item'
 import {getUserCart} from '../store'
 // import {getQuestion} from '../store'
-
+import PlaceOrder from './placeOrder'
+import {Link} from 'react-router-dom'
 class Cart extends React.Component {
   constructor() {
     super()
@@ -12,35 +13,41 @@ class Cart extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.getUserCart(props.params)
-    // console.log('componenet did mount')
-    // console.log(this.props.match.params.id)
     this.props.getUserCart(this.props.match.params.id)
   }
   render() {
+    console.log('this cart', this.props.cartId)
+    const orderid = this.props.cartId ? this.props.cartId : null
     return (
       <div>
         <h3>Cart</h3>
-        {/* <h3>user</h3> */}
-        {/* <p>
-          {this.props.user ? `${JSON.stringify(this.props.user)}` : 'notuser'}
-        </p>
-        <h3>cart</h3>
-        <p>
-          {this.props.user
-            ? `${JSON.stringify(this.props.userCart)}`
-            : 'notuser'}
-        </p> */}
-        {this.props.products.map(cartItem => (
-          <CartItem key={cartItem.id} cartItem={cartItem} />
-        ))}
-        {/* <CartItem /> */}
+
+        {this.props.products
+          ? this.props.products.map(cartItem => (
+              <CartItem
+                key={cartItem.id}
+                cartItem={cartItem}
+                cartId={this.props.cartId}
+              />
+            ))
+          : ''}
+        {
+          // <PlaceOrder
+          //   orderId={this.props.orderid}
+          //   products={this.props.products}
+          // />
+          <Link to={`/Order/${this.props.cartId}`}>Order</Link>
+        }
       </div>
     )
   }
 }
 
-const mapState = state => ({user: state.user, products: state.userCart})
+const mapState = state => ({
+  user: state.user,
+  products: state.userCart.products,
+  cartId: state.userCart.cartId
+})
 const mapDispatch = dispatch => ({
   getUserCart: id => {
     dispatch(getUserCart(id))

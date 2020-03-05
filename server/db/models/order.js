@@ -14,11 +14,11 @@ const Order = db.define('order', {
 Order.prototype.calculate = async function() {
   const products = await this.getProducts()
   const sum = products.reduce((acc, product) => {
-    return acc + +product.price
+    return acc + +product.price * +product.orderproduct.quantity
   }, 0)
-  console.log(products)
-  console.log(sum)
-  this.order = sum
+
+  this.total = sum
   return sum
 }
+
 module.exports = Order

@@ -16,7 +16,8 @@ router.get('/:id', async (req, res, next) => {
     const singleOrder = await Order.findByPk(req.params.id, {
       include: [{model: Product}]
     })
-    console.log(singleOrder.calculate())
+    await singleOrder.calculate()
+
     res.json(singleOrder)
   } catch (error) {
     next(error)
@@ -25,6 +26,7 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/checkout', async (req, res, next) => {
   try {
+    // just change the status....  stripe has to also fullfilled
     const currentOrder = await Order.findByPk(req.body.id)
     const product = await Product.findAll({where: {name: req.body.productname}})
     await currentOrder.addProduct(product, {
