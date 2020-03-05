@@ -24,15 +24,45 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-router.post('/checkout', async (req, res, next) => {
+router.post('/place/:id', async (req, res, next) => {
   try {
-    // just change the status....  stripe has to also fullfilled
-    const currentOrder = await Order.findByPk(req.body.id)
-    const product = await Product.findAll({where: {name: req.body.productname}})
-    await currentOrder.addProduct(product, {
-      through: {quantity: req.body.quantity}
+    console.log(req.body)
+    const currentOrder = await Order.findByPk(req.params.id)
+    await currentOrder.update({
+      status: 'placed',
+      stripeId: req.body.stripeId
     })
     res.status(204).end()
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.post('/:id', async (req, res, next) => {
+  try {
+    const products = req.session.cart.products
+
+    //creat new order
+    const guestOrder = await Order.create({
+      status: 'inCart',
+      include: [{model: Product}]
+    })
+
+    //add the quantity and product into the new order
+    for (let i = 0; i < products.length; ++i) {
+      const product = await Product.findByPk(products[`${i}`].id)
+      await guestOrder.addProduct(product, {
+        through: {quantity: products[`${i}`].orderproduct.quantity}
+      })
+    }
+
+    //find the order include the product  otherwise cant see the product in the page
+    const returnOrder = await Order.findByPk(guestOrder.id, {
+      include: [{model: Product}]
+    })
+    //calulate the total
+    await returnOrder.calculate()
+    res.json(returnOrder)
   } catch (error) {
     next(error)
   }
