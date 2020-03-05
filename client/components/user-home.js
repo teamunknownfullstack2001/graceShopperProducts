@@ -1,9 +1,22 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import ProductDummy from './ProductDummy'
 import Pagination from './Pagination'
 import {deleteProduct} from '../store/products'
+
+import {withStyles} from '@material-ui/core/styles'
+import {
+  Card,
+  CardContent,
+  CardActions,
+  Typography,
+  CardMedia,
+  Button
+} from '@material-ui/core'
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline'
+const styles = {}
 
 /**
  * COMPONENT
@@ -39,7 +52,7 @@ export class UserHome extends React.Component {
     this.setState({currentPage, currentProducts, totalPages})
   }
   render() {
-    const {email} = this.props
+    const {email, user} = this.props
     const {currentProducts, currentPage, totalPages} = this.state
     const totalProducts = this.props.products ? this.props.products.length : 0
 
@@ -52,8 +65,33 @@ export class UserHome extends React.Component {
       .trim()
     return (
       <div>
-        {email ? <h3>Welcome, {email}</h3> : <h3>Welcome, shopper</h3>}
-
+        <div className="welcomeContainer">
+          <div className="welcomeMsg">
+            {user.userName ? (
+              <h3>Welcome, {user.userName}</h3>
+            ) : email ? (
+              <h3>Welcome, {email}</h3>
+            ) : (
+              <h3>Welcome, shopper</h3>
+            )}
+          </div>
+          <div className="welcomeAddButton">
+            <Link
+              to="/newproduct"
+              style={{textDecoration: 'none', color: 'black'}}
+            >
+              {this.props.user.type === 'admin' && (
+                <Button
+                  size="large"
+                  style={{color: 'green'}}
+                  startIcon={<AddCircleOutlineIcon />}
+                >
+                  Add Product
+                </Button>
+              )}
+            </Link>
+          </div>
+        </div>
         <ul className="productList">
           {currentProducts
             ? currentProducts.map(product => (
@@ -99,7 +137,8 @@ export class UserHome extends React.Component {
 const mapState = state => {
   return {
     email: state.user.email,
-    products: state.products
+    products: state.products,
+    user: state.user
   }
 }
 
