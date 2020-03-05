@@ -9,6 +9,9 @@ const Order = db.define('order', {
   total: {
     type: Sequelize.DECIMAL(12, 2),
     defaultValue: 0.0
+  },
+  stripeId: {
+    type: Sequelize.STRING
   }
 })
 Order.prototype.calculate = async function() {
@@ -18,6 +21,7 @@ Order.prototype.calculate = async function() {
   }, 0)
 
   this.total = sum
+  this.save()
   return sum
 }
 

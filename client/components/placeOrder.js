@@ -1,7 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import CartItem from './cart-item'
-import {getOrder} from '../store'
+import InjectedCheckoutForm from './checkout-form'
+import {getOrder, createOrder} from '../store'
+
 import {Link} from 'react-router-dom'
 
 class disPlaceOrder extends React.Component {
@@ -12,14 +14,16 @@ class disPlaceOrder extends React.Component {
     }
   }
   componentDidMount() {
-    this.props.getOrder(this.props.match.params.id)
-    // this.setState({order: this.props.orders})
+    console.log('thie props', this.props.match.params.id)
+    if (this.props.match.params.id !== '0') {
+      console.log('in the get order ')
+      this.props.getOrder(this.props.match.params.id) //get the order
+    } else {
+      this.props.createOrder(this.props.match.params.id) //create guest order
+    }
   }
   render() {
-    // console.log('in the orderC', this.props.order.orders[0].total)
-    console.log('These are the props: ', this.props)
     const total = this.props.order.total ? this.props.order.total : 0
-    console.log('in the orderC', this.props.order.total)
     return (
       <div>
         {this.props.order.products ? (
@@ -34,20 +38,33 @@ class disPlaceOrder extends React.Component {
           <p>No order</p>
         )}
         <p>{total}</p>
-        <button type="button">
+
+        {this.props.order !== undefined ? (
+          <InjectedCheckoutForm
+            order={this.props.order}
+            user={this.props.user}
+          />
+        ) : (
+          ''
+        )}
+
+        {/* <button type="button">Confirm Order</button> */}
+        {/* <button type="button">
           <Link to="/orderSuccess">Confirm Order</Link>
-        </button>
+        </button> */}
       </div>
     )
   }
 }
 
 const mapState = state => ({
-  order: state.order
+  order: state.order,
+  user: state.user
 })
 const mapDispatch = dispatch => {
   return {
-    getOrder: id => dispatch(getOrder(id))
+    getOrder: id => dispatch(getOrder(id)),
+    createOrder: id => dispatch(createOrder(id))
   }
 }
 
