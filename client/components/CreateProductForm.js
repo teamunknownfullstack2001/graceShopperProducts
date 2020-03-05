@@ -49,7 +49,7 @@ const CreateProductForm = props => {
               step=".01"
               min="0"
               name="price"
-              value={props.price}
+              value={`$ ${(props.price / 100).toFixed(2)}`}
               onSubmit={props.onSubmit}
             />
           </li>

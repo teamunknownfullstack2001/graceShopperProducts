@@ -15,7 +15,7 @@ const ProductDummy = props => {
           <h3>
             <i>{product.name}</i>
           </h3>
-          <h3>${product.price}</h3>
+          <h3>{`$ ${(product.price / 100).toFixed(2)}`}</h3>
         </div>
       </Link>
     </div>
