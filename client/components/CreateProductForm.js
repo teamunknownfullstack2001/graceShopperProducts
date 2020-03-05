@@ -65,7 +65,7 @@ const CreateProductForm = props => {
               onSubmit={props.onSubmit}
             />
           </li>
-          <li>
+          {/*<li>
             <label htmlFor="tags">Tags:</label>
             <select multiple={true} name="tags" value={props.tags}>
               <option value="Bathroom">Bathroom</option>
@@ -81,7 +81,7 @@ const CreateProductForm = props => {
               <option value="Vintage">Vintage</option>
               <option value="Woven">Woven</option>
             </select>
-          </li>
+  </li>*/}
           {/*<li>
             <fieldset>
             <label htmlFor="tags">Tags:</label>
