@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const {Order, orderProduct, User, Product} = require('../db/models')
-const {adminOnly, userOnly} = require('./utlis')
+const {adminOnly, userOnly, sendEmail} = require('./utlis')
 module.exports = router
 
 router.get('/', userOnly, async (req, res, next) => {
@@ -27,7 +27,15 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/place/:id', async (req, res, next) => {
   try {
-    console.log(req.body)
+    // console.log(req.body)
+    // console.log(req.body)
+    sendEmail({
+      from: process.env.GOOGLE_EMAIL_ADDRESS, // sender address
+      to: req.body.user.email, // list of receivers
+      subject: `Thank you for your order`, // Subject line
+      text: `${req.body.user.userName}, thank you for your order`, // plain text body
+      html: `<b>${req.body.user.userName}, thank you for your order</b>` // html body
+    })
     const currentOrder = await Order.findByPk(req.params.id)
     await currentOrder.update({
       status: 'placed',

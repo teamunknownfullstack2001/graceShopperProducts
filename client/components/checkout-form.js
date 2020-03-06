@@ -14,7 +14,7 @@ class CheckoutForm extends React.Component {
     }
     console.log('=====order', order, user)
     const paymentBody = {
-      amount: Math.floor(order.total * 100),
+      amount: Math.floor(order.total),
       currency: 'usd',
       metadata: {integration_check: 'accept_a_payment'}
     }
@@ -36,7 +36,9 @@ class CheckoutForm extends React.Component {
         result.paymentIntent.id
       )
       await axios.post(`/api/orders/place/${order.id}`, {
-        stripeId: result.paymentIntent.id
+        stripeId: result.paymentIntent.id,
+        user,
+        order
       })
       window.location.replace('/orderSuccess')
       // change
