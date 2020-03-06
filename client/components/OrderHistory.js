@@ -5,7 +5,16 @@ import {Link} from 'react-router-dom'
 const DisconnectedOrderHistory = props => {
   // const {orders} = props
   const orders = props.user.orders
+
   return (
+    // <div> {
+    //      orders ?
+    //       orders.filter(order => (
+    //         if (order.status === '')
+    //       ))
+    //     }
+    // </div>
+
     <div>
       {orders
         ? orders.map(order => (
@@ -15,7 +24,6 @@ const DisconnectedOrderHistory = props => {
               <h3>
                 {order.products.map(product => (
                   <div key={product.id}>
-                    <h4> Order Status: {order.status}</h4>
                     <h4>Total Charged: {order.total}</h4>
                     {/* <img src={product.imageUrl} />
                     <h4> Item: {product.name}</h4>
