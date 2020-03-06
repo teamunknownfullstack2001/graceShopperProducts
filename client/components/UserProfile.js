@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {getSingleUser} from '../store'
+import {Link} from 'react-router-dom'
+import OrderHistory from './OrderHistory'
 
 class UserProfile extends React.Component {
   componentDidMount() {
@@ -11,7 +13,7 @@ class UserProfile extends React.Component {
     // console.log('These are the props: ', this.props)
     const {user} = this.props
     const {id, phone, userName, email, address, zip, updateInfo, orders} = user
-    console.log('User info: ', user)
+    // console.log('User info: ', user)
     console.log('These are the orders: ', orders)
 
     return (
@@ -21,6 +23,10 @@ class UserProfile extends React.Component {
         <h2>Email: {email}</h2>
         <h2>Address: {address}</h2>
         <h2>Zip: {zip}</h2>
+        <button type="button">
+          <Link to={`/orderHistory/${id}`}>Order History</Link>
+        </button>
+        {/* <OrderHistory prop= {orders}/> */}
         <div>
           {orders
             ? orders.map(order => (

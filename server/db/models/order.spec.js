@@ -40,7 +40,7 @@ describe('Order model', () => {
       it('return the total if there is a order product', async () => {
         const total = await cody.calculate()
 
-        expect(total).to.be.equal(490.74)
+        expect(total).to.be.equal(49074)
       })
     }) // end describe('correctPassword')
   }) // end describe('instanceMethods')
