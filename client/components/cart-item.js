@@ -77,6 +77,7 @@ class CartItem extends React.Component {
             title="Paella dish"
           />
           {this.props.button === true ? (
+            // {true ? (
             <CardActions className={classes.buttonBar}>
               <Button
                 size="large"
