@@ -11,6 +11,7 @@ import placeOrder from './components/placeOrder'
 import UserProfile from './components/UserProfile'
 import OrderSuccessPage from './components/OrderSuccessPage'
 import OrderHistory from './components/OrderHistory'
+import ItemDetails from './components/ItemDetails'
 import Error from './components/Error'
 
 /**
@@ -39,7 +40,6 @@ class Routes extends Component {
         <Route path="/Cart/:id" component={Cart} />
         <Route path="/Order/:id" component={placeOrder} />
         <Route path="/products/:id" component={SingleProduct} />
-
         <Route path="/orderSuccess" component={OrderSuccessPage} />
         <Route exact path="/" component={UserHome} />
 
@@ -48,7 +48,7 @@ class Routes extends Component {
             {/* Routes placed here are only available after logging in */}
             <Route path="/UserProfile/:id" component={UserProfile} />
             <Route path="/orderHistory/:id" component={OrderHistory} />
-
+            <Route path="/itemDetails/:id" component={ItemDetails} />
             {user.type === 'admin' && (
               <Route exact path="/newproduct" component={CreateProduct} />
             )}

@@ -2,7 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {getSingleUser} from '../store'
 import {Link} from 'react-router-dom'
-import OrderHistory from './OrderHistory'
 
 class UserProfile extends React.Component {
   componentDidMount() {
@@ -26,7 +25,7 @@ class UserProfile extends React.Component {
         <button type="button">
           <Link to={`/orderHistory/${id}`}>Order History</Link>
         </button>
-        {/* <OrderHistory prop= {orders}/> */}
+
         <div>
           {orders
             ? orders.map(order => (
