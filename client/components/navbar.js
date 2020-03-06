@@ -162,13 +162,12 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
                 open={openCart}
                 onClose={handleCartClose}
               >
-                <MenuItem onClick={handleCartClose}>
-                  <Link to={`/Cart/${user.id}`}>Cart</Link>
-                </MenuItem>
-
-                <MenuItem onClick={handleCartClose}>
-                  <Link to="/payment">Payment</Link>
-                </MenuItem>
+                <Link to={`/Cart/${user.id}`}>
+                  <MenuItem onClick={handleCartClose}>Cart</MenuItem>
+                </Link>
+                <Link to={`/Order/${user.id}`}>
+                  <MenuItem onClick={handleCartClose}>Order History</MenuItem>
+                </Link>
               </Menu>
 
               <IconButton
@@ -195,23 +194,13 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>
-                  <Link to={`/UserProfile/${user.id}`}>Profile</Link>
-                </MenuItem>
+                <Link to={`/UserProfile/${user.id}`}>
+                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                </Link>
                 <MenuItem onClick={(handleClose, handleClick)}>
                   Log Out
                 </MenuItem>
               </Menu>
-
-              {/*<Link to={`/Cart/${user.id}`}>Cart</Link>
-
-        <Link to="/payment">Payment</Link>*/}
-              {/* <Link to={`/OrderHistory/${user.id}`}>My Order History</Link> */}
-
-              {/*<Link to={`/UserProfile/${user.id}`}>My Profile</Link>*/}
-              {/*<a href="#" onClick={handleClick}>
-            Logout
-        </a>*/}
             </div>
           ) : (
             <div className={classes.navContainer}>
@@ -258,12 +247,12 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
                 open={openCart}
                 onClose={handleCartClose}
               >
-                <MenuItem onClick={handleCartClose}>
-                  <Link to="/Cart/0">Cart</Link>
-                </MenuItem>
-                <MenuItem onClick={handleCartClose}>
-                  <Link to="/payment">Payment</Link>
-                </MenuItem>
+                <Link to="/Cart/0">
+                  <MenuItem onClick={handleCartClose}>Cart</MenuItem>
+                </Link>
+                <Link to="/Order/0">
+                  <MenuItem onClick={handleCartClose}>Order History</MenuItem>
+                </Link>
               </Menu>
 
               <IconButton
@@ -290,12 +279,12 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>
-                  <Link to="/login">Login</Link>
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  <Link to="/signup">Sign Up</Link>{' '}
-                </MenuItem>
+                <Link to="/login">
+                  <MenuItem onClick={handleClose}>Login</MenuItem>
+                </Link>
+                <Link to="/signup">
+                  <MenuItem onClick={handleClose}>Sign Up </MenuItem>
+                </Link>
               </Menu>
 
               {/*<Link to="/Products">Products</Link>
