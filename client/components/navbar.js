@@ -165,7 +165,7 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
                 <Link to={`/Cart/${user.id}`}>
                   <MenuItem onClick={handleCartClose}>Cart</MenuItem>
                 </Link>
-                <Link to={`/Order/${user.id}`}>
+                <Link to={`/OrderHistory/${user.id}`}>
                   <MenuItem onClick={handleCartClose}>Order History</MenuItem>
                 </Link>
               </Menu>
