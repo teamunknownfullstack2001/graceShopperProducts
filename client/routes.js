@@ -10,7 +10,6 @@ import Cart from './components/cart'
 import placeOrder from './components/placeOrder'
 import UserProfile from './components/UserProfile'
 import OrderSuccessPage from './components/OrderSuccessPage'
-
 import Error from './components/Error'
 // import OrderHistory from './components/OrderHistory'
 /**
@@ -39,7 +38,6 @@ class Routes extends Component {
         <Route path="/Cart/:id" component={Cart} />
         <Route path="/Order/:id" component={placeOrder} />
         <Route path="/products/:id" component={SingleProduct} />
-
         <Route path="/orderSuccess" component={OrderSuccessPage} />
         <Route exact path="/" component={UserHome} />
 
