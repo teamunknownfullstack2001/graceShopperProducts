@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import {getSingleProduct, addToOrIncrementCart, deleteProduct} from '../store'
 import Tag from './Tag'
 
@@ -67,18 +68,21 @@ class SingleProduct extends React.Component {
                 Delete
               </Button>
             )}
-            <Button
-              size="large"
-              startIcon={<AddShoppingCartIcon />}
-              onClick={() => {
-                console.log('clicked')
-                this.props.addToCart(this.props.user.id, product)
-              }}
-              // id={1}
-              // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
-            >
-              Add to Cart
-            </Button>
+            <Link to={`/Cart/${this.props.user.id}`}>
+              {' '}
+              <Button
+                size="large"
+                startIcon={<AddShoppingCartIcon />}
+                onClick={() => {
+                  console.log('clicked')
+                  this.props.addToCart(this.props.user.id, product)
+                }}
+                // id={1}
+                // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
+              >
+                Add to Cart
+              </Button>
+            </Link>
           </div>
         </div>
         <div className="tagContainer">

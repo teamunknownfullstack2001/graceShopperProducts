@@ -49,7 +49,6 @@ class Routes extends Component {
             <Route path="/UserProfile/:id" component={UserProfile} />
             <Route path="/orderHistory/:id" component={OrderHistory} />
             <Route path="/itemDetails/:id" component={ItemDetails} />
-
             {user.type === 'admin' && (
               <Route exact path="/newproduct" component={CreateProduct} />
             )}
