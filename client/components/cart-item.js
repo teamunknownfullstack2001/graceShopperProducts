@@ -76,49 +76,53 @@ class CartItem extends React.Component {
             image={this.props.cartItem.imageUrl}
             title="Paella dish"
           />
-          <CardActions className={classes.buttonBar}>
-            <Button
-              size="large"
-              startIcon={<AddIcon />}
-              onClick={() => {
-                this.props.incrementCart(
-                  this.props.user.id,
+          {this.props.button === true ? (
+            <CardActions className={classes.buttonBar}>
+              <Button
+                size="large"
+                startIcon={<AddIcon />}
+                onClick={() => {
+                  this.props.incrementCart(
+                    this.props.user.id,
 
-                  this.props.cartItem
-                )
-              }}
-            >
-              Add
-            </Button>
+                    this.props.cartItem
+                  )
+                }}
+              >
+                Add
+              </Button>
 
-            <Button
-              size="large"
-              startIcon={<RemoveIcon />}
-              onClick={() => {
-                this.props.decrementCart(
-                  this.props.user.id,
+              <Button
+                size="large"
+                startIcon={<RemoveIcon />}
+                onClick={() => {
+                  this.props.decrementCart(
+                    this.props.user.id,
 
-                  this.props.cartItem
-                )
-              }}
-            >
-              Remove
-            </Button>
+                    this.props.cartItem
+                  )
+                }}
+              >
+                Remove
+              </Button>
 
-            <Button
-              size="large"
-              color="secondary"
-              startIcon={<DeleteOutlinedIcon />}
-              onClick={() => {
-                this.props.removeFromCart(
-                  this.props.user.id,
-                  this.props.cartItem
-                )
-              }}
-            >
-              Delete from cart
-            </Button>
-          </CardActions>
+              <Button
+                size="large"
+                color="secondary"
+                startIcon={<DeleteOutlinedIcon />}
+                onClick={() => {
+                  this.props.removeFromCart(
+                    this.props.user.id,
+                    this.props.cartItem
+                  )
+                }}
+              >
+                Delete from cart
+              </Button>
+            </CardActions>
+          ) : (
+            ''
+          )}
         </Card>
       </div>
     )

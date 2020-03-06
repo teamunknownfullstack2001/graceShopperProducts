@@ -31,6 +31,7 @@ class disPlaceOrder extends React.Component {
         {this.props.order.products ? (
           this.props.order.products.map(cartItem => (
             <CartItem
+              button={false}
               key={cartItem.id}
               cartItem={cartItem}
               cartId={this.props.cartId}
@@ -56,6 +57,7 @@ class disPlaceOrder extends React.Component {
 
 const mapState = state => ({
   order: state.order,
+  // products: state.userCart.products,
   user: state.user
 })
 const mapDispatch = dispatch => {

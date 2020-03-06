@@ -24,7 +24,7 @@ class Cart extends React.Component {
 
         {this.props.products
           ? this.props.products.map(cartItem => (
-              <CartItem key={cartItem.id} cartItem={cartItem} />
+              <CartItem button={true} key={cartItem.id} cartItem={cartItem} />
             ))
           : ''}
         {
