@@ -16,7 +16,7 @@ describe('Order model', () => {
         category: 'Oval',
         description:
           'vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus',
-        price: 490.74,
+        price: 49074,
         stock: 64
       }
       const exOrder = {
@@ -40,7 +40,7 @@ describe('Order model', () => {
       it('return the total if there is a order product', async () => {
         const total = await cody.calculate()
 
-        expect(total).to.be.equal(490.74)
+        expect(total).to.be.equal(49074)
       })
     }) // end describe('correctPassword')
   }) // end describe('instanceMethods')

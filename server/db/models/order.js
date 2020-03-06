@@ -7,7 +7,7 @@ const Order = db.define('order', {
     defaultValue: 'inCart'
   },
   total: {
-    type: Sequelize.DECIMAL(12, 2),
+    type: Sequelize.INTEGER,
     defaultValue: 0.0
   },
   stripeId: {

@@ -68,7 +68,7 @@ class CartItem extends React.Component {
               {`Qty: ${this.props.cartItem.orderproduct.quantity}`}
             </Typography>
             <Typography variant="h5" className={classes.price} component="h2">
-              {`Price: ${this.props.cartItem.price}`}
+              {`Price: $ ${(this.props.cartItem.price / 100).toFixed(2)}`}
             </Typography>
           </CardContent>
           <CardMedia
