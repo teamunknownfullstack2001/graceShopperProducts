@@ -6,6 +6,7 @@ import {Login, Signup, UserHome, CreateProduct} from './components'
 import {me, fetchProducts, getUserCart} from './store'
 import InjectedCheckoutForm from './components/checkout-form'
 import SingleProduct from './components/SingleProduct'
+import EditProduct from './components/EditProduct'
 import Cart from './components/cart'
 import placeOrder from './components/placeOrder'
 import UserProfile from './components/UserProfile'
@@ -39,27 +40,39 @@ class Routes extends Component {
         <Route path="/Payment" component={InjectedCheckoutForm} />
         <Route path="/Cart/:id" component={Cart} />
         <Route path="/Order/:id" component={placeOrder} />
-        <Route path="/products/:id" component={SingleProduct} />
-        <Route path="/orderSuccess" component={OrderSuccessPage} />
+        <Route exact path="/products/:id" component={SingleProduct} />
+        <Route path="/orderSuccess/:id" component={OrderSuccessPage} />
         <Route exact path="/" component={UserHome} />
-
         {isLoggedIn && (
+          <Route path="/UserProfile/:id" component={UserProfile} />
+        )}
+        {isLoggedIn && (
+          <Route path="/orderHistory/:id" component={OrderHistory} />
+        )}
+        {isLoggedIn && (
+          <Route path="/itemDetails/:id" component={ItemDetails} />
+        )}
+
+        {isLoggedIn && user.type === 'admin' && (
+          <Route exact path="/newproduct" component={CreateProduct} />
+        )}
+        {isLoggedIn && user.type === 'admin' && (
+          <Route path="/products/:id/edit" component={EditProduct} />
+        )}
+
+        {/* {isLoggedIn && (
           <Switch>
-            {/* Routes placed here are only available after logging in */}
             <Route path="/UserProfile/:id" component={UserProfile} />
             <Route path="/orderHistory/:id" component={OrderHistory} />
             <Route path="/itemDetails/:id" component={ItemDetails} />
             {user.type === 'admin' && (
               <Route exact path="/newproduct" component={CreateProduct} />
             )}
-            {/* <Route path="/OrderHistory/:id" component={OrderHistory} /> */}
           </Switch>
-        )}
+        )} */}
         {/* Displays our Login component as a fallback */}
-
-        <Route path="/404" component={Error} />
-        <Redirect to="/404" />
-        <Route component={Login} />
+        <Route path="/*" component={Error} />
+        {/* <Redirect to="/404" /> */}
       </Switch>
     )
   }

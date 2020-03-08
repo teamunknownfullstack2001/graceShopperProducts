@@ -50,6 +50,22 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
+router.put('/:id', adminOnly, async (req, res, next) => {
+  try {
+    const product = await Product.findByPk(req.params.id)
+    if (product) {
+      const updatedProduct = await product.update(req.body, {
+        where: {
+          id: req.params.id
+        }
+      })
+      res.status(200).json(updatedProduct)
+    }
+  } catch (error) {
+    next(error)
+  }
+})
+
 router.delete('/:id', adminOnly, async (req, res, next) => {
   try {
     const product = await Product.findByPk(req.params.id)

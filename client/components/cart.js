@@ -6,6 +6,17 @@ import {getUserCart} from '../store'
 // import {getQuestion} from '../store'
 import PlaceOrder from './placeOrder'
 import {Link} from 'react-router-dom'
+
+import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined'
+import {
+  // Card,
+  // CardContent,
+  // CardActions,
+  // Typography,
+  // CardMedia,
+  Button
+} from '@material-ui/core'
+
 class Cart extends React.Component {
   constructor() {
     super()
@@ -13,10 +24,10 @@ class Cart extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getUserCart(this.props.match.params.id)
+    this.props.getUserCart(this.props.match.params.id) // userId
   }
   render() {
-    const orderid = this.props.cartId ? this.props.cartId : 0
+    const orderid = this.props.cartId ? this.props.cartId : 0 // needed for checkout, not here
     console.log('this cart', this.props.cartId)
     return (
       <div>
@@ -24,14 +35,21 @@ class Cart extends React.Component {
 
         {this.props.products
           ? this.props.products.map(cartItem => (
-              <CartItem key={cartItem.id} cartItem={cartItem} />
+              <CartItem button={true} key={cartItem.id} cartItem={cartItem} />
             ))
           : ''}
         {
-          <button type="button">
-            {' '}
-            <Link to={`/Order/${orderid}`}>Order</Link>
-          </button>
+          <Button
+            size="large"
+            color="secondary"
+            href={`/Order/${orderid}`}
+            // startIcon={<DeleteOutlinedIcon />}
+            // onClick={() => {
+            //   this.props.removeFromCart(this.props.user.id, this.props.cartItem)
+            // }}
+          >
+            check out
+          </Button>
         }
       </div>
     )
@@ -41,7 +59,7 @@ class Cart extends React.Component {
 const mapState = state => ({
   user: state.user,
   products: state.userCart.products,
-  cartId: state.userCart.cartId
+  cartId: state.userCart.cartId // orderId
 })
 const mapDispatch = dispatch => ({
   getUserCart: id => {
