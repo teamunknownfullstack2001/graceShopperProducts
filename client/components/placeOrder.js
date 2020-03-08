@@ -49,7 +49,6 @@ class disPlaceOrder extends React.Component {
         </div>
 
         <div className="row">
-          {/* {this.props.user.id ? <AddressForm user={this.props.user} /> : ''} */}
           {this.props.order.products ? (
             <OrderItem products={this.props.order.products} total={total} />
           ) : (
@@ -75,9 +74,7 @@ class disPlaceOrder extends React.Component {
           )}
         </div>
 
-        <Typography variant="h6" gutterBottom>
-          Payment
-        </Typography>
+        <h4 className="mb-3">Payment</h4>
         {this.props.order !== undefined ? (
           <InjectedCheckoutForm
             order={this.props.order}
