@@ -6,21 +6,10 @@ import history from '../history'
  */
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
-
+const UPDATE_USER = 'UPDATE_USER'
 /**
  * INITIAL STATE
  */
-
-// const defaultUser = {
-//   id: 0,
-//   userName: 'Guest',
-//   email: 'Shopper',
-//   googleId: null,
-//   type: 'user',
-//   address: '',
-//   zip: '00000',
-//   phone: '000-000-0000'
-// }
 
 const defaultUser = {
   id: 0,
@@ -38,7 +27,10 @@ const defaultUser = {
  */
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
-
+const updateUser = user => ({
+  type: UPDATE_USER,
+  user
+})
 /**
  * THUNK CREATORS
  */
@@ -81,10 +73,22 @@ export const getSingleUser = id => {
   return async dispatch => {
     try {
       const {data} = await axios.get(`/api/users/${id}`)
-      console.log('This is the data: ', data)
+
       dispatch(getUser(data))
     } catch (error) {
-      console.log(error)
+      console.error(error)
+    }
+  }
+}
+
+export const updateUserThunk = (id, info) => {
+  return async dispatch => {
+    try {
+      await axios.put(`/api/users/${id}`, info)
+
+      // dispatch(updateUser(data))
+    } catch (error) {
+      console.error(error)
     }
   }
 }
@@ -98,6 +102,8 @@ export default function(state = defaultUser, action) {
       return action.user
     case REMOVE_USER:
       return defaultUser
+    case UPDATE_USER:
+      return action.user
     default:
       return state
   }
