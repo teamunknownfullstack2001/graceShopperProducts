@@ -10,7 +10,8 @@ router.get('/:id', async (req, res, next) => {
     try {
       const [cart, created] = await Order.findOrCreate({
         include: [{model: Product, through: {attributes: ['quantity']}}], //,
-        where: {status: 'inCart', userId: +req.params.id}
+        where: {status: 'inCart', userId: +req.params.id},
+        order: [['id', 'DESC']]
       })
       res.json(cart)
     } catch (error) {

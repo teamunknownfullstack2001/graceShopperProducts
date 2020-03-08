@@ -9,7 +9,7 @@ class CheckoutForm extends React.Component {
   handleSubmit = async event => {
     event.preventDefault()
 
-    const {stripe, elements, order, user, state} = this.props
+    const {stripe, elements, order, user, state, updateuser} = this.props
 
     //create the user || update the user info
     await this.props.updateuser(user.id, state)
@@ -40,6 +40,15 @@ class CheckoutForm extends React.Component {
         'Payment Success!!Should Redirect to Order Success Page',
         result.paymentIntent.id
       )
+      console.log(stripe, elements, order, user, state, updateuser)
+      if (user.id === 0) {
+        user.email = state.email
+        user.address = state.address
+        user.zip = state.zip
+        user.phone = state.phone
+        user.name = state.name
+      }
+
       await axios.post(`/api/orders/place/${order.id}`, {
         stripeId: result.paymentIntent.id,
         user,
