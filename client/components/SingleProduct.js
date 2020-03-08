@@ -47,7 +47,11 @@ class SingleProduct extends React.Component {
               <i>{name}</i>
             </h1>
             <p>{`$ ${(price / 100).toFixed(2)}`}</p>
-            {stock < 10 ? <p> only {stock} left!</p> : ''}
+            {stock < 10 ? (
+              <p className="text-danger"> Only {stock} left!-order soon.</p>
+            ) : (
+              ''
+            )}
             <p>{description}</p>
             <p>
               Category:
