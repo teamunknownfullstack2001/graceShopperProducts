@@ -40,7 +40,7 @@ class CheckoutForm extends React.Component {
         user,
         order
       })
-      window.location.replace('/orderSuccess')
+      window.location.replace(`/orderSuccess/${user.id}?orderId=${order.id}`)
       // change
     }
   }

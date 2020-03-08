@@ -67,22 +67,28 @@ class SingleProduct extends React.Component {
               >
                 Delete
               </Button>
-            )}
-            <Link to={`/Cart/${this.props.user.id}`}>
-              {' '}
-              <Button
-                size="large"
-                startIcon={<AddShoppingCartIcon />}
-                onClick={() => {
-                  console.log('clicked')
-                  this.props.addToCart(this.props.user.id, product)
-                }}
-                // id={1}
-                // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
-              >
-                Add to Cart
-              </Button>
-            </Link>
+            )}{' '}
+            <Button
+              size="large"
+              startIcon={<AddShoppingCartIcon />}
+              onClick={() => {
+                console.log('clicked')
+                this.props.addToCart(this.props.user.id, product)
+              }}
+            >
+              Add to Cart
+            </Button>
+            <Button
+              size="large"
+              startIcon={<AddShoppingCartIcon />}
+              onClick={() => {
+                console.log('clicked')
+                this.props.addToCart(this.props.user.id, product)
+                window.location.replace(`/Cart/${this.props.user.id}`)
+              }}
+            >
+              Add and go to Cart
+            </Button>
           </div>
         </div>
         <div className="tagContainer">
