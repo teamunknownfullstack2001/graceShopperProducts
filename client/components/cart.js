@@ -24,10 +24,10 @@ class Cart extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getUserCart(this.props.match.params.id)
+    this.props.getUserCart(this.props.match.params.id) // userId
   }
   render() {
-    const orderid = this.props.cartId ? this.props.cartId : 0
+    const orderid = this.props.cartId ? this.props.cartId : 0 // needed for checkout, not here
     console.log('this cart', this.props.cartId)
     return (
       <div>
@@ -48,7 +48,7 @@ class Cart extends React.Component {
             //   this.props.removeFromCart(this.props.user.id, this.props.cartItem)
             // }}
           >
-            Go To Cart
+            check out
           </Button>
         }
       </div>
@@ -59,7 +59,7 @@ class Cart extends React.Component {
 const mapState = state => ({
   user: state.user,
   products: state.userCart.products,
-  cartId: state.userCart.cartId
+  cartId: state.userCart.cartId // orderId
 })
 const mapDispatch = dispatch => ({
   getUserCart: id => {

@@ -22,7 +22,6 @@ router.get('/:id', async (req, res, next) => {
     const singleUser = await User.findByPk(req.params.id, {
       include: [{model: Order, include: {model: Product}}]
     })
-
     res.json(singleUser)
   } catch (error) {
     next(error)

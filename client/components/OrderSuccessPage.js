@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {getSingleUser} from '../store'
+import queryString from 'query-string'
 
 class OrderSuccessPage extends React.Component {
   componentDidMount() {
@@ -10,11 +11,13 @@ class OrderSuccessPage extends React.Component {
   render() {
     console.log('These are the props: ', this.props)
     const {user} = this.props
+    const orderId = queryString.parse(this.props.location.search).orderId
     return (
       <div>
         <h1>
-          Thank you for your order {user.userName}. Your order will be shipped
-          to {user.address}
+          Thank you for your order {user.userName}. Your order ID is {orderId}.
+          Your order will be shipped to {user.address}. You will also receive
+          email receipt at {user.email}
         </h1>
       </div>
     )
