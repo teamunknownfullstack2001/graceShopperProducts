@@ -14,6 +14,13 @@ const userOnly = (req, res, next) => {
     res.sendStatus(404)
   }
 }
+const userRequire = (req, res, next) => {
+  if (req.user) {
+    next()
+  } else {
+    res.sendStatus(404)
+  }
+}
 
 const nodemailer = require('nodemailer')
 const {google} = require('googleapis')
@@ -66,4 +73,4 @@ async function sendEmail(emailBody) {
   console.log('Message sent: %s', info.messageId)
 }
 
-module.exports = {adminOnly, userOnly, sendEmail}
+module.exports = {adminOnly, userOnly, userRequire, sendEmail}

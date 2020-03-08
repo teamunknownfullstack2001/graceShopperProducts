@@ -7,12 +7,7 @@ const CreateProductForm = props => {
         <form onSubmit={props.onSubmit}>
           <li>
             <label htmlFor="name">Name:</label>
-            <input
-              type="text"
-              name="name"
-              value={props.name}
-              onSubmit={props.onSubmit}
-            />
+            <input type="text" name="name" />
           </li>
           <li>
             <label htmlFor="imageUrl">Image Url:</label>
@@ -20,7 +15,6 @@ const CreateProductForm = props => {
               type="text"
               name="imageUrl"
               defaultValue="https://images.rugimg.com/3140387/3140387_image_1010.jpg?canvas=740%2C700&fit=bounds&bg-color=white&height=700&width=740&quality=85"
-              onSubmit={props.onSubmit}
             />
           </li>
           <li>
@@ -36,11 +30,7 @@ const CreateProductForm = props => {
           </li>
           <li>
             <label htmlFor="description">Description:</label>
-            <textarea
-              name="description"
-              value={props.description}
-              onSubmit={props.onSubmit}
-            />
+            <textarea name="description" />
           </li>
           <li>
             <label htmlFor="price">Price:</label>
@@ -50,7 +40,6 @@ const CreateProductForm = props => {
               min="0"
               name="price"
               // value={`$ ${(props.price / 100).toFixed(2)}`}
-              onSubmit={props.onSubmit}
             />
           </li>
           <li>
@@ -61,8 +50,6 @@ const CreateProductForm = props => {
               min="0"
               max="100"
               name="stock"
-              value={props.stock}
-              onSubmit={props.onSubmit}
             />
           </li>
           {/*<li>

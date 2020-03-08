@@ -59,7 +59,10 @@ class EditProduct extends Component {
         <div>
           <div>
             {product !== undefined && (
-              <EditProductForm onSubmit={this.handleModify} product={product} />
+              <EditProductForm
+                handleSubmit={this.handleModify}
+                initialValues={product}
+              />
             )}
           </div>
         </div>

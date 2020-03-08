@@ -1,41 +1,51 @@
 import React from 'react'
 
+const initialValsFromProps = (field, initialValues) => {
+  return initialValues ? initialValues[field] : ''
+}
+
 const EditProductForm = props => {
+  const {initialValues, handleSubmit} = props
+
   return (
     <div>
       <ul>
-        <form onSubmit={props.onSubmit}>
+        <form onSubmit={handleSubmit}>
           <li>
             <label htmlFor="name">Name:</label>
             <input
               type="text"
               name="name"
-              defaultValue={props.name}
-              value={props.name}
-              onSubmit={props.onSubmit}
+              defaultValue={initialValsFromProps('name', initialValues)}
             />
           </li>
           <li>
             <label htmlFor="imageUrl">Image Url:</label>
-            <input type="text" name="imageUrl" onSubmit={props.onSubmit} />
+            <input
+              type="text"
+              name="imageUrl"
+              defaultValue={initialValsFromProps('imageUrl', initialValues)}
+            />
           </li>
           <li>
             <label htmlFor="category">Category:</label>
-            <select name="category" value={props.category}>
+            <select
+              name="category"
+              defaultValue={initialValsFromProps('category', initialValues)}
+            >
               <option value="Area">Area</option>
-              <option value="Modern">Modern</option>
-              <option value="Moroccan">Moroccan</option>
-              <option value="Natural">Natural</option>
-              <option value="Oriental">Oriental</option>
-              <option value="Persian">Persian</option>
+              <option value="Octagon">Octagon</option>
+              <option value="Oval">Oval</option>
+              <option value="Round">Round</option>
+              <option value="Runner">Runner</option>
+              <option value="Square">Square</option>
             </select>
           </li>
           <li>
             <label htmlFor="description">Description:</label>
             <textarea
               name="description"
-              value={props.description}
-              onSubmit={props.onSubmit}
+              defaultValue={initialValsFromProps('description', initialValues)}
             />
           </li>
           <li>
@@ -45,8 +55,10 @@ const EditProductForm = props => {
               step=".01"
               min="0"
               name="price"
+              defaultValue={(
+                initialValsFromProps('price', initialValues) / 100
+              ).toFixed(2)}
               // value={`$ ${(props.price / 100).toFixed(2)}`}
-              onSubmit={props.onSubmit}
             />
           </li>
           <li>
@@ -57,8 +69,7 @@ const EditProductForm = props => {
               min="0"
               max="100"
               name="stock"
-              value={props.stock}
-              onSubmit={props.onSubmit}
+              defaultValue={initialValsFromProps('stock', initialValues)}
             />
           </li>
           {/*<li>

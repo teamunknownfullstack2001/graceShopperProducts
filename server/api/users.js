@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const {User, Order, Product} = require('../db/models')
-const {adminOnly, userOnly} = require('./utlis')
+const {adminOnly, userOnly, userRequire} = require('./utlis')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -23,6 +23,17 @@ router.get('/:id', async (req, res, next) => {
       include: [{model: Order, include: {model: Product}}]
     })
     res.json(singleUser)
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.put('/:id', async (req, res, next) => {
+  try {
+    console.log('in the put user put', req.body)
+    const currentUser = await User.findByPk(req.params.id)
+    const updatedUser = await currentUser.update(req.body)
+    res.json(updatedUser)
   } catch (error) {
     next(error)
   }
