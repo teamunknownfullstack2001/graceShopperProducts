@@ -61,7 +61,7 @@ async function sendEmail(emailBody) {
   const transporter = nodemailer.createTransport(mailConfig)
 
   // send mail with defined transport object
-  let info = await transporter.sendMail(wdy)
+  let info = await transporter.sendMail(emailBody)
 
   console.log('Message sent: %s', info.messageId)
 }
