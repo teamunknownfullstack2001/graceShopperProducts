@@ -21,6 +21,7 @@ class SingleProduct extends React.Component {
   constructor() {
     super()
     this.handleRemove = this.handleRemove.bind(this)
+    this.handleEdit = this.handleEdit.bind(this)
   }
   componentDidMount() {
     this.props.getSingleProduct(this.props.match.params.id)
@@ -29,6 +30,10 @@ class SingleProduct extends React.Component {
     await this.props.removeProduct(productId)
 
     this.props.history.push('/products')
+  }
+
+  handleEdit = id => {
+    this.props.history.push(`/products/${id}/edit`)
   }
 
   render() {
@@ -63,10 +68,20 @@ class SingleProduct extends React.Component {
                 onClick={() => {
                   this.handleRemove(product.id)
                 }}
-                // id={1}
-                // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
               >
                 Delete
+              </Button>
+            )}
+            {this.props.user.type === 'admin' && (
+              <Button
+                size="large"
+                color="secondary"
+                startIcon={<DeleteForeverIcon />}
+                onClick={() => {
+                  this.handleEdit(product.id)
+                }}
+              >
+                Edit Product
               </Button>
             )}{' '}
             <Button
