@@ -28,7 +28,8 @@ class Cart extends React.Component {
   }
   render() {
     const orderid = this.props.cartId ? this.props.cartId : 0
-    console.log('this cart', this.props.cartId)
+    const userid = this.props.user.id ? this.props.user.id : 0
+
     return (
       <div>
         <h3>Cart</h3>
@@ -42,7 +43,7 @@ class Cart extends React.Component {
           <Button
             size="large"
             color="secondary"
-            href={`/Order/${orderid}`}
+            href={`/Order/${orderid}/${userid}`}
             // startIcon={<DeleteOutlinedIcon />}
             // onClick={() => {
             //   this.props.removeFromCart(this.props.user.id, this.props.cartItem)

@@ -50,7 +50,11 @@ class CheckoutForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <CardSection />
-        <button type="submit" disabled={!this.props.stripe}>
+        <button
+          className="btn btn-primary btn-lg btn-block"
+          type="submit"
+          disabled={!this.props.stripe}
+        >
           Confirm order
         </button>
       </form>
