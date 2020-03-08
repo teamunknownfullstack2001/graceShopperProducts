@@ -75,12 +75,9 @@ class SingleProduct extends React.Component {
                 console.log('clicked')
                 this.props.addToCart(this.props.user.id, product)
               }}
-              // id={1}
-              // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
             >
               Add to Cart
             </Button>
-            {/* <Link to={`/Cart/${this.props.user.id}`}> */}
             <Button
               size="large"
               startIcon={<AddShoppingCartIcon />}
@@ -89,12 +86,9 @@ class SingleProduct extends React.Component {
                 this.props.addToCart(this.props.user.id, product)
                 window.location.replace(`/Cart/${this.props.user.id}`)
               }}
-              // id={1}
-              // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
             >
               Add and go to Cart
             </Button>
-            {/* </Link> */}
           </div>
         </div>
         <div className="tagContainer">
