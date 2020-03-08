@@ -5,6 +5,7 @@ const {adminOnly, userOnly} = require('./utlis')
 module.exports = router
 
 router.get('/:id', async (req, res, next) => {
+  // userId
   if (req.session.passport) {
     try {
       const [cart, created] = await Order.findOrCreate({
@@ -98,6 +99,7 @@ router.put('/:id', async (req, res, next) => {
       productI => productI.id === +req.body.id
     )
     if (alreadyInCart === -1) {
+      // not found
       req.session.cart.products.push({
         ...product.dataValues,
         orderproduct: {quantity: 1}

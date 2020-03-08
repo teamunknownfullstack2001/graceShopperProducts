@@ -30,12 +30,17 @@ router.post('/place/:id', async (req, res, next) => {
   try {
     // console.log(req.body)
     // console.log(req.body)
+    if (req.session.cart !== undefined) {
+      req.session.cart = []
+    }
+    const {user, order} = req.body
     sendEmail({
       from: process.env.GOOGLE_EMAIL_ADDRESS, // sender address
-      to: req.body.user.email, // list of receivers
+      to: user.email, // list of receivers
       subject: `Thank you for your order`, // Subject line
-      text: `${req.body.user.userName}, thank you for your order`, // plain text body
-      html: `<b>${req.body.user.userName}, thank you for your order</b>` // html body
+      // text: `${req.body.user.userName}, thank you for your order`, // plain text body
+      html: `<b> Thank you for your order ${user.userName}. Your order ID is ${order.id}.
+      Your order will be shipped to ${user.address}. </b>` // html body
     })
     const currentOrder = await Order.findByPk(req.params.id)
     await currentOrder.update({
