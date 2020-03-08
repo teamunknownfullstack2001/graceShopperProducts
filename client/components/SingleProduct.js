@@ -34,7 +34,7 @@ class SingleProduct extends React.Component {
   render() {
     const {classes} = this.props
     const {product} = this.props
-    const {id, imageUrl, name, description, price, category} = product
+    const {id, imageUrl, name, description, price, category, stock} = product
 
     return (
       <div key={id}>
@@ -47,6 +47,7 @@ class SingleProduct extends React.Component {
               <i>{name}</i>
             </h1>
             <p>{`$ ${(price / 100).toFixed(2)}`}</p>
+            {stock < 10 ? <p> only {stock} left!</p> : ''}
             <p>{description}</p>
             <p>
               Category:
