@@ -13,8 +13,9 @@ class OrderSuccessPage extends React.Component {
     return (
       <div>
         <h1>
-          Thank you for your order {user.userName}. Your order will be shipped
-          to {user.address}
+          Thank you for your order {user.userName}. Your order ID is . Your
+          order will be shipped to {user.address}. You will also receive email
+          receipt at {user.email}
         </h1>
       </div>
     )
