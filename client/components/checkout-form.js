@@ -60,7 +60,7 @@ class CheckoutForm extends React.Component {
           type="submit"
           disabled={!this.props.stripe}
         >
-          Confirm order
+          Continue to checkout
         </button>
       </form>
     )

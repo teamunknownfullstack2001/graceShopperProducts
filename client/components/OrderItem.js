@@ -3,9 +3,9 @@ import React from 'react'
 export default function OrderItem(props) {
   const {products} = props
   return (
-    <div className='"col-md-4 order-md-2 mb-4"'>
+    <div className="col-md-4 order-md-2 mb-4">
       <h4 className="d-flex justify-content-between align-items-center mb-3">
-        <span className="text-muted">Your cart</span>
+        <span className="text-muted">Order Summary </span>
         <span className="badge badge-secondary badge-pill">
           {products.length}
         </span>
@@ -18,12 +18,14 @@ export default function OrderItem(props) {
           >
             <div>
               <h6 className="my-0">{product.name}</h6>
-              <small className=" text-muted ">
-                {product.description.slice(0, 20)}
-              </small>
+
+              <small className=" text-muted ">{product.description}</small>
             </div>
-            <span className="text-muted">
+            <span className="  font-weight-bold text-muted">
               ${(product.price / 100).toFixed(2)}
+              <p className=" text-right font-weight-normal">
+                {'Qty ' + product.orderproduct.quantity}
+              </p>
             </span>
           </li>
         ))}
