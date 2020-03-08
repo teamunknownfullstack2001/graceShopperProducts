@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Error = () => {
+  console.log('test')
   return (
     <div className="container">
       <h1>
