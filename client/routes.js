@@ -51,9 +51,7 @@ class Routes extends Component {
         {isLoggedIn && (
           <Route path="/itemDetails/:id" component={ItemDetails} />
         )}
-        {isLoggedIn && (
-          <Route path="/UserProfile/:id" component={UserProfile} />
-        )}
+
         {isLoggedIn && user.type === 'admin' && (
           <Route exact path="/newproduct" component={CreateProduct} />
         )}
@@ -68,8 +66,8 @@ class Routes extends Component {
           </Switch>
         )} */}
         {/* Displays our Login component as a fallback */}
-        <Route path="/404" component={Error} />
-        <Redirect to="/404" />
+        <Route path="/*" component={Error} />
+        {/* <Redirect to="/404" /> */}
       </Switch>
     )
   }
