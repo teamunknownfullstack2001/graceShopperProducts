@@ -2,13 +2,18 @@ import CardSection from './card-section'
 import React from 'react'
 import {ElementsConsumer, CardElement} from '@stripe/react-stripe-js'
 import {connect} from 'react-redux'
+import {updateUserThunk} from '../store'
 import axios from 'axios'
 
 class CheckoutForm extends React.Component {
   handleSubmit = async event => {
     event.preventDefault()
 
-    const {stripe, elements, order, user} = this.props
+    const {stripe, elements, order, user, state} = this.props
+
+    //create the user || update the user info
+    await this.props.updateuser(user.id, state)
+
     if (!stripe || !elements) {
       return
     }
@@ -40,7 +45,7 @@ class CheckoutForm extends React.Component {
         user,
         order
       })
-      window.location.replace(`/orderSuccess/${user.id}?orderId=${order.id}`)
+      // window.location.replace(`/orderSuccess/${user.id}?orderId=${order.id}`)
       // change
     }
   }
@@ -71,17 +76,20 @@ function DisInjectedCheckoutForm(props) {
           elements={elements}
           order={props.order}
           user={props.user}
+          state={props.state}
+          updateuser={props.updateuser}
         />
       )}
     </ElementsConsumer>
   )
 }
 const mapState = state => ({})
-const mapDispatch = dispatch => ({})
+const mapDispatch = dispatch => {
+  return {
+    updateuser: (id, info) => dispatch(updateUserThunk(id, info))
+  }
+}
 
-const InjectedCheckoutForm = connect(
-  mapState,
-  mapDispatch
-)(DisInjectedCheckoutForm)
+const InjectedCheckoutForm = connect(null, mapDispatch)(DisInjectedCheckoutForm)
 
 export default InjectedCheckoutForm

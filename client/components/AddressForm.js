@@ -1,36 +1,22 @@
 import React from 'react'
 
 export default class AddressForm extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      name: '',
-      password: '',
-      email: '',
-      address: '',
-      zip: '',
-      phone: ''
-    }
-    this.handleChange = this.handleChange.bind(this)
-  }
-  handleChange(evt) {
-    this.setState({
-      [evt.target.name]: evt.target.value
-    })
-  }
   componentDidMount() {
-    this.setState({
-      name: this.props.user.userName || '',
-      email: this.props.user.email,
-      address: this.props.user.address || '',
-      zip: this.props.user.zip || '',
-      phone: this.props.user.phone || ''
-    })
+    if (this.props.user) {
+      this.props.state.name = this.props.user.userName || ''
+      this.props.state.email = this.props.user.email
+      this.props.state.address = this.props.user.address || ''
+      this.props.state.zip = this.props.user.zip || ''
+      this.props.state.phone = this.props.user.phone || ''
+    }
+    console.log('in address form compoenet', this.props.user)
   }
   render() {
+    const {handleChange, state} = this.props
+    console.log('in the render', this.props.state)
     return (
-      <div className="col-md-8 order-md-1">
-        <h4 className="mb-3">Billing address</h4>
+      <div>
+        <h4 className="mb-3">Shipping address</h4>
         <form className="needs-validation" noValidate>
           <div className="row">
             <div className="col-md-6 mb-3">
@@ -38,10 +24,10 @@ export default class AddressForm extends React.Component {
               <input
                 type="text"
                 className="form-control"
-                id="firstName"
+                name="name"
                 placeholder=""
-                value=""
-                onChange={this.handleChange}
+                value={state.name}
+                onChange={handleChange}
                 required
               />
               <div className="invalid-feedback">
@@ -54,9 +40,10 @@ export default class AddressForm extends React.Component {
                 type="email"
                 className="form-control"
                 placeholder=""
-                value=""
+                name="email"
+                value={state.email}
                 placeholder="you@example.com"
-                onChange={this.handleChange}
+                onChange={handleChange}
                 required
               />
 
@@ -70,9 +57,10 @@ export default class AddressForm extends React.Component {
                 type="text"
                 className="form-control"
                 placeholder=""
-                value=""
+                name="address"
+                value={state.address}
                 placeholder="1234 Main St"
-                onChange={this.handleChange}
+                onChange={handleChange}
                 required
               />
               <div className="invalid-feedback">
@@ -86,9 +74,9 @@ export default class AddressForm extends React.Component {
             <input
               type="text"
               className="form-control"
-              id="address"
-              placeholder="1234 Main St"
-              onChange={this.handleChange}
+              name="phone"
+              value={state.phone}
+              onChange={handleChange}
               required
             />
             <div className="invalid-feedback">
@@ -100,9 +88,9 @@ export default class AddressForm extends React.Component {
             <input
               type="text"
               className="form-control"
-              id="zip"
-              placeholder=""
-              onChange={this.handleChange}
+              name="zip"
+              value={state.zip}
+              onChange={handleChange}
               required
             />
             <div className="invalid-feedback">Zip code required.</div>

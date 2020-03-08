@@ -27,3 +27,14 @@ router.get('/:id', async (req, res, next) => {
     next(error)
   }
 })
+
+router.put('/:id', async (req, res, next) => {
+  try {
+    console.log('in the put user put', req.body)
+    const currentUser = await User.findByPk(req.params.id)
+    const updatedUser = await currentUser.update(req.body)
+    res.json(updatedUser)
+  } catch (error) {
+    next(error)
+  }
+})

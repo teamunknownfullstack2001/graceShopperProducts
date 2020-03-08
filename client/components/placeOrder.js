@@ -11,7 +11,21 @@ import OrderItem from './OrderItem'
 class disPlaceOrder extends React.Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      name: '',
+      password: '',
+      email: '',
+      address: '',
+      zip: '',
+      phone: ''
+    }
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange(evt) {
+    this.setState({
+      [evt.target.name]: evt.target.value
+    })
   }
   componentDidMount() {
     console.log('thie props', this.props)
@@ -27,7 +41,7 @@ class disPlaceOrder extends React.Component {
     const total = this.props.order.total
       ? `$ ${(this.props.order.total / 100).toFixed(2)}`
       : 0
-    console.log('in place order', this.props)
+    console.log('in place order', this.state)
     return (
       <div className="container">
         <div className="py-5 text-center">
@@ -41,7 +55,24 @@ class disPlaceOrder extends React.Component {
           ) : (
             <p>No order</p>
           )}
-          {this.props.user.id ? <AddressForm user={this.props.user} /> : ''}
+          {this.props.user.id !== 0 ? (
+            <AddressForm
+              user={this.props.user}
+              state={this.state}
+              handleChange={this.handleChange}
+            />
+          ) : (
+            ''
+          )}
+          {this.props.user.id === 0 ? (
+            <AddressForm
+              // user={this.props.user}
+              state={this.state}
+              handleChange={this.handleChange}
+            />
+          ) : (
+            ''
+          )}
         </div>
 
         <Typography variant="h6" gutterBottom>
@@ -51,6 +82,7 @@ class disPlaceOrder extends React.Component {
           <InjectedCheckoutForm
             order={this.props.order}
             user={this.props.user}
+            state={this.state}
           />
         ) : (
           ''
