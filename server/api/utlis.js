@@ -33,7 +33,7 @@ async function sendEmail(emailBody) {
   let mailConfig
   if (process.env.NODE_ENV === 'production') {
     // this actually delivers the emails,
-    // if (true) {
+    // if (true) {  //
     const accessToken = oauth2Client.getAccessToken()
     mailConfig = {
       service: 'gmail',
@@ -61,7 +61,7 @@ async function sendEmail(emailBody) {
   const transporter = nodemailer.createTransport(mailConfig)
 
   // send mail with defined transport object
-  let info = await transporter.sendMail(emailBody)
+  let info = await transporter.sendMail(wdy)
 
   console.log('Message sent: %s', info.messageId)
 }

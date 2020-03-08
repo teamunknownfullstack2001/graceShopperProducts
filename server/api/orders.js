@@ -29,6 +29,9 @@ router.post('/place/:id', async (req, res, next) => {
   try {
     // console.log(req.body)
     // console.log(req.body)
+    if (req.session.cart !== undefined) {
+      req.session.cart = []
+    }
     sendEmail({
       from: process.env.GOOGLE_EMAIL_ADDRESS, // sender address
       to: req.body.user.email, // list of receivers
