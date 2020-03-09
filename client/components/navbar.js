@@ -213,12 +213,20 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
                   </MenuItem>
                 </Link>
 
-                <Link to="/adminPage">
+                <Link to="/adminPageUser">
                   <MenuItem
                     onClick={handleClose}
                     style={{textDecoration: 'none', color: 'black'}}
                   >
-                    Admin Page
+                    Admin Page - User
+                  </MenuItem>
+                </Link>
+                <Link to="/adminPageOrder">
+                  <MenuItem
+                    onClick={handleClose}
+                    style={{textDecoration: 'none', color: 'black'}}
+                  >
+                    Admin Page - Order
                   </MenuItem>
                 </Link>
 
