@@ -1,4 +1,4 @@
-import CardSection from './card-section'
+import {CardSection} from '.'
 import React from 'react'
 import {ElementsConsumer, CardElement} from '@stripe/react-stripe-js'
 import {connect} from 'react-redux'
