@@ -23,7 +23,7 @@ const userRequire = (req, res, next) => {
 }
 
 const selfOnly = (req, res, next) => {
-  if (req.params.id === req.user.id) {
+  if (req.params.id === req.body.id) {
     next()
   } else {
     res.sendStatus(404)
