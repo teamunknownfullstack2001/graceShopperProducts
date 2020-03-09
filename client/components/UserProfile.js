@@ -23,19 +23,47 @@ class UserProfile extends React.Component {
     console.log('These are the orders: ', orders)
 
     return (
-      <div key={id}>
-        <h1>User name: {userName}</h1>
-        <h1>Phone Number: {phone}</h1>
-        <h2>Email: {email}</h2>
-        <h2>Address: {address}</h2>
-        <h2>Zip: {zip}</h2>
-
-        <Button size="large">
-          <Link to={`/orderHistory/${id}`}>Order History</Link>
-        </Button>
-        <button type="submit" onClick={updateInfo}>
-          Update Info
-        </button>
+      <div key={id} className="singleProductContainer">
+        <div className="singleProductMain">
+          <p>
+            <i>User name: </i>
+            {userName}
+          </p>
+          <p>
+            <i>Phone Number: </i>
+            {phone}
+          </p>
+          <p>
+            <i>Email: </i>
+            {email}
+          </p>
+          <p>
+            <i>Address: </i>
+            {address}
+          </p>
+          <p>
+            <i>Zip: </i>
+            {zip}
+          </p>
+        </div>
+        <div className="singleProductButtons">
+          <Link to={`/orderHistory/${id}`}>
+            <Button
+              size="large"
+              style={{textDecoration: 'none', color: 'black'}}
+            >
+              Order History
+            </Button>
+          </Link>
+          <Button
+            size="large"
+            style={{textDecoration: 'none', color: 'black'}}
+            type="submit"
+            onClick={updateInfo}
+          >
+            Update Info
+          </Button>
+        </div>
       </div>
     )
   }
