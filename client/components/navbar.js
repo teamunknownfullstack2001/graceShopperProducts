@@ -116,7 +116,7 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          {isLoggedIn ? (
+          {user.type === 'admin' ? (
             <div className={classes.navContainer}>
               {/* The navbar will show these links after you log in */}
               <div className={classes.navProduct}>
@@ -200,6 +200,93 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
 
                 <Link to="/adminPage">
                   <MenuItem onClick={handleClose}>Admin Page</MenuItem>
+                </Link>
+
+                <MenuItem onClick={(handleClose, handleClick)}>
+                  Log Out
+                </MenuItem>
+              </Menu>
+            </div>
+          ) : isLoggedIn ? (
+            <div className={classes.navContainer}>
+              {/* The navbar will show these links after you log in */}
+              <div className={classes.navProduct}>
+                <Link to="/Products">
+                  <Button color="inherit">All Products</Button>
+                </Link>
+              </div>
+              <div className={classes.search}>
+                <div className={classes.searchIcon}>
+                  <SearchIcon />
+                </div>
+                <InputBase
+                  placeholder="Search…"
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput
+                  }}
+                  inputProps={{'aria-label': 'search'}}
+                />
+              </div>
+
+              <IconButton
+                aria-label="cart of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleCart}
+                color="inherit"
+              >
+                <ShoppingCartIcon />
+              </IconButton>
+              <Menu
+                id="cart-appbar"
+                anchorEl={anchorelcart}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right'
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right'
+                }}
+                open={openCart}
+                onClose={handleCartClose}
+              >
+                <Link to={`/Cart/${user.id}`}>
+                  <MenuItem onClick={handleCartClose}>Cart</MenuItem>
+                </Link>
+                <Link to={`/OrderHistory/${user.id}`}>
+                  <MenuItem onClick={handleCartClose}>Order History</MenuItem>
+                </Link>
+              </Menu>
+
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right'
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right'
+                }}
+                open={open}
+                onClose={handleClose}
+              >
+                <Link to={`/UserProfile/${user.id}`}>
+                  <MenuItem onClick={handleClose}>Profile</MenuItem>
                 </Link>
 
                 <MenuItem onClick={(handleClose, handleClick)}>

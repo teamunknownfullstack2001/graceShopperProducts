@@ -6,6 +6,7 @@ import {Login, Signup, UserHome, CreateProduct} from './components'
 import {me, fetchProducts, getUserCart} from './store'
 import InjectedCheckoutForm from './components/checkout-form'
 import SingleProduct from './components/SingleProduct'
+import TagProducts from './components/TagProducts'
 import EditProduct from './components/EditProduct'
 import Cart from './components/cart'
 import placeOrder from './components/placeOrder'
@@ -44,6 +45,7 @@ class Routes extends Component {
         <Route exact path="/products/:id" component={SingleProduct} />
         <Route path="/orderSuccess/:id" component={OrderSuccessPage} />
         <Route exact path="/" component={UserHome} />
+        <Route path="/tags/:id" component={TagProducts} />
         {isLoggedIn && (
           <Route path="/UserProfile/:id" component={UserProfile} />
         )}
@@ -55,10 +57,10 @@ class Routes extends Component {
         )}
 
         {isLoggedIn && user.type === 'admin' && (
-          <Switch>
-            <Route exact path="/newproduct" component={CreateProduct} />
-            <Route path="/adminPage" component={AdminPage} />
-          </Switch>
+          <Route exact path="/newproduct" component={CreateProduct} />
+        )}
+        {isLoggedIn && user.type === 'admin' && (
+          <Route path="/adminPage" component={AdminPage} />
         )}
         {isLoggedIn && user.type === 'admin' && (
           <Route path="/products/:id/edit" component={EditProduct} />
