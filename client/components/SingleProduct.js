@@ -46,7 +46,11 @@ class SingleProduct extends React.Component {
       <div key={id}>
         <div className="singleProductContainer">
           <div className="singleProductImg">
-            <img src={imageUrl} className="productImg" />
+            <img
+              src={imageUrl}
+              alt={`Image: ${imageUrl}`}
+              className="productImg"
+            />
           </div>
           <div className="singleProduct">
             <h1>
@@ -93,6 +97,7 @@ class SingleProduct extends React.Component {
             <Button
               size="large"
               startIcon={<AddShoppingCartIcon />}
+              disabled={stock === 0}
               onClick={() => {
                 console.log('clicked')
                 this.props.addToCart(this.props.user.id, product)
@@ -103,6 +108,7 @@ class SingleProduct extends React.Component {
             <Button
               size="large"
               startIcon={<AddShoppingCartIcon />}
+              disabled={stock === 0}
               onClick={() => {
                 console.log('clicked')
                 this.props.addToCart(this.props.user.id, product)

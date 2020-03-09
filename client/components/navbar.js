@@ -118,7 +118,7 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
         <Toolbar>
           {user.type === 'admin' ? (
             <div className={classes.navContainer}>
-              {/* The navbar will show these links after you log in */}
+              {/* The navbar will show these links if admin */}
               <div className={classes.navProduct}>
                 <Link to="/Products">
                   <Button color="inherit">All Products</Button>
@@ -386,14 +386,6 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
                     style={{textDecoration: 'none', color: 'black'}}
                   >
                     Cart
-                  </MenuItem>
-                </Link>
-                <Link to="/Order/0">
-                  <MenuItem
-                    onClick={handleCartClose}
-                    style={{textDecoration: 'none', color: 'black'}}
-                  >
-                    Order History
                   </MenuItem>
                 </Link>
               </Menu>

@@ -91,9 +91,13 @@ const productsReducer = (state = initialState, action) => {
     case REMOVE_PRODUCT:
       return state.filter(product => product.id !== action.productId)
     case MODIFY_PRODUCT: {
-      const otherProducts = state.filter(id => id !== action.product.id)
-      console.log('updating all')
-      return [...otherProducts, action.product]
+      const otherProducts = state.map(product => {
+        if (product.id === action.product.id) {
+          return action.product
+        }
+        return product
+      })
+      return otherProducts
     }
     default:
       return state
