@@ -1,4 +1,15 @@
 import React from 'react'
+import {withStyles} from '@material-ui/core/styles'
+import {
+  Card,
+  CardContent,
+  CardActions,
+  Typography,
+  CardMedia,
+  Button
+} from '@material-ui/core'
+import EditIcon from '@material-ui/icons/Edit'
+const styles = {}
 
 const initialValsFromProps = (field, initialValues) => {
   return initialValues ? initialValues[field] : ''
@@ -8,71 +19,82 @@ const EditProductForm = props => {
   const {initialValues, handleSubmit} = props
 
   return (
-    <div>
-      <ul>
-        <form onSubmit={handleSubmit}>
-          <li>
-            <label htmlFor="name">Name:</label>
-            <input
-              type="text"
-              name="name"
-              defaultValue={initialValsFromProps('name', initialValues)}
-            />
-          </li>
-          <li>
-            <label htmlFor="imageUrl">Image Url:</label>
-            <input
-              type="text"
-              name="imageUrl"
-              defaultValue={initialValsFromProps('imageUrl', initialValues)}
-            />
-          </li>
-          <li>
-            <label htmlFor="category">Category:</label>
-            <select
-              name="category"
-              defaultValue={initialValsFromProps('category', initialValues)}
-            >
-              <option value="Area">Area</option>
-              <option value="Octagon">Octagon</option>
-              <option value="Oval">Oval</option>
-              <option value="Round">Round</option>
-              <option value="Runner">Runner</option>
-              <option value="Square">Square</option>
-            </select>
-          </li>
-          <li>
-            <label htmlFor="description">Description:</label>
-            <textarea
-              name="description"
-              defaultValue={initialValsFromProps('description', initialValues)}
-            />
-          </li>
-          <li>
-            <label htmlFor="price">Price:</label>
-            <input
-              type="text"
-              step=".01"
-              min="0"
-              name="price"
-              defaultValue={(
-                initialValsFromProps('price', initialValues) / 100
-              ).toFixed(2)}
-              // value={`$ ${(props.price / 100).toFixed(2)}`}
-            />
-          </li>
-          <li>
-            <label htmlFor="stock">Stock:</label>
-            <input
-              type="number"
-              defaultValue="100"
-              min="0"
-              max="100"
-              name="stock"
-              defaultValue={initialValsFromProps('stock', initialValues)}
-            />
-          </li>
-          {/*<li>
+    <div className="col-md-8 order-md-1">
+      <form onSubmit={handleSubmit} className="needs-validation">
+        <label className="mb-3" htmlFor="name">
+          Name:
+        </label>
+        <input
+          className="form-control"
+          type="text"
+          name="name"
+          defaultValue={initialValsFromProps('name', initialValues)}
+        />
+
+        <label className="mb-3" htmlFor="imageUrl">
+          Image Url:
+        </label>
+        <input
+          className="form-control"
+          type="text"
+          name="imageUrl"
+          defaultValue={initialValsFromProps('imageUrl', initialValues)}
+        />
+
+        <label className="mb-3" htmlFor="category">
+          Category:
+        </label>
+        <select
+          className="form-control"
+          name="category"
+          defaultValue={initialValsFromProps('category', initialValues)}
+        >
+          <option value="Area">Area</option>
+          <option value="Octagon">Octagon</option>
+          <option value="Oval">Oval</option>
+          <option value="Round">Round</option>
+          <option value="Runner">Runner</option>
+          <option value="Square">Square</option>
+        </select>
+
+        <label className="mb-3" htmlFor="description">
+          Description:
+        </label>
+        <textarea
+          className="form-control"
+          name="description"
+          defaultValue={initialValsFromProps('description', initialValues)}
+        />
+
+        <label className="mb-3" htmlFor="price">
+          Price:
+        </label>
+        <input
+          className="form-control"
+          type="text"
+          step=".01"
+          min="0"
+          name="price"
+          defaultValue={(
+            initialValsFromProps('price', initialValues) / 100
+          ).toFixed(2)}
+          // value={`$ ${(props.price / 100).toFixed(2)}`}
+        />
+
+        <label className="mb-3" htmlFor="stock">
+          Stock:
+        </label>
+        <input
+          className="form-control"
+          type="number"
+          defaultValue="100"
+          min="0"
+          max="100"
+          name="stock"
+          defaultValue={initialValsFromProps('stock', initialValues)}
+        />
+
+        {/*<li>
             <label htmlFor="tags">Tags:</label>
             <select multiple={true} name="tags" value={props.tags}>
               <option value="Bathroom">Bathroom</option>
@@ -89,7 +111,7 @@ const EditProductForm = props => {
               <option value="Woven">Woven</option>
             </select>
   </li>*/}
-          {/*<li>
+        {/*<li>
             <fieldset>
             <label htmlFor="tags">Tags:</label>
               <input
@@ -154,11 +176,17 @@ const EditProductForm = props => {
                 onSubmit={props.onSubmit}/>Woven<br/>
             </fieldset>
           </li>*/}
-          <li>
-            <button type="submit">Submit</button>
-          </li>
-        </form>
-      </ul>
+        <br />
+        <br />
+        <Button
+          size="large"
+          color="secondary"
+          startIcon={<EditIcon />}
+          type="submit"
+        >
+          Edit Product
+        </Button>
+      </form>
     </div>
   )
 }

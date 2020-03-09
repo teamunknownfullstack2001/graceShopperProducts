@@ -28,7 +28,11 @@ class TagProducts extends React.Component {
                   <div key={product.id}>
                     <div className="singleProductContainer">
                       <div className="singleProductImg">
-                        <img src={product.imageUrl} className="productImg" />
+                        <img
+                          src={product.imageUrl}
+                          alt={`Image: ${product.imageUrl}`}
+                          className="productImg"
+                        />
                       </div>
                       <div className="singleProduct">
                         <h1>
