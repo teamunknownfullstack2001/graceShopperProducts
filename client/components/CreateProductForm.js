@@ -35,11 +35,11 @@ const CreateProductForm = props => {
         </label>
         <select name="category" value={props.category} className="form-control">
           <option value="Area">Area</option>
-          <option value="Modern">Modern</option>
-          <option value="Moroccan">Moroccan</option>
-          <option value="Natural">Natural</option>
-          <option value="Oriental">Oriental</option>
-          <option value="Persian">Persian</option>
+          <option value="Octagon">Octagon</option>
+          <option value="Oval">Oval</option>
+          <option value="Round">Round</option>
+          <option value="Runner">Runner</option>
+          <option value="Square">Square</option>
         </select>
 
         <label className="mb-3" htmlFor="description">
