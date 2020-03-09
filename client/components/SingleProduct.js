@@ -97,6 +97,7 @@ class SingleProduct extends React.Component {
             <Button
               size="large"
               startIcon={<AddShoppingCartIcon />}
+              disabled={stock === 0}
               onClick={() => {
                 console.log('clicked')
                 this.props.addToCart(this.props.user.id, product)
@@ -107,6 +108,7 @@ class SingleProduct extends React.Component {
             <Button
               size="large"
               startIcon={<AddShoppingCartIcon />}
+              disabled={stock === 0}
               onClick={() => {
                 console.log('clicked')
                 this.props.addToCart(this.props.user.id, product)
