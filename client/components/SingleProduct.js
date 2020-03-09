@@ -46,7 +46,11 @@ class SingleProduct extends React.Component {
       <div key={id}>
         <div className="singleProductContainer">
           <div className="singleProductImg">
-            <img src={imageUrl} className="productImg" />
+            <img
+              src={imageUrl}
+              alt={`Image: ${imageUrl}`}
+              className="productImg"
+            />
           </div>
           <div className="singleProduct">
             <h1>
