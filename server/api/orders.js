@@ -30,8 +30,8 @@ router.post('/place/:id', async (req, res, next) => {
   try {
     // console.log(req.body)
     // console.log(req.body)
-    if (req.session.cart !== undefined) {
-      req.session.cart = []
+    if (req.session.cart.product !== undefined) {
+      req.session.cart.product = []
     }
     const {user, order} = req.body
     sendEmail({

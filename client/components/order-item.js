@@ -10,7 +10,7 @@ import {
   CardMedia,
   Button
 } from '@material-ui/core'
-
+import {Link} from 'react-router-dom'
 //https://material-ui.com/components/material-icons/
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined'
 import RemoveIcon from '@material-ui/icons/Remove'
@@ -28,7 +28,6 @@ const styles = {
     flexDirection: 'row',
     color: 'black',
     borderRadius: 3,
-    borderTop: '0px',
     margin: '0',
     justifyContent: 'flex-start',
     alignItems: 'flex-start'
@@ -39,6 +38,9 @@ const styles = {
     flexDirection: 'row'
   },
   name: {
+    flex: '2 0 0'
+  },
+  des: {
     flex: '5 0 0'
   },
   quantity: {
@@ -49,7 +51,7 @@ const styles = {
   }
 }
 
-class CartItem extends React.Component {
+class OrderItem extends React.Component {
   componentDidMount() {}
   render() {
     const {classes} = this.props
@@ -59,77 +61,33 @@ class CartItem extends React.Component {
         <Card className={classes.root} variant="outlined">
           <CardContent className={classes.content}>
             <Typography className={classes.name} variant="h5" component="h2">
-              {`Name: ${this.props.cartItem.name}`}
+              {`Item:  ${this.props.orderItem.name}`}
+            </Typography>
+            <Typography className={classes.des} variant="h5" component="h2">
+              {`Item Details:  ${this.props.orderItem.description}`}
             </Typography>
             <Typography
               className={classes.quantity}
               variant="h5"
               component="h2"
             >
-              {`Qty: ${this.props.cartItem.orderproduct.quantity}`}
+              {`Qty: ${this.props.orderItem.orderproduct.quantity}`}
             </Typography>
             <Typography variant="h5" className={classes.price} component="h2">
-              {`Price: $ ${(this.props.cartItem.price / 100).toFixed(2)}`}
+              {`Price: $ ${(this.props.orderItem.price / 100).toFixed(2)}`}
             </Typography>
           </CardContent>
+          <Button size="large">
+            <Link to={`/itemDetails/${this.props.orderItem.id}`}>
+              {' '}
+              Item Details{' '}
+            </Link>
+          </Button>
           <CardMedia
             className={classes.media}
-            image={this.props.cartItem.imageUrl}
+            image={this.props.orderItem.imageUrl}
             title="Paella dish"
           />
-          {this.props.button === true ? (
-            <CardActions className={classes.buttonBar}>
-              <Button
-                size="large"
-                disabled={
-                  this.props.cartItem.stock -
-                    this.props.cartItem.orderproduct.quantity ===
-                  0
-                }
-                startIcon={<AddIcon />}
-                onClick={() => {
-                  this.props.incrementCart(
-                    this.props.user.id,
-
-                    this.props.cartItem
-                  )
-                }}
-              >
-                Add
-              </Button>
-
-              <Button
-                size="large"
-                startIcon={<RemoveIcon />}
-                disabled={this.props.cartItem.orderproduct.quantity === 1}
-                onClick={() => {
-                  this.props.decrementCart(
-                    this.props.user.id,
-
-                    this.props.cartItem
-                  )
-                }}
-              >
-                Remove
-              </Button>
-
-              <Button
-                size="large"
-                color="secondary"
-                startIcon={<DeleteOutlinedIcon />}
-                onClick={() => {
-                  this.props.removeFromCart(
-                    this.props.user.id,
-                    this.props.cartItem
-                  )
-                }}
-              >
-                Delete from cart
-              </Button>
-            </CardActions>
-          ) : (
-            ''
-          )}
         </Card>
       </div>
     )
@@ -144,4 +102,4 @@ const mapDispatch = dispatch => ({
   removeFromCart: (userId, product) => dispatch(removeFromCart(userId, product))
 })
 
-export default connect(mapState, mapDispatch)(withStyles(styles)(CartItem))
+export default connect(mapState, mapDispatch)(withStyles(styles)(OrderItem))

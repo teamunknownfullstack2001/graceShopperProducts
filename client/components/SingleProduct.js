@@ -145,8 +145,10 @@ const mapState = state => {
 
 const mapDispatch = dispatch => ({
   getSingleProduct: id => dispatch(getSingleProduct(id)),
-  addToCart: (userId, product) =>
-    dispatch(addToOrIncrementCart(userId, product)),
+  addToCart: (userId, product) => {
+    // console.log('dispatch single product', product, userId)
+    dispatch(addToOrIncrementCart(userId, product))
+  },
   removeProduct: productId => dispatch(deleteProduct(productId))
 })
 

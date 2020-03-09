@@ -10,7 +10,8 @@ router.get('/:id', async (req, res, next) => {
     try {
       const [cart, created] = await Order.findOrCreate({
         include: [{model: Product, through: {attributes: ['quantity']}}], //,
-        where: {status: 'inCart', userId: +req.params.id}
+        where: {status: 'inCart', userId: +req.params.id},
+        order: [['id', 'DESC']]
       })
       res.json(cart)
     } catch (error) {
@@ -87,6 +88,7 @@ router.put('/:id', async (req, res, next) => {
       next(error)
     }
   } else {
+    console.log(req.session.cart) // req.session.cart is an array here
     const product = await Product.findByPk(+req.body.id)
     if (req.session.cart === undefined) {
       req.session.cart = {
