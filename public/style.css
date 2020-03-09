@@ -58,7 +58,7 @@ form div {
 
 .productCard:hover {
   transform: scale(1.01);
-  box-shadow: 5px 5px;
+  box-shadow: 7px 7px 5px grey;
 }
 
 .singleProductContainer {
