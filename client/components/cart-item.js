@@ -16,7 +16,7 @@ import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined'
 import RemoveIcon from '@material-ui/icons/Remove'
 import AddIcon from '@material-ui/icons/Add'
 
-const styles = {
+const styles = theme => ({
   media: {
     maxWidth: '200px',
     maxheight: '200px'
@@ -31,7 +31,11 @@ const styles = {
     borderTop: '0px',
     margin: '0',
     justifyContent: 'flex-start',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    [theme.breakpoints.down('sm')]: {
+      // backgroundColor: 'gray',
+      flexDirection: 'column'
+    }
   },
   content: {
     display: 'flex',
@@ -47,7 +51,7 @@ const styles = {
   price: {
     flex: '2 0 0'
   }
-}
+})
 
 class CartItem extends React.Component {
   componentDidMount() {}

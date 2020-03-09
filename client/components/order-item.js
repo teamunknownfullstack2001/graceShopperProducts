@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {addToOrIncrementCart, decrementCart, removeFromCart} from '../store'
 import {withStyles} from '@material-ui/core/styles'
+// import SingleProduct from './SingleProduct'
 import {
   Card,
   CardContent,
@@ -17,10 +18,6 @@ import RemoveIcon from '@material-ui/icons/Remove'
 import AddIcon from '@material-ui/icons/Add'
 
 const styles = theme => ({
-  media: {
-    maxWidth: '200px',
-    maxheight: '200px'
-  },
   // typography: {
   //   // In Chinese and Japanese the characters are usually larger,
   //   // so a smaller fontsize may be appropriate.
@@ -38,7 +35,6 @@ const styles = theme => ({
     borderRadius: 3,
     margin: '0',
     justifyContent: 'flex-start',
-    alignItems: 'flex-start',
     [theme.breakpoints.down('sm')]: {
       // backgroundColor: 'gray',
       flexDirection: 'column'
@@ -90,7 +86,7 @@ class OrderItem extends React.Component {
             </Typography>
           </CardContent>
           <Button size="large">
-            <Link to={`/itemDetails/${this.props.orderItem.id}`}>
+            <Link to={`/products/${this.props.orderItem.id}`}>
               {' '}
               Item Details{' '}
             </Link>

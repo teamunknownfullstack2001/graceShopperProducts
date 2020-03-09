@@ -121,7 +121,7 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
               {/* The navbar will show these links if admin */}
               <div className={classes.navProduct}>
                 <Link to="/Products">
-                  <Button color="inherit">All Products</Button>
+                  <Button style={{color: 'white'}}>All Products</Button>
                 </Link>
               </div>
               <div className={classes.search}>
@@ -213,12 +213,20 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
                   </MenuItem>
                 </Link>
 
-                <Link to="/adminPage">
+                <Link to="/adminPageUser">
                   <MenuItem
                     onClick={handleClose}
                     style={{textDecoration: 'none', color: 'black'}}
                   >
-                    Admin Page
+                    Admin Page - User
+                  </MenuItem>
+                </Link>
+                <Link to="/adminPageOrder">
+                  <MenuItem
+                    onClick={handleClose}
+                    style={{textDecoration: 'none', color: 'black'}}
+                  >
+                    Admin Page - Order
                   </MenuItem>
                 </Link>
 
@@ -235,7 +243,7 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
               {/* The navbar will show these links after you log in */}
               <div className={classes.navProduct}>
                 <Link to="/Products">
-                  <Button color="inherit">All Products</Button>
+                  <Button style={{color: 'white'}}>All Products</Button>
                 </Link>
               </div>
               <div className={classes.search}>
@@ -340,7 +348,7 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
               {/* The navbar will show these links before you log in */}
               <div className={classes.navProduct}>
                 <Link to="/Products">
-                  <Button color="inherit">All Products</Button>
+                  <Button style={{color: 'white'}}>All Products</Button>
                 </Link>
               </div>
               <div className={classes.search}>
