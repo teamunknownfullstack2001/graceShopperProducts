@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {getSingleUser} from '../store'
 import {withStyles} from '@material-ui/core/styles'
-import OrderItem from './order-item'
+import {OrderItem} from '.'
 import {
   Card,
   CardContent,

@@ -1,40 +1,112 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {addToOrIncrementCart, decrementCart, removeFromCart} from '../store'
+import {withStyles} from '@material-ui/core/styles'
+import {
+  Card,
+  CardContent,
+  CardActions,
+  Typography,
+  CardMedia,
+  Button
+} from '@material-ui/core'
+import {Link} from 'react-router-dom'
+//https://material-ui.com/components/material-icons/
+import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined'
+import RemoveIcon from '@material-ui/icons/Remove'
+import AddIcon from '@material-ui/icons/Add'
 
-export default function OrderItem(props) {
-  const {products} = props
-  return (
-    <div className="col-md-4 order-md-2 mb-4">
-      <h4 className="d-flex justify-content-between align-items-center mb-3">
-        <span className="text-muted">Order Summary </span>
-        <span className="badge badge-secondary badge-pill">
-          {products.length}
-        </span>
-      </h4>
-      <ul className="list-group mb-3">
-        {products.map(product => (
-          <li
-            className="list-group-item d-flex justify-content-between lh-condensed"
-            key={product.id}
-          >
-            <div>
-              <h6 className="my-0">{product.name}</h6>
+const styles = theme => ({
+  // typography: {
+  //   // In Chinese and Japanese the characters are usually larger,
+  //   // so a smaller fontsize may be appropriate.
+  //   [theme.breakpoints.down('sm')]: {
+  //     // backgroundColor: 'gray',
+  //     fontSize: 8
+  //   }
+  // },
+  root: {
+    marginTop: '1vh',
+    display: 'flex',
+    flexGrow: 1,
+    flexDirection: 'row',
+    color: 'black',
+    borderRadius: 3,
+    margin: '0',
+    justifyContent: 'flex-start',
+    [theme.breakpoints.down('sm')]: {
+      // backgroundColor: 'gray',
+      flexDirection: 'column'
+    }
+  },
+  // content: {
+  //   display: 'flex',
+  //   flexGrow: 1,
+  //   flexDirection: 'row'
+  // },
+  name: {
+    flex: '2 0 0'
+  },
+  des: {
+    flex: '5 0 0'
+  },
+  quantity: {
+    flex: '2 0 0'
+  },
+  price: {
+    flex: '2 0 0'
+  }
+})
 
-              <small className=" text-muted ">{product.description}</small>
-            </div>
-            <span className="  font-weight-bold text-muted">
-              ${(product.price / 100).toFixed(2)}
-              <p className=" text-right font-weight-normal">
-                {'Qty ' + product.orderproduct.quantity}
-              </p>
-            </span>
-          </li>
-        ))}
-
-        <li className="list-group-item d-flex justify-content-between">
-          <span>Total (USD)</span>
-          <strong>{props.total}</strong>
-        </li>
-      </ul>
-    </div>
-  )
+class OrderItem extends React.Component {
+  componentDidMount() {}
+  render() {
+    const {classes} = this.props
+    console.log(this.props)
+    return (
+      <div>
+        <Card className={classes.root} variant="outlined">
+          <CardContent className={classes.content}>
+            <Typography className={classes.name} variant="h5" component="h2">
+              {`Item:  ${this.props.orderItem.name}`}
+            </Typography>
+            <Typography className={classes.des} variant="h5" component="h2">
+              {`Item Details:  ${this.props.orderItem.description}`}
+            </Typography>
+            <Typography
+              className={classes.quantity}
+              variant="h5"
+              component="h2"
+            >
+              {`Qty: ${this.props.orderItem.orderproduct.quantity}`}
+            </Typography>
+            <Typography variant="h5" className={classes.price} component="h2">
+              {`Price: $ ${(this.props.orderItem.price / 100).toFixed(2)}`}
+            </Typography>
+          </CardContent>
+          <Button size="large">
+            <Link to={`/products/${this.props.orderItem.id}`}>
+              {' '}
+              Item Details{' '}
+            </Link>
+          </Button>
+          <CardMedia
+            className={classes.media}
+            image={this.props.orderItem.imageUrl}
+            title="Paella dish"
+          />
+        </Card>
+      </div>
+    )
+  }
 }
+
+const mapState = state => ({user: state.user})
+const mapDispatch = dispatch => ({
+  incrementCart: (userId, product) =>
+    dispatch(addToOrIncrementCart(userId, product)),
+  decrementCart: (userId, product) => dispatch(decrementCart(userId, product)),
+  removeFromCart: (userId, product) => dispatch(removeFromCart(userId, product))
+})
+
+export default connect(mapState, mapDispatch)(withStyles(styles)(OrderItem))
