@@ -52,6 +52,8 @@ class AdminPageOrder extends React.Component {
                 <TableCell align="left">ID</TableCell>
                 <TableCell align="left">User ID</TableCell>
                 <TableCell align="left">Status </TableCell>
+                <TableCell align="left">Total</TableCell>
+                <TableCell align="left">Payment Ref Num</TableCell>
                 <TableCell align="left">Order Date</TableCell>
                 <TableCell align="left">Action</TableCell>
               </TableRow>
@@ -62,6 +64,8 @@ class AdminPageOrder extends React.Component {
                   <TableCell align="left">{order.id}</TableCell>
                   <TableCell align="left">{order.userId}</TableCell>
                   <TableCell align="left">{order.status}</TableCell>
+                  <TableCell align="left">{order.total}</TableCell>
+                  <TableCell align="left">{order.stripeId}</TableCell>
                   <TableCell align="left">
                     {order.updatedAt.slice(0, 10)}
                   </TableCell>

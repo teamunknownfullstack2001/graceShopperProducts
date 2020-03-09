@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import CreateProductForm from './CreateProductForm'
+import {CreateProductForm} from '.'
 import {postProduct} from '../store/products'
 import {connect} from 'react-redux'
 

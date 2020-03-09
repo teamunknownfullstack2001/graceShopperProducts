@@ -3,21 +3,27 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome, CreateProduct} from './components'
+import {
+  Login,
+  Signup,
+  UserHome,
+  UserProfile,
+  CreateProduct,
+  EditProduct,
+  InjectedCheckoutForm,
+  ItemDetails,
+  OrderSuccessPage,
+  PlaceOrder,
+  SingleProduct,
+  OrderHistory,
+  // Tag,
+  TagProducts,
+  Error,
+  Cart,
+  AdminPageOrder,
+  AdminPageUser
+} from './components'
 import {me, fetchProducts, getUserCart} from './store'
-import InjectedCheckoutForm from './components/checkout-form'
-import SingleProduct from './components/SingleProduct'
-import TagProducts from './components/TagProducts'
-import EditProduct from './components/EditProduct'
-import Cart from './components/cart'
-import placeOrder from './components/placeOrder'
-import UserProfile from './components/UserProfile'
-import OrderSuccessPage from './components/OrderSuccessPage'
-import OrderHistory from './components/OrderHistory'
-import ItemDetails from './components/ItemDetails'
-import Error from './components/Error'
-import AdminPageUser from './components/AdminPageUser'
-import AdminPageOrder from './components/AdminPageOrder'
 
 /**
  * COMPONENT
@@ -43,7 +49,7 @@ class Routes extends Component {
         <Route exact path="/products" component={UserHome} />
         <Route path="/Payment" component={InjectedCheckoutForm} />
         <Route path="/Cart/:id" component={Cart} />
-        <Route path="/Order/:orderId/:userId" component={placeOrder} />
+        <Route path="/Order/:orderId/:userId" component={PlaceOrder} />
         <Route exact path="/products/:id" component={SingleProduct} />
         <Route path="/orderSuccess/:id" component={OrderSuccessPage} />
         <Route exact path="/" component={UserHome} />

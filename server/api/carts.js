@@ -62,12 +62,13 @@ Order.prototype.addrOrIncrementProduct = async function(ProductId) {
         productId: ProductId
       }
     })
-    //checking the product stock before add 1 to the entry
-    if (product.stock - entry.dataValues.quantity > 1) {
+
+    if (product.stock - entry.dataValues.quantity >= 1) {
       entry.quantity = entry.dataValues.quantity + 1
       await entry.save()
     }
   }
+  console.log('this in the backedn .......', this.products)
   return this
 }
 
