@@ -63,6 +63,7 @@ class SingleProduct extends React.Component {
               ''
             )}
             {stock === 0 ? <p className="text-danger"> Out of Stock!</p> : ''}
+            {this.props.user.type === 'admin' && <p>Stock: {stock}</p>}
             <p>{description}</p>
             <p>
               Category:
