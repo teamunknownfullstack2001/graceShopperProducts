@@ -14,6 +14,7 @@ import OrderSuccessPage from './components/OrderSuccessPage'
 import OrderHistory from './components/OrderHistory'
 import ItemDetails from './components/ItemDetails'
 import Error from './components/Error'
+import AdminPage from './components/AdminPage'
 
 /**
  * COMPONENT
@@ -54,7 +55,10 @@ class Routes extends Component {
         )}
 
         {isLoggedIn && user.type === 'admin' && (
-          <Route exact path="/newproduct" component={CreateProduct} />
+          <Switch>
+            <Route exact path="/newproduct" component={CreateProduct} />
+            <Route path="/adminPage" component={AdminPage} />
+          </Switch>
         )}
         {isLoggedIn && user.type === 'admin' && (
           <Route path="/products/:id/edit" component={EditProduct} />
