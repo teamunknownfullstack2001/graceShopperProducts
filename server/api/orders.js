@@ -42,7 +42,24 @@ router.post('/place/:id', async (req, res, next) => {
       html: `<b> Thank you for your order ${user.userName}. Your order ID is ${order.id}.
       Your order will be shipped to ${user.address}. </b>` // html body
     })
-    const currentOrder = await Order.findByPk(req.params.id)
+    const currentOrder = await Order.findByPk(req.params.id, {
+      include: [{model: Product}]
+    })
+
+    //updated the product stock
+    for (let i = 0; i < currentOrder.products.length; ++i) {
+      currentOrder.products[i].stock -=
+        currentOrder.products[i].orderproduct.quantity
+      if (currentOrder.products[i].stock > -1) {
+        currentOrder.products[i].save()
+      } else {
+        throw new Error('low inventory')
+      }
+    }
+
+    // currentOrder.products.map(product=>{
+    //   if(product.)
+    // })
     await currentOrder.update({
       status: 'placed',
       stripeId: req.body.stripeId

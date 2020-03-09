@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Error = () => {
+  console.error('Route Error')
   return (
     <div className="container">
       <h1>

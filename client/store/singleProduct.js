@@ -5,10 +5,17 @@ import axios from 'axios'
  */
 const GET_SINGLE_PRODUCT = 'GET_SINGLE_Product'
 
+const MODIFY_PRODUCT = 'MODIFY_PRODUCT'
+
 /**
  * ACTION CREATORS
  */
 const getProduct = product => ({type: GET_SINGLE_PRODUCT, product})
+
+const modifyProduct = product => ({
+  type: MODIFY_PRODUCT,
+  product: product
+})
 
 /**
  * THUNK CREATORS
@@ -25,6 +32,18 @@ export const getSingleProduct = id => {
   }
 }
 
+export const putProduct = (id, productUpdates, history) => {
+  return async dispatch => {
+    try {
+      const {data} = await axios.put(`/api/products/${id}`, productUpdates)
+      dispatch(modifyProduct(data))
+      history.push(`/products/${id}`)
+    } catch (error) {
+      console.error(`PUT fail products/${id}`)
+    }
+  }
+}
+
 /**
  * INITIAL STATE
  */
@@ -37,6 +56,8 @@ const initialState = {}
 const singleProductReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_SINGLE_PRODUCT:
+      return action.product
+    case MODIFY_PRODUCT:
       return action.product
     default:
       return state
