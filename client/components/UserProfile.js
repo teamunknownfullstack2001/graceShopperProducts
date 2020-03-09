@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {getSingleUser} from '../store'
 import {Link} from 'react-router-dom'
+import EditIcon from '@material-ui/icons/Edit'
 import {
   Card,
   CardContent,
@@ -11,8 +12,52 @@ import {
   Button
 } from '@material-ui/core'
 class UserProfile extends React.Component {
+  constructor() {
+    super()
+    this.handlesSubmit = this.handlesSubmit.bind(this)
+    this.handlesChange = this.handlesChange.bind(this)
+    this.state = {
+      username: '',
+      email: 'placeholder@placeholder.com'
+    }
+  }
+
   componentDidMount() {
     this.props.getSingleUser(this.props.match.params.id)
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    console.dir('getDerivedStateFromProps')
+    console.dir(props)
+    if (props.user && state.email === 'placeholder@placeholder.com') {
+      // if (props.user) {
+      return props.user
+    } else {
+      return state
+      // }
+    }
+  }
+
+  handlesChange(event) {
+    console.log('typing', event.target.name, event.target.value)
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+  handlesSubmit = event => {
+    event.preventDefault()
+    console.log('update user')
+    // const productUpdates = {
+    //   name: event.target.name.value,
+    //   imageUrl: event.target.imageUrl.value,
+    //   category: event.target.category.value,
+    //   description: event.target.description.value,
+    //   price: Math.floor(parseFloat(event.target.price.value) * 100),
+    //   stock: event.target.stock.value
+    //   // tags: [event.target.tags.value]
+    // }
+
+    // this.props.modifyProduct(this.props.product.id, productUpdates)
   }
 
   render() {
@@ -24,18 +69,76 @@ class UserProfile extends React.Component {
 
     return (
       <div key={id}>
-        <h1>User name: {userName}</h1>
-        <h1>Phone Number: {phone}</h1>
-        <h2>Email: {email}</h2>
-        <h2>Address: {address}</h2>
-        <h2>Zip: {zip}</h2>
-
-        <Button size="large">
-          <Link to={`/orderHistory/${id}`}>Order History</Link>
-        </Button>
-        <button type="submit" onClick={updateInfo}>
-          Update Info
-        </button>
+        <div className="col-md-8 order-md-1">
+          <form onSubmit={this.handlesSubmit} className="needs-validation">
+            <label className="mb-3" htmlFor="name">
+              Name:
+            </label>
+            <input
+              onChange={this.handlesChange}
+              className="form-control"
+              type="text"
+              name="username"
+              value={this.state.username}
+              // defaultValue={initialValsFromProps('name', initialValues)}
+            />
+            <label className="mb-3" htmlFor="name">
+              Email:
+            </label>
+            <input
+              onChange={this.handlesChange}
+              className="form-control"
+              type="text"
+              name="email"
+              value={this.state.email}
+              // defaultValue={initialValsFromProps('name', initialValues)}
+            />
+            <label className="mb-3" htmlFor="name">
+              Address:
+            </label>
+            <input
+              onChange={this.handlesChange}
+              className="form-control"
+              type="text"
+              name="address"
+              value={this.state.address}
+              // defaultValue={initialValsFromProps('name', initialValues)}
+            />
+            <label className="mb-3" htmlFor="name">
+              Zip:
+            </label>
+            <input
+              onChange={this.handlesChange}
+              className="form-control"
+              type="text"
+              name="zip"
+              value={this.state.zip}
+              // defaultValue={initialValsFromProps('name', initialValues)}
+            />
+            <label className="mb-3" htmlFor="name">
+              Phone:
+            </label>
+            <input
+              onChange={this.handlesChange}
+              className="form-control"
+              type="text"
+              name="phone"
+              value={this.state.phone}
+              // defaultValue={initialValsFromProps('name', initialValues)}
+            />
+            <Button
+              size="large"
+              color="secondary"
+              startIcon={<EditIcon />}
+              type="submit"
+            >
+              Save CHange
+            </Button>
+          </form>
+          <Button size="large">
+            <Link to={`/orderHistory/${id}`}>Go To Order History</Link>
+          </Button>
+        </div>
       </div>
     )
   }
