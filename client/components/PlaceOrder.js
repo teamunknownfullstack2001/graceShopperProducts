@@ -1,12 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import CartItem from './cart-item'
-import InjectedCheckoutForm from './checkout-form'
+// import {CartItem} from '.'
+import {InjectedCheckoutForm, AddressForm, CheckoutOrderItem} from '.'
 import {getOrder, createOrder, getSingleUser} from '../store'
 import Typography from '@material-ui/core/Typography'
-import AddressForm from './AddressForm'
+
 import {Link} from 'react-router-dom'
-import OrderItem from './OrderItem'
 
 class disPlaceOrder extends React.Component {
   constructor() {
@@ -50,7 +49,10 @@ class disPlaceOrder extends React.Component {
 
         <div className="row">
           {this.props.order.products ? (
-            <OrderItem products={this.props.order.products} total={total} />
+            <CheckoutOrderItem
+              products={this.props.order.products}
+              total={total}
+            />
           ) : (
             <p>No order</p>
           )}
