@@ -3,6 +3,17 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
 
+import {withStyles} from '@material-ui/core/styles'
+import {
+  Card,
+  CardContent,
+  CardActions,
+  Typography,
+  CardMedia,
+  Button
+} from '@material-ui/core'
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline'
+const styles = {}
 /**
  * COMPONENT
  */
@@ -25,11 +36,17 @@ const AuthForm = props => {
           <input name="password" type="password" />
         </div>
         <div>
-          <button type="submit">{displayName}</button>
+          <Button size="large" type="submit">
+            {displayName}
+          </Button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <a href="/auth/google">{displayName} with Google</a>
+      <Button size="large" type="submit">
+        <a href="/auth/google" style={{textDecoration: 'none', color: 'black'}}>
+          {displayName} with Google
+        </a>
+      </Button>
     </div>
   )
 }

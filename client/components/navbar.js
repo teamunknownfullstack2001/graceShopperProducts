@@ -163,10 +163,20 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
                 onClose={handleCartClose}
               >
                 <Link to={`/Cart/${user.id}`}>
-                  <MenuItem onClick={handleCartClose}>Cart</MenuItem>
+                  <MenuItem
+                    onClick={handleCartClose}
+                    style={{textDecoration: 'none', color: 'black'}}
+                  >
+                    Cart
+                  </MenuItem>
                 </Link>
                 <Link to={`/OrderHistory/${user.id}`}>
-                  <MenuItem onClick={handleCartClose}>Order History</MenuItem>
+                  <MenuItem
+                    onClick={handleCartClose}
+                    style={{textDecoration: 'none', color: 'black'}}
+                  >
+                    Order History
+                  </MenuItem>
                 </Link>
               </Menu>
 
@@ -195,14 +205,27 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
                 onClose={handleClose}
               >
                 <Link to={`/UserProfile/${user.id}`}>
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  <MenuItem
+                    onClick={handleClose}
+                    style={{textDecoration: 'none', color: 'black'}}
+                  >
+                    Profile
+                  </MenuItem>
                 </Link>
 
                 <Link to="/adminPage">
-                  <MenuItem onClick={handleClose}>Admin Page</MenuItem>
+                  <MenuItem
+                    onClick={handleClose}
+                    style={{textDecoration: 'none', color: 'black'}}
+                  >
+                    Admin Page
+                  </MenuItem>
                 </Link>
 
-                <MenuItem onClick={(handleClose, handleClick)}>
+                <MenuItem
+                  onClick={(handleClose, handleClick)}
+                  style={{textDecoration: 'none', color: 'black'}}
+                >
                   Log Out
                 </MenuItem>
               </Menu>
@@ -254,10 +277,20 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
                 onClose={handleCartClose}
               >
                 <Link to={`/Cart/${user.id}`}>
-                  <MenuItem onClick={handleCartClose}>Cart</MenuItem>
+                  <MenuItem
+                    onClick={handleCartClose}
+                    style={{textDecoration: 'none', color: 'black'}}
+                  >
+                    Cart
+                  </MenuItem>
                 </Link>
                 <Link to={`/OrderHistory/${user.id}`}>
-                  <MenuItem onClick={handleCartClose}>Order History</MenuItem>
+                  <MenuItem
+                    onClick={handleCartClose}
+                    style={{textDecoration: 'none', color: 'black'}}
+                  >
+                    Order History
+                  </MenuItem>
                 </Link>
               </Menu>
 
@@ -286,10 +319,18 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
                 onClose={handleClose}
               >
                 <Link to={`/UserProfile/${user.id}`}>
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  <MenuItem
+                    onClick={handleClose}
+                    style={{textDecoration: 'none', color: 'black'}}
+                  >
+                    Profile
+                  </MenuItem>
                 </Link>
 
-                <MenuItem onClick={(handleClose, handleClick)}>
+                <MenuItem
+                  onClick={(handleClose, handleClick)}
+                  style={{textDecoration: 'none', color: 'black'}}
+                >
                   Log Out
                 </MenuItem>
               </Menu>
@@ -340,10 +381,20 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
                 onClose={handleCartClose}
               >
                 <Link to="/Cart/0">
-                  <MenuItem onClick={handleCartClose}>Cart</MenuItem>
+                  <MenuItem
+                    onClick={handleCartClose}
+                    style={{textDecoration: 'none', color: 'black'}}
+                  >
+                    Cart
+                  </MenuItem>
                 </Link>
                 <Link to="/Order/0">
-                  <MenuItem onClick={handleCartClose}>Order History</MenuItem>
+                  <MenuItem
+                    onClick={handleCartClose}
+                    style={{textDecoration: 'none', color: 'black'}}
+                  >
+                    Order History
+                  </MenuItem>
                 </Link>
               </Menu>
 
@@ -372,10 +423,20 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
                 onClose={handleClose}
               >
                 <Link to="/login">
-                  <MenuItem onClick={handleClose}>Login</MenuItem>
+                  <MenuItem
+                    onClick={handleClose}
+                    style={{textDecoration: 'none', color: 'black'}}
+                  >
+                    Login
+                  </MenuItem>
                 </Link>
                 <Link to="/signup">
-                  <MenuItem onClick={handleClose}>Sign Up </MenuItem>
+                  <MenuItem
+                    onClick={handleClose}
+                    style={{textDecoration: 'none', color: 'black'}}
+                  >
+                    Sign Up{' '}
+                  </MenuItem>
                 </Link>
               </Menu>
 
