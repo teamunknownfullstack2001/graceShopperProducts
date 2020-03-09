@@ -15,6 +15,7 @@ import {
 } from '@material-ui/core'
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
+import EditIcon from '@material-ui/icons/Edit'
 const styles = {}
 
 class SingleProduct extends React.Component {
@@ -80,7 +81,7 @@ class SingleProduct extends React.Component {
               <Button
                 size="large"
                 color="secondary"
-                startIcon={<DeleteForeverIcon />}
+                startIcon={<EditIcon />}
                 onClick={() => {
                   this.handleEdit(product.id)
                 }}
