@@ -12,7 +12,7 @@ class CheckoutForm extends React.Component {
     const {stripe, elements, order, user, state} = this.props
 
     //create the user || update the user info
-    await this.props.updateuser(user.id, state)
+    // await this.props.updateuser(user.id, state)
 
     if (!stripe || !elements) {
       return
