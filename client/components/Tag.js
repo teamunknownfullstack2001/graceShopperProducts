@@ -18,7 +18,10 @@ const Tag = props => {
 
   return (
     <div>
-      <Link to="/products" style={{textDecoration: 'none', color: 'black'}}>
+      <Link
+        to={`/tags/${tag.id}`}
+        style={{textDecoration: 'none', color: 'black'}}
+      >
         <div key={tag.id}>
           <Button size="large">{tag.name}</Button>
         </div>

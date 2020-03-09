@@ -22,6 +22,14 @@ const userRequire = (req, res, next) => {
   }
 }
 
+const selfOnly = (req, res, next) => {
+  if (req.params.id === req.user.id) {
+    next()
+  } else {
+    res.sendStatus(404)
+  }
+}
+
 const nodemailer = require('nodemailer')
 const {google} = require('googleapis')
 const OAuth2 = google.auth.OAuth2
@@ -73,4 +81,5 @@ async function sendEmail(emailBody) {
   console.log('Message sent: %s', info.messageId)
 }
 
-module.exports = {adminOnly, userOnly, userRequire, sendEmail}
+module.exports = {adminOnly, userOnly, sendEmail, selfOnly, userRequire}
+// module.exports = {adminOnly, userOnly, userRequire, sendEmail}

@@ -43,18 +43,25 @@ form div {
 
 .productList {
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: space-evenly;
+  position: relative;
+  width: auto;
 }
 
 .productCard {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-right: black dashed 2px;
-  border-bottom: black dashed 2px;
-  height: 400px;
-  margin: 10px;
+
+  /* height: 400px;
+  margin: 10px; */
+}
+
+.productCard:hover {
+  transform: scale(1.01);
+  box-shadow: 7px 7px 5px grey;
+  transition: box-shadow 800ms;
 }
 
 .singleProductContainer {
@@ -76,6 +83,16 @@ form div {
   flex: 1 0 0;
 }
 
+.singleProductMain {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  flex: 1 1 18%;
+  height: auto;
+  margin: 4px;
+  padding: 20px 0;
+  width: auto;
+}
 .singleProduct {
   display: flex;
   flex-direction: column;

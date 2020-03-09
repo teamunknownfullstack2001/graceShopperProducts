@@ -15,12 +15,14 @@ import {
 } from '@material-ui/core'
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
+import EditIcon from '@material-ui/icons/Edit'
 const styles = {}
 
 class SingleProduct extends React.Component {
   constructor() {
     super()
     this.handleRemove = this.handleRemove.bind(this)
+    this.handleEdit = this.handleEdit.bind(this)
   }
   componentDidMount() {
     this.props.getSingleProduct(this.props.match.params.id)
@@ -29,6 +31,10 @@ class SingleProduct extends React.Component {
     await this.props.removeProduct(productId)
 
     this.props.history.push('/products')
+  }
+
+  handleEdit = id => {
+    this.props.history.push(`/products/${id}/edit`)
   }
 
   render() {
@@ -47,7 +53,12 @@ class SingleProduct extends React.Component {
               <i>{name}</i>
             </h1>
             <p>{`$ ${(price / 100).toFixed(2)}`}</p>
-            {stock < 10 ? <p> only {stock} left!</p> : ''}
+            {stock < 10 && stock !== 0 ? (
+              <p className="text-danger"> Only {stock} left!-order soon.</p>
+            ) : (
+              ''
+            )}
+            {stock === 0 ? <p className="text-danger"> Out of Stock!</p> : ''}
             <p>{description}</p>
             <p>
               Category:
@@ -63,10 +74,20 @@ class SingleProduct extends React.Component {
                 onClick={() => {
                   this.handleRemove(product.id)
                 }}
-                // id={1}
-                // href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
               >
                 Delete
+              </Button>
+            )}
+            {this.props.user.type === 'admin' && (
+              <Button
+                size="large"
+                color="secondary"
+                startIcon={<EditIcon />}
+                onClick={() => {
+                  this.handleEdit(product.id)
+                }}
+              >
+                Edit Product
               </Button>
             )}{' '}
             <Button
@@ -124,8 +145,10 @@ const mapState = state => {
 
 const mapDispatch = dispatch => ({
   getSingleProduct: id => dispatch(getSingleProduct(id)),
-  addToCart: (userId, product) =>
-    dispatch(addToOrIncrementCart(userId, product)),
+  addToCart: (userId, product) => {
+    // console.log('dispatch single product', product, userId)
+    dispatch(addToOrIncrementCart(userId, product))
+  },
   removeProduct: productId => dispatch(deleteProduct(productId))
 })
 

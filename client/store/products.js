@@ -9,6 +9,8 @@ export const ADD_PRODUCT = 'ADD_PRODUCT'
 
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 
+export const MODIFY_PRODUCT = 'MODIFY_PRODUCT'
+
 // action creators
 export const setProducts = products => ({
   type: SET_PRODUCTS,
@@ -23,6 +25,11 @@ export const addProduct = product => ({
 export const removeProduct = productId => ({
   type: REMOVE_PRODUCT,
   productId: productId
+})
+
+export const modifyProduct = product => ({
+  type: MODIFY_PRODUCT,
+  product: product
 })
 
 //  thunks
@@ -62,6 +69,18 @@ export const deleteProduct = productId => {
   }
 }
 
+export const putProduct = (id, productUpdates, history) => {
+  return async dispatch => {
+    try {
+      const {data} = await axios.put(`/api/products/${id}`, productUpdates)
+      dispatch(modifyProduct(data))
+      history.push(`/products/${id}`)
+    } catch (error) {
+      console.error(`PUT fail products/${id}`)
+    }
+  }
+}
+
 const initialState = []
 const productsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -71,6 +90,11 @@ const productsReducer = (state = initialState, action) => {
       return [...state, action.product]
     case REMOVE_PRODUCT:
       return state.filter(product => product.id !== action.productId)
+    case MODIFY_PRODUCT: {
+      const otherProducts = state.filter(id => id !== action.product.id)
+      console.log('updating all')
+      return [...otherProducts, action.product]
+    }
     default:
       return state
   }
