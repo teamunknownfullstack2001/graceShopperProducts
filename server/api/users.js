@@ -45,7 +45,7 @@ router.put('/:id', selfOnly, async (req, res, next) => {
   try {
     const userToUpdate = await User.findByPk(req.params.id)
     if (userToUpdate) {
-      await userToUpdate.update(req.body)
+      await userToUpdate.update(req.body) // {email, address, zip, name} = req.body
       res.json(userToUpdate)
     }
   } catch (error) {

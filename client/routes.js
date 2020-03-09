@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
@@ -66,16 +67,6 @@ class Routes extends Component {
           <Route path="/products/:id/edit" component={EditProduct} />
         )}
 
-        {/* {isLoggedIn && (
-          <Switch>
-            <Route path="/UserProfile/:id" component={UserProfile} />
-            <Route path="/orderHistory/:id" component={OrderHistory} />
-            <Route path="/itemDetails/:id" component={ItemDetails} />
-            {user.type === 'admin' && (
-              <Route exact path="/newproduct" component={CreateProduct} />
-            )}
-          </Switch>
-        )} */}
         {/* Displays our Login component as a fallback */}
         <Route path="/*" component={Error} />
         {/* <Redirect to="/404" /> */}

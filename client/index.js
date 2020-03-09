@@ -7,7 +7,19 @@ import store from './store'
 import App from './app'
 import {Elements} from '@stripe/react-stripe-js'
 import {loadStripe} from '@stripe/stripe-js'
+import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles'
+// import purple from '@material-ui/core/colors/purple'
+// import green from '@material-ui/core/colors/green'
 
+const theme = createMuiTheme({
+  // palette: {
+  //   primary: purple,
+  //   secondary: green
+  // },
+  // status: {
+  //   danger: 'orange'
+  // }
+})
 // establishes socket connection
 import './socket'
 
@@ -17,7 +29,9 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Elements stripe={stripePromise}>
-        <App />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </Elements>
     </Router>
   </Provider>,
