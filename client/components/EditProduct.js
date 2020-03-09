@@ -1,23 +1,14 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {getSingleProduct, putProduct} from '../store'
+import {getSingleProduct, putProduct, setProducts} from '../store'
 import EditProductForm from './EditProductForm'
 import Tag from './Tag'
 
 class EditProduct extends Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      name: 'placeholder',
-      imageUrl: '',
-      category: '',
-      description: '',
-      price: 0,
-      stock: 100
-      // tags: [event.target.tags.value]
-    }
+    this.handleModify = this.handleModify.bind(this)
   }
 
   componentDidMount() {
@@ -72,7 +63,8 @@ class EditProduct extends Component {
 }
 
 const mapState = state => ({
-  product: state.product
+  product: state.product,
+  products: state.products
 })
 
 const mapDispatch = (dispatch, productProps) => ({
