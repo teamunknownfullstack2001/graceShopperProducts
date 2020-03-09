@@ -29,15 +29,18 @@ class Cart extends React.Component {
   render() {
     const orderid = this.props.cartId ? this.props.cartId : 0
     const userid = this.props.user.id ? this.props.user.id : 0
+    const {products} = this.props
 
     return (
       <div>
         <h3>Cart</h3>
 
-        {this.props.products
-          ? this.props.products.map(cartItem => (
-              <CartItem button={true} key={cartItem.id} cartItem={cartItem} />
-            ))
+        {products
+          ? products.map(cartItem => {
+              return (
+                <CartItem button={true} key={cartItem.id} cartItem={cartItem} />
+              )
+            })
           : ''}
         {
           <Button
