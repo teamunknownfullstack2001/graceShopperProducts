@@ -96,7 +96,6 @@ export class UserHome extends React.Component {
           {currentProducts
             ? currentProducts.map(product => (
                 <div key={product.id} className="singleProduct">
-                  <div>{product.id}</div>
                   <ProductDummy product={product} />
                 </div>
               ))

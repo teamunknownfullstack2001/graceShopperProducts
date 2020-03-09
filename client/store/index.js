@@ -9,6 +9,7 @@ import singleProductReducer from './singleProduct'
 import placeOrderReducer from './placeOrder'
 import orderReducer from './order'
 import adminReducer from './admin'
+import tagReducer from './tag'
 
 const reducer = combineReducers({
   user: user,
@@ -16,7 +17,8 @@ const reducer = combineReducers({
   product: singleProductReducer,
   userCart: userCart,
   order: placeOrderReducer,
-  admin: adminReducer
+  admin: adminReducer,
+  tag: tagReducer
 })
 
 const middleware = composeWithDevTools(
@@ -32,3 +34,4 @@ export * from './singleProduct'
 export * from './placeOrder'
 export * from './order'
 export * from './admin'
+export * from './tag'
