@@ -1,10 +1,10 @@
 /* eslint-disable radix */
 import React from 'react'
 import {connect} from 'react-redux'
-import CartItem from './cart-item'
+import {CartItem} from '.'
 import {getUserCart} from '../store'
 // import {getQuestion} from '../store'
-import PlaceOrder from './placeOrder'
+// import PlaceOrder from './PlaceOrder'
 import {Link} from 'react-router-dom'
 
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined'
@@ -29,15 +29,18 @@ class Cart extends React.Component {
   render() {
     const orderid = this.props.cartId ? this.props.cartId : 0
     const userid = this.props.user.id ? this.props.user.id : 0
+    const {products} = this.props
 
     return (
       <div>
         <h3>Cart</h3>
 
-        {this.props.products
-          ? this.props.products.map(cartItem => (
-              <CartItem button={true} key={cartItem.id} cartItem={cartItem} />
-            ))
+        {products
+          ? products.map(cartItem => {
+              return (
+                <CartItem button={true} key={cartItem.id} cartItem={cartItem} />
+              )
+            })
           : ''}
         {
           <Button
