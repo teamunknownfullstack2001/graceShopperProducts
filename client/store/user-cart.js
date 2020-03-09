@@ -80,7 +80,7 @@ export default function(state = {}, action) {
     case GET_USERCART:
       return {
         cartId: action.userCart.id,
-        products: [...action.userCart.products]
+        products: action.userCart.products
       }
     case ADD_TO_OR_INCREMENT_CART:
       return {...state, products: action.products}

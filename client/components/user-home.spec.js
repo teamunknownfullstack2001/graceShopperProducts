@@ -9,7 +9,7 @@ import thunkMiddleware from 'redux-thunk'
 import {Provider} from 'react-redux'
 import * as rrd from 'react-router-dom'
 import enzyme, {shallow, mount} from 'enzyme'
-import ConnectedUserHome, {UserHome} from './user-home'
+import ConnectedUserHome, {UserHome} from './UserHome'
 import {fetchProducts} from '../store/products'
 import {store} from '../store/index'
 
