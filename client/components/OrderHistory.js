@@ -123,6 +123,8 @@ class DisconnectedOrderHistory extends React.Component {
                   </CardContent>
                 </Card>
               ))
+
+
           : 'No orders'}
       </div>
     )
