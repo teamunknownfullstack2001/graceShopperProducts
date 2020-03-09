@@ -52,7 +52,7 @@ class SingleProduct extends React.Component {
               className="productImg"
             />
           </div>
-          <div className="singleProduct">
+          <div className="singleProductMain">
             <h1>
               <i>{name}</i>
             </h1>
@@ -63,6 +63,7 @@ class SingleProduct extends React.Component {
               ''
             )}
             {stock === 0 ? <p className="text-danger"> Out of Stock!</p> : ''}
+            {this.props.user.type === 'admin' && <p>Stock: {stock}</p>}
             <p>{description}</p>
             <p>
               Category:
