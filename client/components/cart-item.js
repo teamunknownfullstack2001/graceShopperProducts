@@ -53,6 +53,7 @@ class CartItem extends React.Component {
   componentDidMount() {}
   render() {
     const {classes} = this.props
+    console.log(this.props)
     return (
       <div>
         <Card className={classes.root} variant="outlined">
@@ -77,10 +78,14 @@ class CartItem extends React.Component {
             title="Paella dish"
           />
           {this.props.button === true ? (
-            // {true ? (
             <CardActions className={classes.buttonBar}>
               <Button
                 size="large"
+                disabled={
+                  this.props.cartItem.stock -
+                    this.props.cartItem.orderproduct.quantity ===
+                  0
+                }
                 startIcon={<AddIcon />}
                 onClick={() => {
                   this.props.incrementCart(
@@ -96,6 +101,7 @@ class CartItem extends React.Component {
               <Button
                 size="large"
                 startIcon={<RemoveIcon />}
+                disabled={this.props.cartItem.orderproduct.quantity === 1}
                 onClick={() => {
                   this.props.decrementCart(
                     this.props.user.id,

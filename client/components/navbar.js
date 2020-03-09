@@ -197,6 +197,11 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
                 <Link to={`/UserProfile/${user.id}`}>
                   <MenuItem onClick={handleClose}>Profile</MenuItem>
                 </Link>
+
+                <Link to="/adminPage">
+                  <MenuItem onClick={handleClose}>Admin Page</MenuItem>
+                </Link>
+
                 <MenuItem onClick={(handleClose, handleClick)}>
                   Log Out
                 </MenuItem>

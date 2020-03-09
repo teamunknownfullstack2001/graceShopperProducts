@@ -3,8 +3,9 @@ const {Order, orderProduct, User, Product} = require('../db/models')
 const {adminOnly, userOnly, sendEmail} = require('./utlis')
 module.exports = router
 
-router.get('/', userOnly, async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
+    console.log(req.user)
     const allOrders = await Order.findAll()
     res.json(allOrders)
   } catch (error) {

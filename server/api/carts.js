@@ -24,6 +24,7 @@ router.get('/:id', async (req, res, next) => {
 Order.prototype.decrementProduct = async function(ProductId) {
   const product = await Product.findByPk(ProductId)
   const hasAlready = await this.hasProduct(product)
+
   if (!hasAlready) {
     this.addProduct(product, {through: {quantity: 1}})
   } else {
@@ -33,8 +34,10 @@ Order.prototype.decrementProduct = async function(ProductId) {
         productId: ProductId
       }
     })
-    entry.quantity = entry.dataValues.quantity - 1
-    await entry.save()
+    if (entry.quantity > 0) {
+      entry.quantity = entry.dataValues.quantity - 1
+      await entry.save()
+    }
   }
   return this
 }

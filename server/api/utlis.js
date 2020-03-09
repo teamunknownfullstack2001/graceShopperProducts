@@ -14,6 +14,13 @@ const userOnly = (req, res, next) => {
     res.sendStatus(404)
   }
 }
+const userRequire = (req, res, next) => {
+  if (req.user) {
+    next()
+  } else {
+    res.sendStatus(404)
+  }
+}
 
 const selfOnly = (req, res, next) => {
   if (req.params.id === req.user.id) {
@@ -74,4 +81,5 @@ async function sendEmail(emailBody) {
   console.log('Message sent: %s', info.messageId)
 }
 
-module.exports = {adminOnly, userOnly, sendEmail, selfOnly}
+module.exports = {adminOnly, userOnly, sendEmail, selfOnly, userRequire}
+// module.exports = {adminOnly, userOnly, userRequire, sendEmail}

@@ -44,7 +44,10 @@ export const getOrderInfo = () => {
  * INITIAL STATE
  */
 
-const initialState = {}
+const initialState = {
+  users: [],
+  orders: []
+}
 
 /**
  * REDUCER
@@ -53,9 +56,9 @@ const initialState = {}
 const adminReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADMIN_GET_USERS:
-      return action.users
+      return {...state, users: action.users}
     case ADMIN_GET_ORDERS:
-      return action.orders
+      return {...state, orders: action.orders}
     default:
       return state
   }

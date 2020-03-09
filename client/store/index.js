@@ -3,7 +3,6 @@ import {createLogger} from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import user from './user'
-
 import userCart from './user-cart'
 import productsReducer from './products'
 import singleProductReducer from './singleProduct'
@@ -27,9 +26,7 @@ const store = createStore(reducer, middleware)
 
 export default store
 export * from './user'
-
 export * from './user-cart'
-
 export * from './products'
 export * from './singleProduct'
 export * from './placeOrder'
