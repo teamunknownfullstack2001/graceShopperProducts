@@ -8,22 +8,32 @@ const adminOnly = (req, res, next) => {
   }
 }
 const userOnly = (req, res, next) => {
-  if (req.user && req.user === req.params.id) {
-    next()
-  } else {
-    res.sendStatus(404)
-  }
-}
-const userRequire = (req, res, next) => {
-  if (req.user) {
+  if (req.user && req.user.id === req.params.id) {
     next()
   } else {
     res.sendStatus(404)
   }
 }
 
+// guest userId is 0, guest should be able to pass this
+// const selfOnly = (req, res, next) => {
+//   if (req.params.id === req.user.id) {
+//     next()
+//   } else {
+//     res.sendStatus(404)
+//   }
+// }
+
 const selfOnly = (req, res, next) => {
   if (req.params.id === req.body.id) {
+    next()
+  } else {
+    res.sendStatus(404)
+  }
+}
+
+const userRequire = (req, res, next) => {
+  if (req.user) {
     next()
   } else {
     res.sendStatus(404)

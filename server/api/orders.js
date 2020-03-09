@@ -30,8 +30,11 @@ router.post('/place/:id', async (req, res, next) => {
   try {
     // console.log(req.body)
     // console.log(req.body)
-    if (req.session.cart.product !== undefined) {
-      req.session.cart.product = []
+    if (
+      req.session.cart !== undefined &&
+      req.session.cart.products !== undefined
+    ) {
+      req.session.cart.products = []
     }
     const {user, order} = req.body
     sendEmail({
@@ -50,16 +53,13 @@ router.post('/place/:id', async (req, res, next) => {
     for (let i = 0; i < currentOrder.products.length; ++i) {
       currentOrder.products[i].stock -=
         currentOrder.products[i].orderproduct.quantity
-      if (currentOrder.products[i].stock > -1) {
+      if (currentOrder.products[i].stock >= 0) {
         currentOrder.products[i].save()
       } else {
         throw new Error('low inventory')
       }
     }
 
-    // currentOrder.products.map(product=>{
-    //   if(product.)
-    // })
     await currentOrder.update({
       status: 'placed',
       stripeId: req.body.stripeId

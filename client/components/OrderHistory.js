@@ -12,10 +12,18 @@ import {
   CardMedia,
   Button
 } from '@material-ui/core'
-const styles = {
+const styles = theme => ({
   media: {
     maxWidth: '200px',
     maxheight: '200px'
+  },
+  typography: {
+    // In Chinese and Japanese the characters are usually larger,
+    // so a smaller fontsize may be appropriate.
+    [theme.breakpoints.down('sm')]: {
+      // backgroundColor: 'gray',
+      fontSize: 8
+    }
   },
   root: {
     display: 'flex',
@@ -23,34 +31,42 @@ const styles = {
     flexDirection: 'row',
     color: 'black',
     borderRadius: 3,
-    margin: '0'
+    margin: '0',
+    [theme.breakpoints.down('sm')]: {
+      // backgroundColor: 'gray',
+      flexDirection: 'column'
+    }
   },
   content: {
     display: 'flex',
     flexGrow: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    [theme.breakpoints.down('sm')]: {
+      // backgroundColor: 'gray',
+      flexDirection: 'column'
+    }
   },
   info: {
+    marginTop: '2vh',
+    color: 'black',
+    borderRadius: 3,
     display: 'flex',
     heigh: '10vh',
     flexDirection: 'column'
   },
   id: {
-    flex: '3 0 0'
+    marginTop: '2vh'
   },
   status: {
-    flex: '3 0 0'
+    marginTop: '2vh'
   },
   total: {
-    flex: '3 0 0'
+    marginTop: '2vh'
   },
   date: {
-    flex: '3 0 0'
+    marginTop: '2vh'
   }
-  // itemsInfo: {
-  //   flex: '4 0 0'
-  // }
-}
+})
 
 class DisconnectedOrderHistory extends React.Component {
   componentDidMount() {
@@ -76,41 +92,37 @@ class DisconnectedOrderHistory extends React.Component {
                       variant="h5"
                       component="h2"
                     >
-                      <h3> Order Id: {order.id}</h3>
+                      Order Id: {order.id}
                     </Typography>
                     <Typography
                       className={classes.status}
                       variant="h5"
                       component="h2"
                     >
-                      <h3> Status: {order.status}</h3>
+                      Status: {order.status}
                     </Typography>
                     <Typography
                       className={classes.total}
                       variant="h5"
                       component="h2"
                     >
-                      <h3>Total Charged: {order.total}</h3>
+                      Total Charged: {order.total}
                     </Typography>
                     <Typography
                       className={classes.date}
                       variant="h5"
                       component="h2"
                     >
-                      <h3>Date Ordered: {order.updatedAt}</h3>
+                      Date Ordered: {order.updatedAt.slice(0, 10)}
                     </Typography>
                   </CardContent>
                   <CardContent className={classes.content}>
-                    <h3>
-                      {order.products.map(product => (
-                        <OrderItem key={product.id} orderItem={product} />
-                      ))}
-                    </h3>
+                    {order.products.map(product => (
+                      <OrderItem key={product.id} orderItem={product} />
+                    ))}
                   </CardContent>
                 </Card>
               ))
-
-
           : 'No orders'}
       </div>
     )
