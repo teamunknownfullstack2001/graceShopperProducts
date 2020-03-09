@@ -16,13 +16,21 @@ import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined'
 import RemoveIcon from '@material-ui/icons/Remove'
 import AddIcon from '@material-ui/icons/Add'
 
-const styles = {
+const styles = theme => ({
   media: {
     maxWidth: '200px',
     maxheight: '200px'
   },
+  // typography: {
+  //   // In Chinese and Japanese the characters are usually larger,
+  //   // so a smaller fontsize may be appropriate.
+  //   [theme.breakpoints.down('sm')]: {
+  //     // backgroundColor: 'gray',
+  //     fontSize: 8
+  //   }
+  // },
   root: {
-    marginTop: '10vh',
+    marginTop: '1vh',
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'row',
@@ -30,13 +38,17 @@ const styles = {
     borderRadius: 3,
     margin: '0',
     justifyContent: 'flex-start',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    [theme.breakpoints.down('sm')]: {
+      // backgroundColor: 'gray',
+      flexDirection: 'column'
+    }
   },
-  content: {
-    display: 'flex',
-    flexGrow: 1,
-    flexDirection: 'row'
-  },
+  // content: {
+  //   display: 'flex',
+  //   flexGrow: 1,
+  //   flexDirection: 'row'
+  // },
   name: {
     flex: '2 0 0'
   },
@@ -49,7 +61,7 @@ const styles = {
   price: {
     flex: '2 0 0'
   }
-}
+})
 
 class OrderItem extends React.Component {
   componentDidMount() {}
