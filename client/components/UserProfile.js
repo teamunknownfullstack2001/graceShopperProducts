@@ -2,7 +2,14 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {getSingleUser} from '../store'
 import {Link} from 'react-router-dom'
-
+import {
+  Card,
+  CardContent,
+  CardActions,
+  Typography,
+  CardMedia,
+  Button
+} from '@material-ui/core'
 class UserProfile extends React.Component {
   componentDidMount() {
     this.props.getSingleUser(this.props.match.params.id)
@@ -22,33 +29,10 @@ class UserProfile extends React.Component {
         <h2>Email: {email}</h2>
         <h2>Address: {address}</h2>
         <h2>Zip: {zip}</h2>
-        <button type="button">
+
+        <Button size="large">
           <Link to={`/orderHistory/${id}`}>Order History</Link>
-        </button>
-
-        <div>
-          {orders
-            ? orders.map(order => (
-                <div key={order.id}>
-                  <h3> Order Id: {order.id}</h3>
-                  <h3> Status: {order.status}</h3>
-                  <h3>
-                    Order Details:{' '}
-                    {order.products.map(product => (
-                      <div key={product.id}>
-                        <img src={product.imageUrl} />
-                        <h4> Item: {product.name}</h4>
-
-                        <h4>{`Price ${(product.price / 100).toFixed(2)}`}</h4>
-
-                        <p> Date Ordered: {product.updatedAt}</p>
-                      </div>
-                    ))}
-                  </h3>
-                </div>
-              ))
-            : 'No orders'}
-        </div>
+        </Button>
         <button type="submit" onClick={updateInfo}>
           Update Info
         </button>
