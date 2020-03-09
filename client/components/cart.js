@@ -1,10 +1,10 @@
 /* eslint-disable radix */
 import React from 'react'
 import {connect} from 'react-redux'
-import CartItem from './cart-item'
+import {CartItem} from '.'
 import {getUserCart} from '../store'
 // import {getQuestion} from '../store'
-import PlaceOrder from './placeOrder'
+// import PlaceOrder from './PlaceOrder'
 import {Link} from 'react-router-dom'
 
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined'

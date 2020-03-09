@@ -2,8 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {getSingleProduct, putProduct, setProducts} from '../store'
-import EditProductForm from './EditProductForm'
-import Tag from './Tag'
+import {EditProductForm, Tag} from '.'
 
 class EditProduct extends Component {
   constructor(props) {
