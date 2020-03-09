@@ -32,29 +32,35 @@ class Cart extends React.Component {
     const {products} = this.props
 
     return (
-      <div>
-        <h3>Cart</h3>
-
-        {products
-          ? products.map(cartItem => {
+      <div className="d-flex flex-column justify-content-center">
+        <h1>Cart:</h1>
+        {products ? (
+          products.length > 0 ? (
+            products.map(cartItem => {
               return (
                 <CartItem button={true} key={cartItem.id} cartItem={cartItem} />
               )
             })
-          : ''}
-        {
+          ) : (
+            <h3 className="text-center">Your Unknown Cart is Empty</h3>
+          )
+        ) : (
+          'No Product'
+        )}
+
+        {products && products.length > 0 ? (
           <Button
             size="large"
             color="primary"
             href={`/Order/${orderid}/${userid}`}
-            // startIcon={<DeleteOutlinedIcon />}
-            // onClick={() => {
-            //   this.props.removeFromCart(this.props.user.id, this.props.cartItem)
-            // }}
           >
-            check out
+            Check Out
           </Button>
-        }
+        ) : (
+          <Button size="large" color="primary" href="/products">
+            CheckOut More Awsome Products!
+          </Button>
+        )}
       </div>
     )
   }

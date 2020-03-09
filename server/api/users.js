@@ -4,13 +4,22 @@ const {User, Order, Product} = require('../db/models')
 const {adminOnly, userOnly, userRequire, selfOnly} = require('./utlis')
 module.exports = router
 
-router.get('/', async (req, res, next) => {
+router.get('/', userRequire, async (req, res, next) => {
   try {
     const users = await User.findAll({
       // explicitly select only the id and email fields - even though
       // users' passwords are encrypted, it won't help if we just
       // send everything to anyone who asks!
-      attributes: ['id', 'email']
+      attributes: [
+        'id',
+        'userName',
+        'email',
+        'googleId',
+        'type',
+        'address',
+        'zip',
+        'phone'
+      ]
     })
     res.json(users)
   } catch (err) {
@@ -43,9 +52,20 @@ router.delete('/:id', adminOnly, async (req, res, next) => {
 
 router.put('/:id', selfOnly, async (req, res, next) => {
   try {
+    // console.log('These are the req body: ', req.body.user)
     const userToUpdate = await User.findByPk(req.params.id)
+
+    //Only allow access to the following fields so that a user can't make him/herself an admin
+    const {userName, email, password, address, zip, phone} = req.body
     if (userToUpdate) {
-      await userToUpdate.update(req.body) // {email, address, zip, name} = req.body
+      await userToUpdate.update({
+        userName,
+        email,
+        password,
+        address,
+        zip,
+        phone
+      })
       res.json(userToUpdate)
     }
   } catch (error) {

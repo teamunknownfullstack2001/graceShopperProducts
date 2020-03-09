@@ -7,6 +7,7 @@ const DisconnectedItemDetails = props => {
   const orders = props.user.orders
   // const product = props.product
   // console.log('This is the product: ', product)
+  const product = order.products[props.match.params.id]
   return (
     <div>
       {orders.map(order => (

@@ -13,10 +13,6 @@ import {
   Button
 } from '@material-ui/core'
 const styles = theme => ({
-  media: {
-    maxWidth: '200px',
-    maxheight: '200px'
-  },
   typography: {
     // In Chinese and Japanese the characters are usually larger,
     // so a smaller fontsize may be appropriate.
@@ -40,11 +36,7 @@ const styles = theme => ({
   content: {
     display: 'flex',
     flexGrow: 1,
-    flexDirection: 'row',
-    [theme.breakpoints.down('sm')]: {
-      // backgroundColor: 'gray',
-      flexDirection: 'column'
-    }
+    flexDirection: 'column'
   },
   info: {
     marginTop: '2vh',
@@ -123,8 +115,6 @@ class DisconnectedOrderHistory extends React.Component {
                   </CardContent>
                 </Card>
               ))
-
-
           : 'No orders'}
       </div>
     )
