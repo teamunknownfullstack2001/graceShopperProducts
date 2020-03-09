@@ -52,7 +52,7 @@ class SingleProduct extends React.Component {
               className="productImg"
             />
           </div>
-          <div className="singleProduct">
+          <div className="singleProductMain">
             <h1>
               <i>{name}</i>
             </h1>
