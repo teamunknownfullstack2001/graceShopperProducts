@@ -51,10 +51,14 @@ form div {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-right: black dashed 2px;
-  border-bottom: black dashed 2px;
+
   height: 400px;
   margin: 10px;
+}
+
+.productCard:hover {
+  transform: scale(1.01);
+  box-shadow: 5px 5px;
 }
 
 .singleProductContainer {
