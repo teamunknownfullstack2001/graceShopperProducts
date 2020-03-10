@@ -40,9 +40,14 @@ router.get('/:id', async (req, res, next) => {
 router.delete('/:id', adminOnly, async (req, res, next) => {
   try {
     const targetUser = await User.findByPk(req.params.id)
-    if (targetUser) {
+    // console.log(targetUser.type)
+    if (targetUser && targetUser.type !== 'admin') {
       await targetUser.destroy()
-      res.status(204).json(targetUser)
+      res.json({id: req.params.id})
+    } else if (targetUser && targetUser.type === 'admin') {
+      // await targetUser.destroy()
+
+      res.sendStatus(404)
     }
   } catch (error) {
     next(error)
@@ -75,6 +80,7 @@ router.put('/:id', async (req, res, next) => {
   try {
     const currentUser = await User.findByPk(req.params.id)
     const updatedUser = await currentUser.update(req.body)
+
     res.json(updatedUser)
   } catch (error) {
     next(error)

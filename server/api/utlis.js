@@ -14,7 +14,7 @@ const userOnly = (req, res, next) => {
 }
 
 const selfOnly = (req, res, next) => {
-  if (req.params.id === req.body.id) {
+  if (req.params.id === req.body.id || req.session.user.type === 'admin') {
     next()
   } else {
     res.sendStatus(404)

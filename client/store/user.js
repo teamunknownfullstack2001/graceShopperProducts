@@ -84,9 +84,9 @@ export const getSingleUser = id => {
 export const updateUserThunk = (id, info) => {
   return async dispatch => {
     try {
-      await axios.put(`/api/users/${id}`, info)
+      const {data} = await axios.put(`/api/users/${id}`, info)
 
-      // dispatch(updateUser(data))
+      dispatch(updateUser(data))
     } catch (error) {
       console.error(error)
     }

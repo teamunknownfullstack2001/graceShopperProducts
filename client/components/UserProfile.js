@@ -47,30 +47,28 @@ class UserProfile extends React.Component {
   handlesSubmit = event => {
     event.preventDefault()
     console.log('update user')
-    // const productUpdates = {
-    //   name: event.target.name.value,
-    //   imageUrl: event.target.imageUrl.value,
-    //   category: event.target.category.value,
-    //   description: event.target.description.value,
-    //   price: Math.floor(parseFloat(event.target.price.value) * 100),
-    //   stock: event.target.stock.value
-    //   // tags: [event.target.tags.value]
-    // }
-
-    // this.props.modifyProduct(this.props.product.id, productUpdates)
   }
 
   render() {
     // console.log('These are the props: ', this.props)
     const {user} = this.props
-    const {id, phone, userName, email, address, zip, updateInfo, orders} = user
-    // console.log('User info: ', user)
+    const {
+      id,
+      phone,
+      userName,
+      email,
+      address,
+      zip,
+      updateInfo,
+      orders,
+      type
+    } = user
     console.log('These are the orders: ', orders)
 
     return (
       <div key={id}>
         <div className="col-md-8 order-md-1">
-          <form onSubmit={this.handlesSubmit} className="needs-validation">
+          {/*<form onSubmit={this.handlesSubmit} className="needs-validation">
             <label className="mb-3" htmlFor="name">
               Name:
             </label>
@@ -134,7 +132,7 @@ class UserProfile extends React.Component {
             >
               Save CHange
             </Button>
-          </form>
+    </form>*/}
           {/* <Button size="large">
             <Link to={`/orderHistory/${id}`}>Go To Order History</Link> */}
           <div key={id} className="singleProductContainer">
@@ -159,6 +157,10 @@ class UserProfile extends React.Component {
                 <i>Zip: </i>
                 {zip}
               </p>
+              <p>
+                <i>Type: </i>
+                {type}
+              </p>
             </div>
             <div className="singleProductButtons">
               <Link to={`/orderHistory/${id}`}>
@@ -169,14 +171,17 @@ class UserProfile extends React.Component {
                   Order History
                 </Button>
               </Link>
-              <Button
-                size="large"
-                style={{textDecoration: 'none', color: 'black'}}
-                type="submit"
-                onClick={updateInfo}
-              >
-                Update Info
-              </Button>
+              <Link to={`/users/${id}/edit`}>
+                <Button
+                  size="large"
+                  style={{textDecoration: 'none', color: 'black'}}
+
+                  /*type="submit"
+                onClick={updateInfo}*/
+                >
+                  Update Info
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

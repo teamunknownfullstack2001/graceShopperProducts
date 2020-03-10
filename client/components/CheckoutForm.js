@@ -17,7 +17,7 @@ class CheckoutForm extends React.Component {
     if (!stripe || !elements) {
       return
     }
-    console.log('=====order', order, user)
+    // console.log('=====order', order, user)
     const paymentBody = {
       amount: Math.floor(order.total),
       currency: 'usd',
@@ -40,7 +40,7 @@ class CheckoutForm extends React.Component {
         'Payment Success!!Should Redirect to Order Success Page',
         result.paymentIntent.id
       )
-      console.log(stripe, elements, order, user, state, updateuser)
+      // console.log(stripe, elements, order, user, state, updateuser)
       if (user.id === 0) {
         user.email = state.email
         user.address = state.address
@@ -54,7 +54,8 @@ class CheckoutForm extends React.Component {
         user,
         order
       })
-      // window.location.replace(`/orderSuccess/${user.id}?orderId=${order.id}`)
+      // this.props.history.push(`/orderSuccess/${order.id}`)
+      window.location.replace(`/orderSuccess/${user.id}?orderId=${order.id}`)
       // change
     }
   }

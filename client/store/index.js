@@ -8,13 +8,15 @@ import productsReducer from './products'
 import singleProductReducer from './singleProduct'
 import placeOrderReducer from './placeOrder'
 import orderReducer from './order'
+import usersReducer from './users'
 import adminReducer from './admin'
 import tagReducer from './tag'
 
 const reducer = combineReducers({
-  user: user,
-  products: productsReducer,
   product: singleProductReducer,
+  products: productsReducer,
+  user: user,
+  users: usersReducer,
   userCart: userCart,
   order: placeOrderReducer,
   admin: adminReducer,
@@ -28,6 +30,7 @@ const store = createStore(reducer, middleware)
 
 export default store
 export * from './user'
+export * from './users'
 export * from './user-cart'
 export * from './products'
 export * from './singleProduct'

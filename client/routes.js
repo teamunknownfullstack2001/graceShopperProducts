@@ -10,6 +10,7 @@ import {
   UserProfile,
   CreateProduct,
   EditProduct,
+  EditUser,
   InjectedCheckoutForm,
   ItemDetails,
   OrderSuccessPage,
@@ -18,6 +19,7 @@ import {
   OrderHistory,
   // Tag,
   TagProducts,
+  EditUserForm,
   Error,
   Cart,
   AdminPageOrder,
@@ -68,7 +70,10 @@ class Routes extends Component {
           <Route exact path="/newproduct" component={CreateProduct} />
         )}
         {isLoggedIn && user.type === 'admin' && (
-          <Route path="/adminPageUser" component={AdminPageUser} />
+          <Route exact path="/adminPageUser" component={AdminPageUser} />
+        )}
+        {isLoggedIn && user.type === 'admin' && (
+          <Route path="/adminPageUser/:id" component={EditUserForm} />
         )}
         {isLoggedIn && user.type === 'admin' && (
           <Route path="/adminPageOrder" component={AdminPageOrder} />
@@ -76,6 +81,7 @@ class Routes extends Component {
         {isLoggedIn && user.type === 'admin' && (
           <Route path="/products/:id/edit" component={EditProduct} />
         )}
+        {isLoggedIn && <Route path="/users/:id/edit" component={EditUser} />}
 
         {/* Displays our Login component as a fallback */}
         <Route path="/*" component={Error} />

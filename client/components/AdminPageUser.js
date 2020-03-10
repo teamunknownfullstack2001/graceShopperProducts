@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getUserInfo, getOrderInfo} from '../store'
+import {getUserInfo, getOrderInfo, adminDeleteUserThunk} from '../store'
 import {withStyles} from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -11,6 +11,9 @@ import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import {Button} from '@material-ui/core'
 import {Link} from 'react-router-dom'
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
+import EditIcon from '@material-ui/icons/Edit'
+
 const styles = theme => ({
   root: {
     marginTop: '1vh',
@@ -28,14 +31,26 @@ const styles = theme => ({
   }
 })
 class AdminPageUser extends React.Component {
+  constructor() {
+    super()
+    this.handleRemove = this.handleRemove.bind(this)
+    this.handleEdit = this.handleEdit.bind(this)
+  }
   componentDidMount() {
     this.props.getUserInfo()
     this.props.getOrderInfo()
   }
+  handleRemove = async userId => {
+    this.props.adminDeleteUser(userId)
+    // this.props.history.push('/adminPageUser')
+  }
+
+  handleEdit = async id => {
+    this.props.history.push(`/adminPageUser?userId=${id}`)
+  }
 
   render() {
     const {classes} = this.props
-
     const {info} = this.props
     const {users} = info
 
@@ -68,9 +83,30 @@ class AdminPageUser extends React.Component {
                   <TableCell align="left">{user.zip}</TableCell>
                   <TableCell align="left">{user.phone}</TableCell>
                   <TableCell align="left">
-                    <Button size="large">
-                      <Link to="/adminPageUser"> Action </Link>
+                    <Button
+                      size="large"
+                      color="secondary"
+                      startIcon={<DeleteForeverIcon />}
+                      onClick={() => {
+                        this.handleRemove(user.id)
+                      }}
+                    >
+                      Delete
                     </Button>
+                    <Link
+                      to={{
+                        pathname: `/adminPageUser/${user.id}`,
+                        initialValues: user
+                      }}
+                    >
+                      <Button
+                        size="large"
+                        color="secondary"
+                        startIcon={<EditIcon />}
+                      >
+                        Edit
+                      </Button>
+                    </Link>
                   </TableCell>
                 </TableRow>
               ))}
@@ -83,15 +119,17 @@ class AdminPageUser extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log('This is the state: ', state)
   return {
+    users: state.users,
     info: state.admin
   }
 }
 
 const mapDispatchToProps = dispatch => ({
   getUserInfo: () => dispatch(getUserInfo()),
-  getOrderInfo: () => dispatch(getOrderInfo())
+  getOrderInfo: () => dispatch(getOrderInfo()),
+  // destroyUser: userId => dispatch(deleteUser(userId)),
+  adminDeleteUser: id => dispatch(adminDeleteUserThunk(id))
 })
 
 export default connect(
