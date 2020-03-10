@@ -19,6 +19,9 @@ class TagProducts extends React.Component {
     return (
       <div>
         <ul>
+          <h2>
+            <i>{tag.name} Friends</i>
+          </h2>
           {tag.products && tag.products.length
             ? tag.products.map(product => (
                 <Link
@@ -42,7 +45,7 @@ class TagProducts extends React.Component {
                         {product.stock < 10 && product.stock !== 0 ? (
                           <p className="text-danger">
                             {' '}
-                            Only {product.stock} left!-order soon.
+                            Only {product.stock} left! Order soon.
                           </p>
                         ) : (
                           ''

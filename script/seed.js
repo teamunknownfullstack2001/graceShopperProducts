@@ -634,40 +634,40 @@ const orders = [
 
 const tags = [
   {
-    name: 'Bathroom'
+    name: 'Loyal'
   },
   {
-    name: 'Modern'
+    name: 'Honest'
   },
   {
-    name: 'Moroccan'
+    name: 'Wise'
   },
   {
-    name: 'Natural'
+    name: 'Supportive'
   },
   {
-    name: 'Oriental'
+    name: 'Motivational'
   },
   {
-    name: 'Outdoor'
+    name: 'Adventurous'
   },
   {
-    name: 'Persian'
+    name: 'Cool'
   },
   {
-    name: 'Shag'
+    name: 'Ambitious'
   },
   {
-    name: 'Synthetic'
+    name: 'Creative'
   },
   {
-    name: 'Tribal'
+    name: 'Reckless'
   },
   {
-    name: 'Vintage'
+    name: 'Laid-Back'
   },
   {
-    name: 'Woven'
+    name: 'Conscientious'
   }
 ]
 
