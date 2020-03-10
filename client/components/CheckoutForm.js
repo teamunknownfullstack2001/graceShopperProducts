@@ -8,10 +8,10 @@ import axios from 'axios'
 class CheckoutForm extends React.Component {
   handleSubmit = async event => {
     event.preventDefault()
-    const isValid = this.props.validate()
-    if (isValid) {
-      console.log(this.props.state)
-    }
+    // const isValid = this.props.validate()
+    // if (isValid) {
+    //   console.log(this.props.state)
+    // }
     const {stripe, elements, order, user, state} = this.props
 
     //updated the order shipping address and email with current user input
