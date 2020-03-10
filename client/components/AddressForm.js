@@ -26,7 +26,8 @@ export default class AddressForm extends React.Component {
                 type="text"
                 className="form-control "
                 name="name"
-                placeholder=""
+                placeholder="your user name"
+                id="validationCustomUsername"
                 value={state.name}
                 onChange={handleChange}
                 required
@@ -64,6 +65,7 @@ export default class AddressForm extends React.Component {
                 onChange={handleChange}
                 required
               />
+              <div className="valid-feedback">Looks good!</div>
               <div className="invalid-feedback">
                 Please enter your shipping address.
               </div>
