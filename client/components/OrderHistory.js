@@ -98,7 +98,7 @@ class DisconnectedOrderHistory extends React.Component {
                       variant="h5"
                       component="h2"
                     >
-                      Total Charged: {order.total}
+                      Total Charged: ${(order.total / 100).toFixed(2)}
                     </Typography>
                     <Typography
                       className={classes.date}

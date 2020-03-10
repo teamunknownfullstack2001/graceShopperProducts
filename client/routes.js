@@ -10,6 +10,7 @@ import {
   UserProfile,
   CreateProduct,
   EditProduct,
+  EditUser,
   InjectedCheckoutForm,
   ItemDetails,
   OrderSuccessPage,
@@ -76,6 +77,7 @@ class Routes extends Component {
         {isLoggedIn && user.type === 'admin' && (
           <Route path="/products/:id/edit" component={EditProduct} />
         )}
+        {isLoggedIn && <Route path="/users/:id/edit" component={EditUser} />}
 
         {/* Displays our Login component as a fallback */}
         <Route path="/*" component={Error} />

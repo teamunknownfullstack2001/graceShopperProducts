@@ -31,16 +31,7 @@ export class UserHome extends React.Component {
       totalPages: null
     }
     this.onPageChanged = this.onPageChanged.bind(this)
-
-    // this.handleRemove = this.handleRemove.bind(this)
   }
-  // componentDidMount() {
-  //   this.props.fetchProducts()
-  // }
-  // handleRemove = async productId => {
-  //   await this.props.removeProduct(productId)
-  //   this.props.history.push("/products")
-  // }
 
   onPageChanged = data => {
     const {products} = this.props

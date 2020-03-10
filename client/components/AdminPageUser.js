@@ -11,6 +11,9 @@ import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import {Button} from '@material-ui/core'
 import {Link} from 'react-router-dom'
+import {deleteUser} from '../store'
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
+import EditIcon from '@material-ui/icons/Edit'
 const styles = theme => ({
   root: {
     marginTop: '1vh',
@@ -28,19 +31,30 @@ const styles = theme => ({
   }
 })
 class AdminPageUser extends React.Component {
+  constructor() {
+    super()
+    this.handleRemove = this.handleRemove.bind(this)
+    this.handleEdit = this.handleEdit.bind(this)
+  }
   componentDidMount() {
     this.props.getUserInfo()
     this.props.getOrderInfo()
   }
+  handleRemove = async userId => {
+    await this.props.destroyUser(userId)
+
+    this.props.history.push('/adminPageUser')
+  }
+
+  handleEdit = async id => {
+    await this.props.history.push(`/users/${id}/edit`)
+  }
 
   render() {
     const {classes} = this.props
-    //  console.log("THESE ARE THE PROPS IN ADMINPAGEUser!", this.props)
     const {info} = this.props
     const {users, orders} = info
-    console.log('This is the info I want: ', info)
-    console.log('These are the users: ', users)
-    console.log('These are the orders: ', orders)
+
     return (
       <div>
         <h1>Welcome Admin</h1>
@@ -71,9 +85,25 @@ class AdminPageUser extends React.Component {
                   <TableCell align="left">{user.zip}</TableCell>
                   <TableCell align="left">{user.phone}</TableCell>
                   <TableCell align="left">
-                    <Button size="large">
-                      <Link to="/adminPageUser"> Action </Link>
+                    <Button
+                      size="large"
+                      color="secondary"
+                      startIcon={<DeleteForeverIcon />}
+                      onClick={() => {
+                        this.handleRemove(user.id)
+                      }}
+                    >
+                      Delete
                     </Button>
+                    <Link to={`/users/${user.id}/edit`}>
+                      <Button
+                        size="large"
+                        color="secondary"
+                        startIcon={<EditIcon />}
+                      >
+                        Edit
+                      </Button>
+                    </Link>
                   </TableCell>
                 </TableRow>
               ))}
@@ -88,7 +118,7 @@ class AdminPageUser extends React.Component {
 const mapStateToProps = state => {
   console.log('This is the state: ', state)
   return {
-    // users: state.users,
+    users: state.users,
     // orders: state.orders
     info: state.admin
   }
@@ -96,7 +126,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   getUserInfo: () => dispatch(getUserInfo()),
-  getOrderInfo: () => dispatch(getOrderInfo())
+  getOrderInfo: () => dispatch(getOrderInfo()),
+  destroyUser: userId => dispatch(deleteUser(userId))
 })
 
 export default connect(
