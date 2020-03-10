@@ -56,6 +56,8 @@ class CartItem extends React.Component {
   componentDidMount() {}
   render() {
     const {classes} = this.props
+    console.log('These are the props: ', this.props)
+    // console.log('This is the quantity: ', this.props.cartItem.orderproduct.quantity)
     return (
       <div>
         <Card className={classes.root} variant="outlined">
@@ -71,7 +73,11 @@ class CartItem extends React.Component {
               {`Qty: ${this.props.cartItem.orderproduct.quantity}`}
             </Typography>
             <Typography variant="h5" className={classes.price} component="h2">
-              {`Price: $ ${(this.props.cartItem.price / 100).toFixed(2)}`}
+              {`Price: $ ${(
+                (this.props.cartItem.price *
+                  this.props.cartItem.orderproduct.quantity) /
+                100
+              ).toFixed(2)}`}
             </Typography>
           </CardContent>
           <CardMedia
