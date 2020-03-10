@@ -122,7 +122,7 @@ const products = [
   {
     name: 'Bill',
     imageUrl: '/friends/01 man.png',
-    category: 'Runner',
+    category: 'Short-Term',
     description:
       'rutrum nulla nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio porttitor',
     price: 30612,
@@ -131,7 +131,7 @@ const products = [
   {
     name: 'Denise',
     imageUrl: '/friends/01 woman.png',
-    category: 'Square',
+    category: 'Long-Term',
     description:
       'luctus et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat dui nec nisi volutpat eleifend donec',
     price: 13369,
@@ -140,7 +140,7 @@ const products = [
   {
     name: 'Mike',
     imageUrl: '/friends/02 man.png',
-    category: 'Area',
+    category: 'Contitional',
     description:
       'rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis',
     price: 26466,
@@ -149,7 +149,7 @@ const products = [
   {
     name: 'Carol',
     imageUrl: '/friends/02 woman.png',
-    category: 'Round',
+    category: 'Noncommital',
     description:
       'pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras',
     price: 96845,
@@ -158,7 +158,7 @@ const products = [
   {
     name: 'Fred',
     imageUrl: '/friends/03 man.png',
-    category: 'Square',
+    category: 'Long-Term',
     description:
       'morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis',
     price: 3828,
@@ -167,7 +167,7 @@ const products = [
   {
     name: 'Mary',
     imageUrl: '/friends/03 woman.png',
-    category: 'Oval',
+    category: 'Fair-Weather',
     description:
       'etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis',
     price: 51443,
@@ -176,7 +176,7 @@ const products = [
   {
     name: 'Ted',
     imageUrl: '/friends/04 man.png',
-    category: 'Oval',
+    category: 'Fair-Weather',
     description:
       'ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est',
     price: 67894,
@@ -185,7 +185,7 @@ const products = [
   {
     name: 'Steph',
     imageUrl: '/friends/04 woman.png',
-    category: 'Square',
+    category: 'Long-Term',
     description:
       'augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea',
     price: 14258,
@@ -194,7 +194,7 @@ const products = [
   {
     name: 'Walter',
     imageUrl: '/friends/05 man.png',
-    category: 'Square',
+    category: 'Long-Term',
     description:
       'tortor duis mattis egestas metus aenean fermentum donec ut mauris',
     price: 89037,
@@ -203,7 +203,7 @@ const products = [
   {
     name: 'Katie',
     imageUrl: '/friends/05 woman.png',
-    category: 'Square',
+    category: 'Long-Term',
     description:
       'turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus',
     price: 7821,
@@ -212,7 +212,7 @@ const products = [
   {
     name: 'Chad',
     imageUrl: '/friends/06 man.png',
-    category: 'Runner',
+    category: 'Short-Term',
     description:
       'nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu',
     price: 95723,
@@ -221,7 +221,7 @@ const products = [
   {
     name: 'Camile',
     imageUrl: '/friends/06 woman.png',
-    category: 'Square',
+    category: 'Long-Term',
     description:
       'integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices',
     price: 7355,
@@ -230,7 +230,7 @@ const products = [
   {
     name: 'Josh',
     imageUrl: '/friends/07 man.png',
-    category: 'Area',
+    category: 'Contitional',
     description:
       'magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum',
     price: 61934,
@@ -239,7 +239,7 @@ const products = [
   {
     name: 'Miranda',
     imageUrl: '/friends/07 woman.png',
-    category: 'Oval',
+    category: 'Fair-Weather',
     description: 'non mi integer ac neque duis bibendum morbi non quam nec dui',
     price: 53542,
     stock: 78
@@ -247,7 +247,7 @@ const products = [
   {
     name: 'Chris',
     imageUrl: '/friends/08 man.png',
-    category: 'Square',
+    category: 'Long-Term',
     description:
       'nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue',
     price: 95503,
@@ -256,7 +256,7 @@ const products = [
   {
     name: 'Ali',
     imageUrl: '/friends/08 woman.png',
-    category: 'Square',
+    category: 'Long-Term',
     description:
       'donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla',
     price: 60652,
@@ -265,7 +265,7 @@ const products = [
   {
     name: 'Joe',
     imageUrl: '/friends/09 man.png',
-    category: 'Runner',
+    category: 'Short-Term',
     description:
       'et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin',
     price: 70947,
@@ -274,7 +274,7 @@ const products = [
   {
     name: 'Megan',
     imageUrl: '/friends/09 woman.png',
-    category: 'Area',
+    category: 'Contitional',
     description:
       'scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor',
     price: 82464,
@@ -283,7 +283,7 @@ const products = [
   {
     name: 'Ihor',
     imageUrl: '/friends/10 man.png',
-    category: 'Square',
+    category: 'Long-Term',
     description:
       'luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi',
     price: 7761,
@@ -292,7 +292,7 @@ const products = [
   {
     name: 'Lydia',
     imageUrl: '/friends/10 woman.png',
-    category: 'Area',
+    category: 'Contitional',
     description:
       'tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia',
     price: 43308,
@@ -301,7 +301,7 @@ const products = [
   {
     name: 'Jerry',
     imageUrl: '/friends/11 man.png',
-    category: 'Square',
+    category: 'Long-Term',
     description:
       'morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus',
     price: 62111,
@@ -310,7 +310,7 @@ const products = [
   {
     name: 'Maria',
     imageUrl: '/friends/11 woman.png',
-    category: 'Square',
+    category: 'Long-Term',
     description:
       'enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis',
     price: 20572,
@@ -319,7 +319,7 @@ const products = [
   {
     name: 'Nick',
     imageUrl: '/friends/12 man.png',
-    category: 'Square',
+    category: 'Long-Term',
     description:
       'vel enim sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum',
     price: 6775,
@@ -328,7 +328,7 @@ const products = [
   {
     name: 'Kaitlin',
     imageUrl: '/friends/12 woman.png',
-    category: 'Square',
+    category: 'Long-Term',
     description:
       'quisque porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum',
     price: 86248,
@@ -337,7 +337,7 @@ const products = [
   {
     name: 'Steve',
     imageUrl: '/friends/13 man.png',
-    category: 'Area',
+    category: 'Contitional',
     description:
       'morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla',
     price: 48172,
@@ -346,7 +346,7 @@ const products = [
   {
     name: 'Laura',
     imageUrl: '/friends/13 woman.png',
-    category: 'Runner',
+    category: 'Short-Term',
     description:
       'quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis',
     price: 78762,
@@ -355,7 +355,7 @@ const products = [
   {
     name: 'Matthew',
     imageUrl: '/friends/14 man.png',
-    category: 'Oval',
+    category: 'Fair-Weather',
     description:
       'non pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea dictumst maecenas ut massa',
     price: 51679,
@@ -364,7 +364,7 @@ const products = [
   {
     name: 'Trish',
     imageUrl: '/friends/14 woman.png',
-    category: 'Round',
+    category: 'Noncommital',
     description:
       'tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc',
     price: 64419,
@@ -373,7 +373,7 @@ const products = [
   {
     name: 'Craig',
     imageUrl: '/friends/15 man.png',
-    category: 'Square',
+    category: 'Long-Term',
     description:
       'nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo',
     price: 72508,
@@ -382,7 +382,7 @@ const products = [
   {
     name: 'Cindy',
     imageUrl: '/friends/15 woman.png',
-    category: 'Round',
+    category: 'Noncommital',
     description:
       'pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat metus sapien',
     price: 48056,
@@ -391,7 +391,7 @@ const products = [
   {
     name: 'Dave',
     imageUrl: '/friends/16 man.png',
-    category: 'Area',
+    category: 'Contitional',
     description: 'a odio in hac habitasse platea dictumst maecenas ut massa',
     price: 3177,
     stock: 25
@@ -399,7 +399,7 @@ const products = [
   {
     name: 'Carly',
     imageUrl: '/friends/16 woman.png',
-    category: 'Runner',
+    category: 'Short-Term',
     description:
       'turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam',
     price: 39147,
@@ -408,7 +408,7 @@ const products = [
   {
     name: 'Marcello',
     imageUrl: '/friends/17 man.png',
-    category: 'Octagon',
+    category: 'Unconditional',
     description:
       'congue elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo',
     price: 83503,
@@ -417,7 +417,7 @@ const products = [
   {
     name: 'Christine',
     imageUrl: '/friends/17 woman.png',
-    category: 'Runner',
+    category: 'Short-Term',
     description:
       'nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel',
     price: 90461,
@@ -426,7 +426,7 @@ const products = [
   {
     name: 'Don',
     imageUrl: '/friends/18 man.png',
-    category: 'Square',
+    category: 'Long-Term',
     description:
       'nec nisi volutpat eleifend donec ut dolor morbi vel lectus in',
     price: 49982,
@@ -435,7 +435,7 @@ const products = [
   {
     name: 'Sarah',
     imageUrl: '/friends/18 woman.png',
-    category: 'Oval',
+    category: 'Fair-Weather',
     description:
       'eu felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus',
     price: 6511,
@@ -444,7 +444,7 @@ const products = [
   {
     name: 'Norm',
     imageUrl: '/friends/19 man.png',
-    category: 'Oval',
+    category: 'Fair-Weather',
     description:
       'amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis',
     price: 80418,
@@ -453,7 +453,7 @@ const products = [
   {
     name: 'Robin',
     imageUrl: '/friends/19 woman.png',
-    category: 'Area',
+    category: 'Contitional',
     description:
       'non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing',
     price: 14211,
@@ -462,7 +462,7 @@ const products = [
   {
     name: 'Richard',
     imageUrl: '/friends/20 man.png',
-    category: 'Square',
+    category: 'Long-Term',
     description:
       'nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh',
     price: 9729,
@@ -471,7 +471,7 @@ const products = [
   {
     name: 'Ariel',
     imageUrl: '/friends/20 woman.png',
-    category: 'Runner',
+    category: 'Short-Term',
     description:
       'proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at dolor quis odio',
     price: 34423,
@@ -480,7 +480,7 @@ const products = [
   {
     name: 'Blake',
     imageUrl: '/friends/musician.png',
-    category: 'Round',
+    category: 'Noncommital',
     description:
       'posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis',
     price: 38887,
@@ -489,7 +489,7 @@ const products = [
   {
     name: 'Guy',
     imageUrl: '/friends/guy.png',
-    category: 'Octagon',
+    category: 'Unconditional',
     description:
       'porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in felis donec',
     price: 100000,
@@ -498,7 +498,7 @@ const products = [
   {
     name: 'Justin',
     imageUrl: '/friends/bieber.png',
-    category: 'Runner',
+    category: 'Short-Term',
     description:
       'sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet',
     price: 1000000,
@@ -507,7 +507,7 @@ const products = [
   {
     name: 'Ariana',
     imageUrl: '/friends/grande.png',
-    category: 'Square',
+    category: 'Long-Term',
     description:
       'donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a',
     price: 10000000,
@@ -516,7 +516,7 @@ const products = [
   {
     name: 'Jackie',
     imageUrl: '/friends/jackie.png',
-    category: 'Octagon',
+    category: 'Unconditional',
     description:
       'hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque',
     price: 10000000,
@@ -525,7 +525,7 @@ const products = [
   {
     name: 'Dude',
     imageUrl: '/friends/dude.png',
-    category: 'Square',
+    category: 'Long-Term',
     description:
       'quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh',
     price: 100,
@@ -534,7 +534,7 @@ const products = [
   {
     name: 'Snoop',
     imageUrl: '/friends/snoop.png',
-    category: 'Oval',
+    category: 'Fair-Weather',
     description:
       'turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin',
     price: 10000000,
@@ -543,7 +543,7 @@ const products = [
   {
     name: 'Lebron',
     imageUrl: '/friends/lebron.png',
-    category: 'Oval',
+    category: 'Fair-Weather',
     description:
       'vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus',
     price: 10000000,
@@ -552,7 +552,7 @@ const products = [
   {
     name: 'Barack',
     imageUrl: '/friends/obama.png',
-    category: 'Oval',
+    category: 'Fair-Weather',
     description:
       'adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in ante vestibulum ante ipsum primis',
     price: 10000000,
@@ -561,7 +561,7 @@ const products = [
   {
     name: 'Benedict',
     imageUrl: '/friends/benedict.png',
-    category: 'Runner',
+    category: 'Short-Term',
     description:
       'erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget',
     price: 100,
