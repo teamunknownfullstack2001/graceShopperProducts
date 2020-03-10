@@ -8,7 +8,10 @@ import axios from 'axios'
 class CheckoutForm extends React.Component {
   handleSubmit = async event => {
     event.preventDefault()
-
+    // const isValid = this.props.validate()
+    // if (isValid) {
+    //   console.log(this.props.state)
+    // }
     const {stripe, elements, order, user, state} = this.props
 
     //updated the order shipping address and email with current user input
@@ -103,7 +106,7 @@ class CheckoutForm extends React.Component {
               />
 
               <div className="invalid-feedback">
-                Please enter a valid email address for shipping updates.
+                {this.props.state.emailError}
               </div>
             </div>
 
