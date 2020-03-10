@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {getSingleProduct, addToOrIncrementCart, deleteProduct} from '../store'
-import {Tag} from '.'
+import {Tag, Popup} from '.'
 
 import {withStyles} from '@material-ui/core/styles'
 import {
@@ -21,12 +21,22 @@ const styles = {}
 class SingleProduct extends React.Component {
   constructor() {
     super()
+    this.state = {
+      seen: false
+    }
     this.handleRemove = this.handleRemove.bind(this)
     this.handleEdit = this.handleEdit.bind(this)
+    this.togglePop = this.togglePop.bind(this)
   }
   componentDidMount() {
     this.props.getSingleProduct(this.props.match.params.id)
   }
+  togglePop = () => {
+    this.setState({
+      seen: !this.state.seen
+    })
+  }
+
   handleRemove = async productId => {
     await this.props.removeProduct(productId)
 
@@ -95,17 +105,21 @@ class SingleProduct extends React.Component {
                 Edit Friend
               </Button>
             )}{' '}
-            <Button
-              size="large"
-              startIcon={<AddShoppingCartIcon />}
-              disabled={stock === 0}
-              onClick={() => {
-                console.log('clicked')
-                this.props.addToCart(this.props.user.id, product)
-              }}
-            >
-              Add to Cart
-            </Button>
+            <div>
+              <Button
+                size="large"
+                startIcon={<AddShoppingCartIcon />}
+                disabled={stock === 0}
+                onClick={() => {
+                  console.log('clicked')
+                  this.props.addToCart(this.props.user.id, product)
+                }}
+                onClick={this.togglePop}
+              >
+                Add to Cart
+              </Button>
+              {this.state.seen ? <Popup toggle={this.togglePop} /> : null}
+            </div>
             <Button
               size="large"
               startIcon={<AddShoppingCartIcon />}
