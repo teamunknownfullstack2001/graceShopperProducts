@@ -14,11 +14,28 @@ class disPlaceOrder extends React.Component {
       address: '',
       zip: '',
       phone: '',
-      competedForm: false
+      nameError: '',
+      emailError: ''
     }
     this.handleChange = this.handleChange.bind(this)
+    this.validate = this.validate.bind(this)
   }
 
+  validate = () => {
+    let nameError = ''
+    let emailError = ''
+    let addressError = ''
+
+    if (!this.state.email.includes('@')) {
+      emailError = 'Please enter a valid email address for shipping updates.'
+    }
+    if (emailError) {
+      this.setState({emailError})
+      return false
+    }
+
+    return true
+  }
   handleChange(evt) {
     this.setState({
       [evt.target.name]: evt.target.value
@@ -80,6 +97,7 @@ class disPlaceOrder extends React.Component {
               state={this.state}
               competedForm={this.state.competedForm}
               handleChange={this.handleChange}
+              validate={this.validate}
             />
           ) : (
             ''

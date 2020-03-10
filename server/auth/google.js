@@ -29,20 +29,36 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
 
   const strategy = new GoogleStrategy(
     googleConfig,
-    (token, refreshToken, profile, done) => {
+    async (token, refreshToken, profile, done) => {
       const googleId = profile.id
       const email = profile.emails[0].value
       const imgUrl = profile.photos[0].value
       const firstName = profile.name.givenName
       const lastName = profile.name.familyName
       const fullName = profile.displayName
+      console.log('google profile', typeof userName)
+      // User.findOrCreate({
+      //   where: {googleId},
+      //   defaults: {userName: fullName, email}
+      // })
+      //   .then(([user]) => done(null, user))
+      //   .catch(done)
 
-      User.findOrCreate({
-        where: {googleId},
-        defaults: {email, imgUrl, firstName, lastName, fullName}
-      })
-        .then(([user]) => done(null, user))
-        .catch(done)
+      try {
+        const [user] = await User.findOrCreate({
+          where: {
+            googleId
+          },
+          defaults: {
+            email
+          }
+        })
+        user.userName = fullName
+        user.save()
+        done(null, user)
+      } catch (error) {
+        done(error)
+      }
     }
   )
 
