@@ -11,11 +11,13 @@ const ProductDummy = props => {
         style={{textDecoration: 'none', color: 'black'}}
       >
         <div key={product.id} className="productCard">
-          <img
-            src={product.imageUrl}
-            alt={`Image: ${product.imageUrl}`}
-            className="productImg"
-          />
+          <div className="imgContainer">
+            <img
+              src={product.imageUrl}
+              alt={`Image: ${product.imageUrl}`}
+              className="productImg"
+            />
+          </div>
           <h3>
             <i>{product.name}</i>
           </h3>
