@@ -39,10 +39,10 @@ class DisEditUserForm extends React.Component {
     event.preventDefault()
 
     if (this.props.match && this.props.match.path.includes('admin')) {
-      this.props.adminUpdateusers(this.state.id, this.state)
+      this.props.adminUpdateUsers(this.state.id, this.state)
       this.props.history.push(`/adminPageUser/`)
     } else {
-      this.props.updateuser(this.state.id, this.state)
+      this.props.updateUser(this.state.id, this.state)
       this.props.history.push(`/userProfile/${this.state.id}`)
     }
   }
@@ -115,8 +115,8 @@ class DisEditUserForm extends React.Component {
 }
 const mapDispatch = dispatch => {
   return {
-    updateuser: (id, info) => dispatch(updateUserThunk(id, info)),
-    adminUpdateusers: (id, info) => dispatch(adminUpdateUsersThunk(id, info))
+    updateUser: (id, info) => dispatch(updateUserThunk(id, info)),
+    adminUpdateUsers: (id, info) => dispatch(adminUpdateUsersThunk(id, info))
   }
 }
 
