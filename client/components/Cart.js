@@ -3,19 +3,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {CartItem} from '.'
 import {getUserCart} from '../store'
-// import {getQuestion} from '../store'
-// import PlaceOrder from './PlaceOrder'
-import {Link} from 'react-router-dom'
 
-import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined'
-import {
-  // Card,
-  // CardContent,
-  // CardActions,
-  // Typography,
-  // CardMedia,
-  Button
-} from '@material-ui/core'
+import {Button} from '@material-ui/core'
 
 class Cart extends React.Component {
   constructor() {
@@ -69,7 +58,7 @@ class Cart extends React.Component {
 const mapState = state => ({
   user: state.user,
   products: state.userCart.products,
-  cartId: state.userCart.cartId // orderId
+  cartId: state.userCart.cartId // this is orderId
 })
 const mapDispatch = dispatch => ({
   getUserCart: id => {
