@@ -72,70 +72,91 @@ const AuthForm = props => {
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-          <form
-            className={classes.form}
-            onSubmit={handleSubmit}
-            // name={name}
-            noValidate
-          >
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
+      <Grid
+        item
+        xs={12}
+        sm={8}
+        md={5}
+        className="signupHelper"
+        component={Paper}
+        elevation={6}
+        square
+      >
+        <Grid>
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign in
+            </Typography>
+            <form
+              className="signupHelper"
+              onSubmit={handleSubmit}
+              name={name}
+              noValidate
             >
-              {displayName}
-            </Button>
-            {error && error.response && <div> {error.response.data} </div>}
-            <Grid container>
-              <Grid item xs>
-                <Link href="/auth/google" variant="body2">
-                  {displayName} with Google
-                </Link>
+              <Grid container>
+                <Grid item xs={11}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                  />
+                </Grid>
+                <Grid item xs={11}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="current-password"
+                  />
+                </Grid>
               </Grid>
-              <Grid item>
-                <Link href="/signup" variant="body2">
-                  {"Don't have an account? Sign Up "}
-                </Link>
+              <FormControlLabel
+                className="signupHelper1"
+                control={
+                  <Checkbox
+                    justify="flex-start"
+                    value="remember"
+                    color="primary"
+                  />
+                }
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                {displayName}
+              </Button>
+              {error && error.response && <div> {error.response.data} </div>}
+              <Grid container>
+                <Grid item xs>
+                  <Link href="/auth/google" variant="body2">
+                    {displayName} with Google
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <Link href="/signup" variant="body2">
+                    {"Don't have an account? Sign Up "}
+                  </Link>
+                </Grid>
               </Grid>
-            </Grid>
-          </form>
-        </div>
+            </form>
+          </div>
+        </Grid>
       </Grid>
     </Grid>
   )
