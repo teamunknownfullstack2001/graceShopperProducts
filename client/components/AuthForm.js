@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
-
+import {makeStyles} from '@material-ui/core/styles'
 import {withStyles} from '@material-ui/core/styles'
 import {
   Card,
@@ -24,22 +24,9 @@ import Paper from '@material-ui/core/Paper'
 import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
-
-import {makeStyles} from '@material-ui/core/styles'
-
+const styles = {}
 //material-ui Component
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  )
-}
+
 const useStyles = makeStyles(theme => ({
   root: {
     height: '100vh'
@@ -96,7 +83,7 @@ const AuthForm = props => {
           <form
             className={classes.form}
             onSubmit={handleSubmit}
-            name={name}
+            // name={name}
             noValidate
           >
             <TextField
@@ -147,44 +134,13 @@ const AuthForm = props => {
                 </Link>
               </Grid>
             </Grid>
-            <Box mt={5}>
-              <Copyright />
-            </Box>
           </form>
         </div>
       </Grid>
     </Grid>
   )
 }
-{
-  /* <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="email">
-            <small>Email</small>
-          </label>
-          <input name="email" type="text" />
-        </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <Button size="large" type="submit">
-            {displayName}
-          </Button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
-      <Button size="large" type="submit">
-        <a href="/auth/google" style={{textDecoration: 'none', color: 'black'}}>
-          {displayName} with Google
-        </a>
-      </Button>
-    </div> */
-}
+
 /**
  * CONTAINER
  *   Note that we have two different sets of 'mapStateToProps' functions -
