@@ -22,7 +22,7 @@ export default function CheckoutOrderItem(props) {
               <small className=" text-muted ">{product.description}</small>
             </div>
             <span className="  font-weight-bold text-muted">
-              ${(product.price / 100).toFixed(2)}/day
+              ${(product.price / 100).toFixed(2)}
               <p className=" text-right font-weight-normal">
                 {'Qty ' + product.orderproduct.quantity}
               </p>

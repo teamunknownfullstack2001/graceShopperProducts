@@ -67,7 +67,7 @@ const EditProductForm = props => {
         />
 
         <label className="mb-3" htmlFor="price">
-          Price/day:
+          Price:
         </label>
         <input
           className="form-control"

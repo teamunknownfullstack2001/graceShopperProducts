@@ -81,7 +81,7 @@ class OrderItem extends React.Component {
               {`Qty: ${this.props.orderItem.orderproduct.quantity}`}
             </Typography>
             <Typography variant="h5" className={classes.price} component="h2">
-              {`Price: $${(this.props.orderItem.price / 100).toFixed(2)}/day`}
+              {`Price: $${(this.props.orderItem.price / 100).toFixed(2)}`}
             </Typography>
           </CardContent>
           <Button size="large">
