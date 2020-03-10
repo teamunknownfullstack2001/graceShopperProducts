@@ -449,7 +449,6 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
           )}
         </Toolbar>
       </AppBar>
-      <hr />
     </div>
   )
 }
