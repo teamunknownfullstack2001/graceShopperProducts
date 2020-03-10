@@ -20,7 +20,7 @@ export const deleteUser = userId => {
       await axios.delete(`/api/users/${userId}`)
       dispatch(destroyUser(userId))
     } catch (error) {
-      console.error(`${userId} DELETE Error`)
+      console.error(`DELETE Error userId: ${userId}`)
     }
   }
 }
@@ -28,11 +28,12 @@ export const deleteUser = userId => {
 export const putUser = (id, userUpdates, history) => {
   return async dispatch => {
     try {
+      console.log('updateUser')
       const {data} = await axios.put(`/api/users/${id}`, userUpdates)
       dispatch(modifyUser(data))
       history.push(`/userprofile/${id}`)
     } catch (error) {
-      console.error(`PUT fail users/${id}`)
+      console.error(`PUT Error userId: ${id}`)
     }
   }
 }
