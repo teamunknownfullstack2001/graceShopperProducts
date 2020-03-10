@@ -2,6 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {withStyles} from '@material-ui/core/styles'
 import {withRouter} from 'react-router'
+import {addEventListenToForms, regEx} from './utils.js'
+
 import {
   Card,
   CardContent,
@@ -15,6 +17,9 @@ import {updateUserThunk, adminUpdateUsersThunk} from '../store'
 const styles = {}
 
 class DisEditUserForm extends React.Component {
+  componentDidMount() {
+    addEventListenToForms()
+  }
   constructor(props) {
     super()
     this.state =
@@ -50,11 +55,6 @@ class DisEditUserForm extends React.Component {
     }
   }
   render() {
-    const regEx = {
-      email: '^[A-Za-z0-9.-_]+@[A-Za-z0-9]+.[A-Za-z0-9]+$',
-      phone: '^[0-9]{3}-[0-9]{3}-[0-9]{4}$',
-      zip: '^[0-9]{5}$'
-    }
     return (
       <div className="col-md-8 order-md-1">
         <form
@@ -85,6 +85,7 @@ class DisEditUserForm extends React.Component {
                 type="email"
                 name="email"
                 required
+                title="someone@somewhere.somewhere"
                 pattern={regEx.email}
                 id="email"
                 value={this.state.email}
