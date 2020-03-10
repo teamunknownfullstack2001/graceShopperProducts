@@ -48,7 +48,7 @@ const CreateProductForm = props => {
         <textarea className="form-control" name="description" />
 
         <label className="mb-3" htmlFor="price">
-          Price:
+          Price/day:
         </label>
         <input
           className="form-control"

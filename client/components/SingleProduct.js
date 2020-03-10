@@ -56,7 +56,7 @@ class SingleProduct extends React.Component {
             <h1>
               <i>{name}</i>
             </h1>
-            <p>{`$ ${(price / 100).toFixed(2)}`}</p>
+            <p>{`$ ${(price / 100).toFixed(2)}/day`}</p>
             {stock < 10 && stock !== 0 ? (
               <p className="text-danger"> Only {stock} left!-order soon.</p>
             ) : (

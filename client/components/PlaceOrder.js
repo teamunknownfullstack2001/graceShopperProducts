@@ -33,7 +33,7 @@ class disPlaceOrder extends React.Component {
 
   render() {
     const total = this.props.order.total
-      ? `$ ${(this.props.order.total / 100).toFixed(2)}`
+      ? `$ ${(this.props.order.total / 100).toFixed(2)}/day`
       : 0
     console.log('in place order', this.state)
     return (

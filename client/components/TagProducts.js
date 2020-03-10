@@ -41,7 +41,7 @@ class TagProducts extends React.Component {
                         <h1>
                           <i>{product.name}</i>
                         </h1>
-                        <p>{`$ ${(product.price / 100).toFixed(2)}`}</p>
+                        <p>{`$ ${(product.price / 100).toFixed(2)}/day`}</p>
                         {product.stock < 10 && product.stock !== 0 ? (
                           <p className="text-danger">
                             {' '}
