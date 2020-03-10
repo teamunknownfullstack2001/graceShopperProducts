@@ -55,7 +55,9 @@ const styles = theme => ({
 class CartItem extends React.Component {
   componentDidMount() {}
   render() {
-    const {classes} = this.props
+    const {classes, cartItem} = this.props
+    const {price, orderproduct} = cartItem
+    const {quantity} = orderproduct
     console.log('These are the props: ', this.props)
     // console.log('This is the quantity: ', this.props.cartItem.orderproduct.quantity)
     return (
@@ -70,14 +72,17 @@ class CartItem extends React.Component {
               variant="h5"
               component="h2"
             >
-              {`Qty: ${this.props.cartItem.orderproduct.quantity}`}
+              {/* {`Qty: ${this.props.cartItem.orderproduct.quantity}`} */}
+              {`Qty: ${quantity}`}
             </Typography>
             <Typography variant="h5" className={classes.price} component="h2">
-              {`Price: $ ${(
+              {/* {`Price: $ ${(
                 (this.props.cartItem.price *
                   this.props.cartItem.orderproduct.quantity) /
                 100
-              ).toFixed(2)}`}
+              ).toFixed(2)}`} */}
+
+              {`Price: $ ${((price * quantity) / 100).toFixed(2)}`}
             </Typography>
           </CardContent>
           <CardMedia
