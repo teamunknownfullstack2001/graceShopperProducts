@@ -8,10 +8,7 @@ import axios from 'axios'
 class CheckoutForm extends React.Component {
   handleSubmit = async event => {
     event.preventDefault()
-    // const isValid = this.props.validate()
-    // if (isValid) {
-    //   console.log(this.props.state)
-    // }
+
     const {stripe, elements, order, user, state} = this.props
 
     //updated the order shipping address and email with current user input
@@ -62,7 +59,7 @@ class CheckoutForm extends React.Component {
         inputShippingEmail
       })
       // this.props.history.push(`/orderSuccess/${order.id}`)
-      window.location.replace(`/orderSuccess/${user.id}&${order.id}`)
+      // window.location.replace(`/orderSuccess/${user.id}&${order.id}`)
       // change
     }
   }
@@ -89,7 +86,7 @@ class CheckoutForm extends React.Component {
                 onChange={this.props.handleChange}
                 required
               />
-              <div className="invalid-feedback">Name is required.</div>
+              <div className="invalid-feedback" />
             </div>
 
             <div className="mb-3">
@@ -105,9 +102,7 @@ class CheckoutForm extends React.Component {
                 required
               />
 
-              <div className="invalid-feedback">
-                {this.props.state.emailError}
-              </div>
+              <div className="invalid-feedback" />
             </div>
 
             <div className="mb-3">
@@ -122,9 +117,7 @@ class CheckoutForm extends React.Component {
                 onChange={this.props.handleChange}
                 required
               />
-              <div className="invalid-feedback">
-                Please enter your shipping address.
-              </div>
+              <div className="invalid-feedback" />
             </div>
             <div className="row ">
               <div className="col-md-3 mb-3">

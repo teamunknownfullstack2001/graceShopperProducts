@@ -4,6 +4,11 @@ import {connect} from 'react-redux'
 import {InjectedCheckoutForm, AddressForm, CheckoutOrderItem} from '.'
 import {getOrder, createOrder, getSingleUser} from '../store'
 
+const regEx = {
+  email: '^[A-Za-z0-9.-_]+@[A-Za-z0-9]+.[A-Za-z0-9]+$',
+  phone: '^[0-9]{3}-[0-9]{3}-[0-9]{4}$',
+  zip: '^[0-9]{5}$'
+}
 class disPlaceOrder extends React.Component {
   constructor() {
     super()
@@ -13,29 +18,11 @@ class disPlaceOrder extends React.Component {
       email: '',
       address: '',
       zip: '',
-      phone: '',
-      nameError: '',
-      emailError: ''
+      phone: ''
     }
     this.handleChange = this.handleChange.bind(this)
-    this.validate = this.validate.bind(this)
   }
 
-  validate = () => {
-    let nameError = ''
-    let emailError = ''
-    let addressError = ''
-
-    if (!this.state.email.includes('@')) {
-      emailError = 'Please enter a valid email address for shipping updates.'
-    }
-    if (emailError) {
-      this.setState({emailError})
-      return false
-    }
-
-    return true
-  }
   handleChange(evt) {
     this.setState({
       [evt.target.name]: evt.target.value
@@ -97,7 +84,6 @@ class disPlaceOrder extends React.Component {
               state={this.state}
               competedForm={this.state.competedForm}
               handleChange={this.handleChange}
-              validate={this.validate}
             />
           ) : (
             ''
