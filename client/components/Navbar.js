@@ -121,7 +121,7 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
               {/* The navbar will show these links if admin */}
               <div className={classes.navProduct}>
                 <Link to="/Products">
-                  <Button style={{color: 'white'}}>All Products</Button>
+                  <Button style={{color: 'white'}}>Find A Friend</Button>
                 </Link>
               </div>
               <div className={classes.search}>
@@ -243,7 +243,7 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
               {/* The navbar will show these links after you log in */}
               <div className={classes.navProduct}>
                 <Link to="/Products">
-                  <Button style={{color: 'white'}}>All Products</Button>
+                  <Button style={{color: 'white'}}>Find A Friend</Button>
                 </Link>
               </div>
               <div className={classes.search}>
@@ -348,7 +348,7 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
               {/* The navbar will show these links before you log in */}
               <div className={classes.navProduct}>
                 <Link to="/Products">
-                  <Button style={{color: 'white'}}>All Products</Button>
+                  <Button style={{color: 'white'}}>Find A Friend</Button>
                 </Link>
               </div>
               <div className={classes.search}>
