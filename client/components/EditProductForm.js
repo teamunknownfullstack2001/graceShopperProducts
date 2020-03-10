@@ -49,12 +49,12 @@ const EditProductForm = props => {
           name="category"
           defaultValue={initialValsFromProps('category', initialValues)}
         >
-          <option value="Area">Area</option>
-          <option value="Octagon">Octagon</option>
-          <option value="Oval">Oval</option>
-          <option value="Round">Round</option>
-          <option value="Runner">Runner</option>
-          <option value="Square">Square</option>
+          <option value="Conditional">Conditional</option>
+          <option value="Fair-Weather">Fair-Weather</option>
+          <option value="Long-Term">Long-Term</option>
+          <option value="Noncommital">Noncommital</option>
+          <option value="Short-Term">Short-Term</option>
+          <option value="Unconditional">Unconditional</option>
         </select>
 
         <label className="mb-3" htmlFor="description">

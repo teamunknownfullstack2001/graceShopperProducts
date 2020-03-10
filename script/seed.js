@@ -120,401 +120,451 @@ const users = [
 
 const products = [
   {
-    name: 'tincidunt in leo',
-    category: 'Runner',
+    name: 'Bill',
+    imageUrl: '/friends/01 man.png',
+    category: 'Short-Term',
     description:
       'rutrum nulla nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio porttitor',
     price: 30612,
     stock: 75
   },
   {
-    name: 'donec',
-    category: 'Square',
+    name: 'Denise',
+    imageUrl: '/friends/01 woman.png',
+    category: 'Long-Term',
     description:
       'luctus et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat dui nec nisi volutpat eleifend donec',
     price: 13369,
     stock: 37
   },
   {
-    name: 'nulla sed accumsan',
-    category: 'Area',
+    name: 'Mike',
+    imageUrl: '/friends/02 man.png',
+    category: 'Contitional',
     description:
       'rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis',
     price: 26466,
     stock: 45
   },
   {
-    name: 'ut',
-    category: 'Round',
+    name: 'Carol',
+    imageUrl: '/friends/02 woman.png',
+    category: 'Noncommital',
     description:
       'pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras',
     price: 96845,
     stock: 37
   },
   {
-    name: 'erat',
-    category: 'Square',
+    name: 'Fred',
+    imageUrl: '/friends/03 man.png',
+    category: 'Long-Term',
     description:
       'morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis',
     price: 3828,
     stock: 76
   },
   {
-    name: 'phasellus sit amet',
-    category: 'Oval',
+    name: 'Mary',
+    imageUrl: '/friends/03 woman.png',
+    category: 'Fair-Weather',
     description:
       'etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis',
     price: 51443,
     stock: 100
   },
   {
-    name: 'ut mauris eget',
-    category: 'Oval',
+    name: 'Ted',
+    imageUrl: '/friends/04 man.png',
+    category: 'Fair-Weather',
     description:
       'ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est',
     price: 67894,
     stock: 94
   },
   {
-    name: 'cum sociis',
-    category: 'Square',
+    name: 'Steph',
+    imageUrl: '/friends/04 woman.png',
+    category: 'Long-Term',
     description:
       'augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea',
     price: 14258,
     stock: 14
   },
   {
-    name: 'nulla suscipit',
-    category: 'Square',
+    name: 'Walter',
+    imageUrl: '/friends/05 man.png',
+    category: 'Long-Term',
     description:
       'tortor duis mattis egestas metus aenean fermentum donec ut mauris',
     price: 89037,
     stock: 29
   },
   {
-    name: 'vehicula condimentum',
-    category: 'Square',
+    name: 'Katie',
+    imageUrl: '/friends/05 woman.png',
+    category: 'Long-Term',
     description:
       'turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus',
     price: 7821,
     stock: 68
   },
   {
-    name: 'erat quisque erat',
-    category: 'Runner',
+    name: 'Chad',
+    imageUrl: '/friends/06 man.png',
+    category: 'Short-Term',
     description:
       'nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu',
     price: 95723,
     stock: 53
   },
   {
-    name: 'et',
-    category: 'Square',
+    name: 'Camile',
+    imageUrl: '/friends/06 woman.png',
+    category: 'Long-Term',
     description:
       'integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices',
     price: 7355,
     stock: 87
   },
   {
-    name: 'nulla et accumsan',
-    category: 'Area',
+    name: 'Josh',
+    imageUrl: '/friends/07 man.png',
+    category: 'Contitional',
     description:
       'magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum',
     price: 61934,
     stock: 43
   },
   {
-    name: 'mus vivamus',
-    category: 'Oval',
+    name: 'Miranda',
+    imageUrl: '/friends/07 woman.png',
+    category: 'Fair-Weather',
     description: 'non mi integer ac neque duis bibendum morbi non quam nec dui',
     price: 53542,
     stock: 78
   },
   {
-    name: 'sed tristique',
-    category: 'Square',
+    name: 'Chris',
+    imageUrl: '/friends/08 man.png',
+    category: 'Long-Term',
     description:
       'nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue',
     price: 95503,
     stock: 14
   },
   {
-    name: 'arcu adipiscing molestie',
-    category: 'Square',
+    name: 'Ali',
+    imageUrl: '/friends/08 woman.png',
+    category: 'Long-Term',
     description:
       'donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla',
     price: 60652,
     stock: 36
   },
   {
-    name: 'auctor',
-    category: 'Runner',
+    name: 'Joe',
+    imageUrl: '/friends/09 man.png',
+    category: 'Short-Term',
     description:
       'et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin',
     price: 70947,
     stock: 21
   },
   {
-    name: 'massa volutpat',
-    category: 'Area',
+    name: 'Megan',
+    imageUrl: '/friends/09 woman.png',
+    category: 'Contitional',
     description:
       'scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor',
     price: 82464,
     stock: 24
   },
   {
-    name: 'cubilia curae nulla',
-    category: 'Square',
+    name: 'Ihor',
+    imageUrl: '/friends/10 man.png',
+    category: 'Long-Term',
     description:
       'luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi',
     price: 7761,
     stock: 63
   },
   {
-    name: 'sed magna at',
-    category: 'Area',
+    name: 'Lydia',
+    imageUrl: '/friends/10 woman.png',
+    category: 'Contitional',
     description:
       'tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia',
     price: 43308,
     stock: 41
   },
   {
-    name: 'consectetuer adipiscing',
-    category: 'Square',
+    name: 'Jerry',
+    imageUrl: '/friends/11 man.png',
+    category: 'Long-Term',
     description:
       'morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus',
     price: 62111,
     stock: 59
   },
   {
-    name: 'sapien iaculis congue',
-    category: 'Square',
+    name: 'Maria',
+    imageUrl: '/friends/11 woman.png',
+    category: 'Long-Term',
     description:
       'enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis',
     price: 20572,
     stock: 42
   },
   {
-    name: 'tincidunt',
-    category: 'Square',
+    name: 'Nick',
+    imageUrl: '/friends/12 man.png',
+    category: 'Long-Term',
     description:
       'vel enim sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum',
     price: 6775,
     stock: 24
   },
   {
-    name: 'augue a',
-    category: 'Square',
+    name: 'Kaitlin',
+    imageUrl: '/friends/12 woman.png',
+    category: 'Long-Term',
     description:
       'quisque porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum',
     price: 86248,
     stock: 66
   },
   {
-    name: 'suscipit a',
-    category: 'Area',
+    name: 'Steve',
+    imageUrl: '/friends/13 man.png',
+    category: 'Contitional',
     description:
       'morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla',
     price: 48172,
     stock: 96
   },
   {
-    name: 'enim blandit',
-    category: 'Runner',
+    name: 'Laura',
+    imageUrl: '/friends/13 woman.png',
+    category: 'Short-Term',
     description:
       'quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis',
     price: 78762,
     stock: 72
   },
   {
-    name: 'luctus',
-    category: 'Oval',
+    name: 'Matthew',
+    imageUrl: '/friends/14 man.png',
+    category: 'Fair-Weather',
     description:
       'non pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea dictumst maecenas ut massa',
     price: 51679,
     stock: 68
   },
   {
-    name: 'vitae',
-    category: 'Round',
+    name: 'Trish',
+    imageUrl: '/friends/14 woman.png',
+    category: 'Noncommital',
     description:
       'tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc',
     price: 64419,
     stock: 1
   },
   {
-    name: 'at diam',
-    category: 'Square',
+    name: 'Craig',
+    imageUrl: '/friends/15 man.png',
+    category: 'Long-Term',
     description:
       'nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo',
     price: 72508,
     stock: 63
   },
   {
-    name: 'lobortis ligula sit',
-    category: 'Round',
+    name: 'Cindy',
+    imageUrl: '/friends/15 woman.png',
+    category: 'Noncommital',
     description:
       'pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat metus sapien',
     price: 48056,
     stock: 54
   },
   {
-    name: 'ultrices',
-    category: 'Area',
+    name: 'Dave',
+    imageUrl: '/friends/16 man.png',
+    category: 'Contitional',
     description: 'a odio in hac habitasse platea dictumst maecenas ut massa',
     price: 3177,
     stock: 25
   },
   {
-    name: 'vel augue vestibulum',
-    category: 'Runner',
+    name: 'Carly',
+    imageUrl: '/friends/16 woman.png',
+    category: 'Short-Term',
     description:
       'turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam',
     price: 39147,
     stock: 1
   },
   {
-    name: 'id massa id',
-    category: 'Octagon',
+    name: 'Marcello',
+    imageUrl: '/friends/17 man.png',
+    category: 'Unconditional',
     description:
       'congue elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo',
     price: 83503,
     stock: 7
   },
   {
-    name: 'ipsum ac tellus',
-    category: 'Runner',
+    name: 'Christine',
+    imageUrl: '/friends/17 woman.png',
+    category: 'Short-Term',
     description:
       'nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel',
     price: 90461,
     stock: 79
   },
   {
-    name: 'sit',
-    category: 'Square',
+    name: 'Don',
+    imageUrl: '/friends/18 man.png',
+    category: 'Long-Term',
     description:
       'nec nisi volutpat eleifend donec ut dolor morbi vel lectus in',
     price: 49982,
     stock: 75
   },
   {
-    name: 'pellentesque',
-    category: 'Oval',
+    name: 'Sarah',
+    imageUrl: '/friends/18 woman.png',
+    category: 'Fair-Weather',
     description:
       'eu felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus',
     price: 6511,
     stock: 7
   },
   {
-    name: 'sociis natoque',
-    category: 'Oval',
+    name: 'Norm',
+    imageUrl: '/friends/19 man.png',
+    category: 'Fair-Weather',
     description:
       'amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis',
     price: 80418,
     stock: 37
   },
   {
-    name: 'in sagittis dui',
-    category: 'Area',
+    name: 'Robin',
+    imageUrl: '/friends/19 woman.png',
+    category: 'Contitional',
     description:
       'non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing',
     price: 14211,
     stock: 52
   },
   {
-    name: 'convallis nulla',
-    category: 'Square',
+    name: 'Richard',
+    imageUrl: '/friends/20 man.png',
+    category: 'Long-Term',
     description:
       'nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh',
     price: 9729,
     stock: 93
   },
   {
-    name: 'volutpat',
-    category: 'Runner',
+    name: 'Ariel',
+    imageUrl: '/friends/20 woman.png',
+    category: 'Short-Term',
     description:
       'proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at dolor quis odio',
     price: 34423,
     stock: 5
   },
   {
-    name: 'ipsum primis',
-    category: 'Round',
+    name: 'Blake',
+    imageUrl: '/friends/musician.png',
+    category: 'Noncommital',
     description:
       'posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis',
     price: 38887,
     stock: 19
   },
   {
-    name: 'nulla justo aliquam',
-    category: 'Octagon',
+    name: 'Guy',
+    imageUrl: '/friends/guy.png',
+    category: 'Unconditional',
     description:
       'porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in felis donec',
-    price: 79268,
+    price: 100000,
     stock: 7
   },
   {
-    name: 'cras non velit',
-    category: 'Runner',
+    name: 'Justin',
+    imageUrl: '/friends/bieber.png',
+    category: 'Short-Term',
     description:
       'sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet',
-    price: 52905,
+    price: 1000000,
     stock: 18
   },
   {
-    name: 'vestibulum ac',
-    category: 'Square',
+    name: 'Ariana',
+    imageUrl: '/friends/grande.png',
+    category: 'Long-Term',
     description:
       'donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a',
-    price: 10632,
+    price: 10000000,
     stock: 62
   },
   {
-    name: 'elit sodales',
-    category: 'Octagon',
+    name: 'Jackie',
+    imageUrl: '/friends/jackie.png',
+    category: 'Unconditional',
     description:
       'hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque',
-    price: 87442,
+    price: 10000000,
     stock: 87
   },
   {
-    name: 'ornare',
-    category: 'Square',
+    name: 'Dude',
+    imageUrl: '/friends/dude.png',
+    category: 'Long-Term',
     description:
       'quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh',
-    price: 50959,
+    price: 100,
     stock: 18
   },
   {
-    name: 'fusce posuere',
-    category: 'Oval',
+    name: 'Snoop',
+    imageUrl: '/friends/snoop.png',
+    category: 'Fair-Weather',
     description:
       'turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin',
-    price: 17207,
+    price: 10000000,
     stock: 90
   },
   {
-    name: 'pretium iaculis justo',
-    category: 'Oval',
+    name: 'Lebron',
+    imageUrl: '/friends/lebron.png',
+    category: 'Fair-Weather',
     description:
       'vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus',
-    price: 49074,
+    price: 10000000,
     stock: 64
   },
   {
-    name: 'in',
-    category: 'Oval',
+    name: 'Barack',
+    imageUrl: '/friends/obama.png',
+    category: 'Fair-Weather',
     description:
       'adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in ante vestibulum ante ipsum primis',
-    price: 26083,
+    price: 10000000,
     stock: 22
   },
   {
-    name: 'tellus nisi',
-    category: 'Runner',
+    name: 'Benedict',
+    imageUrl: '/friends/benedict.png',
+    category: 'Short-Term',
     description:
       'erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget',
-    price: 24495,
+    price: 100,
     stock: 67
   }
 ]
@@ -584,40 +634,40 @@ const orders = [
 
 const tags = [
   {
-    name: 'Bathroom'
+    name: 'Loyal'
   },
   {
-    name: 'Modern'
+    name: 'Honest'
   },
   {
-    name: 'Moroccan'
+    name: 'Wise'
   },
   {
-    name: 'Natural'
+    name: 'Supportive'
   },
   {
-    name: 'Oriental'
+    name: 'Motivational'
   },
   {
-    name: 'Outdoor'
+    name: 'Adventurous'
   },
   {
-    name: 'Persian'
+    name: 'Cool'
   },
   {
-    name: 'Shag'
+    name: 'Ambitious'
   },
   {
-    name: 'Synthetic'
+    name: 'Creative'
   },
   {
-    name: 'Tribal'
+    name: 'Reckless'
   },
   {
-    name: 'Vintage'
+    name: 'Laid-Back'
   },
   {
-    name: 'Woven'
+    name: 'Conscientious'
   }
 ]
 
