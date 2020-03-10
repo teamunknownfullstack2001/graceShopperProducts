@@ -92,7 +92,7 @@ class SingleProduct extends React.Component {
                   this.handleEdit(product.id)
                 }}
               >
-                Edit Product
+                Edit Friend
               </Button>
             )}{' '}
             <Button

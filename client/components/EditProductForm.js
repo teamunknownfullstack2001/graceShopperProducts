@@ -184,7 +184,7 @@ const EditProductForm = props => {
           startIcon={<EditIcon />}
           type="submit"
         >
-          Edit Product
+          Edit Friend
         </Button>
       </form>
     </div>

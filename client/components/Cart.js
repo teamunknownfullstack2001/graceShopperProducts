@@ -34,7 +34,7 @@ class Cart extends React.Component {
             <h3 className="text-center">Your Unknown Cart is Empty</h3>
           )
         ) : (
-          'No Product'
+          'No Friends'
         )}
 
         {products && products.length > 0 ? (
@@ -47,7 +47,7 @@ class Cart extends React.Component {
           </Button>
         ) : (
           <Button size="large" color="primary" href="/products">
-            CheckOut More Awsome Products!
+            Browse Our Awesome Friends!
           </Button>
         )}
       </div>

@@ -61,7 +61,7 @@ class TagProducts extends React.Component {
                   </div>
                 </Link>
               ))
-            : 'No Products'}
+            : 'No Friends'}
         </ul>
       </div>
     )
