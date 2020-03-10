@@ -68,7 +68,6 @@ Order.prototype.addrOrIncrementProduct = async function(ProductId) {
       await entry.save()
     }
   }
-  console.log('this in the backedn .......', this.products)
   return this
 }
 
@@ -92,7 +91,6 @@ router.put('/:id', async (req, res, next) => {
       next(error)
     }
   } else {
-    console.log(req.session.cart) // req.session.cart is an array here
     const product = await Product.findByPk(+req.body.id)
     if (req.session.cart === undefined) {
       req.session.cart = {

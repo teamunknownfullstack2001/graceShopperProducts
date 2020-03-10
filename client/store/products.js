@@ -60,7 +60,7 @@ export const postProduct = (newProduct, history) => {
 export const deleteProduct = productId => {
   return async dispatch => {
     try {
-      console.log('deleteProduct')
+      // console.log('deleteProduct')
       await axios.delete(`/api/products/${productId}`)
       dispatch(removeProduct(productId))
     } catch (error) {

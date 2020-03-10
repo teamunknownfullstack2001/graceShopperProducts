@@ -78,6 +78,7 @@ router.put('/:id', async (req, res, next) => {
     console.log('in the put user put', req.body)
     const currentUser = await User.findByPk(req.params.id)
     const updatedUser = await currentUser.update(req.body)
+
     res.json(updatedUser)
   } catch (error) {
     next(error)

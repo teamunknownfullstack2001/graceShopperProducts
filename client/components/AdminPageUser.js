@@ -41,13 +41,13 @@ class AdminPageUser extends React.Component {
     this.props.getOrderInfo()
   }
   handleRemove = async userId => {
-    await this.props.destroyUser(userId)
+    this.props.destroyUser(userId)
 
     this.props.history.push('/adminPageUser')
   }
 
   handleEdit = async id => {
-    await this.props.history.push(`/users/${id}/edit`)
+    this.props.history.push(`/adminPageUser?userId=${id}`)
   }
 
   render() {
@@ -95,7 +95,12 @@ class AdminPageUser extends React.Component {
                     >
                       Delete
                     </Button>
-                    <Link to={`/users/${user.id}/edit`}>
+                    <Link
+                      to={{
+                        pathname: `/adminPageUser/${user.id}`,
+                        initialValues: user
+                      }}
+                    >
                       <Button
                         size="large"
                         color="secondary"
@@ -116,7 +121,7 @@ class AdminPageUser extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log('This is the state: ', state)
+  // console.log('This is the state: ', state)
   return {
     users: state.users,
     // orders: state.orders
