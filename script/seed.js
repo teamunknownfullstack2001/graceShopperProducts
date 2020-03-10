@@ -120,7 +120,8 @@ const users = [
 
 const products = [
   {
-    name: 'tincidunt in leo',
+    name: 'Bill',
+    imageUrl: '/friends/01 man.png',
     category: 'Runner',
     description:
       'rutrum nulla nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio porttitor',
@@ -128,7 +129,8 @@ const products = [
     stock: 75
   },
   {
-    name: 'donec',
+    name: 'Denise',
+    imageUrl: '/friends/01 woman.png',
     category: 'Square',
     description:
       'luctus et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat dui nec nisi volutpat eleifend donec',
@@ -136,7 +138,8 @@ const products = [
     stock: 37
   },
   {
-    name: 'nulla sed accumsan',
+    name: 'Mike',
+    imageUrl: '/friends/02 man.png',
     category: 'Area',
     description:
       'rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis',
@@ -144,7 +147,8 @@ const products = [
     stock: 45
   },
   {
-    name: 'ut',
+    name: 'Carol',
+    imageUrl: '/friends/02 woman.png',
     category: 'Round',
     description:
       'pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras',
@@ -152,7 +156,8 @@ const products = [
     stock: 37
   },
   {
-    name: 'erat',
+    name: 'Fred',
+    imageUrl: '/friends/03 man.png',
     category: 'Square',
     description:
       'morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis',
@@ -160,7 +165,8 @@ const products = [
     stock: 76
   },
   {
-    name: 'phasellus sit amet',
+    name: 'Mary',
+    imageUrl: '/friends/03 woman.png',
     category: 'Oval',
     description:
       'etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis',
@@ -168,7 +174,8 @@ const products = [
     stock: 100
   },
   {
-    name: 'ut mauris eget',
+    name: 'Ted',
+    imageUrl: '/friends/04 man.png',
     category: 'Oval',
     description:
       'ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est',
@@ -176,7 +183,8 @@ const products = [
     stock: 94
   },
   {
-    name: 'cum sociis',
+    name: 'Steph',
+    imageUrl: '/friends/04 woman.png',
     category: 'Square',
     description:
       'augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea',
@@ -184,7 +192,8 @@ const products = [
     stock: 14
   },
   {
-    name: 'nulla suscipit',
+    name: 'Walter',
+    imageUrl: '/friends/05 man.png',
     category: 'Square',
     description:
       'tortor duis mattis egestas metus aenean fermentum donec ut mauris',
@@ -192,7 +201,8 @@ const products = [
     stock: 29
   },
   {
-    name: 'vehicula condimentum',
+    name: 'Katie',
+    imageUrl: '/friends/05 woman.png',
     category: 'Square',
     description:
       'turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus',
@@ -200,7 +210,8 @@ const products = [
     stock: 68
   },
   {
-    name: 'erat quisque erat',
+    name: 'Chad',
+    imageUrl: '/friends/06 man.png',
     category: 'Runner',
     description:
       'nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu',
@@ -208,7 +219,8 @@ const products = [
     stock: 53
   },
   {
-    name: 'et',
+    name: 'Camile',
+    imageUrl: '/friends/06 woman.png',
     category: 'Square',
     description:
       'integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices',
@@ -216,7 +228,8 @@ const products = [
     stock: 87
   },
   {
-    name: 'nulla et accumsan',
+    name: 'Josh',
+    imageUrl: '/friends/07 man.png',
     category: 'Area',
     description:
       'magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum',
@@ -224,14 +237,16 @@ const products = [
     stock: 43
   },
   {
-    name: 'mus vivamus',
+    name: 'Miranda',
+    imageUrl: '/friends/07 woman.png',
     category: 'Oval',
     description: 'non mi integer ac neque duis bibendum morbi non quam nec dui',
     price: 53542,
     stock: 78
   },
   {
-    name: 'sed tristique',
+    name: 'Chris',
+    imageUrl: '/friends/08 man.png',
     category: 'Square',
     description:
       'nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in congue',
@@ -239,7 +254,8 @@ const products = [
     stock: 14
   },
   {
-    name: 'arcu adipiscing molestie',
+    name: 'Ali',
+    imageUrl: '/friends/08 woman.png',
     category: 'Square',
     description:
       'donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla',
@@ -247,7 +263,8 @@ const products = [
     stock: 36
   },
   {
-    name: 'auctor',
+    name: 'Joe',
+    imageUrl: '/friends/09 man.png',
     category: 'Runner',
     description:
       'et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin',
@@ -255,7 +272,8 @@ const products = [
     stock: 21
   },
   {
-    name: 'massa volutpat',
+    name: 'Megan',
+    imageUrl: '/friends/09 woman.png',
     category: 'Area',
     description:
       'scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor',
@@ -263,7 +281,8 @@ const products = [
     stock: 24
   },
   {
-    name: 'cubilia curae nulla',
+    name: 'Ihor',
+    imageUrl: '/friends/10 man.png',
     category: 'Square',
     description:
       'luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi',
@@ -271,7 +290,8 @@ const products = [
     stock: 63
   },
   {
-    name: 'sed magna at',
+    name: 'Lydia',
+    imageUrl: '/friends/10 woman.png',
     category: 'Area',
     description:
       'tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia',
@@ -279,7 +299,8 @@ const products = [
     stock: 41
   },
   {
-    name: 'consectetuer adipiscing',
+    name: 'Jerry',
+    imageUrl: '/friends/11 man.png',
     category: 'Square',
     description:
       'morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus',
@@ -287,7 +308,8 @@ const products = [
     stock: 59
   },
   {
-    name: 'sapien iaculis congue',
+    name: 'Maria',
+    imageUrl: '/friends/11 woman.png',
     category: 'Square',
     description:
       'enim in tempor turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis',
@@ -295,7 +317,8 @@ const products = [
     stock: 42
   },
   {
-    name: 'tincidunt',
+    name: 'Nick',
+    imageUrl: '/friends/12 man.png',
     category: 'Square',
     description:
       'vel enim sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum',
@@ -303,7 +326,8 @@ const products = [
     stock: 24
   },
   {
-    name: 'augue a',
+    name: 'Kaitlin',
+    imageUrl: '/friends/12 woman.png',
     category: 'Square',
     description:
       'quisque porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum',
@@ -311,7 +335,8 @@ const products = [
     stock: 66
   },
   {
-    name: 'suscipit a',
+    name: 'Steve',
+    imageUrl: '/friends/13 man.png',
     category: 'Area',
     description:
       'morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla',
@@ -319,7 +344,8 @@ const products = [
     stock: 96
   },
   {
-    name: 'enim blandit',
+    name: 'Laura',
+    imageUrl: '/friends/13 woman.png',
     category: 'Runner',
     description:
       'quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis',
@@ -327,7 +353,8 @@ const products = [
     stock: 72
   },
   {
-    name: 'luctus',
+    name: 'Matthew',
+    imageUrl: '/friends/14 man.png',
     category: 'Oval',
     description:
       'non pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea dictumst maecenas ut massa',
@@ -335,7 +362,8 @@ const products = [
     stock: 68
   },
   {
-    name: 'vitae',
+    name: 'Trish',
+    imageUrl: '/friends/14 woman.png',
     category: 'Round',
     description:
       'tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc',
@@ -343,7 +371,8 @@ const products = [
     stock: 1
   },
   {
-    name: 'at diam',
+    name: 'Craig',
+    imageUrl: '/friends/15 man.png',
     category: 'Square',
     description:
       'nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo',
@@ -351,7 +380,8 @@ const products = [
     stock: 63
   },
   {
-    name: 'lobortis ligula sit',
+    name: 'Cindy',
+    imageUrl: '/friends/15 woman.png',
     category: 'Round',
     description:
       'pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat metus sapien',
@@ -359,14 +389,16 @@ const products = [
     stock: 54
   },
   {
-    name: 'ultrices',
+    name: 'Dave',
+    imageUrl: '/friends/16 man.png',
     category: 'Area',
     description: 'a odio in hac habitasse platea dictumst maecenas ut massa',
     price: 3177,
     stock: 25
   },
   {
-    name: 'vel augue vestibulum',
+    name: 'Carly',
+    imageUrl: '/friends/16 woman.png',
     category: 'Runner',
     description:
       'turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam',
@@ -374,7 +406,8 @@ const products = [
     stock: 1
   },
   {
-    name: 'id massa id',
+    name: 'Marcello',
+    imageUrl: '/friends/17 man.png',
     category: 'Octagon',
     description:
       'congue elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo',
@@ -382,7 +415,8 @@ const products = [
     stock: 7
   },
   {
-    name: 'ipsum ac tellus',
+    name: 'Christine',
+    imageUrl: '/friends/17 woman.png',
     category: 'Runner',
     description:
       'nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel',
@@ -390,7 +424,8 @@ const products = [
     stock: 79
   },
   {
-    name: 'sit',
+    name: 'Don',
+    imageUrl: '/friends/18 man.png',
     category: 'Square',
     description:
       'nec nisi volutpat eleifend donec ut dolor morbi vel lectus in',
@@ -398,7 +433,8 @@ const products = [
     stock: 75
   },
   {
-    name: 'pellentesque',
+    name: 'Sarah',
+    imageUrl: '/friends/18 woman.png',
     category: 'Oval',
     description:
       'eu felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus',
@@ -406,7 +442,8 @@ const products = [
     stock: 7
   },
   {
-    name: 'sociis natoque',
+    name: 'Norm',
+    imageUrl: '/friends/19 man.png',
     category: 'Oval',
     description:
       'amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis',
@@ -414,7 +451,8 @@ const products = [
     stock: 37
   },
   {
-    name: 'in sagittis dui',
+    name: 'Robin',
+    imageUrl: '/friends/19 woman.png',
     category: 'Area',
     description:
       'non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing',
@@ -422,7 +460,8 @@ const products = [
     stock: 52
   },
   {
-    name: 'convallis nulla',
+    name: 'Richard',
+    imageUrl: '/friends/20 man.png',
     category: 'Square',
     description:
       'nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh',
@@ -430,7 +469,8 @@ const products = [
     stock: 93
   },
   {
-    name: 'volutpat',
+    name: 'Ariel',
+    imageUrl: '/friends/20 woman.png',
     category: 'Runner',
     description:
       'proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at dolor quis odio',
@@ -438,7 +478,8 @@ const products = [
     stock: 5
   },
   {
-    name: 'ipsum primis',
+    name: 'Blake',
+    imageUrl: '/friends/musician.png',
     category: 'Round',
     description:
       'posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis',
@@ -446,75 +487,84 @@ const products = [
     stock: 19
   },
   {
-    name: 'nulla justo aliquam',
+    name: 'Guy',
+    imageUrl: '/friends/guy.png',
     category: 'Octagon',
     description:
       'porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in felis donec',
-    price: 79268,
+    price: 100000,
     stock: 7
   },
   {
-    name: 'cras non velit',
+    name: 'Justin',
+    imageUrl: '/friends/bieber.png',
     category: 'Runner',
     description:
       'sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet',
-    price: 52905,
+    price: 1000000,
     stock: 18
   },
   {
-    name: 'vestibulum ac',
+    name: 'Ariana',
+    imageUrl: '/friends/grande.png',
     category: 'Square',
     description:
       'donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a',
-    price: 10632,
+    price: 10000000,
     stock: 62
   },
   {
-    name: 'elit sodales',
+    name: 'Jackie',
+    imageUrl: '/friends/jackie.png',
     category: 'Octagon',
     description:
       'hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque',
-    price: 87442,
+    price: 10000000,
     stock: 87
   },
   {
-    name: 'ornare',
+    name: 'Dude',
+    imageUrl: '/friends/dude.png',
     category: 'Square',
     description:
       'quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh',
-    price: 50959,
+    price: 100,
     stock: 18
   },
   {
-    name: 'fusce posuere',
+    name: 'Snoop',
+    imageUrl: '/friends/snoop.png',
     category: 'Oval',
     description:
       'turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin',
-    price: 17207,
+    price: 10000000,
     stock: 90
   },
   {
-    name: 'pretium iaculis justo',
+    name: 'Lebron',
+    imageUrl: '/friends/lebron.png',
     category: 'Oval',
     description:
       'vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus',
-    price: 49074,
+    price: 10000000,
     stock: 64
   },
   {
-    name: 'in',
+    name: 'Barack',
+    imageUrl: '/friends/obama.png',
     category: 'Oval',
     description:
       'adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in ante vestibulum ante ipsum primis',
-    price: 26083,
+    price: 10000000,
     stock: 22
   },
   {
-    name: 'tellus nisi',
+    name: 'Benedict',
+    imageUrl: '/friends/benedict.png',
     category: 'Runner',
     description:
       'erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget',
-    price: 24495,
+    price: 100,
     stock: 67
   }
 ]
