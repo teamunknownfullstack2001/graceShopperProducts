@@ -5,7 +5,6 @@ module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
-    console.log(req.user)
     const allOrders = await Order.findAll()
     res.json(allOrders)
   } catch (error) {
@@ -28,8 +27,6 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/place/:id', async (req, res, next) => {
   try {
-    // console.log(req.body)
-    // console.log(req.body)
     if (
       req.session.cart !== undefined &&
       req.session.cart.products !== undefined

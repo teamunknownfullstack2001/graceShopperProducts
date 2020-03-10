@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getUserInfo, getOrderInfo} from '../store'
+import {getUserInfo, getOrderInfo, adminDeleteUserThunk} from '../store'
 import {withStyles} from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -11,9 +11,9 @@ import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import {Button} from '@material-ui/core'
 import {Link} from 'react-router-dom'
-import {deleteUser} from '../store'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
 import EditIcon from '@material-ui/icons/Edit'
+
 const styles = theme => ({
   root: {
     marginTop: '1vh',
@@ -41,19 +41,18 @@ class AdminPageUser extends React.Component {
     this.props.getOrderInfo()
   }
   handleRemove = async userId => {
-    await this.props.destroyUser(userId)
-
-    this.props.history.push('/adminPageUser')
+    this.props.adminDeleteUser(userId)
+    // this.props.history.push('/adminPageUser')
   }
 
   handleEdit = async id => {
-    await this.props.history.push(`/users/${id}/edit`)
+    this.props.history.push(`/adminPageUser?userId=${id}`)
   }
 
   render() {
     const {classes} = this.props
     const {info} = this.props
-    const {users, orders} = info
+    const {users} = info
 
     return (
       <div>
@@ -95,7 +94,12 @@ class AdminPageUser extends React.Component {
                     >
                       Delete
                     </Button>
-                    <Link to={`/users/${user.id}/edit`}>
+                    <Link
+                      to={{
+                        pathname: `/adminPageUser/${user.id}`,
+                        initialValues: user
+                      }}
+                    >
                       <Button
                         size="large"
                         color="secondary"
@@ -116,7 +120,7 @@ class AdminPageUser extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log('This is the state: ', state)
+  // console.log('This is the state: ', state)
   return {
     users: state.users,
     // orders: state.orders
@@ -127,7 +131,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   getUserInfo: () => dispatch(getUserInfo()),
   getOrderInfo: () => dispatch(getOrderInfo()),
-  destroyUser: userId => dispatch(deleteUser(userId))
+  // destroyUser: userId => dispatch(deleteUser(userId)),
+  adminDeleteUser: id => dispatch(adminDeleteUserThunk(id))
 })
 
 export default connect(

@@ -38,9 +38,9 @@ class AdminPageOrder extends React.Component {
     //  console.log("THESE ARE THE PROPS IN AdminPageOrder!", this.props)
     const {info} = this.props
     const {users, orders} = info
-    console.log('This is the info I want: ', info)
-    console.log('These are the users: ', users)
-    console.log('These are the orders: ', orders)
+    // console.log('This is the info I want: ', info)
+    // console.log('These are the users: ', users)
+    // console.log('These are the orders: ', orders)
     return (
       <div>
         <h1>Welcome Admin</h1>

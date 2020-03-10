@@ -19,6 +19,7 @@ import {
   OrderHistory,
   // Tag,
   TagProducts,
+  EditUserForm,
   Error,
   Cart,
   AdminPageOrder,
@@ -69,7 +70,10 @@ class Routes extends Component {
           <Route exact path="/newproduct" component={CreateProduct} />
         )}
         {isLoggedIn && user.type === 'admin' && (
-          <Route path="/adminPageUser" component={AdminPageUser} />
+          <Route exact path="/adminPageUser" component={AdminPageUser} />
+        )}
+        {isLoggedIn && user.type === 'admin' && (
+          <Route path="/adminPageUser/:id" component={EditUserForm} />
         )}
         {isLoggedIn && user.type === 'admin' && (
           <Route path="/adminPageOrder" component={AdminPageOrder} />

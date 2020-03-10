@@ -3,9 +3,6 @@ import {connect} from 'react-redux'
 // import {CartItem} from '.'
 import {InjectedCheckoutForm, AddressForm, CheckoutOrderItem} from '.'
 import {getOrder, createOrder, getSingleUser} from '../store'
-import Typography from '@material-ui/core/Typography'
-
-import {Link} from 'react-router-dom'
 
 class disPlaceOrder extends React.Component {
   constructor() {
@@ -27,14 +24,12 @@ class disPlaceOrder extends React.Component {
     })
   }
   componentDidMount() {
-    console.log('thie props', this.props)
     if (this.props.match.params.orderId !== '0') {
-      console.log('in the get order ')
       this.props.getOrder(this.props.match.params.orderId) //get the order
     } else {
       this.props.createOrder(this.props.match.params.orderId) //create guest order
     }
-  } //{`$ ${(price / 100).toFixed(2)}`}
+  }
 
   render() {
     const total = this.props.order.total

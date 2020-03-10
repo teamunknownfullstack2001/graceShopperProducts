@@ -47,24 +47,22 @@ class UserProfile extends React.Component {
   handlesSubmit = event => {
     event.preventDefault()
     console.log('update user')
-    // const productUpdates = {
-    //   name: event.target.name.value,
-    //   imageUrl: event.target.imageUrl.value,
-    //   category: event.target.category.value,
-    //   description: event.target.description.value,
-    //   price: Math.floor(parseFloat(event.target.price.value) * 100),
-    //   stock: event.target.stock.value
-    //   // tags: [event.target.tags.value]
-    // }
-
-    // this.props.modifyProduct(this.props.product.id, productUpdates)
   }
 
   render() {
     // console.log('These are the props: ', this.props)
     const {user} = this.props
-    const {id, phone, userName, email, address, zip, updateInfo, orders} = user
-    // console.log('User info: ', user)
+    const {
+      id,
+      phone,
+      userName,
+      email,
+      address,
+      zip,
+      updateInfo,
+      orders,
+      type
+    } = user
     console.log('These are the orders: ', orders)
 
     return (
@@ -158,6 +156,10 @@ class UserProfile extends React.Component {
               <p>
                 <i>Zip: </i>
                 {zip}
+              </p>
+              <p>
+                <i>Type: </i>
+                {type}
               </p>
             </div>
             <div className="singleProductButtons">

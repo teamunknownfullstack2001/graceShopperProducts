@@ -9,11 +9,11 @@ export default class AddressForm extends React.Component {
       this.props.state.zip = this.props.user.zip || ''
       this.props.state.phone = this.props.user.phone || ''
     }
-    console.log('in address form compoenet', this.props.user)
+    // console.log('in address form compoenet', this.props.user)
   }
   render() {
     const {handleChange, state} = this.props
-    console.log('in the render', this.props.state)
+    // console.log('in the render', this.props.state)
     return (
       <div className="col-md-8 order-md-1">
         <h4 className="mb-3">Shipping address</h4>

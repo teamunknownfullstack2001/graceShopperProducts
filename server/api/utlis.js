@@ -15,17 +15,8 @@ const userOnly = (req, res, next) => {
   }
 }
 
-// guest userId is 0, guest should be able to pass this
-// const selfOnly = (req, res, next) => {
-//   if (req.params.id === req.user.id) {
-//     next()
-//   } else {
-//     res.sendStatus(404)
-//   }
-// }
-
 const selfOnly = (req, res, next) => {
-  if (req.params.id === req.body.id) {
+  if (req.params.id === req.body.id || req.session.user.type === 'admin') {
     next()
   } else {
     res.sendStatus(404)
