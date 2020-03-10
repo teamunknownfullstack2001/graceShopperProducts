@@ -30,7 +30,7 @@ export const putUser = (id, userUpdates, history) => {
     try {
       const {data} = await axios.put(`/api/users/${id}`, userUpdates)
       dispatch(modifyUser(data))
-      history.push(`/users/${id}`)
+      history.push(`/userprofile/${id}`)
     } catch (error) {
       console.error(`PUT fail users/${id}`)
     }

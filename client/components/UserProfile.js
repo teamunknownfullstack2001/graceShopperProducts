@@ -70,7 +70,7 @@ class UserProfile extends React.Component {
     return (
       <div key={id}>
         <div className="col-md-8 order-md-1">
-          <form onSubmit={this.handlesSubmit} className="needs-validation">
+          {/*<form onSubmit={this.handlesSubmit} className="needs-validation">
             <label className="mb-3" htmlFor="name">
               Name:
             </label>
@@ -134,7 +134,7 @@ class UserProfile extends React.Component {
             >
               Save CHange
             </Button>
-          </form>
+    </form>*/}
           {/* <Button size="large">
             <Link to={`/orderHistory/${id}`}>Go To Order History</Link> */}
           <div key={id} className="singleProductContainer">
@@ -169,14 +169,17 @@ class UserProfile extends React.Component {
                   Order History
                 </Button>
               </Link>
-              <Button
-                size="large"
-                style={{textDecoration: 'none', color: 'black'}}
-                type="submit"
-                onClick={updateInfo}
-              >
-                Update Info
-              </Button>
+              <Link to={`/users/${id}/edit`}>
+                <Button
+                  size="large"
+                  style={{textDecoration: 'none', color: 'black'}}
+
+                  /*type="submit"
+                onClick={updateInfo}*/
+                >
+                  Update Info
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

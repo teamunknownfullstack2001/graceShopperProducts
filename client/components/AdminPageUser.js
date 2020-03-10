@@ -13,6 +13,7 @@ import {Button} from '@material-ui/core'
 import {Link} from 'react-router-dom'
 import {deleteUser} from '../store'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
+import EditIcon from '@material-ui/icons/Edit'
 const styles = theme => ({
   root: {
     marginTop: '1vh',
@@ -45,8 +46,8 @@ class AdminPageUser extends React.Component {
     this.props.history.push('/adminPageUser')
   }
 
-  handleEdit = id => {
-    this.props.history.push(`/users/${id}/edit`)
+  handleEdit = async id => {
+    await this.props.history.push(`/users/${id}/edit`)
   }
 
   render() {
@@ -94,6 +95,15 @@ class AdminPageUser extends React.Component {
                     >
                       Delete
                     </Button>
+                    <Link to={`/users/${user.id}/edit`}>
+                      <Button
+                        size="large"
+                        color="secondary"
+                        startIcon={<EditIcon />}
+                      >
+                        Edit
+                      </Button>
+                    </Link>
                   </TableCell>
                 </TableRow>
               ))}
