@@ -2,7 +2,6 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-// import {ProductDummy} from './ProductDummy'
 import {Pagination, ProductDummy} from '.'
 import {deleteProduct} from '../store/products'
 
@@ -63,7 +62,7 @@ export class UserHome extends React.Component {
             ) : email ? (
               <h3>Welcome, {email}</h3>
             ) : (
-              <h3>Welcome, shopper</h3>
+              <h3>Welcome, friend</h3>
             )}
           </div>
           <div className="welcomeAddButton">

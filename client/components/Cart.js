@@ -4,7 +4,24 @@ import {connect} from 'react-redux'
 import {CartItem} from '.'
 import {getUserCart} from '../store'
 
-import {Button} from '@material-ui/core'
+import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined'
+import {
+  Card,
+  CardContent,
+  CardActions,
+  Typography,
+  CardMedia,
+  Button
+} from '@material-ui/core'
+// const Total = props => {
+//   console.log('These are the props in Total', props)
+//   const total = props.products.reduce((acc, cartItem) => {
+//     return acc + +cartItem.price * +cartItem.orderproduct.quantity
+//   })
+//   return (
+//   <h3>Total: {total}</h3>
+//   )
+// }
 
 class Cart extends React.Component {
   constructor() {
@@ -20,6 +37,8 @@ class Cart extends React.Component {
     const userid = this.props.user.id ? this.props.user.id : 0
     const {products} = this.props
 
+    console.log('These are the props:', this.props)
+
     return (
       <div className="d-flex flex-column justify-content-center">
         <h1>Cart:</h1>
@@ -31,12 +50,32 @@ class Cart extends React.Component {
               )
             })
           ) : (
-            <h3 className="text-center">Your Unknown Cart is Empty</h3>
+            <h3 className="text-center">Your Cart is Empty</h3>
           )
         ) : (
-          'No Product'
-        )}
+          ''
+        )}{' '}
+        {products && products.length > 0 ? (
+          // <h3>{products.map(cartItem => {
+          //      return (
+          //        <Total key={cartItem.id} cartItem={cartItem} />
+          //      )
+          //    })
+          // }
+          // </h3>
 
+          <h3 className="totalDisplay">
+            {' '}
+            Total: $
+            {(
+              products.reduce((acc, cartItem) => {
+                return acc + +cartItem.price * +cartItem.orderproduct.quantity
+              }, 0) / 100
+            ).toFixed(2)}{' '}
+          </h3>
+        ) : (
+          ''
+        )}
         {products && products.length > 0 ? (
           <Button
             size="large"
@@ -47,7 +86,7 @@ class Cart extends React.Component {
           </Button>
         ) : (
           <Button size="large" color="primary" href="/products">
-            CheckOut More Awsome Products!
+            Check Out More Awesome Products!
           </Button>
         )}
       </div>

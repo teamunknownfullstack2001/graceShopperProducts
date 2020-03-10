@@ -158,8 +158,22 @@ form div {
   flex: 1 0 0;
 }
 
+.totalDisplay {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.imgContainer {
+  height: 300px;
+  width: 250px;
+}
 .productImg {
   height: 300px;
+  max-width: 250px;
+  object-fit: cover;
 }
 
 .tagContainer {

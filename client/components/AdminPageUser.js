@@ -70,7 +70,6 @@ class AdminPageUser extends React.Component {
                 <TableCell align="left">Zip</TableCell>
                 <TableCell align="left">Phone</TableCell>
                 <TableCell align="left">Action</TableCell>
-                {/* <TableCell align="left"></TableCell> */}
               </TableRow>
             </TableHead>
             <TableBody>
@@ -120,10 +119,8 @@ class AdminPageUser extends React.Component {
 }
 
 const mapStateToProps = state => {
-  // console.log('This is the state: ', state)
   return {
     users: state.users,
-    // orders: state.orders
     info: state.admin
   }
 }
