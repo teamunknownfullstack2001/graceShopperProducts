@@ -166,8 +166,14 @@ form div {
   align-items: flex-end;
 }
 
+.imgContainer {
+  height: 300px;
+  width: 250px;
+}
 .productImg {
   height: 300px;
+  max-width: 250px;
+  object-fit: cover;
 }
 
 .tagContainer {

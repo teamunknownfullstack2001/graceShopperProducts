@@ -62,7 +62,7 @@ export class UserHome extends React.Component {
             ) : email ? (
               <h3>Welcome, {email}</h3>
             ) : (
-              <h3>Welcome, shopper</h3>
+              <h3>Welcome, friend</h3>
             )}
           </div>
           <div className="welcomeAddButton">

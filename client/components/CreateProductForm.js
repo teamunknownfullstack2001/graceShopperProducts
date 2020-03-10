@@ -27,19 +27,19 @@ const CreateProductForm = props => {
           className="form-control"
           type="text"
           name="imageUrl"
-          defaultValue="https://images.rugimg.com/3140387/3140387_image_1010.jpg?canvas=740%2C700&fit=bounds&bg-color=white&height=700&width=740&quality=85"
+          defaultValue="https://www.onlygfx.com/wp-content/uploads/2017/06/man-silhouette-18.png"
         />
 
         <label className="mb-3" htmlFor="category">
           Category:
         </label>
         <select name="category" value={props.category} className="form-control">
-          <option value="Area">Area</option>
-          <option value="Octagon">Octagon</option>
-          <option value="Oval">Oval</option>
-          <option value="Round">Round</option>
-          <option value="Runner">Runner</option>
-          <option value="Square">Square</option>
+          <option value="Conditional">Conditional</option>
+          <option value="Fair-Weather">Fair-Weather</option>
+          <option value="Long-Term">Long-Term</option>
+          <option value="Noncommital">Noncommital</option>
+          <option value="Short-Term">Short-Term</option>
+          <option value="Unconditional">Unconditional</option>
         </select>
 
         <label className="mb-3" htmlFor="description">
