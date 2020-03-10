@@ -35,12 +35,8 @@ class AdminPageOrder extends React.Component {
 
   render() {
     const {classes} = this.props
-    //  console.log("THESE ARE THE PROPS IN AdminPageOrder!", this.props)
     const {info} = this.props
-    const {users, orders} = info
-    // console.log('This is the info I want: ', info)
-    // console.log('These are the users: ', users)
-    // console.log('These are the orders: ', orders)
+    const {orders} = info
     return (
       <div>
         <h1>Welcome Admin</h1>
@@ -87,8 +83,6 @@ class AdminPageOrder extends React.Component {
 const mapStateToProps = state => {
   console.log('This is the state: ', state)
   return {
-    // users: state.users,
-    // orders: state.orders
     info: state.admin
   }
 }

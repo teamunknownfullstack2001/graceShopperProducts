@@ -33,7 +33,6 @@ const styles = theme => ({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     [theme.breakpoints.down('sm')]: {
-      // backgroundColor: 'gray',
       flexDirection: 'column'
     }
   },
@@ -56,23 +55,26 @@ const styles = theme => ({
 class CartItem extends React.Component {
   componentDidMount() {}
   render() {
-    const {classes} = this.props
+    const {classes, cartItem} = this.props
+    const {name, price, orderproduct} = cartItem
+    const {quantity} = orderproduct
+
     return (
       <div>
         <Card className={classes.root} variant="outlined">
           <CardContent className={classes.content}>
             <Typography className={classes.name} variant="h5" component="h2">
-              {`Name: ${this.props.cartItem.name}`}
+              {`Name: ${name}`}
             </Typography>
             <Typography
               className={classes.quantity}
               variant="h5"
               component="h2"
             >
-              {`Qty: ${this.props.cartItem.orderproduct.quantity}`}
+              {`Qty: ${quantity}`}
             </Typography>
             <Typography variant="h5" className={classes.price} component="h2">
-              {`Price: $ ${(this.props.cartItem.price / 100).toFixed(2)}`}
+              {`Price: $ ${(price / 100).toFixed(2)}`}
             </Typography>
           </CardContent>
           <CardMedia
