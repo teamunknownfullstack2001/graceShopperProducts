@@ -13,7 +13,8 @@ class disPlaceOrder extends React.Component {
       email: '',
       address: '',
       zip: '',
-      phone: ''
+      phone: '',
+      competedForm: false
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -51,7 +52,7 @@ class disPlaceOrder extends React.Component {
           ) : (
             <p>No order</p>
           )}
-          {this.props.user.id !== 0 ? (
+          {/* {this.props.user.id !== 0 ? (
             <AddressForm
               user={this.props.user}
               state={this.state}
@@ -59,24 +60,27 @@ class disPlaceOrder extends React.Component {
             />
           ) : (
             ''
-          )}
-          {this.props.user.id === 0 ? (
+          )} */}
+          {/* {this.props.user.id === 0 ? (
             <AddressForm
               // user={this.props.user}
               state={this.state}
               handleChange={this.handleChange}
+              order={this.props.order}
+              user={this.props.user}
             />
           ) : (
             ''
-          )}
+          )} */}
         </div>
-
         <h4 className="mb-3">Payment</h4>
         {this.props.order !== undefined ? (
           <InjectedCheckoutForm
             order={this.props.order}
             user={this.props.user}
             state={this.state}
+            competedForm={this.state.competedForm}
+            handleChange={this.handleChange}
           />
         ) : (
           ''

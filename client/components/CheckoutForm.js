@@ -63,16 +63,101 @@ class CheckoutForm extends React.Component {
   ////https://stripe.com/docs/testing find test card numbers here
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <CardSection />
-        <button
-          className="btn btn-primary btn-lg btn-block"
-          type="submit"
-          disabled={!this.props.stripe}
+      <div className="col-md-8 order-md-1">
+        <h4 className="mb-3">Shipping address</h4>
+        <form
+          onSubmit={this.handleSubmit}
+          className="needs-validation"
+          noValidate
         >
-          Continue to checkout
-        </button>
-      </form>
+          <div className="d-flex flex-column">
+            <div className="mb-3">
+              <label>Name</label>
+              <input
+                type="text"
+                className="form-control "
+                name="name"
+                placeholder=""
+                value={this.props.state.name}
+                onChange={this.props.handleChange}
+                required
+              />
+              <div className="invalid-feedback">Name is required.</div>
+            </div>
+
+            <div className="mb-3">
+              <label>Email</label>
+              <input
+                type="email"
+                className="form-control"
+                placeholder=""
+                name="email"
+                // value={state.email}
+                placeholder="you@example.com"
+                // onChange={handleChange}
+                required
+              />
+
+              <div className="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>
+
+            <div className="mb-3">
+              <label>Address</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder=""
+                name="address"
+                // value={state.address}
+                placeholder="1234 Main St"
+                // onChange={handleChange}
+                required
+              />
+              <div className="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+            <div className="row ">
+              <div className="col-md-3 mb-3">
+                <label>Phone</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="phone"
+                  // value={state.phone}
+                  // onChange={handleChange}
+                  required
+                />
+                <div className="invalid-feedback">
+                  Please enter a valid phone number.
+                </div>
+              </div>
+              <div className="col-md-3 mb-3">
+                <label>Zip</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="zip"
+                  // value={state.zip}
+                  // onChange={handleChange}
+                  required
+                />
+                <div className="invalid-feedback">Zip code required.</div>
+              </div>
+            </div>
+          </div>
+          <CardSection />
+          <button
+            className="btn btn-primary btn-lg btn-block"
+            type="submit"
+            disabled={!this.props.stripe}
+          >
+            Continue to checkout
+          </button>
+        </form>
+      </div>
     )
   }
 }
@@ -88,6 +173,7 @@ function DisInjectedCheckoutForm(props) {
           user={props.user}
           state={props.state}
           updateuser={props.updateuser}
+          handleChange={props.handleChange}
         />
       )}
     </ElementsConsumer>

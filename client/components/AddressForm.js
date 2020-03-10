@@ -11,6 +11,7 @@ export default class AddressForm extends React.Component {
     }
     // console.log('in address form compoenet', this.props.user)
   }
+  handleSubmit(evt) {}
   render() {
     const {handleChange, state} = this.props
     // console.log('in the render', this.props.state)
@@ -31,7 +32,7 @@ export default class AddressForm extends React.Component {
                 onChange={handleChange}
                 required
               />
-              <div className="invalid-feedback">Valid Name is required.</div>
+              <div className="invalid-feedback">Name is required.</div>
             </div>
 
             <div className="mb-3">
@@ -97,6 +98,10 @@ export default class AddressForm extends React.Component {
               </div>
             </div>
           </div>
+          <hr className="mb-4" />
+          <button className="btn btn-primary btn-lg btn-block" type="submit">
+            Continue to checkout
+          </button>
         </form>
       </div>
     )
