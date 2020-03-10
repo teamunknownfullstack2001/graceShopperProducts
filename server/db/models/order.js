@@ -10,6 +10,13 @@ const Order = db.define('order', {
     type: Sequelize.INTEGER,
     defaultValue: 0.0
   },
+  shippingAddress: {
+    type: Sequelize.STRING,
+    defaultValue: ''
+  },
+  shippingEmail: {
+    type: Sequelize.STRING
+  },
   stripeId: {
     type: Sequelize.STRING
   }

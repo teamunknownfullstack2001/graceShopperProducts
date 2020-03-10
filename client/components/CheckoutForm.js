@@ -8,16 +8,21 @@ import axios from 'axios'
 class CheckoutForm extends React.Component {
   handleSubmit = async event => {
     event.preventDefault()
+    // const isValid = this.props.validate()
+    // if (isValid) {
+    //   console.log(this.props.state)
+    // }
+    const {stripe, elements, order, user, state} = this.props
 
-    const {stripe, elements, order, user, state, updateuser} = this.props
+    //updated the order shipping address and email with current user input
+    const inputShippingEmail = this.props.state.email
+    const inputShippingAddress = this.props.state.address
 
-    //create the user || update the user info
-    // await this.props.updateuser(user.id, state)
-
+    console.log('in checkoutform', inputShippingAddress)
     if (!stripe || !elements) {
       return
     }
-    // console.log('=====order', order, user)
+
     const paymentBody = {
       amount: Math.floor(order.total),
       currency: 'usd',
@@ -40,7 +45,7 @@ class CheckoutForm extends React.Component {
         'Payment Success!!Should Redirect to Order Success Page',
         result.paymentIntent.id
       )
-      // console.log(stripe, elements, order, user, state, updateuser)
+
       if (user.id === 0) {
         user.email = state.email
         user.address = state.address
@@ -52,10 +57,12 @@ class CheckoutForm extends React.Component {
       await axios.post(`/api/orders/place/${order.id}`, {
         stripeId: result.paymentIntent.id,
         user,
-        order
+        order,
+        inputShippingAddress,
+        inputShippingEmail
       })
       // this.props.history.push(`/orderSuccess/${order.id}`)
-      window.location.replace(`/orderSuccess/${user.id}?orderId=${order.id}`)
+      window.location.replace(`/orderSuccess/${user.id}&${order.id}`)
       // change
     }
   }
@@ -63,16 +70,102 @@ class CheckoutForm extends React.Component {
   ////https://stripe.com/docs/testing find test card numbers here
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <CardSection />
-        <button
-          className="btn btn-primary btn-lg btn-block"
-          type="submit"
-          disabled={!this.props.stripe}
+      <div className="col-md-8 order-md-1">
+        <h4 className="mb-3">Shipping address</h4>
+        <form
+          onSubmit={this.handleSubmit}
+          className="needs-validation"
+          noValidate
         >
-          Continue to checkout
-        </button>
-      </form>
+          <div className="d-flex flex-column">
+            <div className="mb-3">
+              <label>Name</label>
+              <input
+                type="text"
+                className="form-control "
+                name="name"
+                placeholder=""
+                value={this.props.state.name}
+                onChange={this.props.handleChange}
+                required
+              />
+              <div className="invalid-feedback">Name is required.</div>
+            </div>
+
+            <div className="mb-3">
+              <label>Email</label>
+              <input
+                type="email"
+                className="form-control"
+                placeholder=""
+                name="email"
+                value={this.props.state.email}
+                placeholder="you@example.com"
+                onChange={this.props.handleChange}
+                required
+              />
+
+              <div className="invalid-feedback">
+                {this.props.state.emailError}
+              </div>
+            </div>
+
+            <div className="mb-3">
+              <label>Address</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder=""
+                name="address"
+                value={this.props.state.address}
+                placeholder="1234 Main St"
+                onChange={this.props.handleChange}
+                required
+              />
+              <div className="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+            <div className="row ">
+              <div className="col-md-3 mb-3">
+                <label>Phone</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="phone"
+                  value={this.props.state.phone}
+                  onChange={this.props.handleChange}
+                  required
+                />
+                <div className="invalid-feedback">
+                  Please enter a valid phone number.
+                </div>
+              </div>
+              <div className="col-md-3 mb-3">
+                <label>Zip</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="zip"
+                  value={this.props.state.zip}
+                  onChange={this.props.handleChange}
+                  required
+                />
+                <div className="invalid-feedback">Zip code required.</div>
+              </div>
+            </div>
+          </div>
+          <h4 className="mb-3">Payment</h4>
+          <CardSection />
+          <button
+            className="btn btn-primary btn-lg btn-block"
+            type="submit"
+            disabled={!this.props.stripe}
+          >
+            Continue to checkout
+          </button>
+        </form>
+      </div>
     )
   }
 }
@@ -88,6 +181,7 @@ function DisInjectedCheckoutForm(props) {
           user={props.user}
           state={props.state}
           updateuser={props.updateuser}
+          handleChange={props.handleChange}
         />
       )}
     </ElementsConsumer>

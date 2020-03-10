@@ -1,7 +1,6 @@
 const router = require('express').Router()
 const {User, Order, Product} = require('../db/models')
-// const {adminOnly, userOnly, selfOnly} = require('./utlis')
-const {adminOnly, userOnly, userRequire, selfOnly} = require('./utlis')
+const {adminOnly, selfOnly} = require('./utlis')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -57,7 +56,6 @@ router.delete('/:id', adminOnly, async (req, res, next) => {
 
 router.put('/:id', selfOnly, async (req, res, next) => {
   try {
-    // console.log('These are the req body: ', req.body.user)
     const userToUpdate = await User.findByPk(req.params.id)
 
     //Only allow access to the following fields so that a user can't make him/herself an admin
@@ -80,7 +78,6 @@ router.put('/:id', selfOnly, async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
-    console.log('in the put user put', req.body)
     const currentUser = await User.findByPk(req.params.id)
     const updatedUser = await currentUser.update(req.body)
 
