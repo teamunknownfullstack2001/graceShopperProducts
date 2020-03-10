@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {getSingleUser, getOrderDetails} from '../store'
+import {Button} from '@material-ui/core'
+import {Link} from 'react-router-dom'
 
 class OrderSuccessPage extends React.Component {
   componentDidMount() {
@@ -21,9 +23,9 @@ class OrderSuccessPage extends React.Component {
           {order.id}. Your order will be shipped to {order.shippingAddress}. You
           will also receive email receipt at {order.shippingEmail}.
         </h1>
-        <div>
-          <h2>Return to Shop</h2>
-        </div>
+        <Button size="large" color="primary" href="/products">
+          Return to Shop
+        </Button>
       </div>
     )
   }
