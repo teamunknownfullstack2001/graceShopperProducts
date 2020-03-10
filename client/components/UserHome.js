@@ -76,7 +76,7 @@ export class UserHome extends React.Component {
                   style={{color: 'green'}}
                   startIcon={<AddCircleOutlineIcon />}
                 >
-                  Add Product
+                  Add Friend
                 </Button>
               )}
             </Link>
@@ -89,14 +89,14 @@ export class UserHome extends React.Component {
                   <ProductDummy product={product} />
                 </div>
               ))
-            : 'No Products'}
+            : 'No Friends'}
         </ul>
         <div className="container mb-5">
           <div className="w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
               <h2 className={headerClass}>
                 <strong className="text-secondary">{totalProducts}</strong>{' '}
-                Products
+                Friends
               </h2>
               {currentPage && (
                 <span className="current-page d-inline-block h-100 pl-4 text-secondary">
