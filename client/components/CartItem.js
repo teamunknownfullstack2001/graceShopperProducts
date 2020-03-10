@@ -33,7 +33,6 @@ const styles = theme => ({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     [theme.breakpoints.down('sm')]: {
-      // backgroundColor: 'gray',
       flexDirection: 'column'
     }
   },

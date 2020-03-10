@@ -2,8 +2,6 @@ const adminOnly = (req, res, next) => {
   if (req.user && req.user.type === 'admin') {
     next()
   } else {
-    // console.log('this is an admin only request')
-    // console.log(req)
     res.sendStatus(404)
   }
 }
@@ -14,15 +12,6 @@ const userOnly = (req, res, next) => {
     res.sendStatus(404)
   }
 }
-
-// guest userId is 0, guest should be able to pass this
-// const selfOnly = (req, res, next) => {
-//   if (req.params.id === req.user.id) {
-//     next()
-//   } else {
-//     res.sendStatus(404)
-//   }
-// }
 
 const selfOnly = (req, res, next) => {
   if (req.params.id === req.body.id) {
@@ -92,4 +81,3 @@ async function sendEmail(emailBody) {
 }
 
 module.exports = {adminOnly, userOnly, sendEmail, selfOnly, userRequire}
-// module.exports = {adminOnly, userOnly, userRequire, sendEmail}

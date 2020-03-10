@@ -68,7 +68,6 @@ Order.prototype.addrOrIncrementProduct = async function(ProductId) {
       await entry.save()
     }
   }
-  console.log('this in the backedn .......', this.products)
   return this
 }
 

@@ -3,19 +3,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {CartItem} from '.'
 import {getUserCart} from '../store'
-// import {getQuestion} from '../store'
-// import PlaceOrder from './PlaceOrder'
-import {Link} from 'react-router-dom'
 
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined'
-import {
-  // Card,
-  // CardContent,
-  // CardActions,
-  // Typography,
-  // CardMedia,
-  Button
-} from '@material-ui/core'
+import {Button} from '@material-ui/core'
 
 class Cart extends React.Component {
   constructor() {
@@ -47,10 +37,6 @@ class Cart extends React.Component {
             size="large"
             color="primary"
             href={`/Order/${orderid}/${userid}`}
-            // startIcon={<DeleteOutlinedIcon />}
-            // onClick={() => {
-            //   this.props.removeFromCart(this.props.user.id, this.props.cartItem)
-            // }}
           >
             check out
           </Button>
