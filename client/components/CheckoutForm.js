@@ -9,15 +9,17 @@ class CheckoutForm extends React.Component {
   handleSubmit = async event => {
     event.preventDefault()
 
-    const {stripe, elements, order, user, state, updateuser} = this.props
+    const {stripe, elements, order, user, state} = this.props
 
-    //create the user || update the user info
-    // await this.props.updateuser(user.id, state)
+    //updated the order shipping address and email with current user input
+    const inputShippingEmail = this.props.state.email
+    const inputShippingAddress = this.props.state.address
 
+    console.log('in checkoutform', inputShippingAddress)
     if (!stripe || !elements) {
       return
     }
-    // console.log('=====order', order, user)
+
     const paymentBody = {
       amount: Math.floor(order.total),
       currency: 'usd',
@@ -40,7 +42,7 @@ class CheckoutForm extends React.Component {
         'Payment Success!!Should Redirect to Order Success Page',
         result.paymentIntent.id
       )
-      // console.log(stripe, elements, order, user, state, updateuser)
+
       if (user.id === 0) {
         user.email = state.email
         user.address = state.address
@@ -52,10 +54,12 @@ class CheckoutForm extends React.Component {
       await axios.post(`/api/orders/place/${order.id}`, {
         stripeId: result.paymentIntent.id,
         user,
-        order
+        order,
+        inputShippingAddress,
+        inputShippingEmail
       })
       // this.props.history.push(`/orderSuccess/${order.id}`)
-      window.location.replace(`/orderSuccess/${user.id}?orderId=${order.id}`)
+      window.location.replace(`/orderSuccess/${user.id}&${order.id}`)
       // change
     }
   }
@@ -92,9 +96,9 @@ class CheckoutForm extends React.Component {
                 className="form-control"
                 placeholder=""
                 name="email"
-                // value={state.email}
+                value={this.props.state.email}
                 placeholder="you@example.com"
-                // onChange={handleChange}
+                onChange={this.props.handleChange}
                 required
               />
 
@@ -110,9 +114,9 @@ class CheckoutForm extends React.Component {
                 className="form-control"
                 placeholder=""
                 name="address"
-                // value={state.address}
+                value={this.props.state.address}
                 placeholder="1234 Main St"
-                // onChange={handleChange}
+                onChange={this.props.handleChange}
                 required
               />
               <div className="invalid-feedback">
@@ -126,8 +130,8 @@ class CheckoutForm extends React.Component {
                   type="text"
                   className="form-control"
                   name="phone"
-                  // value={state.phone}
-                  // onChange={handleChange}
+                  value={this.props.state.phone}
+                  onChange={this.props.handleChange}
                   required
                 />
                 <div className="invalid-feedback">
@@ -140,14 +144,15 @@ class CheckoutForm extends React.Component {
                   type="text"
                   className="form-control"
                   name="zip"
-                  // value={state.zip}
-                  // onChange={handleChange}
+                  value={this.props.state.zip}
+                  onChange={this.props.handleChange}
                   required
                 />
                 <div className="invalid-feedback">Zip code required.</div>
               </div>
             </div>
           </div>
+          <h4 className="mb-3">Payment</h4>
           <CardSection />
           <button
             className="btn btn-primary btn-lg btn-block"
