@@ -6,13 +6,12 @@ export const addEventListenToForms = () => {
     form.addEventListener(
       'submit',
       function(event) {
-        console.log('ssubmit orm input')
         if (form.checkValidity() === false) {
           console.log('invalid form input')
           event.preventDefault()
           // event.stopPropagation()
         }
-        console.log('valid form input')
+
         form.classList.add('was-validated')
       },
       false
@@ -22,6 +21,6 @@ export const addEventListenToForms = () => {
 
 export const regEx = {
   email: '^[A-Za-z0-9.-_]+@[A-Za-z0-9]+.[A-Za-z0-9]+$',
-  phone: '^[0-9]{3}-[0-9]{3}-[0-9]{4}$',
+  phone: '^[0-9]{10}$',
   zip: '^[0-9]{5}$'
 }

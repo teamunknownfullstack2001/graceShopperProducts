@@ -31,7 +31,6 @@ class DisEditUserForm extends React.Component {
   }
 
   handleChange(event) {
-    console.log('typing', event.target.name, event.target.value)
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -45,7 +44,7 @@ class DisEditUserForm extends React.Component {
       !new RegExp(regEx.phone).test(this.state.phone) ||
       !new RegExp(regEx.zip).test(this.state.zip)
     )
-    console.log('check', check)
+
     if (this.props.match && this.props.match.path.includes('admin')) {
       check && this.props.adminUpdateUsers(this.state.id, this.state)
       check && this.props.history.push(`/adminPageUser/`)
