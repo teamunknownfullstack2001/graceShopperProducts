@@ -17,7 +17,7 @@ function Loading(props) {
     <>
       <Modal show={props.show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Loading</Modal.Title>
         </Modal.Header>
         <Modal.Body>Processing Payment! Don't close the window</Modal.Body>
         <MDSpinner className="justify-content-center" size={100} />
