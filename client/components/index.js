@@ -4,7 +4,7 @@
  * having to figure out which file they belong to!
  */
 export {default as Navbar} from './Navbar'
-export {default as AddressForm} from './AddressForm'
+
 export {default as AdminPageOrder} from './AdminPageOrder'
 export {default as AdminPageUser} from './AdminPageUser'
 export {Login} from './AuthForm'
@@ -35,6 +35,5 @@ export {default as Tag} from './Tag'
 export {default as TagProducts} from './TagProducts'
 export {default as UserHome} from './UserHome'
 export {default as UserProfile} from './UserProfile'
-// export {default as AuthForm} from './AuthForm'
 
 // export {default as CreateProduct} from './CreateProduct'
