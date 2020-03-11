@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {getSingleUser, getOrderDetails} from '../store'
+import SettingsBackupRestoreIcon from '@material-ui/icons/SettingsBackupRestore'
 import {Button} from '@material-ui/core'
 import {Link} from 'react-router-dom'
 
@@ -16,16 +17,48 @@ class OrderSuccessPage extends React.Component {
     const {order} = this.props
 
     return (
-      <div>
-        <h1>
-          Thank you for your order.
-          {this.props.user ? this.props.user.userName : ''} Your order ID is{' '}
-          {order.id}. Your order will be shipped to {order.shippingAddress}. You
-          will also receive email receipt at {order.shippingEmail}.
-        </h1>
-        <Button size="large" color="primary" href="/products">
-          Return to Shop
-        </Button>
+      <div className="standardContainer">
+        <div className="singleProductContainer">
+          <div className="singleProductImg">
+            <img
+              className="package"
+              src="https://www.pngarts.com/files/1/Package-PNG-Background-Image.png"
+              alt="box"
+            />
+          </div>
+
+          <div className="singlerProductMain">
+            <div className="standardContainer">
+              <h2>Success!</h2>
+              <h3>
+                Thank you for your order
+                {this.props.user ? ', ' + this.props.user.userName : ''} - we
+                hope you enjoy your new friends!
+              </h3>
+              <p>
+                <i>order id: {order.id}</i>
+              </p>
+              <p>
+                <i>Your order will be shipped to {order.shippingAddress}.</i>
+              </p>
+              <p>
+                <i>
+                  You will also receive email receipt at {order.shippingEmail}.
+                </i>
+              </p>
+            </div>
+          </div>
+          <div className="singleProductButtons">
+            <Button
+              size="large"
+              color="primary"
+              startIcon={<SettingsBackupRestoreIcon />}
+              href="/products"
+            >
+              Return to Shop
+            </Button>
+          </div>
+        </div>
       </div>
     )
   }
