@@ -79,7 +79,7 @@ const CreateProductForm = props => {
           startIcon={<AddCircleOutlineIcon />}
           type="submit"
         >
-          Add Product
+          Add Friend
         </Button>
       </form>
     </div>

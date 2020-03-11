@@ -87,7 +87,7 @@ class OrderItem extends React.Component {
           <Button size="large">
             <Link to={`/products/${this.props.orderItem.id}`}>
               {' '}
-              Go To Product{' '}
+              Go To Friend{' '}
             </Link>
           </Button>
           <CardMedia

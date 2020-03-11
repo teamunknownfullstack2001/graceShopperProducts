@@ -13,15 +13,6 @@ import {
   CardMedia,
   Button
 } from '@material-ui/core'
-// const Total = props => {
-//   console.log('These are the props in Total', props)
-//   const total = props.products.reduce((acc, cartItem) => {
-//     return acc + +cartItem.price * +cartItem.orderproduct.quantity
-//   })
-//   return (
-//   <h3>Total: {total}</h3>
-//   )
-// }
 
 class Cart extends React.Component {
   constructor() {
@@ -53,8 +44,8 @@ class Cart extends React.Component {
             <h3 className="text-center">Your Cart is Empty</h3>
           )
         ) : (
-          ''
-        )}{' '}
+          'No Friends'
+        )}
         {products && products.length > 0 ? (
           <h3 className="totalDisplay">
             {' '}
@@ -78,7 +69,7 @@ class Cart extends React.Component {
           </Button>
         ) : (
           <Button size="large" color="primary" href="/products">
-            Check Out More Awesome Products!
+            Browse Our Awesome Friends!
           </Button>
         )}
       </div>
