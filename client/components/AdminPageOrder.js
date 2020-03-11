@@ -38,8 +38,8 @@ class AdminPageOrder extends React.Component {
     const {info} = this.props
     const {orders} = info
     return (
-      <div>
-        <h1>Welcome Admin</h1>
+      <div className="standardContainer">
+        <h2>Welcome Admin</h2>
 
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="simple table">
@@ -51,7 +51,6 @@ class AdminPageOrder extends React.Component {
                 <TableCell align="left">Total</TableCell>
                 <TableCell align="left">Payment Ref Num</TableCell>
                 <TableCell align="left">Order Date</TableCell>
-                <TableCell align="left">Action</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -64,11 +63,6 @@ class AdminPageOrder extends React.Component {
                   <TableCell align="left">{order.stripeId}</TableCell>
                   <TableCell align="left">
                     {order.updatedAt.slice(0, 10)}
-                  </TableCell>
-                  <TableCell align="left">
-                    <Button size="large">
-                      <Link to="/AdminPageOrder"> Action </Link>
-                    </Button>
                   </TableCell>
                 </TableRow>
               ))}
