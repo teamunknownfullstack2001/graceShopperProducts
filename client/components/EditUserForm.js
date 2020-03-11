@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import React from 'react'
 import {connect} from 'react-redux'
 import {withStyles} from '@material-ui/core/styles'
@@ -35,6 +36,7 @@ class DisEditUserForm extends React.Component {
       [event.target.name]: event.target.value
     })
   }
+  // eslint-disable-next-line complexity
   handleSubmit = (event, regEx) => {
     event.preventDefault()
     const check = !(

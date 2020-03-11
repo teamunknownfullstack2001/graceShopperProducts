@@ -17,15 +17,23 @@ const CARD_ELEMENT_OPTIONS = {
     invalid: {
       color: '#fa755a',
       iconColor: '#fa755a'
+    },
+    empty: {
+      color: '#fa755a',
+      iconColor: '#fa755a'
+    },
+    complete: {
+      color: 'green',
+      iconColor: 'green'
     }
   }
 }
 
 function CardSection() {
   return (
-    <label>
+    <div className="form-row">
       <CardElement options={CARD_ELEMENT_OPTIONS} />
-    </label>
+    </div>
   )
 }
 

@@ -572,63 +572,108 @@ const products = [
 const orders = [
   {
     status: 'placed',
-    userId: 1
+    userId: 1,
+    total: 1000,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'placed',
-    userId: 2
+    userId: 2,
+    total: 1000,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'placed',
-    userId: 3
+    userId: 3,
+    total: 1000,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'placed',
-    userId: 4
+    userId: 4,
+    total: 1000,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'inCart',
-    userId: 5
+    userId: 5,
+    total: 0,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'inCart',
-    userId: 6
+    userId: 6,
+    total: 0,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'inCart',
-    userId: 7
+    userId: 7,
+    total: 0,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'placed',
-    userId: 8
+    userId: 8,
+    total: 1000,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'inCart',
-    userId: 9
+    userId: 9,
+    total: 0,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'inCart',
-    userId: 10
+    userId: 10,
+    total: 0,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'inCart',
-    userId: 1
+    userId: 1,
+    total: 0,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'inCart',
-    userId: 2
+    userId: 2,
+    total: 0,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'placed',
-    userId: 3
+    userId: 3,
+    total: 1000,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'inCart',
-    userId: 4
+    userId: 4,
+    total: 0,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'inCart',
-    userId: 5
+    userId: 5,
+    total: 0,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   }
 ]
 
