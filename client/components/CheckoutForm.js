@@ -222,6 +222,7 @@ class DisCheckoutForm extends React.Component {
                   value={this.state.zip}
                   pattern={regEx.zip}
                   onChange={this.handleChange}
+                  placeholder=""
                   required
                 />
                 <div className="invalid-feedback">
