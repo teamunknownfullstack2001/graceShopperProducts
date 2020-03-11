@@ -53,7 +53,7 @@ class SingleProduct extends React.Component {
     const {id, imageUrl, name, description, price, category, stock} = product
 
     return (
-      <div key={id}>
+      <div key={id} className="standardContainer">
         <div className="singleProductContainer">
           <div className="singleProductImg">
             <img
