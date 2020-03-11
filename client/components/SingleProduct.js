@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {getSingleProduct, addToOrIncrementCart, deleteProduct} from '../store'
-import {Tag} from '.'
+import {Tag, Popup} from '.'
 
 import {withStyles} from '@material-ui/core/styles'
 import {
@@ -21,12 +21,22 @@ const styles = {}
 class SingleProduct extends React.Component {
   constructor() {
     super()
+    this.state = {
+      seen: false
+    }
     this.handleRemove = this.handleRemove.bind(this)
     this.handleEdit = this.handleEdit.bind(this)
+    this.togglePop = this.togglePop.bind(this)
   }
   componentDidMount() {
     this.props.getSingleProduct(this.props.match.params.id)
   }
+  togglePop = () => {
+    this.setState({
+      seen: !this.state.seen
+    })
+  }
+
   handleRemove = async productId => {
     await this.props.removeProduct(productId)
 
@@ -41,9 +51,11 @@ class SingleProduct extends React.Component {
     const {classes} = this.props
     const {product} = this.props
     const {id, imageUrl, name, description, price, category, stock} = product
+    // console.log('These are the props: ', this.props)
+    // console.log("This is the category: ", category)
 
     return (
-      <div key={id}>
+      <div key={id} className="standardContainer">
         <div className="singleProductContainer">
           <div className="singleProductImg">
             <img
@@ -56,17 +68,22 @@ class SingleProduct extends React.Component {
             <h1>
               <i>{name}</i>
             </h1>
-            <p>{`$ ${(price / 100).toFixed(2)}`}</p>
+            <p>{`$${(price / 100).toFixed(2)} / week`}</p>
             {stock < 10 && stock !== 0 ? (
               <p className="text-danger"> Only {stock} left!-order soon.</p>
             ) : (
               ''
             )}
             {stock === 0 ? <p className="text-danger"> Out of Stock!</p> : ''}
-            {this.props.user.type === 'admin' && <p>Stock: {stock}</p>}
+            {this.props.user.type === 'admin' && (
+              <p>
+                <i>stock: </i>
+                {stock}
+              </p>
+            )}
             <p>{description}</p>
             <p>
-              Category:
+              <i>category: </i>
               <Button> {category}</Button>
             </p>
           </div>
@@ -80,7 +97,7 @@ class SingleProduct extends React.Component {
                   this.handleRemove(product.id)
                 }}
               >
-                Delete
+                Delete Friend
               </Button>
             )}
             {this.props.user.type === 'admin' && (
@@ -92,20 +109,23 @@ class SingleProduct extends React.Component {
                   this.handleEdit(product.id)
                 }}
               >
-                Edit Product
+                Edit Friend
               </Button>
             )}{' '}
-            <Button
-              size="large"
-              startIcon={<AddShoppingCartIcon />}
-              disabled={stock === 0}
-              onClick={() => {
-                console.log('clicked')
-                this.props.addToCart(this.props.user.id, product)
-              }}
-            >
-              Add to Cart
-            </Button>
+            <div>
+              <Button
+                size="large"
+                startIcon={<AddShoppingCartIcon />}
+                disabled={stock === 0}
+                onClick={() => {
+                  console.log('clicked')
+                  this.props.addToCart(this.props.user.id, product)
+                  this.togglePop()
+                }}
+              >
+                Add to Cart
+              </Button>
+            </div>
             <Button
               size="large"
               startIcon={<AddShoppingCartIcon />}
@@ -116,12 +136,12 @@ class SingleProduct extends React.Component {
                 window.location.replace(`/Cart/${this.props.user.id}`)
               }}
             >
-              Add and go to Cart
+              Add & Go To Cart
             </Button>
           </div>
         </div>
         <div className="tagContainer">
-          <div className="tag">
+          <div className="tagLabel">
             <p>Tags: </p>
           </div>
           <div className="tagList">
@@ -137,6 +157,7 @@ class SingleProduct extends React.Component {
               </div>
             )}
           </div>
+          {this.state.seen ? <Popup toggle={this.togglePop} /> : null}
         </div>
       </div>
     )

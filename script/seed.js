@@ -174,6 +174,15 @@ const products = [
     stock: 100
   },
   {
+    name: 'Guy',
+    imageUrl: '/friends/guy.png',
+    category: 'Unconditional',
+    description:
+      'porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in felis donec',
+    price: 2500000,
+    stock: 7
+  },
+  {
     name: 'Ted',
     imageUrl: '/friends/04 man.png',
     category: 'Fair-Weather',
@@ -263,6 +272,15 @@ const products = [
     stock: 36
   },
   {
+    name: 'Barack',
+    imageUrl: '/friends/obama.png',
+    category: 'Fair-Weather',
+    description:
+      'adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in ante vestibulum ante ipsum primis',
+    price: 10000000,
+    stock: 22
+  },
+  {
     name: 'Joe',
     imageUrl: '/friends/09 man.png',
     category: 'Short-Term',
@@ -335,6 +353,15 @@ const products = [
     stock: 66
   },
   {
+    name: 'Lebron',
+    imageUrl: '/friends/lebron.png',
+    category: 'Fair-Weather',
+    description:
+      'vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus',
+    price: 10000000,
+    stock: 64
+  },
+  {
     name: 'Steve',
     imageUrl: '/friends/13 man.png',
     category: 'Contitional',
@@ -360,6 +387,15 @@ const products = [
       'non pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea dictumst maecenas ut massa',
     price: 51679,
     stock: 68
+  },
+  {
+    name: 'Dude',
+    imageUrl: '/friends/dude.png',
+    category: 'Long-Term',
+    description:
+      'quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh',
+    price: 100,
+    stock: 18
   },
   {
     name: 'Trish',
@@ -397,6 +433,15 @@ const products = [
     stock: 25
   },
   {
+    name: 'Ariana',
+    imageUrl: '/friends/grande.png',
+    category: 'Long-Term',
+    description:
+      'donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a',
+    price: 10000000,
+    stock: 62
+  },
+  {
     name: 'Carly',
     imageUrl: '/friends/16 woman.png',
     category: 'Short-Term',
@@ -415,6 +460,15 @@ const products = [
     stock: 7
   },
   {
+    name: 'Snoop',
+    imageUrl: '/friends/snoop.png',
+    category: 'Fair-Weather',
+    description:
+      'turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin',
+    price: 10000000,
+    stock: 90
+  },
+  {
     name: 'Christine',
     imageUrl: '/friends/17 woman.png',
     category: 'Short-Term',
@@ -422,6 +476,15 @@ const products = [
       'nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel',
     price: 90461,
     stock: 79
+  },
+  {
+    name: 'Jackie',
+    imageUrl: '/friends/jackie.png',
+    category: 'Unconditional',
+    description:
+      'hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque',
+    price: 10000000,
+    stock: 87
   },
   {
     name: 'Don',
@@ -449,6 +512,15 @@ const products = [
       'amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis',
     price: 80418,
     stock: 37
+  },
+  {
+    name: 'Justin',
+    imageUrl: '/friends/bieber.png',
+    category: 'Short-Term',
+    description:
+      'sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet',
+    price: 1000000,
+    stock: 18
   },
   {
     name: 'Robin',
@@ -487,84 +559,12 @@ const products = [
     stock: 19
   },
   {
-    name: 'Guy',
-    imageUrl: '/friends/guy.png',
-    category: 'Unconditional',
-    description:
-      'porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in felis donec',
-    price: 100000,
-    stock: 7
-  },
-  {
-    name: 'Justin',
-    imageUrl: '/friends/bieber.png',
-    category: 'Short-Term',
-    description:
-      'sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet',
-    price: 1000000,
-    stock: 18
-  },
-  {
-    name: 'Ariana',
-    imageUrl: '/friends/grande.png',
-    category: 'Long-Term',
-    description:
-      'donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a',
-    price: 10000000,
-    stock: 62
-  },
-  {
-    name: 'Jackie',
-    imageUrl: '/friends/jackie.png',
-    category: 'Unconditional',
-    description:
-      'hac habitasse platea dictumst maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque',
-    price: 10000000,
-    stock: 87
-  },
-  {
-    name: 'Dude',
-    imageUrl: '/friends/dude.png',
-    category: 'Long-Term',
-    description:
-      'quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh',
-    price: 100,
-    stock: 18
-  },
-  {
-    name: 'Snoop',
-    imageUrl: '/friends/snoop.png',
-    category: 'Fair-Weather',
-    description:
-      'turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin',
-    price: 10000000,
-    stock: 90
-  },
-  {
-    name: 'Lebron',
-    imageUrl: '/friends/lebron.png',
-    category: 'Fair-Weather',
-    description:
-      'vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus',
-    price: 10000000,
-    stock: 64
-  },
-  {
-    name: 'Barack',
-    imageUrl: '/friends/obama.png',
-    category: 'Fair-Weather',
-    description:
-      'adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in ante vestibulum ante ipsum primis',
-    price: 10000000,
-    stock: 22
-  },
-  {
     name: 'Benedict',
     imageUrl: '/friends/benedict.png',
     category: 'Short-Term',
     description:
       'erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget',
-    price: 100,
+    price: 99,
     stock: 67
   }
 ]
@@ -572,63 +572,108 @@ const products = [
 const orders = [
   {
     status: 'placed',
-    userId: 1
+    userId: 1,
+    total: 1000,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'placed',
-    userId: 2
+    userId: 2,
+    total: 1000,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'placed',
-    userId: 3
+    userId: 3,
+    total: 1000,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'placed',
-    userId: 4
+    userId: 4,
+    total: 1000,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'inCart',
-    userId: 5
+    userId: 5,
+    total: 0,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'inCart',
-    userId: 6
+    userId: 6,
+    total: 0,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'inCart',
-    userId: 7
+    userId: 7,
+    total: 0,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'placed',
-    userId: 8
+    userId: 8,
+    total: 1000,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'inCart',
-    userId: 9
+    userId: 9,
+    total: 0,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'inCart',
-    userId: 10
+    userId: 10,
+    total: 0,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'inCart',
-    userId: 1
+    userId: 1,
+    total: 0,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'inCart',
-    userId: 2
+    userId: 2,
+    total: 0,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'placed',
-    userId: 3
+    userId: 3,
+    total: 1000,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'inCart',
-    userId: 4
+    userId: 4,
+    total: 0,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   },
   {
     status: 'inCart',
-    userId: 5
+    userId: 5,
+    total: 0,
+    shippingEmail: 'yous@example.com',
+    stripeId: 'pi_1GLR6ICxxfbFMZyM########'
   }
 ]
 

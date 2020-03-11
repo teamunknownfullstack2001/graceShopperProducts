@@ -4,7 +4,7 @@
  * having to figure out which file they belong to!
  */
 export {default as Navbar} from './Navbar'
-export {default as AddressForm} from './AddressForm'
+
 export {default as AdminPageOrder} from './AdminPageOrder'
 export {default as AdminPageUser} from './AdminPageUser'
 export {Login} from './AuthForm'
@@ -12,6 +12,7 @@ export {Signup} from './Signup'
 export {default as CardSection} from './CardSection'
 export {default as CartItem} from './CartItem'
 export {default as Cart} from './Cart'
+
 export {default as InjectedCheckoutForm} from './CheckoutForm'
 export {default as CheckoutUserinfo} from './CheckoutUserInfo'
 export {default as CheckoutOrderItem} from './CheckoutOrderItem'
@@ -28,12 +29,12 @@ export {default as OrderSuccessPage} from './OrderSuccessPage'
 export {default as OrderHistory} from './OrderHistory'
 export {default as Pagination} from './Pagination'
 export {default as PlaceOrder} from './PlaceOrder'
+export {default as Popup} from './Popup'
 export {default as ProductDummy} from './ProductDummy'
 export {default as SingleProduct} from './SingleProduct'
 export {default as Tag} from './Tag'
 export {default as TagProducts} from './TagProducts'
 export {default as UserHome} from './UserHome'
 export {default as UserProfile} from './UserProfile'
-// export {default as AuthForm} from './AuthForm'
 
 // export {default as CreateProduct} from './CreateProduct'

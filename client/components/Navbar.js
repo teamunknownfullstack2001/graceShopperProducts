@@ -124,6 +124,14 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
                   <Button style={{color: 'white'}}>Shop for Friends</Button>
                 </Link>
               </div>
+              <div className={classes.navProduct}>
+                <Typography variant="h5" className={classes.title}>
+                  friend
+                  <i>
+                    <u>Shop</u>
+                  </i>
+                </Typography>
+              </div>
               <div className={classes.search}>
                 <div className={classes.searchIcon}>
                   <SearchIcon />
@@ -246,6 +254,14 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
                   <Button style={{color: 'white'}}>Shop for Friends</Button>
                 </Link>
               </div>
+              <div className={classes.navProduct}>
+                <Typography variant="h5" className={classes.title}>
+                  friend
+                  <i>
+                    <u>Shop</u>
+                  </i>
+                </Typography>
+              </div>
               <div className={classes.search}>
                 <div className={classes.searchIcon}>
                   <SearchIcon />
@@ -350,6 +366,14 @@ const Navbar = ({handleClick, isLoggedIn, user}) => {
                 <Link to="/Products">
                   <Button style={{color: 'white'}}>Shop for Friends</Button>
                 </Link>
+              </div>
+              <div className={classes.navProduct}>
+                <Typography variant="h5" className={classes.title}>
+                  friend
+                  <i>
+                    <u>Shop</u>
+                  </i>
+                </Typography>
               </div>
               <div className={classes.search}>
                 <div className={classes.searchIcon}>

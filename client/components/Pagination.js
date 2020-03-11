@@ -1,6 +1,9 @@
 import React, {Component, Fragment} from 'react'
 import PropTypes from 'prop-types'
 
+//pagination credit for  gladchinda
+//https://github.com/gladchinda/build-react-pagination-demo
+
 const LEFT_PAGE = 'LEFT'
 const RIGHT_PAGE = 'RIGHT'
 

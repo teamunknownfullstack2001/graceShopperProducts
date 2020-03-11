@@ -2,7 +2,6 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-// import {ProductDummy} from './ProductDummy'
 import {Pagination, ProductDummy} from '.'
 import {deleteProduct} from '../store/products'
 
@@ -43,7 +42,7 @@ export class UserHome extends React.Component {
     this.setState({currentPage, currentProducts, totalPages})
   }
   render() {
-    const {email, user} = this.props
+    const {email, user, products} = this.props
     const {currentProducts, currentPage, totalPages} = this.state
     const totalProducts = this.props.products ? this.props.products.length : 0
 
@@ -54,6 +53,7 @@ export class UserHome extends React.Component {
     ]
       .join(' ')
       .trim()
+
     return (
       <div>
         <div className="welcomeContainer">
@@ -66,6 +66,7 @@ export class UserHome extends React.Component {
               <h3>Welcome, friend</h3>
             )}
           </div>
+
           <div className="welcomeAddButton">
             <Link
               to="/newproduct"
@@ -77,7 +78,7 @@ export class UserHome extends React.Component {
                   style={{color: 'green'}}
                   startIcon={<AddCircleOutlineIcon />}
                 >
-                  Add Product
+                  Add Friend
                 </Button>
               )}
             </Link>
@@ -90,15 +91,16 @@ export class UserHome extends React.Component {
                   <ProductDummy product={product} />
                 </div>
               ))
-            : 'No Products'}
+            : 'No Friends'}
         </ul>
         <div className="container mb-5">
           <div className="w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
               <h2 className={headerClass}>
                 <strong className="text-secondary">{totalProducts}</strong>{' '}
-                Products
+                Friends
               </h2>
+
               {currentPage && (
                 <span className="current-page d-inline-block h-100 pl-4 text-secondary">
                   Page <span className="font-weight-bold">{currentPage}</span> /{' '}

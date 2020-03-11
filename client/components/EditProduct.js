@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 import {getSingleProduct, putProduct, setProducts} from '../store'
 import {EditProductForm, Tag} from '.'
 
@@ -25,7 +24,6 @@ class EditProduct extends Component {
       description: event.target.description.value,
       price: Math.floor(parseFloat(event.target.price.value) * 100),
       stock: event.target.stock.value
-      // tags: [event.target.tags.value]
     }
 
     this.props.modifyProduct(this.props.product.id, productUpdates)

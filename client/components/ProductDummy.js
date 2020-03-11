@@ -18,10 +18,8 @@ const ProductDummy = props => {
               className="productImg"
             />
           </div>
-          <h3>
-            <i>{product.name}</i>
-          </h3>
-          <h3>{`$ ${(product.price / 100).toFixed(2)}`}</h3>
+          <h2>{product.name}</h2>
+          <h3>{`$${(product.price / 100).toFixed(2)} / week`}</h3>
         </div>
       </Link>
     </div>

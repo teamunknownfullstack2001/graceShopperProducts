@@ -1,8 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
 // import {CartItem} from '.'
-import {InjectedCheckoutForm, AddressForm, CheckoutOrderItem} from '.'
+import {InjectedCheckoutForm, CheckoutOrderItem} from '.'
 import {getOrder, createOrder, getSingleUser} from '../store'
+import {withStyles} from '@material-ui/core/styles'
 
 class disPlaceOrder extends React.Component {
   constructor() {
@@ -39,7 +40,7 @@ class disPlaceOrder extends React.Component {
     return (
       <div className="container">
         <div className="py-5 text-center">
-          <h2>Checkout:</h2>
+          <h2>Checkout</h2>
         </div>
 
         <div className="row">
@@ -49,38 +50,21 @@ class disPlaceOrder extends React.Component {
               total={total}
             />
           ) : (
-            <p>No order</p>
-          )}
-          {this.props.user.id !== 0 ? (
-            <AddressForm
-              user={this.props.user}
-              state={this.state}
-              handleChange={this.handleChange}
-            />
-          ) : (
             ''
           )}
-          {this.props.user.id === 0 ? (
-            <AddressForm
-              // user={this.props.user}
+
+          {this.props.order !== undefined ? (
+            <InjectedCheckoutForm
+              order={this.props.order}
+              user={this.props.user}
               state={this.state}
+              competedForm={this.state.competedForm}
               handleChange={this.handleChange}
             />
           ) : (
             ''
           )}
         </div>
-
-        <h4 className="mb-3">Payment</h4>
-        {this.props.order !== undefined ? (
-          <InjectedCheckoutForm
-            order={this.props.order}
-            user={this.props.user}
-            state={this.state}
-          />
-        ) : (
-          ''
-        )}
       </div>
     )
   }

@@ -67,27 +67,19 @@ class OrderItem extends React.Component {
       <div>
         <Card className={classes.root} variant="outlined">
           <CardContent className={classes.content}>
-            <Typography className={classes.name} variant="h5" component="h2">
-              {`Item:  ${this.props.orderItem.name}`}
-            </Typography>
-            <Typography className={classes.des} variant="h5" component="h2">
-              {`Item Details:  ${this.props.orderItem.description}`}
-            </Typography>
-            <Typography
-              className={classes.quantity}
-              variant="h5"
-              component="h2"
-            >
-              {`Qty: ${this.props.orderItem.orderproduct.quantity}`}
-            </Typography>
-            <Typography variant="h5" className={classes.price} component="h2">
+            <h3>{`Item:  ${this.props.orderItem.name}`}</h3>
+
+            <h3>{`Item Details:  ${this.props.orderItem.description}`}</h3>
+
+            <h3>{`Qty: ${this.props.orderItem.orderproduct.quantity}`}</h3>
+            <h3>
               {`Price: $${(this.props.orderItem.price / 100).toFixed(2)}`}
-            </Typography>
+            </h3>
           </CardContent>
           <Button size="large">
             <Link to={`/products/${this.props.orderItem.id}`}>
               {' '}
-              Go To Product{' '}
+              Go To Friend{' '}
             </Link>
           </Button>
           <CardMedia

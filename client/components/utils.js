@@ -6,13 +6,12 @@ export const addEventListenToForms = () => {
     form.addEventListener(
       'submit',
       function(event) {
-        console.log('ssubmit orm input')
         if (form.checkValidity() === false) {
           console.log('invalid form input')
           event.preventDefault()
           // event.stopPropagation()
         }
-        console.log('valid form input')
+
         form.classList.add('was-validated')
       },
       false

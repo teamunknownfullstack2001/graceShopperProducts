@@ -33,15 +33,8 @@ router.post('/place/:id', async (req, res, next) => {
     ) {
       req.session.cart.products = []
     }
-    const {user, order} = req.body
-    sendEmail({
-      from: process.env.GOOGLE_EMAIL_ADDRESS, // sender address
-      to: user.email, // list of receivers
-      subject: `Thank you for your order`, // Subject line
-      // text: `${req.body.user.userName}, thank you for your order`, // plain text body
-      html: `<b> Thank you for your order ${user.userName}. Your order ID is ${order.id}.
-      Your order will be shipped to ${user.address}. </b>` // html body
-    })
+    const {newUser, order, inputShippingAddress, inputShippingEmail} = req.body
+
     const currentOrder = await Order.findByPk(req.params.id, {
       include: [{model: Product}]
     })
@@ -59,8 +52,20 @@ router.post('/place/:id', async (req, res, next) => {
 
     await currentOrder.update({
       status: 'placed',
-      stripeId: req.body.stripeId
+      stripeId: req.body.stripeId,
+      shippingAddress: inputShippingAddress,
+      shippingEmail: inputShippingEmail
     })
+
+    sendEmail({
+      from: process.env.GOOGLE_EMAIL_ADDRESS, // sender address
+      to: inputShippingEmail, // list of receivers
+      subject: `Thank you for your order`, // Subject line
+      // text: `${req.body.user.userName}, thank you for your order`, // plain text body
+      html: `<b> Thank you for your order ${newUser.userName}. Your order ID is ${order.id}.
+      Your order will be shipped to ${inputShippingAddress}. </b>` // html body
+    })
+
     res.status(204).end()
   } catch (error) {
     next(error)
