@@ -40,7 +40,7 @@ class Cart extends React.Component {
     return (
       <div className="standardContainer">
         <div className="d-flex flex-column justify-content-center">
-          <h1>Cart:</h1>
+          <h1>Cart</h1>
           {products ? (
             products.length > 0 ? (
               products.map(cartItem => {
