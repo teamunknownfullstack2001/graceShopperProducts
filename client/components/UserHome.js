@@ -53,6 +53,7 @@ export class UserHome extends React.Component {
     ]
       .join(' ')
       .trim()
+
     return (
       <div>
         <div className="welcomeContainer">

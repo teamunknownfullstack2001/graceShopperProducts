@@ -1,8 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
 // import {CartItem} from '.'
-import {InjectedCheckoutForm, AddressForm, CheckoutOrderItem} from '.'
+import {InjectedCheckoutForm, CheckoutOrderItem} from '.'
 import {getOrder, createOrder, getSingleUser} from '../store'
+import {withStyles} from '@material-ui/core/styles'
 
 class disPlaceOrder extends React.Component {
   constructor() {
@@ -13,29 +14,11 @@ class disPlaceOrder extends React.Component {
       email: '',
       address: '',
       zip: '',
-      phone: '',
-      nameError: '',
-      emailError: ''
+      phone: ''
     }
     this.handleChange = this.handleChange.bind(this)
-    this.validate = this.validate.bind(this)
   }
 
-  validate = () => {
-    let nameError = ''
-    let emailError = ''
-    let addressError = ''
-
-    if (!this.state.email.includes('@')) {
-      emailError = 'Please enter a valid email address for shipping updates.'
-    }
-    if (emailError) {
-      this.setState({emailError})
-      return false
-    }
-
-    return true
-  }
   handleChange(evt) {
     this.setState({
       [evt.target.name]: evt.target.value
@@ -67,29 +50,9 @@ class disPlaceOrder extends React.Component {
               total={total}
             />
           ) : (
-            <p>No order</p>
+            ''
           )}
-          {/* {this.props.user.id !== 0 ? (
-            <AddressForm
-              user={this.props.user}
-              state={this.state}
-              handleChange={this.handleChange}
-            />
-          ) : (
-            ''
-          )} */}
-          {/* {this.props.user.id === 0 ? (
-            <AddressForm
-              // user={this.props.user}
-              state={this.state}
-              handleChange={this.handleChange}
-              order={this.props.order}
-              user={this.props.user}
-            />
-          ) : (
-            ''
-          )} */}
-          {/* <h4 className="mb-3">Payment</h4> */}
+
           {this.props.order !== undefined ? (
             <InjectedCheckoutForm
               order={this.props.order}
@@ -97,7 +60,6 @@ class disPlaceOrder extends React.Component {
               state={this.state}
               competedForm={this.state.competedForm}
               handleChange={this.handleChange}
-              validate={this.validate}
             />
           ) : (
             ''

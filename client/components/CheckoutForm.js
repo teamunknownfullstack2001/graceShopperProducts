@@ -1,69 +1,106 @@
 import {CardSection} from '.'
-import React from 'react'
+import React, {useState} from 'react'
 import {ElementsConsumer, CardElement} from '@stripe/react-stripe-js'
 import {connect} from 'react-redux'
-import {updateUserThunk} from '../store'
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
+import MDSpinner from 'react-md-spinner'
+import {addEventListenToForms, regEx} from './utils.js'
 import axios from 'axios'
 
+function Loading(props) {
+  const [show, setShow] = useState(false)
+
+  const handleClose = () => setShow(false)
+
+  return (
+    <>
+      <Modal show={props.show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Loading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Processing Payment! Don't close the window</Modal.Body>
+        <MDSpinner className="justify-content-center" size={100} />
+      </Modal>
+    </>
+  )
+}
+
 class CheckoutForm extends React.Component {
-  handleSubmit = async event => {
+  constructor() {
+    super()
+    this.state = {
+      show: false
+    }
+  }
+  componentDidMount() {
+    addEventListenToForms()
+  }
+
+  handleSubmit = async (event, regEx) => {
     event.preventDefault()
-    // const isValid = this.props.validate()
-    // if (isValid) {
-    //   console.log(this.props.state)
-    // }
-    const {stripe, elements, order, user, state} = this.props
 
-    //updated the order shipping address and email with current user input
-    const inputShippingEmail = this.props.state.email
-    const inputShippingAddress = this.props.state.address
+    //check the user input
+    const check = !(
+      this.props.state.userName === '' ||
+      this.props.state.address === '' ||
+      !new RegExp(regEx.phone).test(this.props.state.phone) ||
+      !new RegExp(regEx.email).test(this.props.state.email) ||
+      !new RegExp(regEx.zip).test(this.props.state.zip)
+    )
+    //if all the validations are correct it should go to the payment and update db
+    if (check) {
+      this.setState({show: true})
+      const {stripe, elements, order, user, state} = this.props
 
-    console.log('in checkoutform', inputShippingAddress)
-    if (!stripe || !elements) {
-      return
-    }
+      const inputShippingEmail = this.props.state.email
+      const inputShippingAddress = this.props.state.address
 
-    const paymentBody = {
-      amount: Math.floor(order.total),
-      currency: 'usd',
-      metadata: {integration_check: 'accept_a_payment'}
-    }
-    const {data} = await axios.post(`/api/payment`, paymentBody)
-    const result = await stripe.confirmCardPayment(data.client_secret, {
-      payment_method: {
-        card: elements.getElement(CardElement),
-        billing_details: {
-          name: user.userName
+      if (!stripe || !elements) {
+        return
+      }
+
+      const paymentBody = {
+        amount: Math.floor(order.total),
+        currency: 'usd',
+        metadata: {integration_check: 'accept_a_payment'}
+      }
+      const {data} = await axios.post(`/api/payment`, paymentBody)
+      const result = await stripe.confirmCardPayment(data.client_secret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+          billing_details: {
+            name: user.userName
+          }
         }
-      }
-    })
-
-    if (result.error) {
-      console.log(result.error.message)
-    } else if (result.paymentIntent.status === 'succeeded') {
-      console.log(
-        'Payment Success!!Should Redirect to Order Success Page',
-        result.paymentIntent.id
-      )
-
-      if (user.id === 0) {
-        user.email = state.email
-        user.address = state.address
-        user.zip = state.zip
-        user.phone = state.phone
-        user.name = state.name
-      }
-
-      await axios.post(`/api/orders/place/${order.id}`, {
-        stripeId: result.paymentIntent.id,
-        user,
-        order,
-        inputShippingAddress,
-        inputShippingEmail
       })
-      // this.props.history.push(`/orderSuccess/${order.id}`)
-      window.location.replace(`/orderSuccess/${user.id}&${order.id}`)
-      // change
+
+      if (result.error) {
+        console.log(result.error.message)
+      } else if (result.paymentIntent.status === 'succeeded') {
+        console.log(
+          'Payment Success!!Should Redirect to Order Success Page',
+          result.paymentIntent.id
+        )
+
+        if (user.id === 0) {
+          user.email = state.email
+          user.address = state.address
+          user.zip = state.zip
+          user.phone = state.phone
+          user.name = state.name
+        }
+
+        await axios.post(`/api/orders/place/${order.id}`, {
+          stripeId: result.paymentIntent.id,
+          user,
+          order,
+          inputShippingAddress,
+          inputShippingEmail
+        })
+      }
+
+      // window.location.replace(`/orderSuccess/${user.id}&${order.id}`)
     }
   }
 
@@ -73,7 +110,9 @@ class CheckoutForm extends React.Component {
       <div className="col-md-8 order-md-1">
         <h4 className="mb-3">Shipping address</h4>
         <form
-          onSubmit={this.handleSubmit}
+          onSubmit={event => {
+            this.handleSubmit(event, regEx)
+          }}
           className="needs-validation"
           noValidate
         >
@@ -106,7 +145,7 @@ class CheckoutForm extends React.Component {
               />
 
               <div className="invalid-feedback">
-                {this.props.state.emailError}
+                Please enter a valid email address for shipping updates.
               </div>
             </div>
 
@@ -147,11 +186,15 @@ class CheckoutForm extends React.Component {
                   type="text"
                   className="form-control"
                   name="zip"
+                  id="zip"
                   value={this.props.state.zip}
+                  pattern={regEx.zip}
                   onChange={this.props.handleChange}
                   required
                 />
-                <div className="invalid-feedback">Zip code required.</div>
+                <div className="invalid-feedback">
+                  Zip code needs to be 5-digit.
+                </div>
               </div>
             </div>
           </div>
@@ -165,6 +208,8 @@ class CheckoutForm extends React.Component {
             Continue to checkout
           </button>
         </form>
+
+        <Loading show={this.state.show} />
       </div>
     )
   }
@@ -188,12 +233,11 @@ function DisInjectedCheckoutForm(props) {
   )
 }
 const mapState = state => ({})
-const mapDispatch = dispatch => {
-  return {
-    updateuser: (id, info) => dispatch(updateUserThunk(id, info))
-  }
-}
+const mapDispatch = dispatch => ({})
 
-const InjectedCheckoutForm = connect(null, mapDispatch)(DisInjectedCheckoutForm)
+const InjectedCheckoutForm = connect(
+  mapState,
+  mapDispatch
+)(DisInjectedCheckoutForm)
 
 export default InjectedCheckoutForm
