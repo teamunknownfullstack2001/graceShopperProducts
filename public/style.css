@@ -6,6 +6,9 @@ a {
   text-decoration: none;
 }
 
+.sinpper {
+  margin: 0 auto;
+}
 label {
   display: block;
 }

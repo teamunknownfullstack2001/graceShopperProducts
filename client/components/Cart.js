@@ -56,14 +56,6 @@ class Cart extends React.Component {
           ''
         )}{' '}
         {products && products.length > 0 ? (
-          // <h3>{products.map(cartItem => {
-          //      return (
-          //        <Total key={cartItem.id} cartItem={cartItem} />
-          //      )
-          //    })
-          // }
-          // </h3>
-
           <h3 className="totalDisplay">
             {' '}
             Total: $

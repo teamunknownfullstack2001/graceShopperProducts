@@ -53,6 +53,7 @@ export class UserHome extends React.Component {
     ]
       .join(' ')
       .trim()
+
     return (
       <div>
         <div className="welcomeContainer">
@@ -83,13 +84,15 @@ export class UserHome extends React.Component {
           </div>
         </div>
         <ul className="productList">
-          {currentProducts
-            ? currentProducts.map(product => (
-                <div key={product.id} className="singleProduct">
-                  <ProductDummy product={product} />
-                </div>
-              ))
-            : 'No Products'}
+          {currentProducts ? (
+            currentProducts.map(product => (
+              <div key={product.id} className="singleProduct">
+                <ProductDummy product={product} />
+              </div>
+            ))
+          ) : (
+            <ReactLoading type="bars" color="black" />
+          )}
         </ul>
         <div className="container mb-5">
           <div className="w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between">

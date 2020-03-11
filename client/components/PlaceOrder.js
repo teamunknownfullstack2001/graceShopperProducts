@@ -1,14 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
 // import {CartItem} from '.'
-import {InjectedCheckoutForm, AddressForm, CheckoutOrderItem} from '.'
+import {InjectedCheckoutForm, CheckoutOrderItem} from '.'
 import {getOrder, createOrder, getSingleUser} from '../store'
+import {withStyles} from '@material-ui/core/styles'
 
-const regEx = {
-  email: '^[A-Za-z0-9.-_]+@[A-Za-z0-9]+.[A-Za-z0-9]+$',
-  phone: '^[0-9]{3}-[0-9]{3}-[0-9]{4}$',
-  zip: '^[0-9]{5}$'
-}
 class disPlaceOrder extends React.Component {
   constructor() {
     super()
@@ -54,29 +50,9 @@ class disPlaceOrder extends React.Component {
               total={total}
             />
           ) : (
-            <p>No order</p>
+            ''
           )}
-          {/* {this.props.user.id !== 0 ? (
-            <AddressForm
-              user={this.props.user}
-              state={this.state}
-              handleChange={this.handleChange}
-            />
-          ) : (
-            ''
-          )} */}
-          {/* {this.props.user.id === 0 ? (
-            <AddressForm
-              // user={this.props.user}
-              state={this.state}
-              handleChange={this.handleChange}
-              order={this.props.order}
-              user={this.props.user}
-            />
-          ) : (
-            ''
-          )} */}
-          {/* <h4 className="mb-3">Payment</h4> */}
+
           {this.props.order !== undefined ? (
             <InjectedCheckoutForm
               order={this.props.order}
