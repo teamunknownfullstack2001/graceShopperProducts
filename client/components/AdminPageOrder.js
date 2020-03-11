@@ -75,7 +75,6 @@ class AdminPageOrder extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log('This is the state: ', state)
   return {
     info: state.admin
   }

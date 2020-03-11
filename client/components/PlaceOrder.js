@@ -36,7 +36,7 @@ class disPlaceOrder extends React.Component {
     const total = this.props.order.total
       ? `$ ${(this.props.order.total / 100).toFixed(2)}`
       : 0
-    console.log('in place order', this.state)
+
     return (
       <div className="container">
         <div className="py-5 text-center">

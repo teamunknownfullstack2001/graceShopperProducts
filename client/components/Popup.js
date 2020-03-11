@@ -16,7 +16,6 @@ export default class Popup extends Component {
   }
 
   render() {
-    console.log('popup')
     return (
       <div className="modal_content">
         <div className="popup">

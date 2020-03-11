@@ -39,18 +39,15 @@ class UserProfile extends React.Component {
   }
 
   handlesChange(event) {
-    console.log('typing', event.target.name, event.target.value)
     this.setState({
       [event.target.name]: event.target.value
     })
   }
   handlesSubmit = event => {
     event.preventDefault()
-    console.log('update user')
   }
 
   render() {
-    // console.log('These are the props: ', this.props)
     const {user} = this.props
     const {
       id,
@@ -63,7 +60,6 @@ class UserProfile extends React.Component {
       orders,
       type
     } = user
-    console.log('These are the orders: ', orders)
 
     return (
       <div key={id} className="standardContainer">

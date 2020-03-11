@@ -40,13 +40,11 @@ router.get('/:id', async (req, res, next) => {
 router.delete('/:id', adminOnly, async (req, res, next) => {
   try {
     const targetUser = await User.findByPk(req.params.id)
-    // console.log(targetUser.type)
+
     if (targetUser && targetUser.type !== 'admin') {
       await targetUser.destroy()
       res.json({id: req.params.id})
     } else if (targetUser && targetUser.type === 'admin') {
-      // await targetUser.destroy()
-
       res.sendStatus(404)
     }
   } catch (error) {

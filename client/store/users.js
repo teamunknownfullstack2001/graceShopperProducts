@@ -1,3 +1,4 @@
+import axios from 'axios'
 export const DESTROY_USER = 'DESTROY_USER'
 export const MODIFY_USER = 'MODIFY_USER'
 
@@ -16,7 +17,6 @@ export const modifyUser = user => ({
 export const deleteUser = userId => {
   return async dispatch => {
     try {
-      console.log('deleteUser')
       await axios.delete(`/api/users/${userId}`)
       dispatch(destroyUser(userId))
     } catch (error) {
@@ -28,7 +28,6 @@ export const deleteUser = userId => {
 export const putUser = (id, userUpdates, history) => {
   return async dispatch => {
     try {
-      console.log('updateUser')
       const {data} = await axios.put(`/api/users/${id}`, userUpdates)
       dispatch(modifyUser(data))
       history.push(`/userprofile/${id}`)

@@ -7,7 +7,6 @@ export const addEventListenToForms = () => {
       'submit',
       function(event) {
         if (form.checkValidity() === false) {
-          console.log('invalid form input')
           event.preventDefault()
           // event.stopPropagation()
         }
