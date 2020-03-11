@@ -28,8 +28,9 @@ class Cart extends React.Component {
   render() {
     const orderid = this.props.cartId ? this.props.cartId : 0
     const userid = this.props.user.id ? this.props.user.id : 0
+    console.log('this.props', this.props.products)
     const {products} = this.props
-    if (!products) {
+    if (products === undefined) {
       return (
         <div className="d-flex justify-content-center">
           <MDSpinner size={100} />
@@ -41,7 +42,7 @@ class Cart extends React.Component {
       <div className="standardContainer">
         <div className="d-flex flex-column justify-content-center">
           <h1>Cart</h1>
-          {products ? (
+          {products !== undefined ? (
             products.length > 0 ? (
               products.map(cartItem => {
                 return (
@@ -79,7 +80,7 @@ class Cart extends React.Component {
             {products && products.length > 0 ? (
               <Button
                 size="large"
-                color="primary"
+                style={{color: 'green'}}
                 href={`/Order/${orderid}/${userid}`}
               >
                 Check Out
