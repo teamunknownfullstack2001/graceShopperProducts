@@ -31,7 +31,6 @@ export default class Popup extends Component {
           <Link to="/products" style={{textDecoration: 'none', color: 'black'}}>
             <Button>Browse Friends</Button>
           </Link>
-          <Button onClick={this.handleClick}>Close</Button>
         </div>
       </div>
     )
