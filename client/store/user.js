@@ -18,8 +18,8 @@ const defaultUser = {
   googleId: null,
   type: 'user',
   address: '',
-  zip: '00000',
-  phone: '000-000-0000'
+  zip: '',
+  phone: ''
 }
 
 /**
