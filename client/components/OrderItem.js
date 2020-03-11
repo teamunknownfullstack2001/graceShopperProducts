@@ -62,7 +62,7 @@ class OrderItem extends React.Component {
   componentDidMount() {}
   render() {
     const {classes} = this.props
-    console.log(this.props)
+
     return (
       <div>
         <Card className={classes.root} variant="outlined">

@@ -32,18 +32,6 @@ export const getSingleProduct = id => {
   }
 }
 
-// export const putProduct = (id, productUpdates, history) => {
-//   return async dispatch => {
-//     try {
-//       const {data} = await axios.put(`/api/products/${id}`, productUpdates)
-//       dispatch(modifyProduct(data))
-//       history.push(`/products/${id}`)
-//     } catch (error) {
-//       console.error(`PUT fail products/${id}`)
-//     }
-//   }
-// }
-
 /**
  * INITIAL STATE
  */

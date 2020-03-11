@@ -14,8 +14,6 @@ const userOnly = (req, res, next) => {
 }
 
 const selfOnly = (req, res, next) => {
-  console.log('selfonly')
-  console.log(req.params.id, +req.body.id)
   if (
     +req.params.id === +req.body.id ||
     (req.session.user && req.session.user.type === 'admin')

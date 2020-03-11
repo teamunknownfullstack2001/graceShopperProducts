@@ -112,13 +112,6 @@ class DisCheckoutForm extends React.Component {
           result.paymentIntent.id
         )
 
-        // if (user.id === 0) {
-        //   user.email = state.email
-        //   user.address = state.address
-        //   user.zip = state.zip
-        //   user.phone = state.phone
-        //   user.name = state.name
-        // }
         const newUser = {
           userName: this.state.userName,
           address: this.state.address,
@@ -143,7 +136,6 @@ class DisCheckoutForm extends React.Component {
 
   ////https://stripe.com/docs/testing find test card numbers here
   render() {
-    console.log('this.props', this.props)
     return (
       <div className="col-md-8 order-md-1">
         <h4 className="mb-3">Shipping address</h4>
@@ -258,7 +250,6 @@ class DisCheckoutForm extends React.Component {
 const mapState = state => ({})
 const mapDispatch = dispatch => ({
   updateUser: (id, info) => {
-    console.log('displaying thunk')
     dispatch(updateUserThunk(id, info))
   }
 })
