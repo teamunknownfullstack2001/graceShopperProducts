@@ -113,12 +113,11 @@ class SingleProduct extends React.Component {
                 onClick={() => {
                   console.log('clicked')
                   this.props.addToCart(this.props.user.id, product)
+                  this.togglePop()
                 }}
-                onClick={this.togglePop}
               >
                 Add to Cart
               </Button>
-              {this.state.seen ? <Popup toggle={this.togglePop} /> : null}
             </div>
             <Button
               size="large"
@@ -151,6 +150,7 @@ class SingleProduct extends React.Component {
               </div>
             )}
           </div>
+          {this.state.seen ? <Popup toggle={this.togglePop} /> : null}
         </div>
       </div>
     )

@@ -18,18 +18,20 @@ export default class Popup extends Component {
   render() {
     console.log('popup')
     return (
-      <div className="modal">
-        <div className="modal_content">
-          <span className="close" onClick={this.handleClick}>
-            &times;
-          </span>
-          <p>Friend Added To Cart</p>
-          <Link
-            to="/products"
-            style={{textDecoration: 'none', color: 'black'}}
-          >
-            <Button>Back To Friends</Button>
+      <div className="modal_content">
+        <p>
+          <i>Success!</i>
+        </p>
+        <div>
+          <p>
+            You've added a new friend to your cart... Nice! Meeting people is
+            hard - Why bother making friends the old fashioned way when you can
+            just buy one from us?
+          </p>
+          <Link to="/products" style={{textDecoration: 'none', color: 'black'}}>
+            <Button>Browse Friends</Button>
           </Link>
+          <Button onClick={this.handleClick}>Close</Button>
         </div>
       </div>
     )
