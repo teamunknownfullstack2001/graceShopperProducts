@@ -24,13 +24,60 @@ User.hasMany(Order)
 OrderItem.belongsTo(Order)
 Order.hasMany(OrderItem)
 
-// Product.hasMany(OrderItem) // product can be placed as order place in multiple orders from multiple users
-// OrderItem.belongsTo(Product) //
 Order.belongsToMany(Product, {through: orderProduct})
 Product.belongsToMany(Order, {through: orderProduct})
 
 Tag.belongsToMany(Product, {through: 'ProductTag'})
 Product.belongsToMany(Tag, {through: 'ProductTag'})
+
+Order.prototype.addrOrIncrementProduct = async function(ProductId) {
+  const product = await Product.findByPk(ProductId)
+  const hasAlready = await this.hasProduct(product)
+  if (!hasAlready) {
+    this.addProduct(product, {through: {quantity: 1}})
+  } else {
+    const entry = await orderProduct.findOne({
+      where: {
+        orderId: this.id,
+        productId: ProductId
+      }
+    })
+
+    if (product.stock - entry.dataValues.quantity >= 1) {
+      entry.quantity = entry.dataValues.quantity + 1
+      await entry.save()
+    }
+  }
+  return this
+}
+
+Order.prototype.decrementProduct = async function(ProductId) {
+  const product = await Product.findByPk(ProductId)
+  const hasAlready = await this.hasProduct(product)
+
+  if (!hasAlready) {
+    this.addProduct(product, {through: {quantity: 1}})
+  } else {
+    const entry = await orderProduct.findOne({
+      where: {
+        orderId: this.id,
+        productId: ProductId
+      }
+    })
+    if (entry.quantity > 0) {
+      entry.quantity = entry.dataValues.quantity - 1
+      await entry.save()
+    }
+  }
+  return this
+}
+
+Order.prototype.removeProduct = async function(ProductId) {
+  const product = await Product.findByPk(ProductId)
+  await this.removeProducts(product)
+
+  return this
+}
 
 module.exports = {
   User,
