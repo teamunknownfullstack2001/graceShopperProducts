@@ -20,7 +20,9 @@ function Loading(props) {
           <Modal.Title>Loading</Modal.Title>
         </Modal.Header>
         <Modal.Body>Processing Payment! Don't close the window</Modal.Body>
-        <MDSpinner className="justify-content-center" size={100} />
+        <div className="d-flex justify-content-center">
+          <MDSpinner size={100} />
+        </div>
       </Modal>
     </>
   )
@@ -100,7 +102,7 @@ class CheckoutForm extends React.Component {
         })
       }
 
-      // window.location.replace(`/orderSuccess/${user.id}&${order.id}`)
+      window.location.replace(`/orderSuccess/${user.id}&${order.id}`)
     }
   }
 
