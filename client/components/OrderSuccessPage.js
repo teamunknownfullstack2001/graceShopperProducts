@@ -31,8 +31,10 @@ class OrderSuccessPage extends React.Component {
               <h2>Success!</h2>
               <h3>
                 Thank you for your order
-                {this.props.user ? ', ' + this.props.user.userName : ''} - we
-                hope you enjoy your new friends!
+                {this.props.user && this.props.user.userName
+                  ? ', ' + this.props.user.userName
+                  : ''}{' '}
+                - we hope you enjoy your new friends!
               </h3>
               <p>
                 <i>order id: {order.id}</i>
@@ -58,29 +60,6 @@ class OrderSuccessPage extends React.Component {
             </Button>
           </div>
         </div>
-
-        {/* //       <div>
-//         <h1 className="orderSuccessTitle">We received your order</h1>
-//         <div className="deliveryContainter">
-//           <h4 className="deliveryDetails">
-//             <u>Delivery Details</u>
-//           </h4>
-//           <h5>Order Number: {order.id}</h5>
-//           <h5>Delivery For: {user ? user.userName : ''}</h5>
-
-//           <h5>Phone Number: {user.phone}</h5>
-
-//           <h4>
-//             <u>Order Summary</u>
-//           </h4>
-//           <h5>Shipping Address: {user.address} </h5>
-//           <h5>Order Confirmation Email: {user.email}</h5>
-//           <h5>Order Total: ${(order.total / 100).toFixed(2)}</h5>
-//         </div>
-
-//         <Button size="large" color="primary" href="/products">
-//           Return to Shop
-//         </Button> */}
       </div>
     )
   }
