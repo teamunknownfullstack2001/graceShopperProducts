@@ -16,7 +16,6 @@ class OrderSuccessPage extends React.Component {
     const {order, user} = this.props
 
     return (
-
       <div className="standardContainer">
         <div className="singleProductContainer">
           <div className="singleProductImg">
@@ -60,7 +59,7 @@ class OrderSuccessPage extends React.Component {
           </div>
         </div>
 
-//       <div>
+        {/* //       <div>
 //         <h1 className="orderSuccessTitle">We received your order</h1>
 //         <div className="deliveryContainter">
 //           <h4 className="deliveryDetails">
@@ -81,8 +80,7 @@ class OrderSuccessPage extends React.Component {
 
 //         <Button size="large" color="primary" href="/products">
 //           Return to Shop
-//         </Button>
-
+//         </Button> */}
       </div>
     )
   }

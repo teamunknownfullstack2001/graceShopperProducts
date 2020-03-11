@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button'
 import MDSpinner from 'react-md-spinner'
 import {addEventListenToForms, regEx} from './utils.js'
 import axios from 'axios'
-
+import {updateUserThunk} from '../store'
 function Loading(props) {
   const [show, setShow] = useState(false)
 
@@ -28,35 +28,60 @@ function Loading(props) {
   )
 }
 
-class CheckoutForm extends React.Component {
-  constructor() {
+class DisCheckoutForm extends React.Component {
+  constructor(props) {
     super()
     this.state = {
-      show: false
+      show: false,
+      userName: props.user.userName,
+      email: props.user.email,
+      zip: props.user.zip,
+      phone: props.user.phone,
+      address: props.user.address
+    }
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    // if (props.user && state.nickname === 'placeholder') {
+    if (
+      props.user &&
+      state.userName === 'Guest' &&
+      props.user.userName !== 'Guest'
+    ) {
+      return {...props.user, show: false}
+    } else {
+      return state
     }
   }
   componentDidMount() {
     addEventListenToForms()
   }
 
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  // eslint-disable-next-line complexity
   handleSubmit = async (event, regEx) => {
     event.preventDefault()
-
-    //check the user input
     const check = !(
-      this.props.state.userName === '' ||
-      this.props.state.address === '' ||
-      !new RegExp(regEx.phone).test(this.props.state.phone) ||
-      !new RegExp(regEx.email).test(this.props.state.email) ||
-      !new RegExp(regEx.zip).test(this.props.state.zip)
+      this.state.userName === '' ||
+      this.state.address === '' ||
+      !new RegExp(regEx.phone).test(this.state.phone) ||
+      !new RegExp(regEx.email).test(this.state.email) ||
+      !new RegExp(regEx.zip).test(this.state.zip) ||
+      document.getElementsByClassName('StripeElement--complete').length !== 1
     )
     //if all the validations are correct it should go to the payment and update db
     if (check) {
       this.setState({show: true})
       const {stripe, elements, order, user, state} = this.props
 
-      const inputShippingEmail = this.props.state.email
-      const inputShippingAddress = this.props.state.address
+      const inputShippingEmail = this.state.email
+      const inputShippingAddress = this.state.address
 
       if (!stripe || !elements) {
         return
@@ -68,9 +93,11 @@ class CheckoutForm extends React.Component {
         metadata: {integration_check: 'accept_a_payment'}
       }
       const {data} = await axios.post(`/api/payment`, paymentBody)
+      const card = elements.getElement(CardElement)
+
       const result = await stripe.confirmCardPayment(data.client_secret, {
         payment_method: {
-          card: elements.getElement(CardElement),
+          card: card,
           billing_details: {
             name: user.userName
           }
@@ -85,29 +112,38 @@ class CheckoutForm extends React.Component {
           result.paymentIntent.id
         )
 
-        if (user.id === 0) {
-          user.email = state.email
-          user.address = state.address
-          user.zip = state.zip
-          user.phone = state.phone
-          user.name = state.name
+        // if (user.id === 0) {
+        //   user.email = state.email
+        //   user.address = state.address
+        //   user.zip = state.zip
+        //   user.phone = state.phone
+        //   user.name = state.name
+        // }
+        const newUser = {
+          userName: this.state.userName,
+          address: this.state.address,
+          phone: this.state.phone,
+          zip: this.state.zip,
+          email: this.state.email,
+          id: user.id
         }
 
         await axios.post(`/api/orders/place/${order.id}`, {
           stripeId: result.paymentIntent.id,
-          user,
+          newUser,
           order,
           inputShippingAddress,
           inputShippingEmail
         })
+        this.props.updateUser(user.id, newUser)
+        window.location.replace(`/orderSuccess/${user.id}&${order.id}`)
       }
-
-      window.location.replace(`/orderSuccess/${user.id}&${order.id}`)
     }
   }
 
   ////https://stripe.com/docs/testing find test card numbers here
   render() {
+    console.log('this.props', this.props)
     return (
       <div className="col-md-8 order-md-1">
         <h4 className="mb-3">Shipping address</h4>
@@ -124,10 +160,10 @@ class CheckoutForm extends React.Component {
               <input
                 type="text"
                 className="form-control "
-                name="name"
+                name="userName"
                 placeholder=""
-                value={this.props.state.name}
-                onChange={this.props.handleChange}
+                value={this.state.userName}
+                onChange={this.handleChange}
                 required
               />
               <div className="invalid-feedback">Name is required.</div>
@@ -140,9 +176,10 @@ class CheckoutForm extends React.Component {
                 className="form-control"
                 placeholder=""
                 name="email"
-                value={this.props.state.email}
+                pattern={regEx.email}
+                value={this.state.email}
                 placeholder="you@example.com"
-                onChange={this.props.handleChange}
+                onChange={this.handleChange}
                 required
               />
 
@@ -158,9 +195,9 @@ class CheckoutForm extends React.Component {
                 className="form-control"
                 placeholder=""
                 name="address"
-                value={this.props.state.address}
+                value={this.state.address}
                 placeholder="1234 Main St"
-                onChange={this.props.handleChange}
+                onChange={this.handleChange}
                 required
               />
               <div className="invalid-feedback">
@@ -174,12 +211,13 @@ class CheckoutForm extends React.Component {
                   type="text"
                   className="form-control"
                   name="phone"
-                  value={this.props.state.phone}
-                  onChange={this.props.handleChange}
+                  pattern={regEx.phone}
+                  value={this.state.phone}
+                  onChange={this.handleChange}
                   required
                 />
                 <div className="invalid-feedback">
-                  Please enter a valid phone number.
+                  Please enter a valid phone number (000-000-0000).
                 </div>
               </div>
               <div className="col-md-3 mb-3">
@@ -189,9 +227,9 @@ class CheckoutForm extends React.Component {
                   className="form-control"
                   name="zip"
                   id="zip"
-                  value={this.props.state.zip}
+                  value={this.state.zip}
                   pattern={regEx.zip}
-                  onChange={this.props.handleChange}
+                  onChange={this.handleChange}
                   required
                 />
                 <div className="invalid-feedback">
@@ -217,7 +255,16 @@ class CheckoutForm extends React.Component {
   }
 }
 
-function DisInjectedCheckoutForm(props) {
+const mapState = state => ({})
+const mapDispatch = dispatch => ({
+  updateUser: (id, info) => {
+    console.log('displaying thunk')
+    dispatch(updateUserThunk(id, info))
+  }
+})
+const CheckoutForm = connect(mapState, mapDispatch)(DisCheckoutForm)
+
+function InjectedCheckoutForm(props) {
   return (
     <ElementsConsumer>
       {({stripe, elements}) => (
@@ -227,19 +274,11 @@ function DisInjectedCheckoutForm(props) {
           order={props.order}
           user={props.user}
           state={props.state}
-          updateuser={props.updateuser}
           handleChange={props.handleChange}
         />
       )}
     </ElementsConsumer>
   )
 }
-const mapState = state => ({})
-const mapDispatch = dispatch => ({})
-
-const InjectedCheckoutForm = connect(
-  mapState,
-  mapDispatch
-)(DisInjectedCheckoutForm)
 
 export default InjectedCheckoutForm
