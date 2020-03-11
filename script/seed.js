@@ -390,7 +390,7 @@ const products = [
     stock: 68
   },
   {
-    name: 'dude',
+    name: 'Dude',
     imageUrl: '/friends/Dude.png',
     category: 'Long-Term',
     description:
@@ -516,7 +516,7 @@ const products = [
   },
   {
     name: 'Justin',
-    imageUrl: '/friends/bieber.png',
+    imageUrl: '/friends/Bieber.png',
     category: 'Short-Term',
     description:
       'sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet',
