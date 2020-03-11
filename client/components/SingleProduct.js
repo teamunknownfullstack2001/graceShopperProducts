@@ -51,6 +51,8 @@ class SingleProduct extends React.Component {
     const {classes} = this.props
     const {product} = this.props
     const {id, imageUrl, name, description, price, category, stock} = product
+    // console.log('These are the props: ', this.props)
+    // console.log("This is the category: ", category)
 
     return (
       <div key={id}>

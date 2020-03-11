@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {
+  Category,
   Login,
   Signup,
   UserHome,
@@ -59,6 +60,7 @@ class Routes extends Component {
         />
         <Route exact path="/" component={UserHome} />
         <Route path="/tags/:id" component={TagProducts} />
+
         {isLoggedIn && (
           <Route path="/UserProfile/:id" component={UserProfile} />
         )}

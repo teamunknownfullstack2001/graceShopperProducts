@@ -2,7 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {getSingleUser, getOrderDetails} from '../store'
 import {Button} from '@material-ui/core'
-import {Link} from 'react-router-dom'
 
 class OrderSuccessPage extends React.Component {
   componentDidMount() {
@@ -13,16 +12,28 @@ class OrderSuccessPage extends React.Component {
   }
 
   render() {
-    const {order} = this.props
+    const {order, user} = this.props
 
     return (
       <div>
-        <h1>
-          Thank you for your order.
-          {this.props.user ? this.props.user.userName : ''} Your order ID is{' '}
-          {order.id}. Your order will be shipped to {order.shippingAddress}. You
-          will also receive email receipt at {order.shippingEmail}.
-        </h1>
+        <h1 className="orderSuccessTitle">We received your order</h1>
+        <div className="deliveryContainter">
+          <h4 className="deliveryDetails">
+            <u>Delivery Details</u>
+          </h4>
+          <h5>Order Number: {order.id}</h5>
+          <h5>Delivery For: {user ? user.userName : ''}</h5>
+
+          <h5>Phone Number: {user.phone}</h5>
+
+          <h4>
+            <u>Order Summary</u>
+          </h4>
+          <h5>Shipping Address: {user.address} </h5>
+          <h5>Order Confirmation Email: {user.email}</h5>
+          <h5>Order Total: ${(order.total / 100).toFixed(2)}</h5>
+        </div>
+
         <Button size="large" color="primary" href="/products">
           Return to Shop
         </Button>

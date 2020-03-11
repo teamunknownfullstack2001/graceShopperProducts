@@ -24,10 +24,7 @@ export default class Popup extends Component {
             &times;
           </span>
           <p>Friend Added To Cart</p>
-          <Link
-            to="/products"
-            style={{textDecoration: 'none', color: 'black'}}
-          >
+          <Link to="/products" style={{textDecoration: 'none', color: 'black'}}>
             <Button>Back To Friends</Button>
           </Link>
         </div>
