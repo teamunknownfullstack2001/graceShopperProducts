@@ -56,7 +56,6 @@ const CreateProductForm = props => {
           step=".01"
           min="0"
           name="price"
-          // value={`$ ${(props.price / 100).toFixed(2)}`}
         />
 
         <label className="mb-3" htmlFor="stock">

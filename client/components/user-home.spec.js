@@ -38,7 +38,6 @@ describe('UserHome', () => {
   })
 
   it('renders the email in an h3', () => {
-    // expect(userHome.find('h3').text()).to.be.equal('Welcome, cody@email.com')
     expect(
       userHome.findWhere(
         n => n.type() === 'h3' && n.contains('Welcome, cody@email.com')
@@ -59,20 +58,4 @@ describe('UserHome', () => {
     const images = wrapper.find('img').map(node => node.get(0).props.src)
     expect(images).to.include.members(['testimage1.png', 'testimage1.jpeg'])
   })
-
-  // it('is passed products from store as props', async () => {
-  //   const wrapper = mount(
-  //     <Provider store={store}>
-  //       <MemoryRouter initialEntries={['/robots']}>
-  //         <ConnectedUserHome />
-  //       </MemoryRouter>
-  //     </Provider>
-  //   )
-  //   store.dispatch(fetchProducts())
-  //   await waitFor(10)
-  //   wrapper.update()
-  //   const { products: reduxProducts } = store.getState()
-  //   const { robots: componentProducts } = wrapper.find(UserHome).props()
-  //   expect(componentProducts).to.deep.equal(reduxProducts)
-  // })
 })

@@ -27,14 +27,12 @@ class UserProfile extends React.Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    console.dir('getDerivedStateFromProps')
-    console.dir(props)
+    // console.dir('getDerivedStateFromProps')
+    // console.dir(props)
     if (props.user && state.email === 'placeholder@placeholder.com') {
-      // if (props.user) {
       return props.user
     } else {
       return state
-      // }
     }
   }
 

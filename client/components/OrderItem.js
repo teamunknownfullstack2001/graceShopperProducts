@@ -20,11 +20,6 @@ const styles = theme => ({
   // typography: {
   //   // In Chinese and Japanese the characters are usually larger,
   //   // so a smaller fontsize may be appropriate.
-  //   [theme.breakpoints.down('sm')]: {
-  //     // backgroundColor: 'gray',
-  //     fontSize: 8
-  //   }
-  // },
   root: {
     marginTop: '1vh',
     display: 'flex',
@@ -35,15 +30,9 @@ const styles = theme => ({
     margin: '0',
     justifyContent: 'flex-start',
     [theme.breakpoints.down('sm')]: {
-      // backgroundColor: 'gray',
       flexDirection: 'column'
     }
   },
-  // content: {
-  //   display: 'flex',
-  //   flexGrow: 1,
-  //   flexDirection: 'row'
-  // },
   name: {
     flex: '2 0 0'
   },

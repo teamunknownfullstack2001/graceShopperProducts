@@ -51,8 +51,6 @@ class SingleProduct extends React.Component {
     const {classes} = this.props
     const {product} = this.props
     const {id, imageUrl, name, description, price, category, stock} = product
-    // console.log('These are the props: ', this.props)
-    // console.log("This is the category: ", category)
 
     return (
       <div key={id} className="standardContainer">
@@ -174,7 +172,6 @@ const mapState = state => {
 const mapDispatch = dispatch => ({
   getSingleProduct: id => dispatch(getSingleProduct(id)),
   addToCart: (userId, product) => {
-    // console.log('dispatch single product', product, userId)
     dispatch(addToOrIncrementCart(userId, product))
   },
   removeProduct: productId => dispatch(deleteProduct(productId))

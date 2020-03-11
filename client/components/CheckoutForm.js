@@ -43,7 +43,6 @@ class DisCheckoutForm extends React.Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    // if (props.user && state.nickname === 'placeholder') {
     if (
       props.user &&
       state.userName === 'Guest' &&

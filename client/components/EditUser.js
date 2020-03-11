@@ -24,7 +24,6 @@ class EditUser extends Component {
       address: event.target.address.value,
       zip: event.target.zip.value,
       phone: event.target.phone.value
-      // type: event.target.type.value
     }
 
     this.props.modifyUser(this.props.user.id, userUpdates)

@@ -17,7 +17,6 @@ const CreateProduct = props => {
       description: event.target.description.value,
       price: Math.floor(parseFloat(event.target.price.value) * 100),
       stock: event.target.stock.value
-      // tags: [event.target.tags.value]
     }
     addProduct(newProduct)
   }

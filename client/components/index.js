@@ -36,5 +36,3 @@ export {default as Tag} from './Tag'
 export {default as TagProducts} from './TagProducts'
 export {default as UserHome} from './UserHome'
 export {default as UserProfile} from './UserProfile'
-
-// export {default as CreateProduct} from './CreateProduct'
