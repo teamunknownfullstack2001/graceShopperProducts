@@ -63,18 +63,16 @@ class CartItem extends React.Component {
       <div>
         <Card className={classes.root} variant="outlined">
           <CardContent className={classes.content}>
-            <Typography className={classes.name} variant="h5" component="h2">
-              {`Name: ${name}`}
+            <Typography className={classes.name}>
+              <h3>{`Name: ${name}`}</h3>
             </Typography>
-            <Typography
-              className={classes.quantity}
-              variant="h5"
-              component="h2"
-            >
-              {`Qty: ${quantity}`}
+            <Typography className={classes.quantity}>
+              <h3>{`Qty: ${quantity}`}</h3>
             </Typography>
-            <Typography variant="h5" className={classes.price} component="h2">
-              {`Price: $ ${(this.props.cartItem.price / 100).toFixed(2)}`}
+            <Typography className={classes.price}>
+              <h3>
+                {`Price: $ ${(this.props.cartItem.price / 100).toFixed(2)}`}
+              </h3>
             </Typography>
           </CardContent>
           <CardMedia
