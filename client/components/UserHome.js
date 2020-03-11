@@ -42,7 +42,7 @@ export class UserHome extends React.Component {
     this.setState({currentPage, currentProducts, totalPages})
   }
   render() {
-    const {email, user} = this.props
+    const {email, user, products} = this.props
     const {currentProducts, currentPage, totalPages} = this.state
     const totalProducts = this.props.products ? this.props.products.length : 0
 
@@ -66,6 +66,7 @@ export class UserHome extends React.Component {
               <h3>Welcome, friend</h3>
             )}
           </div>
+
           <div className="welcomeAddButton">
             <Link
               to="/newproduct"
@@ -99,6 +100,7 @@ export class UserHome extends React.Component {
                 <strong className="text-secondary">{totalProducts}</strong>{' '}
                 Friends
               </h2>
+
               {currentPage && (
                 <span className="current-page d-inline-block h-100 pl-4 text-secondary">
                   Page <span className="font-weight-bold">{currentPage}</span> /{' '}
