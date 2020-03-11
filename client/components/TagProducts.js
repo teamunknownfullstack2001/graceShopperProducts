@@ -17,7 +17,7 @@ class TagProducts extends React.Component {
     const {tag} = this.props
 
     return (
-      <div>
+      <div className="standardContainer">
         <ul>
           <h2>
             <i>{tag.name} Friends</i>
