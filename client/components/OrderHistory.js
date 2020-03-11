@@ -79,34 +79,13 @@ class DisconnectedOrderHistory extends React.Component {
                   key={order.id}
                 >
                   <CardContent className={classes.info}>
-                    <Typography
-                      className={classes.id}
-                      variant="h5"
-                      component="h2"
-                    >
-                      Order Id: {order.id}
-                    </Typography>
-                    <Typography
-                      className={classes.status}
-                      variant="h5"
-                      component="h2"
-                    >
-                      Status: {order.status}
-                    </Typography>
-                    <Typography
-                      className={classes.total}
-                      variant="h5"
-                      component="h2"
-                    >
-                      Total Charged: ${(order.total / 100).toFixed(2)}
-                    </Typography>
-                    <Typography
-                      className={classes.date}
-                      variant="h5"
-                      component="h2"
-                    >
-                      Date Ordered: {order.updatedAt.slice(0, 10)}
-                    </Typography>
+                    <h3>Order Id: {order.id}</h3>
+
+                    <h3>Status: {order.status}</h3>
+
+                    <h3>Total Charged: ${(order.total / 100).toFixed(2)}</h3>
+
+                    <h3>Date Ordered: {order.updatedAt.slice(0, 10)}</h3>
                   </CardContent>
                   <CardContent className={classes.content}>
                     {order.products.map(product => (

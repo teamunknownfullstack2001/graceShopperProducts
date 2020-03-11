@@ -55,7 +55,7 @@ class SingleProduct extends React.Component {
     // console.log("This is the category: ", category)
 
     return (
-      <div key={id}>
+      <div key={id} className="standardContainer">
         <div className="singleProductContainer">
           <div className="singleProductImg">
             <img
@@ -68,17 +68,22 @@ class SingleProduct extends React.Component {
             <h1>
               <i>{name}</i>
             </h1>
-            <p>{`$ ${(price / 100).toFixed(2)}`}</p>
+            <p>{`$${(price / 100).toFixed(2)} / week`}</p>
             {stock < 10 && stock !== 0 ? (
               <p className="text-danger"> Only {stock} left!-order soon.</p>
             ) : (
               ''
             )}
             {stock === 0 ? <p className="text-danger"> Out of Stock!</p> : ''}
-            {this.props.user.type === 'admin' && <p>Stock: {stock}</p>}
+            {this.props.user.type === 'admin' && (
+              <p>
+                <i>stock: </i>
+                {stock}
+              </p>
+            )}
             <p>{description}</p>
             <p>
-              Category:
+              <i>category: </i>
               <Button> {category}</Button>
             </p>
           </div>
@@ -92,7 +97,7 @@ class SingleProduct extends React.Component {
                   this.handleRemove(product.id)
                 }}
               >
-                Delete
+                Delete Friend
               </Button>
             )}
             {this.props.user.type === 'admin' && (
@@ -115,12 +120,11 @@ class SingleProduct extends React.Component {
                 onClick={() => {
                   console.log('clicked')
                   this.props.addToCart(this.props.user.id, product)
+                  this.togglePop()
                 }}
-                onClick={this.togglePop}
               >
                 Add to Cart
               </Button>
-              {this.state.seen ? <Popup toggle={this.togglePop} /> : null}
             </div>
             <Button
               size="large"
@@ -132,12 +136,12 @@ class SingleProduct extends React.Component {
                 window.location.replace(`/Cart/${this.props.user.id}`)
               }}
             >
-              Add and go to Cart
+              Add & Go To Cart
             </Button>
           </div>
         </div>
         <div className="tagContainer">
-          <div className="tag">
+          <div className="tagLabel">
             <p>Tags: </p>
           </div>
           <div className="tagList">
@@ -153,6 +157,7 @@ class SingleProduct extends React.Component {
               </div>
             )}
           </div>
+          {this.state.seen ? <Popup toggle={this.togglePop} /> : null}
         </div>
       </div>
     )

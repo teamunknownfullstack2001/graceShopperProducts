@@ -38,47 +38,61 @@ class Cart extends React.Component {
     }
 
     return (
-      <div className="d-flex flex-column justify-content-center">
-        <h1>Cart:</h1>
-        {products ? (
-          products.length > 0 ? (
-            products.map(cartItem => {
-              return (
-                <CartItem button={true} key={cartItem.id} cartItem={cartItem} />
-              )
-            })
+      <div className="standardContainer">
+        <div className="d-flex flex-column justify-content-center">
+          <h1>Cart</h1>
+          {products ? (
+            products.length > 0 ? (
+              products.map(cartItem => {
+                return (
+                  <CartItem
+                    button={true}
+                    key={cartItem.id}
+                    cartItem={cartItem}
+                  />
+                )
+              })
+            ) : (
+              <h3 className="text-center">Your Cart is Empty</h3>
+            )
           ) : (
-            <h3 className="text-center">Your Cart is Empty</h3>
-          )
-        ) : (
-          'No Friends'
-        )}
-        {products && products.length > 0 ? (
-          <h3 className="totalDisplay">
-            {' '}
-            Total: $
-            {(
-              products.reduce((acc, cartItem) => {
-                return acc + +cartItem.price * +cartItem.orderproduct.quantity
-              }, 0) / 100
-            ).toFixed(2)}{' '}
-          </h3>
-        ) : (
-          ''
-        )}
-        {products && products.length > 0 ? (
-          <Button
-            size="large"
-            color="primary"
-            href={`/Order/${orderid}/${userid}`}
-          >
-            Check Out
-          </Button>
-        ) : (
-          <Button size="large" color="primary" href="/products">
-            Browse Our Awesome Friends!
-          </Button>
-        )}
+            'No Friends'
+          )}
+          <div className="checkoutBottom">
+            <div>
+              {products && products.length > 0 ? (
+                <h2 className="totalDisplay">
+                  {' '}
+                  Total: $
+                  {(
+                    products.reduce((acc, cartItem) => {
+                      return (
+                        acc + +cartItem.price * +cartItem.orderproduct.quantity
+                      )
+                    }, 0) / 100
+                  ).toFixed(2)}{' '}
+                </h2>
+              ) : (
+                ''
+              )}
+            </div>
+            {products && products.length > 0 ? (
+              <Button
+                size="large"
+                color="primary"
+                href={`/Order/${orderid}/${userid}`}
+              >
+                Check Out
+              </Button>
+            ) : (
+              <div className="cartItemPart">
+                <Button size="large" color="primary" href="/products">
+                  Browse Our Awesome Friends!
+                </Button>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     )
   }

@@ -40,7 +40,7 @@ class disPlaceOrder extends React.Component {
     return (
       <div className="container">
         <div className="py-5 text-center">
-          <h2>Checkout:</h2>
+          <h2>Checkout</h2>
         </div>
 
         <div className="row">

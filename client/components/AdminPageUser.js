@@ -55,8 +55,8 @@ class AdminPageUser extends React.Component {
     const {users} = info
 
     return (
-      <div>
-        <h1>Welcome Admin</h1>
+      <div className="standardContainer">
+        <h2>Welcome Admin</h2>
 
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="simple table">
