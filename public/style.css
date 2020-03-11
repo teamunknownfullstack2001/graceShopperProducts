@@ -1,9 +1,23 @@
 body {
-  font-family: Verdana, sans-serif;
+  font-family: Arial Narrow, sans-serif;
 }
 
 a {
   text-decoration: none;
+}
+
+h1 {
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: 125%;
 }
 
 .sinpper {
@@ -89,7 +103,7 @@ form div {
   flex-wrap: wrap;
   align-items: flex-end;
   margin: 20px;
-  border-bottom: black dashed 2px;
+  box-shadow: 7px 7px 5px grey;
 }
 
 .singleProductMain {
@@ -192,6 +206,12 @@ form div {
   justify-content: space-evenly;
 }
 
+.tagLabel {
+  text-transform: lowercase;
+  font-style: italic;
+  padding-top: 6.5px;
+  margin: 20px;
+}
 .tag {
   margin: 20px;
 }
@@ -216,7 +236,7 @@ form div {
   width: 40%;
   padding: 20px;
   margin: 20px;
-  border: black dashed 2px;
+  border: lightGrey dashed 2px;
 }
 
 .modal_content:hover {

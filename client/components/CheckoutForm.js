@@ -100,7 +100,7 @@ class CheckoutForm extends React.Component {
         })
       }
 
-      // window.location.replace(`/orderSuccess/${user.id}&${order.id}`)
+      window.location.replace(`/orderSuccess/${user.id}&${order.id}`)
     }
   }
 
