@@ -3,8 +3,10 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {CartItem} from '.'
 import {getUserCart} from '../store'
+import MDSpinner from 'react-md-spinner'
 
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined'
+
 import {
   Card,
   CardContent,
@@ -27,8 +29,13 @@ class Cart extends React.Component {
     const orderid = this.props.cartId ? this.props.cartId : 0
     const userid = this.props.user.id ? this.props.user.id : 0
     const {products} = this.props
-
-    console.log('These are the props:', this.props)
+    if (!products) {
+      return (
+        <div className="d-flex justify-content-center">
+          <MDSpinner size={100} />
+        </div>
+      )
+    }
 
     return (
       <div className="d-flex flex-column justify-content-center">
