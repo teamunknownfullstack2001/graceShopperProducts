@@ -66,77 +66,10 @@ class UserProfile extends React.Component {
     console.log('These are the orders: ', orders)
 
     return (
-      <div key={id}>
-        <div className="col-md-8 order-md-1">
-          {/*<form onSubmit={this.handlesSubmit} className="needs-validation">
-            <label className="mb-3" htmlFor="name">
-              Name:
-            </label>
-            <input
-              onChange={this.handlesChange}
-              className="form-control"
-              type="text"
-              name="username"
-              value={this.state.username}
-              // defaultValue={initialValsFromProps('name', initialValues)}
-            />
-            <label className="mb-3" htmlFor="name">
-              Email:
-            </label>
-            <input
-              onChange={this.handlesChange}
-              className="form-control"
-              type="text"
-              name="email"
-              value={this.state.email}
-              // defaultValue={initialValsFromProps('name', initialValues)}
-            />
-            <label className="mb-3" htmlFor="name">
-              Address:
-            </label>
-            <input
-              onChange={this.handlesChange}
-              className="form-control"
-              type="text"
-              name="address"
-              value={this.state.address}
-              // defaultValue={initialValsFromProps('name', initialValues)}
-            />
-            <label className="mb-3" htmlFor="name">
-              Zip:
-            </label>
-            <input
-              onChange={this.handlesChange}
-              className="form-control"
-              type="text"
-              name="zip"
-              value={this.state.zip}
-              // defaultValue={initialValsFromProps('name', initialValues)}
-            />
-            <label className="mb-3" htmlFor="name">
-              Phone:
-            </label>
-            <input
-              onChange={this.handlesChange}
-              className="form-control"
-              type="text"
-              name="phone"
-              value={this.state.phone}
-              // defaultValue={initialValsFromProps('name', initialValues)}
-            />
-            <Button
-              size="large"
-              color="secondary"
-              startIcon={<EditIcon />}
-              type="submit"
-            >
-              Save CHange
-            </Button>
-    </form>*/}
-          {/* <Button size="large">
-            <Link to={`/orderHistory/${id}`}>Go To Order History</Link> */}
-          <div key={id} className="singleProductContainer">
-            <div className="singleProductMain">
+      <div key={id} className="standardContainer">
+        <div>
+          <div key={id} className="userHistory">
+            <div className="userHistorytMain">
               <p>
                 <i>User name: </i>
                 {userName}
@@ -162,7 +95,7 @@ class UserProfile extends React.Component {
                 {type}
               </p>
             </div>
-            <div className="singleProductButtons">
+            <div className="userHistoryButtons">
               <Link to={`/orderHistory/${id}`}>
                 <Button
                   size="large"
@@ -175,9 +108,6 @@ class UserProfile extends React.Component {
                 <Button
                   size="large"
                   style={{textDecoration: 'none', color: 'black'}}
-
-                  /*type="submit"
-                onClick={updateInfo}*/
                 >
                   Update Info
                 </Button>
@@ -191,7 +121,6 @@ class UserProfile extends React.Component {
 }
 
 const mapStateToProps = state => {
-  // console.log('This is the state: ', state)
   return {
     user: state.user
   }
