@@ -129,6 +129,15 @@ const products = [
     stock: 75
   },
   {
+    name: 'Guy',
+    imageUrl: '/friends/guy.png',
+    category: 'Unconditional',
+    description:
+      'porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in felis donec',
+    price: 2500000,
+    stock: 7
+  },
+  {
     name: 'Denise',
     imageUrl: '/friends/01 woman.png',
     category: 'Long-Term',
@@ -173,15 +182,7 @@ const products = [
     price: 51443,
     stock: 100
   },
-  {
-    name: 'Guy',
-    imageUrl: '/friends/guy.png',
-    category: 'Unconditional',
-    description:
-      'porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in felis donec',
-    price: 2500000,
-    stock: 7
-  },
+
   {
     name: 'Ted',
     imageUrl: '/friends/04 man.png',
@@ -389,8 +390,8 @@ const products = [
     stock: 68
   },
   {
-    name: 'Dude',
-    imageUrl: '/friends/dude.png',
+    name: 'dude',
+    imageUrl: '/friends/Dude.png',
     category: 'Long-Term',
     description:
       'quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh',
