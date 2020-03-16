@@ -56,7 +56,7 @@ class CartItem extends React.Component {
   componentDidMount() {}
   render() {
     const {classes, cartItem} = this.props
-    const {name, price, orderproduct} = cartItem
+    const {name, orderproduct} = cartItem
     const {quantity} = orderproduct
 
     return (

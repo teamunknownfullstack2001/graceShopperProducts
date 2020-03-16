@@ -22,59 +22,15 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-Order.prototype.decrementProduct = async function(ProductId) {
-  const product = await Product.findByPk(ProductId)
-  const hasAlready = await this.hasProduct(product)
-
-  if (!hasAlready) {
-    this.addProduct(product, {through: {quantity: 1}})
-  } else {
-    const entry = await orderProduct.findOne({
-      where: {
-        orderId: this.id,
-        productId: ProductId
-      }
-    })
-    if (entry.quantity > 0) {
-      entry.quantity = entry.dataValues.quantity - 1
-      await entry.save()
-    }
-  }
-  return this
-}
-
-Order.prototype.removeProduct = async function(ProductId) {
-  const product = await Product.findByPk(ProductId)
-  await this.removeProducts(product)
-
-  return this
-}
-
-Order.prototype.addrOrIncrementProduct = async function(ProductId) {
-  const product = await Product.findByPk(ProductId)
-  const hasAlready = await this.hasProduct(product)
-  if (!hasAlready) {
-    this.addProduct(product, {through: {quantity: 1}})
-  } else {
-    const entry = await orderProduct.findOne({
-      where: {
-        orderId: this.id,
-        productId: ProductId
-      }
-    })
-
-    if (product.stock - entry.dataValues.quantity >= 1) {
-      entry.quantity = entry.dataValues.quantity + 1
-      await entry.save()
-    }
-  }
-  return this
-}
-
+/// Add to cart
+//increment/decrement quantity
+//delete product from cart
 router.put('/:id', async (req, res, next) => {
+  // For user
   if (req.session.passport) {
     try {
       let [cart, created] = await Order.findOrCreate({
+        // if no cart is found for this user, we create a new cart
         include: [{model: Product}],
         where: {status: 'inCart', userId: +req.params.id}
       })
@@ -91,6 +47,7 @@ router.put('/:id', async (req, res, next) => {
       next(error)
     }
   } else {
+    // For guest
     const product = await Product.findByPk(+req.body.id)
     if (req.session.cart === undefined) {
       req.session.cart = {
@@ -106,12 +63,13 @@ router.put('/:id', async (req, res, next) => {
       productI => productI.id === +req.body.id
     )
     if (alreadyInCart === -1) {
-      // not found
+      // If we cannot find this item in cart, we add this item in cart
       req.session.cart.products.push({
         ...product.dataValues,
         orderproduct: {quantity: 1}
       })
     } else {
+      // If we can find this item in cart, we modify the quantity
       switch (req.query.type) {
         case 'createorincrement':
           req.session.cart.products[alreadyInCart].orderproduct.quantity++
