@@ -1,53 +1,63 @@
 # Welcome to Unknown Grace Shopper
 
-----READ ME----
-
-In our overly commified present day, what is left to sell?
+In our overly commodified world, what is left to sell?
 
 We’ve polluted our relationships with smartphones, social media, and dating apps. We live atomized lives in crowded cities where we don’t even know our neighbors.
 
-Can we go back? How do we learn to form meaningful relationships again?
+_Can we go back? How do we learn to form meaningful relationships again?_
 
-Unfortunately, this website cannot remedy these problems. In the meantime, we’ve found a quick hack. Forget awkward small talk at the bar, don’t worry about joining that sports league... Friendship is just a click away at friendShop.
+Unfortunately, this website cannot remedy these problems. In the meantime, we’ve found a quick hack. Forget awkward small talk at the bar, don’t worry about joining that sports league...
 
-Get started now by renting friends directly from our expertly curated collection - you’ve got a friend in friendShop.
+Friendship is just a click away at **_friendShop_**.
+
+Get started now by renting friends directly from our expertly curated collection - you’ve got a friend in **_friendShop_**.
 
 ## Setup
 
 To test out this project locally , you'll need to take the following steps:
 
-- Fork or clone this repo!
-- Run the following commands:
+- Fork and clone this repository
 
 ```
-Npm install
+git clone <filename>
 ```
 
-We are using PostgreSQL to store our data. Please install PostgreSQL by going to https://postgresapp.com/ and following the instructions.
-Create a database using the following commands in terminal if you have PostgreSql.
+- Install the NPM Package with the following command:
 
 ```
-Createdb unknown
+npm install
 ```
 
-And then run ‘Npm run start-dev’ to start the website
+_We are using PostgreSQL to store our data. Please download PostgreSQL [here](https://postgresapp.com/) and follow the installation instructions._
 
-You should be able to see the website locally on localhost:8080.
-You can also browse our live website on https://unkowngraceshopper.herokuapp.com/
+- Create a database using the following command once you've installed PostgreSql.
 
-For Users:
+```
+createdb unknown
+```
 
-Users can sign in via the site username or through Google. They can sign up via Google as well. All purchases can be conducted as a Guest user.
+To launch this website locally on [localhost 8080](localhost:8080), run the following command:
 
-Customers can search through a diverse selection of friends and book time with them by week.
+```
+npm run start-dev
+```
 
-Upon checkout, a user’s shipment info / contact info will be pre-populate from their profile. However, if user update their info here their info will be saved to their profiles automatically.
+You can also browse our live website [here](https://unkowngraceshopper.herokuapp.com/)
 
-Once payment info is verified, the user will be redirected to an order success page, and will receive an order confirmation email.
+## For Users & Guests:
 
-For Admins:
-Admins can view user info and edit and delete users as necessary. They can as well add friends to the inventory:
+Users can log in/sign up using our native forms or through Google. All purchases can be conducted as a Guest user.
 
-Users can view their order history
+Customers can search through a diverse selection of friends and book time with them on a weekly basis. Friends can be sorted according to specific qualities by clicking on a tag in each Friend page.
 
-built by #unknown [Mark Czernyk, Abriel Postelnicu,Tianxin Angland, CHAOHUI(PETER) CHEN]
+Upon checkout, a user’s shipment / contact info will be pre-populated based on the information in their profile. If a user updates their info here their profiles will be automatically revised as well.
+
+Once payment info is verified, the user will be redirected to an order success page, and will receive an order confirmation email to the provided email address.
+
+## For Admins:
+
+Admins can view user and order info through the profile dropdown in the navbar. They can also edit and delete users as necessary through these pages, which are only visible to admins. They can add friends to the inventory through a button on the main page, as well as edit or delete friends through each individual Friend page. Buttons to access this functionality are only available to admins.
+
+### built by #unknown
+
+**_[Mark Czernyk, Gabriel Postelnicu,Tianxin Angland, Chaohui (Peter) Chen]_**
