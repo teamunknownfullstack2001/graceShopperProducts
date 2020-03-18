@@ -1,4 +1,4 @@
-# Welcome to Unknown Grace Shopper
+# Welcome to friendShop by #unknown
 
 In our overly commodified world, what is left to sell?
 
@@ -58,6 +58,6 @@ Once payment info is verified, the user will be redirected to an order success p
 
 Admins can view user and order info through the profile dropdown in the navbar. They can also edit and delete users as necessary through these pages, which are only visible to admins. They can add friends to the inventory through a button on the main page, as well as edit or delete friends through each individual Friend page. Buttons to access this functionality are only available to admins.
 
-### built by #unknown
+### built by #unknown for FullStack Academy
 
 **_[Mark Czernyk, Gabriel Postelnicu,Tianxin Angland, Chaohui (Peter) Chen]_**
