@@ -46,19 +46,19 @@ You can also browse our live website [here](https://unkowngraceshopper.herokuapp
 
 ## For Users & Guests:
 
-Users can log in/sign up using our native forms or through Google. All purchases can be conducted as a Guest user.
+Users can log in/sign up using our native forms or through Google. All purchases can be conducted as a Guest or User.
 
 Customers can search through a diverse selection of friends and book time with them on a weekly basis. Friends can be sorted according to specific qualities by clicking on a tag in each Friend page.
 
-After adding items to cart, customers can continue shopping or go to cart. In cart customers can delete item, increase or decrease quantity of items. However, the quantity cannot exceed the stock of the product. There are only 5 "Guys" left, so we might as well buy all 5 of them, before anyone else does!
+After selecting friends to buy, customers can continue shopping or go to their cart. From their cart, customers can delete friends, or increase / decrease quantity. Quantity cannot exceed the stock of the product. There are only 5 "Guys" left, so we might as well buy all 5 of them, before anyone else does!
 
 <p align="center">
   <img src="public/readme/UserCart.gif">
 </p>
 
-Upon checkout, a user’s shipment / contact info will be pre-populated based on the information in their profile. If a user updates their info here their profiles will be automatically revised as well. The form validate the users input format as well, if the zip code is not exactly 5 digits, a user will not be able to checkout, and kindly reminder will be showing around the "zip" field.
+Upon checkout, a User’s shipment / contact info will be pre-populated based on the information in their profile. If a User updates their info here their profiles will be automatically revised as well. This form validates the format of each customer's information to prevent mistakes. For example, a customer will not be able to checkout if their zip code is not exactly 5 digits, and a gentle reminder will populate the "zip" field.
 
-Once payment info is verified, the user will be redirected to an order success page, and will receive an order confirmation email to the provided email address.
+Once a customer's payment info is verified, they will be redirected to an order success page, and will receive an order confirmation message at the email address provided during checkout.
 
 <p align="center">
   <img src="public/readme/UserCheckout.gif">
@@ -66,13 +66,13 @@ Once payment info is verified, the user will be redirected to an order success p
 
 ## For Admins:
 
-Admins can view user and order info through the profile dropdown in the navbar. They can also edit and delete users as necessary through these pages, which are only visible to admins.
+Admins can view User and Order info through the Profile dropdown in the Navbar. They can also edit and delete Users as necessary through these pages, which are only visible to Admins.
 
 <p align="center">
   <img src="public/readme/AdminEditUser.gif">
 </p>
 
-They can add friends to the inventory through a button on the main page, as well as edit or delete friends through each individual Friend page. Buttons to access this functionality are only available to admins.
+They can add friends to the inventory through a button on the main page, as well as edit or delete friends through each individual Friend page. Buttons to access this functionality are only available to Admins.
 
 <p align="center">
   <img src="public/readme/AdminEditProduct.gif">
