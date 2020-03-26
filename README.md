@@ -42,7 +42,7 @@ To launch this website locally on [localhost 8080](localhost:8080), run the foll
 npm run start-dev
 ```
 
-You can also browse our live website [here](https://unkowngraceshopper.herokuapp.com/)
+You can also browse our live website [here](http://unknowngraceshopper.herokuapp.com/)
 
 ## For Users & Guests:
 
